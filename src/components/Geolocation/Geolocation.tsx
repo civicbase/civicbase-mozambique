@@ -17,7 +17,7 @@ const GeolocationMessage = ({
     >
       <div css={tw`text-center absolute top-10 mx-10`}>
         <Subtitle>
-          Primary Research Himachal Pradesh Assembly Election 2022
+          LL Training Project for SASB, Beira, Mozambique - Household Survey
         </Subtitle>
       </div>
       <img

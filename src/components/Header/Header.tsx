@@ -4,7 +4,9 @@ import tw from 'twin.macro'
 const Header = () => {
   return (
     <div css={tw`text-center`}>
-      <Subtitle>Primary Research - Himachal Pradesh</Subtitle>
+      <Subtitle>
+        LL Training Project for SASB, Beira, Mozambique - Household Survey
+      </Subtitle>
     </div>
   )
 }

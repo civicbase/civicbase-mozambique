@@ -12,7 +12,18 @@ import useAsync from 'hooks/use-async'
 import { createAnswer } from 'services/answer'
 import { transform } from 'transform'
 
-interface FormValues {}
+interface FormValues {
+  step1: {
+    unique_id: string
+    bill: {
+      description: string
+      month: string
+      consumption: string
+      cost: string
+      sanitation_tax_cost: string
+    }
+  }
+}
 
 const App = () => {
   const [step, setStep] = useState(1)
@@ -21,9 +32,7 @@ const App = () => {
   const { run } = useAsync()
 
   const methods = useForm<FormValues>({
-    defaultValues: {
-      recording: null,
-    },
+    defaultValues: {},
     resolver: zodResolver(validation),
   })
 

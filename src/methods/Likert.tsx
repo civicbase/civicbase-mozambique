@@ -28,13 +28,13 @@ const Likert = ({ qs, step }: { qs: any[]; step: string }) => {
           </div>
           <div css={tw`flex space-x-4`}>
             {options.map(option => (
-              <Label
+              <label
                 css={tw`flex flex-col space-y-2 items-center select-none`}
                 key={option}
               >
                 <Radio {...register(`${step}.${attribute}`)} value={option} />
                 <span css={tw`text-center`}>{option}</span>
-              </Label>
+              </label>
             ))}
           </div>
         </div>
