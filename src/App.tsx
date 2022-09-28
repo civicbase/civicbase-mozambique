@@ -31,6 +31,7 @@ interface FormValues {
       share_number: number
     }
   }
+  step3: {}
 }
 
 const App = () => {
@@ -77,14 +78,7 @@ const App = () => {
               onNext={handleNext}
               hideNext={step === 12 || step === 13}
               isSubmitStep={step === 12}
-              hidePrevious={
-                step === 1 ||
-                step === 2 ||
-                step === 3 ||
-                step === 11 ||
-                step === 12 ||
-                step === 13
-              }
+              hidePrevious={step === 1}
               isStart={step === 1}
             />
           }
