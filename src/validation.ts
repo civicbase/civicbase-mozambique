@@ -15,7 +15,20 @@ const validationSchema = z.object({
         .min(1, { message: 'Please input sanitation tax cost' }),
     }),
   }),
-  step2: z.any(),
+  step2: z.object({
+    dwelling_type: z
+      .string()
+      .min(1, { message: 'Please select dwelling type' }),
+    sanitation_type: z
+      .string()
+      .min(1, { message: 'Please select sanitation type' }),
+    water_bill: z.object({
+      share: z
+        .string()
+        .min(1, { message: 'Please select your water bill share status' }),
+      share_number: z.number({ invalid_type_error: 'Expected number' }),
+    }),
+  }),
   step3: z.any(),
   step4: z.any(),
   step5: z.any(),

@@ -23,6 +23,14 @@ interface FormValues {
       sanitation_tax_cost: string
     }
   }
+  step2: {
+    dwelling_type: string
+    sanitation_type: string
+    water_bill: {
+      share: string
+      share_number: number
+    }
+  }
 }
 
 const App = () => {
