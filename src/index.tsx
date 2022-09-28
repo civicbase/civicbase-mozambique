@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client'
 import GlobalStyles from './styles/GlobalStyles'
 import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
-import { RecorderProvider } from 'context/Recorder'
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
@@ -11,9 +10,7 @@ const root = createRoot(container!)
 root.render(
   <React.StrictMode>
     <GlobalStyles />
-    <RecorderProvider>
-      <App />
-    </RecorderProvider>
+    <App />
   </React.StrictMode>,
 )
 

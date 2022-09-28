@@ -7,49 +7,12 @@ import Content from 'components/Content'
 import Geolocation from 'components/Geolocation'
 import useGeolocation from 'hooks/use-geolocation'
 import Footer from 'components/Footer'
-import Recorder, { RecorderMessage } from 'components/Recorder'
 import Header from 'components/Header'
 import useAsync from 'hooks/use-async'
 import { createAnswer } from 'services/answer'
 import { transform } from 'transform'
 
-interface FormValues {
-  step1: {
-    surveyor?: string
-  }
-  step2: {
-    assemblyArea?: string
-    parliamentaryArea?: string
-  }
-  step3: {
-    assemblyProfile?: string
-    voterPopulation?: number
-    maleVoterPopulation?: number
-    femaleVoterPopulation?: number
-    avarageVotingPercentage?: number
-    numberBooths?: number
-  }
-  step4: {
-    majorCastes: {
-      [caste: string]: {
-        selected?: string
-        percentage?: number
-      }
-    }
-  }
-  step5: {
-    winners2017?: string
-    voteShare?: number
-    currentMLA: {
-      name?: string
-      caste?: string
-      performance?: number
-      hasPosition?: string
-    }
-  }
-  recording: null | Blob
-  method: null | 'quadratic' | 'likert' | 'conjoint'
-}
+interface FormValues {}
 
 const App = () => {
   const [step, setStep] = useState(1)
@@ -81,18 +44,9 @@ const App = () => {
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(values => {
-          const recording = values.recording
+          const answer = transform(values)
 
-          if (recording) {
-            const answer = transform(values)
-
-            run(
-              createAnswer(
-                { ...answer, geolocation: { latitude, longitude } },
-                recording,
-              ),
-            )
-          }
+          run(createAnswer({ ...answer, geolocation: { latitude, longitude } }))
 
           setStep(13)
         })}
@@ -116,11 +70,6 @@ const App = () => {
               }
               isStart={step === 1}
             />
-          }
-          recording={
-            <RecorderMessage>
-              <Recorder />
-            </RecorderMessage>
           }
           geolocation={
             (!latitude || !longitude) && (
