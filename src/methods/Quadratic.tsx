@@ -45,7 +45,7 @@ const Quadratic = ({ qs, step }: { qs: any[]; step: string }) => {
         const canVoteDown = canVote(index, -1)
 
         return (
-          <div key={question.statement} css={tw`flex w-full flex-col`}>
+          <div key={question.statement} css={tw`flex w-full flex-col mb-12`}>
             <Headline css={tw`mb-4 flex`}>
               {index + 1}.&nbsp;
               {question.statement}
