@@ -11,11 +11,11 @@ const Step2 = () => {
     formState: { errors },
     register,
     setValue,
+    watch,
   } = useFormContext()
 
-  const dwellingTypes = ['a', 'b']
-  const sanitationTypes = ['a', 'b']
-  const shareWaterBill = ['a', 'b']
+  const shareBill = watch('step2.water_bill.share')
+  const customSharedBill = watch('step2.water_bill.split')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -26,10 +26,10 @@ const Step2 = () => {
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={dwellingTypes}
+              options={['a', 'b']}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Record Total Consumption"
+              placeholder="Please select a dwelling type"
               error={!!errors?.step2?.dwelling_type}
             />
           )}
@@ -44,10 +44,10 @@ const Step2 = () => {
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={sanitationTypes}
+              options={['Flush to Sewer', 'Flush to Septic Tank']}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Record Total Consumption"
+              placeholder="Please select sanitatition service"
               error={!!errors?.step2?.sanitation_type}
             />
           )}
@@ -64,10 +64,10 @@ const Step2 = () => {
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={shareWaterBill}
+              options={['Yes', 'No']}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Record Total Consumption"
+              placeholder="Please one option"
               error={!!errors?.step2?.water_bill?.share}
             />
           )}
@@ -75,22 +75,65 @@ const Step2 = () => {
         <FieldErrorMessage name="step2.water_bill.share" errors={errors} />
       </div>
 
-      <div>
-        <Label required>
-          With how many households do you share your water bill?
-        </Label>
-        <Input
-          {...register('step2.water_bill.share_number', {
-            required: true,
-            valueAsNumber: true,
-          })}
-          error={!!errors?.step2?.water_bill?.share_number}
-        />
-        <FieldErrorMessage
-          name="step2.water_bill.share_number"
-          errors={errors}
-        />
-      </div>
+      {shareBill === 'Yes' && (
+        <>
+          <div>
+            <Label required>
+              With how many households do you share your water bill?
+            </Label>
+            <Input
+              {...register('step2.water_bill.share_number', {
+                required: true,
+                valueAsNumber: true,
+              })}
+              error={!!errors?.step2?.water_bill?.share_number}
+            />
+            <FieldErrorMessage
+              name="step2.water_bill.share_number"
+              errors={errors}
+            />
+          </div>
+
+          <div>
+            <Label required>
+              How do you split the bills among the households ?
+            </Label>
+            <Controller
+              name="step2.water_bill.split"
+              control={control}
+              render={({ field }) => (
+                <Dropdown
+                  options={['Equally', 'Custom']}
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Please select one option"
+                  error={!!errors?.step2?.water_bill?.split}
+                />
+              )}
+            />
+            <FieldErrorMessage name="step2.water_bill.split" errors={errors} />
+          </div>
+
+          {customSharedBill === 'Custom' && (
+            <div>
+              <Label required>
+                If not EQUALLY, How much did you pay for the bill?
+              </Label>
+              <Input
+                {...register('step2.water_bill.split_pay', {
+                  required: true,
+                  valueAsNumber: true,
+                })}
+                error={!!errors?.step2?.water_bill?.split_pay}
+              />
+              <FieldErrorMessage
+                name="step2.water_bill.split_pay"
+                errors={errors}
+              />
+            </div>
+          )}
+        </>
+      )}
     </div>
   )
 }

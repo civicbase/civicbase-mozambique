@@ -28,8 +28,10 @@ interface FormValues {
     sanitation_type: string
     water_bill: {
       share: string
-      share_number: number
+      share_number?: number
     }
+    split?: number
+    split_pay?: number
   }
   step3: {}
 }

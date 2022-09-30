@@ -22,8 +22,12 @@ const validationSchema = z.object({
       share: z
         .string()
         .min(1, { message: 'Please select your water bill share status' }),
-      share_number: z.number({ invalid_type_error: 'Expected number' }),
+      share_number: z
+        .number({ invalid_type_error: 'Expected number' })
+        .optional(),
     }),
+    split: z.number({ invalid_type_error: 'Expected number' }).optional(),
+    split_pay: z.number({ invalid_type_error: 'Expected number' }).optional(),
   }),
   step3: z.any(),
   step4: z.any(),
