@@ -6,13 +6,9 @@ const validationSchema = z.object({
     bill: z.object({
       description: z.string().min(1, { message: 'Please input latest bill' }),
       month: z.string().min(1, { message: 'Please input month of bill' }),
-      consumption: z
-        .string()
-        .min(1, { message: 'Please select total consumption' }),
-      cost: z.string().min(1, { message: 'Please input cost incurred' }),
-      sanitation_tax_cost: z
-        .string()
-        .min(1, { message: 'Please input sanitation tax cost' }),
+      consumption: z.number({ invalid_type_error: 'Expected number' }),
+      cost: z.number({ invalid_type_error: 'Expected number' }),
+      sanitation_tax_cost: z.number({ invalid_type_error: 'Expected number' }),
     }),
   }),
   step2: z.object({

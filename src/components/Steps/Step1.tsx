@@ -33,41 +33,64 @@ const bill = () => {
       </div>
       <div>
         <Label required>Month of Bill</Label>
-        <Input
-          {...register('step1.bill.month', { required: true })}
-          error={!!errors?.step1?.bill?.month}
+        <Controller
+          name="step1.bill.month"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              options={[
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December',
+              ]}
+              value={field.value}
+              onChange={field.onChange}
+              placeholder="Please select a month"
+              error={!!errors?.step1?.bill?.month}
+            />
+          )}
         />
         <FieldErrorMessage name="step1.bill.month" errors={errors} />
       </div>
       <div>
-        <Label required>Record Total Consumption</Label>
-        <Controller
-          name="step1.bill.consumption"
-          control={control}
-          render={({ field }) => (
-            <Dropdown
-              options={consumptions}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Record Total Consumption"
-              error={!!errors?.step1?.bill?.consumption}
-            />
-          )}
+        <Label required>Record Total Consumption (in cubic meters)</Label>
+        <Input
+          {...register('step1.bill.consumption', {
+            required: true,
+            valueAsNumber: true,
+          })}
+          error={!!errors?.step1?.bill?.consumption}
         />
+
         <FieldErrorMessage name="step1.bill.consumption" errors={errors} />
       </div>
       <div>
-        <Label required>Record Total Cost Incurred</Label>
+        <Label required>Record Total Cost Incurred (meticais)</Label>
         <Input
-          {...register('step1.bill.cost', { required: true })}
+          {...register('step1.bill.cost', {
+            required: true,
+            valueAsNumber: true,
+          })}
           error={!!errors?.step1?.bill?.cost}
         />
         <FieldErrorMessage name="step1.bill.cost" errors={errors} />
       </div>
       <div>
-        <Label required>Record Sanitation Tax Cost</Label>
+        <Label required>Record Sanitation Tax Cost (meticais)</Label>
         <Input
-          {...register('step1.bill.sanitation_tax_cost', { required: true })}
+          {...register('step1.bill.sanitation_tax_cost', {
+            required: true,
+            valueAsNumber: true,
+          })}
           error={!!errors?.step1?.bill?.sanitation_tax_cost}
         />
         <FieldErrorMessage

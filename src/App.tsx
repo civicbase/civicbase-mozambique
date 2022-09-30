@@ -18,9 +18,9 @@ interface FormValues {
     bill: {
       description: string
       month: string
-      consumption: string
-      cost: string
-      sanitation_tax_cost: string
+      consumption: number
+      cost: number
+      sanitation_tax_cost: number
     }
   }
   step2: {
