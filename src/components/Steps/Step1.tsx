@@ -69,6 +69,7 @@ const bill = () => {
             valueAsNumber: true,
           })}
           error={!!errors?.step1?.bill?.consumption}
+          type="number"
         />
 
         <FieldErrorMessage name="step1.bill.consumption" errors={errors} />
@@ -81,6 +82,7 @@ const bill = () => {
             valueAsNumber: true,
           })}
           error={!!errors?.step1?.bill?.cost}
+          type="number"
         />
         <FieldErrorMessage name="step1.bill.cost" errors={errors} />
       </div>
@@ -92,6 +94,7 @@ const bill = () => {
             valueAsNumber: true,
           })}
           error={!!errors?.step1?.bill?.sanitation_tax_cost}
+          type="number"
         />
         <FieldErrorMessage
           name="step1.bill.sanitation_tax_cost"

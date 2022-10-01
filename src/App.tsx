@@ -48,7 +48,13 @@ const App = () => {
   const { run } = useAsync()
 
   const methods = useForm<FormValues>({
-    defaultValues: {},
+    defaultValues: {
+      step2: {
+        water_bill: {
+          share_number: 0,
+        },
+      },
+    },
     resolver: zodResolver(validation),
   })
 

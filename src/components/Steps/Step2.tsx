@@ -14,6 +14,8 @@ const Step2 = () => {
     watch,
   } = useFormContext()
 
+  console.log('errors', errors)
+
   const shareBill = watch('step2.water_bill.share')
   const customSharedBill = watch('step2.water_bill.split')
 
@@ -47,7 +49,7 @@ const Step2 = () => {
               options={['Flush to Sewer', 'Flush to Septic Tank']}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select sanitatition service"
+              placeholder="Please select a sanitatition service"
               error={!!errors?.step2?.sanitation_type}
             />
           )}
@@ -67,7 +69,7 @@ const Step2 = () => {
               options={['Yes', 'No']}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please one option"
+              placeholder="Please select one option"
               error={!!errors?.step2?.water_bill?.share}
             />
           )}
@@ -87,6 +89,7 @@ const Step2 = () => {
                 valueAsNumber: true,
               })}
               error={!!errors?.step2?.water_bill?.share_number}
+              type="number"
             />
             <FieldErrorMessage
               name="step2.water_bill.share_number"
@@ -125,6 +128,7 @@ const Step2 = () => {
                   valueAsNumber: true,
                 })}
                 error={!!errors?.step2?.water_bill?.split_pay}
+                type="number"
               />
               <FieldErrorMessage
                 name="step2.water_bill.split_pay"

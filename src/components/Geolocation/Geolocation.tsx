@@ -16,6 +16,13 @@ const GeolocationMessage = ({
       css={tw`backdrop-blur-3xl absolute w-full h-full left-0 bg-white bg-opacity-90 flex justify-center items-center flex-col z-50`}
     >
       <div css={tw`text-center absolute top-10 mx-10`}>
+        <div css={tw`flex justify-center -mt-10`}>
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/logo2.svg`}
+            width={250}
+            alt="logo"
+          />
+        </div>
         <Subtitle>
           LL Training Project for SASB, Beira, Mozambique - Household Survey
         </Subtitle>

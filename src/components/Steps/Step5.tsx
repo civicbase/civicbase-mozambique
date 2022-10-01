@@ -28,7 +28,7 @@ const Step5 = () => {
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={['yes', 'no']}
+              options={['Yes', 'No']}
               value={field.value}
               onChange={field.onChange}
               placeholder="Please select an option"
