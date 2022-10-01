@@ -33,7 +33,12 @@ interface FormValues {
     split?: number
     split_pay?: number
   }
-  step3: {}
+  step3: {
+    credits: number
+    order: number
+    statement: string
+    vote: number
+  }[]
 }
 
 const App = () => {

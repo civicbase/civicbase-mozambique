@@ -5,7 +5,6 @@ import tw from 'twin.macro'
 
 const Step3 = () => {
   const {
-    register,
     formState: { errors },
   } = useFormContext()
 
