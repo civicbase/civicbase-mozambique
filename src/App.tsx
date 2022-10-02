@@ -64,6 +64,12 @@ interface FormValues {
       number: string
     }
   }
+  step6: {
+    credits: number
+    order: number
+    statement: string
+    vote: number
+  }[]
 }
 
 const App = () => {

@@ -7,12 +7,20 @@ import { memo, useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
-const Quadratic = ({ qs, step }: { qs: any[]; step: string }) => {
+const Quadratic = ({
+  qs,
+  step,
+  credits = 100,
+}: {
+  qs: any[]
+  step: string
+  credits?: number
+}) => {
   const {
     setValue,
     formState: { errors },
   } = useFormContext()
-  const credits = 100
+
   const survey = {
     setup: {
       credits,
