@@ -39,6 +39,31 @@ interface FormValues {
     statement: string
     vote: number
   }[]
+  step5: {
+    is_information_relevant: string
+    share_information: string
+    share_number: string
+    share_0: {
+      name: string
+      number: string
+    }
+    share_1: {
+      name: string
+      number: string
+    }
+    share_2: {
+      name: string
+      number: string
+    }
+    share_3: {
+      name: string
+      number: string
+    }
+    share_4: {
+      name: string
+      number: string
+    }
+  }
 }
 
 const App = () => {

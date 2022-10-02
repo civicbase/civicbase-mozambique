@@ -15,6 +15,11 @@ const Step5 = () => {
 
   const shareInfo = watch('step5.share_information')
   const shareNumber = watch('step5.share_number')
+  const share_0 = watch('step5.share_0')
+  const share_1 = watch('step5.share_1')
+  const share_2 = watch('step5.share_2')
+  const share_3 = watch('step5.share_3')
+  const share_4 = watch('step5.share_4')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -63,94 +68,155 @@ const Step5 = () => {
         <FieldErrorMessage name="step5.share_information" errors={errors} />
       </div>
 
-      {shareInfo && (
-        <div>
-          <Label required>
-            With whom would you like to share this information to?
-          </Label>
-          <div css={tw`grid grid-cols-1 gap-6`}>
-            <div>
+      {shareInfo === 'Yes' && (
+        <>
+          <div>
+            <Label required>
+              With whom would you like to share this information to?
+            </Label>
+            <div css={tw`grid grid-cols-1 gap-6`}>
+              <div>
+                <Input
+                  {...register('step5.share_0.name', {
+                    required: true,
+                  })}
+                  error={!!errors?.step5?.share_0?.name}
+                />
+                <FieldErrorMessage name="step5.share_0.name" errors={errors} />
+              </div>
+
               <Input
-                {...register('step5.share_information_1', {
+                {...register('step5.share_1.name', {
                   required: true,
                 })}
-                error={!!errors?.step5?.share_information_1}
+                error={!!errors?.step5?.share_1?.name}
               />
-              <FieldErrorMessage
-                name="step5.share_information_1"
-                errors={errors}
+
+              <Input
+                {...register('step5.share_2.name', {
+                  required: true,
+                })}
+                error={!!errors?.step5?.share_2?.name}
+              />
+
+              <Input
+                {...register('step5.share_3.name', {
+                  required: true,
+                })}
+                error={!!errors?.step5?.share_3?.name}
+              />
+
+              <Input
+                {...register('step5.share_4.name', {
+                  required: true,
+                })}
+                error={!!errors?.step5?.share_4?.name}
               />
             </div>
-
-            <Input
-              {...register('step5.share_information_2', {
-                required: true,
-              })}
-              error={!!errors?.step5?.share_information_2}
-            />
-
-            <Input
-              {...register('step5.share_information_3', {
-                required: true,
-              })}
-              error={!!errors?.step5?.share_information_3}
-            />
-
-            <Input
-              {...register('step5.share_information_4', {
-                required: true,
-              })}
-              error={!!errors?.step5?.share_information_4}
-            />
-
-            <Input
-              {...register('step5.share_information_5', {
-                required: true,
-              })}
-              error={!!errors?.step5?.share_information_5}
-            />
           </div>
-        </div>
+
+          <div>
+            <Label required>
+              Would you be willing to provide a phone number for any of these
+              individuals to also contact them about their satisfaction with the
+              service?
+            </Label>
+            <Controller
+              name="step5.share_number"
+              control={control}
+              render={({ field }) => (
+                <Dropdown
+                  options={['Yes', 'No']}
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Please select an option"
+                  error={!!errors?.step5?.share_information}
+                />
+              )}
+            />
+            <FieldErrorMessage name="step5.share_number" errors={errors} />
+          </div>
+        </>
       )}
 
-      <div>
-        <Label required>
-          Would you be willing to provide a phone number for any of these
-          individuals to also contact them about their satisfaction with the
-          service?
-        </Label>
-        <Controller
-          name="step5.share_number"
-          control={control}
-          render={({ field }) => (
-            <Dropdown
-              options={['Yes', 'No']}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Please select an option"
-              error={!!errors?.step5?.share_information}
-            />
-          )}
-        />
-        <FieldErrorMessage name="step5.share_number" errors={errors} />
-      </div>
-
-      {shareNumber && (
+      {shareNumber === 'Yes' && (
         <div>
           <Label required>What are their numbers?</Label>
           <div css={tw`grid grid-cols-1 gap-6`}>
-            <div>
-              <Input
-                {...register('step5.share_information_1', {
-                  required: true,
-                })}
-                error={!!errors?.step5?.share_information_1}
-              />
-              <FieldErrorMessage
-                name="step5.share_information_1"
-                errors={errors}
-              />
-            </div>
+            {share_0.name && (
+              <div>
+                <Input
+                  {...register('step5.share_0.number', {
+                    required: true,
+                  })}
+                  error={!!errors?.step5?.share_0?.number}
+                />
+                <FieldErrorMessage
+                  name="step5.share_0.number"
+                  errors={errors}
+                />
+              </div>
+            )}
+
+            {share_1.name && (
+              <div>
+                <Input
+                  {...register('step5.share_1.number', {
+                    required: true,
+                  })}
+                  error={!!errors?.step5?.share_1?.number}
+                />
+                <FieldErrorMessage
+                  name="step5.share_1.number"
+                  errors={errors}
+                />
+              </div>
+            )}
+
+            {share_2.name && (
+              <div>
+                <Input
+                  {...register('step5.share_2.number', {
+                    required: true,
+                  })}
+                  error={!!errors?.step5?.share_2?.number}
+                />
+                <FieldErrorMessage
+                  name="step5.share_2.number"
+                  errors={errors}
+                />
+              </div>
+            )}
+
+            {share_3.name && (
+              <div>
+                <Input
+                  {...register('step5.share_3.number', {
+                    required: true,
+                  })}
+                  error={!!errors?.step5?.share_3?.number}
+                />
+                <FieldErrorMessage
+                  name="step5.share_3.number"
+                  errors={errors}
+                />
+              </div>
+            )}
+
+            {share_4.name && (
+              <div>
+                <Input
+                  {...register('step5.share_4.number', {
+                    required: true,
+                  })}
+                  error={!!errors?.step5?.share_4?.number}
+                />
+                <FieldErrorMessage
+                  name="step5.share_4.number"
+                  errors={errors}
+                />
+              </div>
+            )}
           </div>
         </div>
       )}

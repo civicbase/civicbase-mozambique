@@ -31,7 +31,48 @@ const validationSchema = z.object({
   }),
   step3: z.any(),
   step4: z.any(),
-  step5: z.any(),
+  step5: z.object({
+    is_information_relevant: z
+      .string()
+      .min(1, { message: 'Please select an option' }),
+    share_information: z
+      .string()
+      .min(1, { message: 'Please select an option' }),
+    share_number: z
+      .string()
+      .min(1, { message: 'Please select an option' })
+      .optional(),
+    share_0: z
+      .object({
+        name: z.string().optional(),
+        number: z.string().optional(),
+      })
+      .optional(),
+    share_1: z
+      .object({
+        name: z.string().optional(),
+        number: z.string().optional(),
+      })
+      .optional(),
+    share_2: z
+      .object({
+        name: z.string().optional(),
+        number: z.string().optional(),
+      })
+      .optional(),
+    share_3: z
+      .object({
+        name: z.string().optional(),
+        number: z.string().optional(),
+      })
+      .optional(),
+    share_4: z
+      .object({
+        name: z.string().optional(),
+        number: z.string().optional(),
+      })
+      .optional(),
+  }),
   step6: z.any(),
   step7: z.any(),
   step8: z.any(),
