@@ -2,13 +2,11 @@ import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step4 = () => {
-  const {
-    register,
-    watch,
-    formState: { errors },
-  } = useFormContext()
+  const { setValue } = useFormContext()
 
   const isHeads = Math.random() < 0.5
+
+  setValue('step4.show_content', isHeads ? 'A' : 'B')
 
   return (
     <div css={tw`grid grid-cols-1 gap-2`}>

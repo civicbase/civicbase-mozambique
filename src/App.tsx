@@ -16,11 +16,11 @@ interface FormValues {
   step1: {
     unique_id: string
     bill: {
-      description: string
-      month: string
-      consumption: number
-      cost: number
-      sanitation_tax_cost: number
+      shared: boolean
+      month?: string
+      consumption?: number
+      cost?: number
+      sanitation_tax_cost?: number
     }
   }
   step2: {
@@ -39,6 +39,9 @@ interface FormValues {
     statement: string
     vote: number
   }[]
+  step4: {
+    show_content: 'A' | 'B'
+  }
   step5: {
     is_information_relevant: string
     share_information: string
@@ -80,6 +83,14 @@ const App = () => {
 
   const methods = useForm<FormValues>({
     defaultValues: {
+      step1: {
+        bill: {
+          shared: false,
+          consumption: 0,
+          cost: 0,
+          sanitation_tax_cost: 0,
+        },
+      },
       step2: {
         water_bill: {
           share_number: 0,
@@ -122,7 +133,14 @@ const App = () => {
               onNext={handleNext}
               hideNext={step === 12 || step === 13}
               isSubmitStep={step === 12}
-              hidePrevious={step === 1}
+              hidePrevious={
+                step === 1 ||
+                step === 3 ||
+                step === 4 ||
+                step === 5 ||
+                step === 6 ||
+                step === 7
+              }
               isStart={step === 1}
             />
           }
