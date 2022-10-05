@@ -8,6 +8,7 @@ const Footer = ({
   hidePrevious = false,
   hideNext = false,
   isSubmitStep = false,
+  step, //temporary
   isStart,
 }: {
   onPrevious: () => void
@@ -15,6 +16,7 @@ const Footer = ({
   hidePrevious: boolean
   hideNext: boolean
   isSubmitStep: boolean
+  step: number
   isStart?: boolean
 }) => {
   const { setValue } = useFormContext()
@@ -28,6 +30,7 @@ const Footer = ({
           Previous
         </Button>
       )}
+
       {!hideNext && (
         <Button variant="primary" onClick={onNext}>
           {isStart ? 'Start Survey' : 'Next'}
@@ -39,6 +42,8 @@ const Footer = ({
           Submit
         </Button>
       )}
+
+      <div css={tw`absolute bottom-4 right-4`}>{step}</div>
     </div>
   )
 }

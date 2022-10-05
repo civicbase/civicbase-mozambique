@@ -91,8 +91,42 @@ const validationSchema = z.object({
   step8: z.any(),
   step9: z.any(),
   step10: z.any(),
-  step11: z.any(), // TODO
-  step12: z.any(),
+  step11: z.object({
+    amount_preference: z
+      .string()
+      .min(1, { message: 'Please select an option' }),
+  }),
+  step12: z.object({
+    connected_septic_tank: z
+      .string()
+      .min(1, { message: 'Please select an option' })
+      .optional(),
+    emptied_septic_tank: z
+      .string()
+      .min(1, { message: 'Please select an option' })
+      .optional(),
+    service_provider: z
+      .object({
+        contacted: z
+          .string()
+          .min(1, { message: 'Please select an option' })
+          .optional(),
+        last_time: z
+          .string()
+          .min(1, { message: 'Please select an option' })
+          .optional(),
+        contacted_who: z.any().optional(),
+        requested_service: z.any().optional(),
+        paid: z
+          .string()
+          .min(1, { message: 'Please select an option' })
+          .optional(),
+        how_much: z
+          .number({ invalid_type_error: 'Expected number' })
+          .optional(),
+      })
+      .optional(),
+  }),
   step13: z.any(),
 })
 

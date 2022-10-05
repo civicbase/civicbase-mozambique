@@ -76,6 +76,27 @@ interface FormValues {
   step7: {
     amount_preference: string
   }
+  step10: {
+    credits: number
+    order: number
+    statement: string
+    vote: number
+  }[]
+  step11: {
+    amount_preference: string
+  }
+  step12: {
+    connected_septic_tank: string
+    emptied_septic_tank: string
+    service_provider: {
+      contacted: string
+      last_time: string
+      contacted_who: string
+      requested_service: string
+      paid: string
+      how_much: number
+    }
+  }
 }
 
 const App = () => {
@@ -99,19 +120,34 @@ const App = () => {
           share_number: 0,
         },
       },
+      step12: {
+        service_provider: {
+          how_much: 0,
+        },
+      },
     },
     resolver: zodResolver(validation),
   })
 
   const handlePrevious = () => {
     if (step > 1) {
-      setStep(step - 1)
+      const sanitationType = methods.getValues('step2.sanitation_type')
+      if (sanitationType !== 'Flush to Septic Tank' && step === 13) {
+        setStep(step - 2)
+      } else {
+        setStep(step - 1)
+      }
     }
   }
   const handleNext = () => {
     methods.trigger(`step${step}` as any).then(isValid => {
       if (isValid) {
-        setStep(step + 1)
+        const sanitationType = methods.getValues('step2.sanitation_type')
+        if (sanitationType !== 'Flush to Septic Tank' && step + 1 === 12) {
+          setStep(step + 2)
+        } else {
+          setStep(step + 1)
+        }
       }
     })
   }
@@ -122,9 +158,12 @@ const App = () => {
         onSubmit={methods.handleSubmit(values => {
           const answer = transform(values)
 
-          run(createAnswer({ ...answer, geolocation: { latitude, longitude } }))
+          console.log('answer', {
+            ...answer,
+            geolocation: { latitude, longitude },
+          })
 
-          setStep(13)
+          run(createAnswer({ ...answer, geolocation: { latitude, longitude } }))
         })}
       >
         <PagesLayout
@@ -134,8 +173,8 @@ const App = () => {
             <Footer
               onPrevious={handlePrevious}
               onNext={handleNext}
-              hideNext={step === 12 || step === 13}
-              isSubmitStep={step === 12}
+              hideNext={step === 28}
+              isSubmitStep={step === 28}
               hidePrevious={
                 step === 1 ||
                 step === 3 ||
@@ -145,6 +184,7 @@ const App = () => {
                 step === 7
               }
               isStart={step === 1}
+              step={step}
             />
           }
           geolocation={
