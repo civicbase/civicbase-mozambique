@@ -10,11 +10,8 @@ const Step2 = () => {
     control,
     formState: { errors },
     register,
-    setValue,
     watch,
   } = useFormContext()
-
-  console.log('errors', errors)
 
   const shareBill = watch('step2.water_bill.share')
   const customSharedBill = watch('step2.water_bill.split')

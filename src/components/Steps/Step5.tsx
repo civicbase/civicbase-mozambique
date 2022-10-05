@@ -23,8 +23,6 @@ const Step5 = () => {
   const share_3 = watch('step5.share_3')
   const share_4 = watch('step5.share_4')
 
-  console.log('shareInfo', shareInfo)
-
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
       <div>

@@ -83,7 +83,11 @@ const validationSchema = z.object({
       .optional(),
   }),
   step6: z.any(),
-  step7: z.any(),
+  step7: z.object({
+    amount_preference: z
+      .string()
+      .min(1, { message: 'Please select an option' }),
+  }),
   step8: z.any(),
   step9: z.any(),
   step10: z.any(),

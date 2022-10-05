@@ -73,6 +73,9 @@ interface FormValues {
     statement: string
     vote: number
   }[]
+  step7: {
+    amount_preference: string
+  }
 }
 
 const App = () => {

@@ -4,12 +4,7 @@ import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step6 = () => {
-  const {
-    register,
-    control,
-    watch,
-    formState: { errors },
-  } = useFormContext()
+  const {} = useFormContext()
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>

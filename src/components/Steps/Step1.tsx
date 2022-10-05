@@ -15,7 +15,6 @@ const bill = () => {
   } = useFormContext()
 
   const sharedBill = watch('step1.bill.shared')
-  console.log('errors', errors)
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
