@@ -32,6 +32,9 @@ const App = () => {
           shareNumber: 0,
         },
       },
+      step7: {
+        amountPreference: 8500,
+      },
     },
     resolver: zodResolver(validation),
   })

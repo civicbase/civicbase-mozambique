@@ -8,14 +8,22 @@ const validationSchema = z.object({
   step2: z.object({
     sanitationType: z.string(),
     dwellingType: z.string(),
-    compare: z.string(),
     waterBill: z.object({
       share: z.string().optional(),
       shareNumber: z.number().optional(),
     }),
   }),
-  step3: z.any(),
+  step3: z.object({
+    compare: z.string(),
+  }),
   step4: z.any(),
+  step5: z.object({
+    showContent: z.string(),
+  }),
+  step6: z.object({
+    relevantInformation: z.string(),
+    shareInformation: z.string(),
+  }),
   // step1: z.object({
   //   unique_id: z.string().min(1, { message: 'Please input unique id' }),
   //   bill: z.object({

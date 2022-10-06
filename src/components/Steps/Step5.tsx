@@ -1,229 +1,40 @@
-import { Controller, useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
-import Dropdown from 'components/Dropdown'
-import FieldErrorMessage from 'components/Form/FieldErrorMessage'
-import Input from 'components/Form/Input'
-import Label from 'components/Form/Label'
-import Radio from 'components/Form/Radio'
-import Typography from 'components/Typography'
 
 const Step5 = () => {
-  const {
-    register,
-    control,
-    watch,
-    formState: { errors },
-  } = useFormContext()
+  const { setValue } = useFormContext()
 
-  const shareInfo = watch('step5.share_information')
-  const shareNumber = watch('step5.share_number')
-  const share_0 = watch('step5.share_0')
-  const share_1 = watch('step5.share_1')
-  const share_2 = watch('step5.share_2')
-  const share_3 = watch('step5.share_3')
-  const share_4 = watch('step5.share_4')
+  const isHeads = Math.random() < 0.5
+
+  setValue('step5.showContent', isHeads ? 'A' : 'B')
 
   return (
-    <div css={tw`grid grid-cols-1 gap-6`}>
-      <div>
-        <Label required>
-          As a customer of SASB, do you think the information is relevant to
-          you?
-        </Label>
-        <Controller
-          name="step5.is_information_relevant"
-          control={control}
-          render={({ field }) => (
-            <Dropdown
-              options={['Yes', 'No']}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Please select an option"
-              error={!!errors?.step5?.is_information_relevant}
-            />
-          )}
-        />
-        <FieldErrorMessage
-          name="step5.is_information_relevant"
-          errors={errors}
-        />
-      </div>
-
-      <div>
-        <Label required>
-          How would you feel about sharing this information we just gave you
-          with a friend or colleague?
-        </Label>
-
-        <div css={tw`flex flex-col mt-10`}>
-          <div css={tw`flex justify-between mb-5`}>
-            <Typography>Strongly Disagree</Typography>
-            <Typography>Strongly Agree</Typography>
-          </div>
-          <div css={tw`flex justify-between`}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(option => (
-              <label
-                css={tw`flex flex-col space-y-2 items-center select-none`}
-                key={option}
-              >
-                <Radio
-                  {...register(`step5.share_information`)}
-                  value={option}
-                />
-                <span css={tw`text-center`}>{option}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-        <FieldErrorMessage name="step5.share_information" errors={errors} />
-      </div>
-
-      <div>
-        <Label required>
-          With whom would you like to share this information to?
-        </Label>
-        <div css={tw`grid grid-cols-1 gap-6`}>
+    <div css={tw`grid grid-cols-1 gap-2`}>
+      {isHeads && (
+        <>
           <div>
-            <Input
-              {...register('step5.share_0.name', {
-                required: true,
-              })}
-              error={!!errors?.step5?.share_0?.name}
-            />
-            <FieldErrorMessage name="step5.share_0.name" errors={errors} />
+            In response to customer complaints , SASB has implemented a training
+            program for its workers to improve service quality since February
+            2022. The program involves
           </div>
-
-          <Input
-            {...register('step5.share_1.name', {
-              required: true,
-            })}
-            error={!!errors?.step5?.share_1?.name}
-          />
-
-          <Input
-            {...register('step5.share_2.name', {
-              required: true,
-            })}
-            error={!!errors?.step5?.share_2?.name}
-          />
-
-          <Input
-            {...register('step5.share_3.name', {
-              required: true,
-            })}
-            error={!!errors?.step5?.share_3?.name}
-          />
-
-          <Input
-            {...register('step5.share_4.name', {
-              required: true,
-            })}
-            error={!!errors?.step5?.share_4?.name}
-          />
-        </div>
-      </div>
-
-      <div>
-        <Label required>
-          Would you be willing to provide a phone number for any of these
-          individuals to also contact them about their satisfaction with the
-          service?
-        </Label>
-        <Controller
-          name="step5.share_number"
-          control={control}
-          render={({ field }) => (
-            <Dropdown
-              options={['Yes', 'No']}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Please select an option"
-              error={!!errors?.step5?.share_information}
-            />
-          )}
-        />
-        <FieldErrorMessage name="step5.share_number" errors={errors} />
-      </div>
-
-      {shareNumber === 'Yes' && (
+          <div>
+            <div>1) fixing sewer blockages or bursts in a timely manner</div>
+            <div>2) improving drainage conditions in the city</div>
+            <div>3) promptly addressing customer complaints and</div>
+            <div>
+              4) reducing service disruptions. A similar training program has
+              improved service reliability by 55 percent and complaints response
+              time by 34 percent.
+            </div>
+          </div>
+        </>
+      )}
+      {!isHeads && (
         <div>
-          <Label required>What are their numbers?</Label>
-          <div css={tw`grid grid-cols-1 gap-6`}>
-            {share_0.name && (
-              <div>
-                <Input
-                  {...register('step5.share_0.number', {
-                    required: true,
-                  })}
-                  error={!!errors?.step5?.share_0?.number}
-                />
-                <FieldErrorMessage
-                  name="step5.share_0.number"
-                  errors={errors}
-                />
-              </div>
-            )}
-
-            {share_1.name && (
-              <div>
-                <Input
-                  {...register('step5.share_1.number', {
-                    required: true,
-                  })}
-                  error={!!errors?.step5?.share_1?.number}
-                />
-                <FieldErrorMessage
-                  name="step5.share_1.number"
-                  errors={errors}
-                />
-              </div>
-            )}
-
-            {share_2.name && (
-              <div>
-                <Input
-                  {...register('step5.share_2.number', {
-                    required: true,
-                  })}
-                  error={!!errors?.step5?.share_2?.number}
-                />
-                <FieldErrorMessage
-                  name="step5.share_2.number"
-                  errors={errors}
-                />
-              </div>
-            )}
-
-            {share_3.name && (
-              <div>
-                <Input
-                  {...register('step5.share_3.number', {
-                    required: true,
-                  })}
-                  error={!!errors?.step5?.share_3?.number}
-                />
-                <FieldErrorMessage
-                  name="step5.share_3.number"
-                  errors={errors}
-                />
-              </div>
-            )}
-
-            {share_4.name && (
-              <div>
-                <Input
-                  {...register('step5.share_4.number', {
-                    required: true,
-                  })}
-                  error={!!errors?.step5?.share_4?.number}
-                />
-                <FieldErrorMessage
-                  name="step5.share_4.number"
-                  errors={errors}
-                />
-              </div>
-            )}
-          </div>
+          So I've been thinking about the current conditions of City and how the
+          City Government has been dealing with everything and while I don't
+          really know how great they have been doing, in my personal opinion, I
+          really like them.
         </div>
       )}
     </div>

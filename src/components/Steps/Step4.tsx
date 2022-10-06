@@ -1,42 +1,42 @@
+import Typography from 'components/Typography'
+import Quadratic from 'methods/Quadratic'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step4 = () => {
-  const { setValue } = useFormContext()
+  const {} = useFormContext()
 
-  const isHeads = Math.random() < 0.5
-
-  setValue('step4.showContent', isHeads ? 'A' : 'B')
+  const questions = [
+    'piped water network',
+    'sewer network in your city',
+    'Drainage network in your city',
+    'electricity coverage in your city',
+    'coverage of paved roads in your city',
+    'Coastal embankments',
+  ]
 
   return (
-    <div css={tw`grid grid-cols-1 gap-2`}>
-      {isHeads && (
-        <>
-          <div>
-            In response to customer complaints , SASB has implemented a training
-            program for its workers to improve service quality since February
-            2022. The program involves
-          </div>
-          <div>
-            <div>1) fixing sewer blockages or bursts in a timely manner</div>
-            <div>2) improving drainage conditions in the city</div>
-            <div>3) promptly addressing customer complaints and</div>
-            <div>
-              4) reducing service disruptions. A similar training program has
-              improved service reliability by 55 percent and complaints response
-              time by 34 percent.
-            </div>
-          </div>
-        </>
-      )}
-      {!isHeads && (
-        <div>
-          So I've been thinking about the current conditions of City and how the
-          City Government has been dealing with everything and while I don't
-          really know how great they have been doing, in my personal opinion, I
-          really like them.
-        </div>
-      )}
+    <div css={tw`grid grid-cols-1 gap-6`}>
+      <Typography>
+        Your neighborhood is asked to participate in a vote. When you make your
+        decisions, please imagine everyone else in your neighborhood will be
+        participating in this exercise too.
+      </Typography>
+
+      <Typography>
+        Please look at the options provided and indicate how much votes you
+        would like to allocate to each option. If you dislike any of the
+        options, you can also "downvote" them.
+      </Typography>
+
+      <Typography>
+        Now, Imagine that the city of Beira has received MONEY to improve its
+        public services. In your opinion, which of the different options is
+        IMPORTANT to you? You may allocate your votes for more than one option.
+        Invest the money to improve the quality and to expand the...
+      </Typography>
+
+      <Quadratic qs={questions} step="step4" />
     </div>
   )
 }

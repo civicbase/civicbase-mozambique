@@ -26,12 +26,12 @@ const Steps = ({ id }: StepsProps) => {
       return <Section.Step3 />
     case 4:
       return <Section.Step4 />
-    // case 5:
-    //   return <Section.Step5 />
-    // case 6:
-    //   return <Section.Step6 />
-    // case 7:
-    //   return <Section.Step7 />
+    case 5:
+      return <Section.Step5 />
+    case 6:
+      return <Section.Step6 />
+    case 7:
+      return <Section.Step7 />
     // case 8:
     //   return <Section.Step8 />
     // case 9:
