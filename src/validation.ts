@@ -8,10 +8,10 @@ const validationSchema = z.object({
   step2: z.object({
     sanitationType: z.string(),
     dwellingType: z.string(),
+    compare: z.string(),
     waterBill: z.object({
       share: z.string().optional(),
       shareNumber: z.number().optional(),
-      compare: z.string().optional(),
     }),
   }),
   // step1: z.object({

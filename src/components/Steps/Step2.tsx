@@ -104,36 +104,33 @@ const Step2 = () => {
                   errors={errors}
                 />
               </div>
-
-              <div>
-                <Label number="4.7" required>
-                  Based on information we have collected, we found that
-                  households in your community typically pays around 620
-                  meticals for the monthly water bill including the sanitation
-                  tax. How does this compare to the amount you typically pay?
-                </Label>
-                <Controller
-                  name="step2.waterBill.compare"
-                  control={control}
-                  render={({ field }) => (
-                    <Dropdown
-                      options={['Higher', 'About Right', 'Lower']}
-                      value={field.value}
-                      onChange={field.onChange}
-                      placeholder="Please select one option"
-                      error={!!errors?.step2?.waterBill?.compare}
-                    />
-                  )}
-                />
-                <FieldErrorMessage
-                  name="step2.waterBill.compare"
-                  errors={errors}
-                />
-              </div>
             </>
           )}
         </>
       )}
+
+      <div>
+        <Label number="4.7" required>
+          Based on information we have collected, we found that households in
+          your community typically pays around 620 meticals for the monthly
+          water bill including the sanitation tax. How does this compare to the
+          amount you typically pay?
+        </Label>
+        <Controller
+          name="step2.compare"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              options={['Higher', 'About Right', 'Lower']}
+              value={field.value}
+              onChange={field.onChange}
+              placeholder="Please select one option"
+              error={!!errors?.step2?.compare}
+            />
+          )}
+        />
+        <FieldErrorMessage name="step2.compare" errors={errors} />
+      </div>
     </div>
   )
 }

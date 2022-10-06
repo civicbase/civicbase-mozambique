@@ -6,10 +6,10 @@ export interface FormValues {
   step2: {
     sanitationType: string
     dwellingType: string
+    compare: string
     waterBill: {
       share: string
       shareNumber: number
-      compare: string
     }
   }
 }
