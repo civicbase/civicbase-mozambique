@@ -1,3 +1,11 @@
+type Question = {
+  credits: number
+  order: number
+  statement: string
+  vote: number
+}
+type Quadratic = Question[]
+
 export interface FormValues {
   step1: {
     uniqueId: string
@@ -12,4 +20,5 @@ export interface FormValues {
       shareNumber: number
     }
   }
+  step3: Quadratic
 }

@@ -4,9 +4,10 @@ import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step3 = () => {
-  const {
-    formState: { errors },
-  } = useFormContext()
+  const { watch } = useFormContext()
+
+  const te = watch('step3')
+  console.log('te', te)
 
   const questions = [
     'piped water network',
