@@ -15,16 +15,16 @@ export type Translations = RootTranslation
 
 type RootTranslation = {
 	/**
-	 * l​a​n​g​u​a​g​e
+	 * L​a​n​g​u​a​g​e
 	 */
-	language: string
+	LANGUAGE: string
 }
 
 export type TranslationFunctions = {
 	/**
-	 * language
+	 * Language
 	 */
-	language: () => LocalizedString
+	LANGUAGE: () => LocalizedString
 }
 
 export type Formatters = {}

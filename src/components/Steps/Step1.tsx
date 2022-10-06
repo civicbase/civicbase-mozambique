@@ -16,7 +16,7 @@ const bill = () => {
     formState: { errors },
   } = useFormContext()
 
-  const language = watch('language')
+  const language = watch('step1.language')
 
   useEffect(() => {
     if (language === 'English') {
@@ -33,17 +33,17 @@ const bill = () => {
           Please enter unique ID
         </Label>
         <Input
-          {...register('step1.unique_id', { required: true })}
-          error={!!errors?.step1?.unique_id}
+          {...register('step1.uniqueId', { required: true })}
+          error={!!errors?.step1?.uniqueId}
           disabled={true}
         />
-        <FieldErrorMessage name="step1.unique_id" errors={errors} />
+        <FieldErrorMessage name="step1.uniqueId" errors={errors} />
       </div>
 
       <div>
-        <Label required>{LL.language()}</Label>
+        <Label required>{LL.LANGUAGE()}</Label>
         <Controller
-          name="language"
+          name="step1.language"
           control={control}
           render={({ field }) => (
             <Dropdown
@@ -55,7 +55,7 @@ const bill = () => {
             />
           )}
         />
-        <FieldErrorMessage name="language" errors={errors} />
+        <FieldErrorMessage name="step1.language" errors={errors} />
       </div>
     </div>
   )
