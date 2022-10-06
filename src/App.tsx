@@ -11,6 +11,7 @@ import Header from 'components/Header'
 import useAsync from 'hooks/use-async'
 import { createAnswer } from 'services/answer'
 import { transform } from 'transform'
+import params from 'utils/params'
 
 interface FormValues {
   step1: {
@@ -108,6 +109,7 @@ const App = () => {
   const methods = useForm<FormValues>({
     defaultValues: {
       step1: {
+        unique_id: params.uniqueId,
         bill: {
           shared: false,
           consumption: 0,

@@ -23,6 +23,7 @@ const bill = () => {
         <Input
           {...register('step1.unique_id', { required: true })}
           error={!!errors?.step1?.unique_id}
+          disabled={true}
         />
         <FieldErrorMessage name="step1.unique_id" errors={errors} />
       </div>
