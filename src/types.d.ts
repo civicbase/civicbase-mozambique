@@ -21,4 +21,7 @@ export interface FormValues {
     }
   }
   step3: Quadratic
+  step4: {
+    showContent: 'A' | 'B'
+  }
 }

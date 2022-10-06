@@ -14,6 +14,8 @@ const validationSchema = z.object({
       shareNumber: z.number().optional(),
     }),
   }),
+  step3: z.any(),
+  step4: z.any(),
   // step1: z.object({
   //   unique_id: z.string().min(1, { message: 'Please input unique id' }),
   //   bill: z.object({

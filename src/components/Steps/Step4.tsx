@@ -6,7 +6,7 @@ const Step4 = () => {
 
   const isHeads = Math.random() < 0.5
 
-  setValue('step4.show_content', isHeads ? 'A' : 'B')
+  setValue('step4.showContent', isHeads ? 'A' : 'B')
 
   return (
     <div css={tw`grid grid-cols-1 gap-2`}>
