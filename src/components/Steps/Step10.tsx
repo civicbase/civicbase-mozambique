@@ -1,34 +1,71 @@
-import tw from 'twin.macro'
-import { useFormContext } from 'react-hook-form'
+import FieldErrorMessage from 'components/Form/FieldErrorMessage'
+import Input from 'components/Form/Input'
+import Label from 'components/Form/Label'
+import Radio from 'components/Form/Radio'
 import Typography from 'components/Typography'
-import Quadratic from 'methods/Quadratic'
+import { useFormContext } from 'react-hook-form'
+import tw from 'twin.macro'
 
 const Step10 = () => {
-  const {} = useFormContext()
+  const {
+    register,
+    watch,
+    control,
+    formState: { errors },
+  } = useFormContext()
+
+  const revisedPrice = watch('step10.revisePrice')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
       <Typography>
-        Your neighborhood is asked to help decide a new fee to improve drainage
-        and solve the drainage problem in your neighborhood. As you cast your
-        votes or make your decisions, please imagine everyone else in your
-        neighborhood will be participating in this exercise too.
+        Now we would like to share with you what your community thinks about the
+        price to be paid for the monthly sanitation tax
       </Typography>
 
       <Typography>
-        This new drainage maintenance fee will be used to improve drainage
-        conditions and reduce water logging and flooding in your neighborhood.
-        What should the monthly service fee for drainage maintenance be for
-        everyone in your neighborhood including yourself ?
+        For the monthly sanitation tax, They propose an average price of (X).
+        You proposed the price (Y).
       </Typography>
 
-      <Typography>
-        Please look at the options provided and indicate your preferred
-        allocation to sewer service fee from the tokens available, which are
-        equivalent to (x amount).
-      </Typography>
+      <div>
+        <Label number="4.19" required>
+          Having heard the community's proposal , would you like to revise your
+          previously stated price? Remember, your proposed price is (Y)
+        </Label>
 
-      <Quadratic qs={['a', 'b', 'c']} step="step10" credits={1000} />
+        <div css={tw`flex justify-between`}>
+          {['Revise up', 'Stay the same', 'Revise down'].map(option => (
+            <label
+              css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+              key={option}
+            >
+              <span css={tw`text-center`}>{option}</span>
+              <Radio {...register(`step10.revisePrice`)} value={option} />
+            </label>
+          ))}
+        </div>
+
+        <FieldErrorMessage name="step10.revisePrice" errors={errors} />
+      </div>
+
+      {(revisedPrice === 'Revise up' || revisedPrice === 'Revise down') && (
+        <div>
+          <Label required>
+            Please let us know the new price that you would be willing to pay?
+          </Label>
+          <Input
+            {...register('step10.willingPay', {
+              required: true,
+              valueAsNumber: true,
+            })}
+            error={!!errors?.step10?.willingPay}
+            type="number"
+          />
+
+          <FieldErrorMessage name="step10.willingPay" errors={errors} />
+        </div>
+      )}
     </div>
   )
 }

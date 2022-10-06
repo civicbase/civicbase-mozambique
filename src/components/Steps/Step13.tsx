@@ -1,7 +1,10 @@
 import Dropdown from 'components/Dropdown'
+import Checkbox from 'components/Form/Checkbox'
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
+import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Typography from 'components/Typography'
+import { memo } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
@@ -13,104 +16,212 @@ const Step13 = () => {
     formState: { errors },
   } = useFormContext()
 
-  const tooExpensive = watch('step13.fsm.too_expensive')
-  const tooCheap = watch('step13.fsm.too_cheap')
-  const expensive = watch('step13.fsm.expensive')
-  const greatValue = watch('step13.fsm.great_value')
+  const contacted = watch('step13.contactedServiceProvider')
+  const contactedOther = watch('step13.contactedWho.Other')
+  const contactedSASB = watch('step13.contactedWho.SASB')
+  const paid = watch('step13.paidService')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
       <div>
-        <Label required>
-          At what price would you consider that the FSM collection fee will be
-          TOO EXPENSIVE that you would not consider paying for the service? (Too
-          Expensive)
+        <Label number="4.25" required>
+          Since April 2021, have you ever emptied your septic tank ?
         </Label>
-
-        <Typography css={tw`my-2`}>Use SASB price as anchor</Typography>
-
-        <div css={tw`mt-10`}>
-          <Label>${tooExpensive}</Label>
-          <input
-            type="range"
-            css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
-            min="0"
-            max="100"
-            step="5"
-            {...register(`step13.fsm.too_expensive`)}
-          />
-          <FieldErrorMessage name="step13.fsm.too_expensive" errors={errors} />
-        </div>
+        <Controller
+          name="step13.emptiedSepticTank"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              options={['Yes', 'No']}
+              value={field.value}
+              onChange={field.onChange}
+              placeholder="Please select an option"
+              error={!!errors?.step13?.emptiedSepticTank}
+            />
+          )}
+        />
+        <FieldErrorMessage name="step13.emptiedSepticTank" errors={errors} />
       </div>
 
       <div>
-        <Label required>
-          At what price would you do you think that the FSM collection fee is
-          TOO LOW that you think the service quality will be bad ? (Too cheap)
+        <Label number="4.26" required>
+          Did you contact a service provider to empty the cesspool?
         </Label>
+        <Controller
+          name="step13.contactedServiceProvider"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              options={['Yes', 'No']}
+              value={field.value}
+              onChange={field.onChange}
+              placeholder="Please select an option"
+              error={!!errors?.step13?.contactedServiceProvider}
+            />
+          )}
+        />
+        <FieldErrorMessage
+          name="step13.contactedServiceProvider"
+          errors={errors}
+        />
+      </div>
 
-        <Typography css={tw`my-2`}>Use SASB price as anchor</Typography>
+      {contacted === 'Yes' && (
+        <>
+          <div>
+            <Label number="4.27" required>
+              When was the last time you contacted someone to empty the
+              cesspool?
+            </Label>
+            <Typography>TODO: Month - Year</Typography>
+            {/* <Controller
+          name="step13.service_provider.contacted"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              options={['Yes', 'No']}
+              value={field.value}
+              onChange={field.onChange}
+              placeholder="Please select an option"
+              error={!!errors?.step13?.service_provider?.contacted}
+            />
+          )}
+        /> */}
+            <FieldErrorMessage
+              name="step13.lastTimeContacted"
+              errors={errors}
+            />
+          </div>
 
-        <div css={tw`mt-10`}>
-          <Label>${tooCheap}</Label>
-          <input
-            type="range"
-            css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
-            min="0"
-            max="100"
-            step="5"
-            {...register(`step13.fsm.too_cheap`)}
-          />
-          <FieldErrorMessage name="step13.fsm.too_cheap" errors={errors} />
-        </div>
+          <div>
+            <Label number="4.28" required>
+              Who did you contact?
+            </Label>
+
+            <div css={tw`flex flex-col space-y-4 mt-4`}>
+              {['Landlord', 'Plumber', 'SASB', 'Other'].map(option => (
+                <label
+                  css={tw`inline-flex space-x-4 items-center select-none`}
+                  key={option}
+                >
+                  <Checkbox {...register(`step13.contactedWho.${option}`)} />
+                  <span>{option}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {contactedOther && (
+            <div>
+              <Label number="4.29" required>
+                Specify other
+              </Label>
+              <Input
+                {...register('step13.contactedOther', {
+                  required: true,
+                })}
+                error={!!errors?.step13?.service_provider?.how_much}
+              />
+
+              <FieldErrorMessage name="step13.contactedOther" errors={errors} />
+            </div>
+          )}
+
+          {!contactedSASB && (
+            <div>
+              <Label number="4.30" required>
+                Why didn't you contact SASB for the problem?
+              </Label>
+
+              <div css={tw`flex flex-col space-y-4 mt-4`}>
+                {[
+                  `Don't know how to contact`,
+                  'SASB usually take so long',
+                  'SASB will not solve that problem for me',
+                  'Do not trust SASB',
+                  'Someone else will call',
+                  'More convenient to call a plumber to fix my problem',
+                  'Cheaper to call a plumber',
+                ].map((option, index) => (
+                  <label
+                    css={tw`inline-flex space-x-4 items-center select-none`}
+                    key={option}
+                  >
+                    <Checkbox
+                      {...register(`step13.SASBNotContactedReasons.${index}`)}
+                    />
+                    <span>{option}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+        </>
+      )}
+
+      <div>
+        <Label number="4.31" required>
+          What services did you request
+        </Label>
+        <Controller
+          name="step13.whatServices"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              options={[
+                'Fecal Sludge removal',
+                'Fecal Sludge Removal (Priority Request)',
+                'Cleaning of Septic Tank',
+              ]}
+              value={field.value}
+              onChange={field.onChange}
+              placeholder="Please select an option"
+              error={!!errors?.step13?.whatServices}
+            />
+          )}
+        />
+        <FieldErrorMessage name="step13.whatServices" errors={errors} />
       </div>
 
       <div>
-        <Label required>
-          At what price would you consider the FSM collection fee starting to
-          become expensive, but you would give it some thought before ordering?
-          (Expensive)
+        <Label number="4.32" required>
+          Did you pay for the service?
         </Label>
-
-        <Typography css={tw`my-2`}>Use SASB price as anchor</Typography>
-
-        <div css={tw`mt-10`}>
-          <Label>${expensive}</Label>
-          <input
-            type="range"
-            css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
-            min="0"
-            max="100"
-            step="5"
-            {...register(`step13.fsm.expensive`)}
-          />
-          <FieldErrorMessage name="step13.fsm.expensive" errors={errors} />
-        </div>
+        <Controller
+          name="step13.paidService"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              options={['Yes', 'No']}
+              value={field.value}
+              onChange={field.onChange}
+              placeholder="Please select an option"
+              error={!!errors?.step13?.paidService}
+            />
+          )}
+        />
+        <FieldErrorMessage name="step13.paidService" errors={errors} />
       </div>
 
-      <div>
-        <Label required>
-          At what price would you consider the FSM collection fee to a bargain
-          or great value for money?
-        </Label>
-
-        <Typography css={tw`my-2`}>Use SASB price as anchor</Typography>
-
-        <div css={tw`mt-10`}>
-          <Label>${greatValue}</Label>
-          <input
-            type="range"
-            css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
-            min="0"
-            max="100"
-            step="5"
-            {...register(`step13.fsm.great_value`)}
+      {paid === 'Yes' && (
+        <div>
+          <Label required>How much did you pay for the service?</Label>
+          <Input
+            {...register('step13.serviceHowMuch', {
+              valueAsNumber: true,
+            })}
+            error={!!errors?.step13?.serviceHowMuch}
+            type="number"
           />
-          <FieldErrorMessage name="step13.fsm.great_value" errors={errors} />
+
+          <label css={tw`inline-flex space-x-4 items-center select-none mt-2`}>
+            <Checkbox {...register(`step13.serviceHowMuch.IDontKnow`)} />
+            <span>I don't know</span>
+          </label>
         </div>
-      </div>
+      )}
     </div>
   )
 }
 
-export default Step13
+export default memo(Step13)

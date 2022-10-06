@@ -9,25 +9,26 @@ const QVSR = () => {
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
       <Typography>
-        Your neighborhood is asked to help decide the sewer connection fee. As
-        you cast your votes or make your decisions, please imagine everyone else
-        in your neighborhood will be participating in this exercise too.
+        In this survey, everyone in this neighborhood is being asked to help
+        decide the price for the sewer connection fee. As you cast your votes or
+        make your decisions, please imagine that everyone else in your
+        neighborhood is also participating in this exercise. Thus, the
+        collective decision by the neighborhood will be important for SASB to
+        decide the pricing of their sewer connection fee.
       </Typography>
 
       <Typography>
-        Connecting to the network will require a one time fee which covers the
-        material and labor cost of constructing the sewer lines. What should the
-        sewer connection fee be for everyone in your neighborhood including
-        yourself ? You may allocate your votes for more than one of the price
-        options below.
+        For households who would want a NEW sewer connection, they will be
+        required to pay a ONE TIME fee which covers the material and labor cost
+        of constructing the sewer lines. What should the sewer connection fee be
+        for everyone in your neighborhood including yourself ? You may allocate
+        your votes for more than one of the price options below.
       </Typography>
 
       <Typography>
         Please look at the options provided and indicate how many votes you
-        would like to allocate to each price option. If you dislike any of the
-        options, you can also "downvote" them. The current price is set to the
-        average price paid for sewer connections in your neighborhood which is
-        (X)
+        would like to allocate to each price option. If you do not prefer any of
+        the options, you can also "downvote" them.
       </Typography>
 
       <Quadratic
@@ -51,17 +52,24 @@ const Slider = () => {
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
       <Typography>
-        Connecting to the network will require a one time fee which covers the
-        material and labor cost of constructing the sewer lines. What should the
-        sewer connection fee be for everyone in your neighborhood including
-        yourself ?
+        n this survey, everyone in this neighborhood is being asked to help
+        decide the price for the sewer connection fee. As you cast your votes or
+        make your decisions, please imagine that everyone else in your
+        neighborhood is also participating in this exercise. Thus, the
+        collective decision by the neighborhood will be important for SASB to
+        decide the pricing of their sewer connection fee.
       </Typography>
 
       <Typography>
-        Please use the slider to indicate your preferred allocation from the pot
-        on the left handside which is equivalent to (x amount). The current
-        price is set to the average price paid for sewer connections in your
-        neighborhood which is (X)
+        For households who would want a NEW sewer connection, they will be
+        required to pay a ONE TIME fee which covers the material and labor cost
+        of constructing the sewer lines. What should the sewer connection fee be
+        for everyone in your neighborhood including yourself ? You may allocate
+        your votes for more than one of the price options below.
+      </Typography>
+
+      <Typography>
+        Please use the slider to indicate your preferred price.
       </Typography>
 
       <div>

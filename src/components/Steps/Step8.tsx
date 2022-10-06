@@ -1,37 +1,71 @@
-import tw from 'twin.macro'
-import { useFormContext } from 'react-hook-form'
+import FieldErrorMessage from 'components/Form/FieldErrorMessage'
+import Input from 'components/Form/Input'
+import Label from 'components/Form/Label'
+import Radio from 'components/Form/Radio'
 import Typography from 'components/Typography'
-import Quadratic from 'methods/Quadratic'
+import { useFormContext } from 'react-hook-form'
+import tw from 'twin.macro'
 
 const Step8 = () => {
   const {
     register,
     watch,
+    control,
     formState: { errors },
   } = useFormContext()
+
+  const revisedPrice = watch('step8.revisePrice')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
       <Typography>
-        Your neighborhood is asked to help decide the monthly service sewer fee.
-        Currently it is a 20 percent tax on your monthly water consumption cost.
-        As you cast your votes or make your decisions, please imagine everyone
-        else in your neighborhood will be participating in this exercise too.
+        Now we would like to share with you what your community thinks about the
+        price to be paid for the sewer connection fee.
       </Typography>
 
       <Typography>
-        The monthly sewer fee covers the costs of maintaining and repairing the
-        sewer lines. What should the monthly sewer service fee be for everyone
-        in your neighborhood including yourself ?
+        For the sewer connection fee. They propose an average price of (X),
+        whereas you proposed the price (Y).
       </Typography>
 
-      <Typography>
-        Please look at the options provided and indicate how many votes you
-        would like to allocate to each price option. If you dislike any of the
-        options, you can also "downvote" them.
-      </Typography>
+      <div>
+        <Label number="4.15" required>
+          Having heard the community's proposal , would you like to revise your
+          previously stated price? Remember, your proposed price is (Y)
+        </Label>
 
-      <Quadratic qs={['a', 'b', 'c']} step="step8" credits={1000} />
+        <div css={tw`flex justify-between`}>
+          {['Revise up', 'Stay the same', 'Revise down'].map(option => (
+            <label
+              css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+              key={option}
+            >
+              <span css={tw`text-center`}>{option}</span>
+              <Radio {...register(`step8.revisePrice`)} value={option} />
+            </label>
+          ))}
+        </div>
+
+        <FieldErrorMessage name="step8.revisePrice" errors={errors} />
+      </div>
+
+      {(revisedPrice === 'Revise up' || revisedPrice === 'Revise down') && (
+        <div>
+          <Label required>
+            Please let us know the new price that you would be willing to pay?
+          </Label>
+          <Input
+            {...register('step8.willingPay', {
+              required: true,
+              valueAsNumber: true,
+            })}
+            error={!!errors?.step8?.willingPay}
+            type="number"
+          />
+
+          <FieldErrorMessage name="step8.willingPay" errors={errors} />
+        </div>
+      )}
     </div>
   )
 }

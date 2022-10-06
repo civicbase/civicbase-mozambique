@@ -1,204 +1,73 @@
-import Dropdown from 'components/Dropdown'
-import Checkbox from 'components/Form/Checkbox'
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
-import { memo } from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
+import Typography from 'components/Typography'
+import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step12 = () => {
   const {
-    control,
     register,
     watch,
+    control,
     formState: { errors },
   } = useFormContext()
 
-  const contacted = watch('step12.service_provider.contacted')
-  const paid = watch('step12.service_provider.paid')
+  const revisedPrice = watch('step12.revisePrice')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <div>
-        <Label required>Is your home connected to a septic tank?</Label>
-        <Controller
-          name="step12.connected_septic_tank"
-          control={control}
-          render={({ field }) => (
-            <Dropdown
-              options={['Yes', 'No']}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Please select an option"
-              error={!!errors?.step12?.connected_septic_tank}
-            />
-          )}
-        />
-        <FieldErrorMessage
-          name="step12.connected_septic_tank"
-          errors={errors}
-        />
-      </div>
+      <Typography>
+        Now, we would like to share with you what your community thinks about
+        the price to be paid for A new monthly drainage service fee.
+      </Typography>
+
+      <Typography>
+        For the NEW monthly drainage fee . They propose an average price of (X).
+        You proposed the price (Y).
+      </Typography>
 
       <div>
-        <Label required>Have you ever emptied your septic tank before?</Label>
-        <Controller
-          name="step12.emptied_septic_tank"
-          control={control}
-          render={({ field }) => (
-            <Dropdown
-              options={['Yes', 'No']}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Please select an option"
-              error={!!errors?.step12?.emptied_septic_tank}
-            />
-          )}
-        />
-        <FieldErrorMessage name="step12.emptied_septic_tank" errors={errors} />
-      </div>
-
-      <div>
-        <Label required>
-          Did you contact a service provider to empty the cesspool?
-        </Label>
-        <Controller
-          name="step12.service_provider.contacted"
-          control={control}
-          render={({ field }) => (
-            <Dropdown
-              options={['Yes', 'No']}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Please select an option"
-              error={!!errors?.step12?.service_provider?.contacted}
-            />
-          )}
-        />
-        <FieldErrorMessage
-          name="step12.service_provider.contacted"
-          errors={errors}
-        />
-      </div>
-
-      <div>
-        <Label required>
-          When was the last time you contacted someone to empty the cesspool?
+        <Label number="4.23" required>
+          Having heard the community's proposal , would you like to revise your
+          previously stated price? Remember, your proposed price is (Y)
         </Label>
 
-        {[
-          'Before February 2022',
-          'Between February and April 2022',
-          'After April 2022',
-        ].map(option => (
-          <label
-            css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
-            key={option}
-          >
-            <Radio
-              {...register(`step12.service_provider.last_time`)}
-              value={option}
-            />
-            <span css={tw`text-center`}>{option}</span>
-          </label>
-        ))}
+        <div css={tw`flex justify-between`}>
+          {['Revise up', 'Stay the same', 'Revise down'].map(option => (
+            <label
+              css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+              key={option}
+            >
+              <span css={tw`text-center`}>{option}</span>
+              <Radio {...register(`step12.revisePrice`)} value={option} />
+            </label>
+          ))}
+        </div>
 
-        <FieldErrorMessage
-          name="step12.service_provider.last_time"
-          errors={errors}
-        />
+        <FieldErrorMessage name="step12.revisePrice" errors={errors} />
       </div>
 
-      {contacted === 'Yes' && (
-        <>
-          <div>
-            <Label required>Who did you contact? </Label>
+      {(revisedPrice === 'Revise up' || revisedPrice === 'Revise down') && (
+        <div>
+          <Label required>
+            Please let us know the new price that you would be willing to pay?
+          </Label>
+          <Input
+            {...register('step12.willingPay', {
+              required: true,
+              valueAsNumber: true,
+            })}
+            error={!!errors?.step12?.willingPay}
+            type="number"
+          />
 
-            <div css={tw`flex flex-col space-y-4 mt-4`}>
-              {['Dono da casa', 'Um canalizador', 'SASB', 'Outro'].map(
-                option => (
-                  <label
-                    css={tw`inline-flex space-x-4 items-center select-none`}
-                    key={option}
-                  >
-                    <Checkbox
-                      {...register(
-                        `step12.service_provider.contacted_who.${option}`,
-                      )}
-                    />
-                    <span>{option}</span>
-                  </label>
-                ),
-              )}
-            </div>
-          </div>
-
-          <div>
-            <Label required>What services did you request? </Label>
-
-            <div css={tw`flex flex-col space-y-4 mt-4`}>
-              {[
-                'Fecal Sludge removal',
-                'Fecal Sludge Removal (Priority Request)',
-                'Cleaning of Septic Tank',
-              ].map(option => (
-                <label css={tw`inline-flex space-x-4 items-center select-none`}>
-                  <Checkbox
-                    {...register(
-                      `step12.service_provider.requested_service.${option}`,
-                    )}
-                  />
-                  <span>{option}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <Label required>Did you pay for the service?</Label>
-            <Controller
-              name="step12.service_provider.paid"
-              control={control}
-              render={({ field }) => (
-                <Dropdown
-                  options={['Yes', 'No']}
-                  value={field.value}
-                  onChange={field.onChange}
-                  placeholder="Please select an option"
-                  error={!!errors?.step12?.service_provider?.paid}
-                />
-              )}
-            />
-            <FieldErrorMessage
-              name="step12.service_provider.paid"
-              errors={errors}
-            />
-          </div>
-
-          {paid === 'Yes' && (
-            <div>
-              <Label required>How much did you pay for the service?</Label>
-              <Input
-                {...register('step12.service_provider.how_much', {
-                  required: true,
-                  valueAsNumber: true,
-                })}
-                error={!!errors?.step12?.service_provider?.how_much}
-                type="number"
-              />
-
-              <FieldErrorMessage
-                name="step12.service_provider.how_much"
-                errors={errors}
-              />
-            </div>
-          )}
-        </>
+          <FieldErrorMessage name="step12.willingPay" errors={errors} />
+        </div>
       )}
     </div>
   )
 }
 
-export default memo(Step12)
+export default Step12

@@ -35,4 +35,26 @@ export interface FormValues {
     amountPreference?: number
     QVSR?: Quadratic
   }
+  step8: {
+    revisePrice: string
+    willingPay?: number
+  }
+  step9: {
+    showContent: string
+    pricePreference?: number
+    QVSR?: Quadratic
+  }
+  step10: {
+    revisePrice: string
+    willingPay?: number
+  }
+  step11: {
+    showContent: string
+    feePreference?: number
+    QVSR?: Quadratic
+  }
+  step12: {
+    revisePrice: string
+    willingPay?: number
+  }
 }

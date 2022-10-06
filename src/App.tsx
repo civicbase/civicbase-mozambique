@@ -35,6 +35,12 @@ const App = () => {
       step7: {
         amountPreference: 8500,
       },
+      step9: {
+        pricePreference: 80,
+      },
+      step11: {
+        feePreference: 50,
+      },
     },
     resolver: zodResolver(validation),
   })
@@ -44,7 +50,7 @@ const App = () => {
   const handlePrevious = () => {
     if (step > 1) {
       const sanitationType = methods.getValues('step2.sanitationType')
-      if (sanitationType !== 'Flush to Septic Tank' && step === 13) {
+      if (sanitationType !== 'Flush to Septic Tank' && step === 14) {
         setStep(step - 2)
       } else {
         setStep(step - 1)
@@ -55,7 +61,7 @@ const App = () => {
     methods.trigger(`step${step}` as any).then(isValid => {
       if (isValid) {
         const sanitationType = methods.getValues('step2.sanitationType')
-        if (sanitationType !== 'Flush to Septic Tank' && step + 1 === 12) {
+        if (sanitationType !== 'Flush to Septic Tank' && step + 1 === 13) {
           setStep(step + 2)
         } else {
           setStep(step + 1)

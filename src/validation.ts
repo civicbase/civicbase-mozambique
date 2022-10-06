@@ -24,6 +24,33 @@ const validationSchema = z.object({
     relevantInformation: z.string(),
     shareInformation: z.string(),
   }),
+  step7: z.object({
+    showContent: z.string(),
+    amountPreference: z.number().optional(),
+    QVSR: z.any().optional(),
+  }),
+  step8: z.object({
+    revisePrice: z.string(),
+    willingPay: z.number().optional(),
+  }),
+  step9: z.object({
+    showContent: z.string(),
+    pricePreference: z.number().optional(),
+    QVSR: z.any().optional(),
+  }),
+  step10: z.object({
+    revisePrice: z.string(),
+    willingPay: z.number().optional(),
+  }),
+  step11: z.object({
+    showContent: z.string(),
+    feePreference: z.number().optional(),
+    QVSR: z.any().optional(),
+  }),
+  step12: z.object({
+    revisePrice: z.string(),
+    willingPay: z.number().optional(),
+  }),
   // step1: z.object({
   //   unique_id: z.string().min(1, { message: 'Please input unique id' }),
   //   bill: z.object({

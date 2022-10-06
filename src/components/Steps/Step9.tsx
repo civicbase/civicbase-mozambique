@@ -1,46 +1,116 @@
-import tw from 'twin.macro'
-import { useFormContext } from 'react-hook-form'
-import Typography from 'components/Typography'
-import Label from 'components/Form/Label'
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
+import Label from 'components/Form/Label'
+import Typography from 'components/Typography'
+import Quadratic from 'methods/Quadratic'
+import { useFormContext } from 'react-hook-form'
+import tw from 'twin.macro'
 
-const Step9 = () => {
+const QVSR = () => {
+  return (
+    <div css={tw`grid grid-cols-1 gap-6`}>
+      <Typography>
+        NOW, we will be asking you about your willingness to pay for the monthly
+        sanitation tax or sewer service fee.
+      </Typography>
+
+      <Typography>
+        In this survey, everyone in this neighborhood is being asked to help
+        decide the price for the monthly sanitation tax or the sewer service
+        fee. Currently, this constitutes 20 percent of your water bill. Based on
+        the infromation we collected, this is roughly 80 meticals per month for
+        each household across Beira. As you cast your votes or make your
+        decisions, please imagine everyone else in your neighborhood will be
+        participating in this exercise too. Thus, the collective decision by the
+        neighborhood will be important for SASB to decide the pricing of their
+        services.
+      </Typography>
+
+      <Typography>
+        The monthly sanitation tax covers the costs of maintaining and repairing
+        the sewer lines. What should the monthly tax be for everyone in your
+        neighborhood including yourself ?
+      </Typography>
+
+      <Typography>
+        Please look at the options provided and indicate how many votes you
+        would like to allocate to each price option. If you dislike any of the
+        options, you can also "downvote" them.{' '}
+      </Typography>
+
+      <Quadratic
+        qs={['64', '68', '72', '76', '80', '84', '88', '92', '96']}
+        step="step9.QVSR"
+        credits={1000}
+      />
+    </div>
+  )
+}
+
+const Slider = () => {
   const {
     register,
     watch,
     formState: { errors },
   } = useFormContext()
 
-  const amount = watch('step9.amount_preference')
+  const price = watch('step9.pricePreference')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
       <Typography>
-        The monthly sewer fee covers the costs of maintaining and repairing the
-        sewer lines. What should the monthly sewer service fee be for everyone
-        in your neighborhood including yourself ?
+        NOW, we will be asking you about your willingness to pay for the monthly
+        sanitation tax or sewer service fee.
       </Typography>
 
       <Typography>
-        Please use the slider to indicate your preferred allocation from the pot
-        on the left handside which is equivalent to (x amount). The current
-        price is set to the present amount which is 20% of your water bill.
+        In this survey, everyone in this neighborhood is being asked to help
+        decide the price for the monthly sanitation tax or the sewer service
+        fee. Currently, this constitutes 20 percent of your water bill. Based on
+        the infromation we collected, this is roughly 80 meticals per month for
+        each household across Beira. As you cast your votes or make your
+        decisions, please imagine everyone else in your neighborhood will be
+        participating in this exercise too. Thus, the collective decision by the
+        neighborhood will be important for SASB to decide the pricing of their
+        services.
+      </Typography>
+
+      <Typography>
+        The monthly sanitation tax covers the costs of maintaining and repairing
+        the sewer lines. What should the monthly tax be for everyone in your
+        neighborhood including yourself?
+      </Typography>
+
+      <Typography>
+        Please use the slider to indicate your preferred price.
       </Typography>
 
       <div>
-        <Label>${amount}</Label>
+        <Label>${price}</Label>
         <input
           type="range"
           css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
-          min="0"
-          max="100"
-          step="5"
-          {...register(`step9.amount_preference`)}
+          min="64"
+          max="96"
+          step="4"
+          {...register(`step9.pricePreference`)}
         />
-        <FieldErrorMessage name="step9.amount_preference" errors={errors} />
+        <FieldErrorMessage name="step9.pricePreference" errors={errors} />
       </div>
     </div>
   )
+}
+
+const Step9 = () => {
+  const { setValue } = useFormContext()
+  const isHeads = Math.random() < 0.5
+
+  setValue('step9.showContent', isHeads ? 'QVSR' : 'Slider')
+
+  if (isHeads) {
+    return <QVSR />
+  } else {
+    return <Slider />
+  }
 }
 
 export default Step9
