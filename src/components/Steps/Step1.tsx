@@ -4,13 +4,27 @@ import Label from 'components/Form/Label'
 import Dropdown from 'components/Dropdown'
 import { Controller, useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
+import { useI18nContext } from 'i18n/i18n-react'
+import { useEffect } from 'react'
 
 const bill = () => {
+  const { LL, setLocale } = useI18nContext()
   const {
     control,
+    watch,
     register,
     formState: { errors },
   } = useFormContext()
+
+  const language = watch('language')
+
+  useEffect(() => {
+    if (language === 'English') {
+      setLocale('en')
+    } else if (language === 'Português') {
+      setLocale('pt')
+    }
+  }, [language])
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -27,9 +41,9 @@ const bill = () => {
       </div>
 
       <div>
-        <Label required>Language</Label>
+        <Label required>{LL.language()}</Label>
         <Controller
-          name="step1.language"
+          name="language"
           control={control}
           render={({ field }) => (
             <Dropdown
@@ -41,7 +55,7 @@ const bill = () => {
             />
           )}
         />
-        <FieldErrorMessage name="step1.language" errors={errors} />
+        <FieldErrorMessage name="language" errors={errors} />
       </div>
     </div>
   )

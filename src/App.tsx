@@ -12,8 +12,10 @@ import useAsync from 'hooks/use-async'
 import { createAnswer } from 'services/answer'
 import { transform } from 'transform'
 import params from 'utils/params'
+import { loadAllLocales } from 'i18n/i18n-util.sync'
 
 interface FormValues {
+  language: string
   step1: {
     unique_id: string
     bill: {
@@ -106,8 +108,13 @@ const App = () => {
   const { latitude, longitude, error } = useGeolocation(userGesture)
   const { run } = useAsync()
 
+  const language = navigator.language.split(/[-_]/)[0]
+
+  loadAllLocales()
+
   const methods = useForm<FormValues>({
     defaultValues: {
+      language: language === 'pt' ? 'Português' : 'English',
       step1: {
         unique_id: params.uniqueId,
         bill: {
