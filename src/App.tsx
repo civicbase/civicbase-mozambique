@@ -12,7 +12,7 @@ import useAsync from 'hooks/use-async'
 import { createAnswer } from 'services/answer'
 import { transform } from 'transform'
 import params from 'utils/params'
-import { FormValues } from 'types'
+import { FormValues } from 'types.d'
 
 const App = () => {
   const [step, setStep] = useState(1)
@@ -27,6 +27,11 @@ const App = () => {
         language: language === 'pt' ? 'Português' : 'English',
         uniqueId: params.uniqueId,
       },
+      step2: {
+        waterBill: {
+          shareNumber: 0,
+        },
+      },
     },
     resolver: zodResolver(validation),
   })
@@ -35,7 +40,7 @@ const App = () => {
 
   const handlePrevious = () => {
     if (step > 1) {
-      const sanitationType = 'Flush to Septic Tank' //methods.getValues('step2.sanitation_type')
+      const sanitationType = methods.getValues('step2.sanitationType')
       if (sanitationType !== 'Flush to Septic Tank' && step === 13) {
         setStep(step - 2)
       } else {
@@ -46,7 +51,7 @@ const App = () => {
   const handleNext = () => {
     methods.trigger(`step${step}` as any).then(isValid => {
       if (isValid) {
-        const sanitationType = 'Flush to Septic Tank' //methods.getValues('step2.sanitation_type')
+        const sanitationType = methods.getValues('step2.sanitationType')
         if (sanitationType !== 'Flush to Septic Tank' && step + 1 === 12) {
           setStep(step + 2)
         } else {

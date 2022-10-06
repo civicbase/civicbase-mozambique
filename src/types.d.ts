@@ -3,4 +3,13 @@ export interface FormValues {
     uniqueId: string
     language: string
   }
+  step2: {
+    sanitationType: string
+    dwellingType: string
+    waterBill: {
+      share: string
+      shareNumber: number
+      compare: string
+    }
+  }
 }

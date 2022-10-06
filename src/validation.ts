@@ -5,6 +5,15 @@ const validationSchema = z.object({
     uniqueId: z.string(),
     language: z.string(),
   }),
+  step2: z.object({
+    sanitationType: z.string(),
+    dwellingType: z.string(),
+    waterBill: z.object({
+      share: z.string().optional(),
+      shareNumber: z.number().optional(),
+      compare: z.string().optional(),
+    }),
+  }),
   // step1: z.object({
   //   unique_id: z.string().min(1, { message: 'Please input unique id' }),
   //   bill: z.object({

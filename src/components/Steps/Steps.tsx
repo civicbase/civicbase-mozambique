@@ -20,8 +20,8 @@ const Steps = ({ id }: StepsProps) => {
   switch (id) {
     case 1:
       return <Section.Step1 />
-    // case 2:
-    //   return <Section.Step2 />
+    case 2:
+      return <Section.Step2 />
     // case 3:
     //   return <Section.Step3 />
     // case 4:

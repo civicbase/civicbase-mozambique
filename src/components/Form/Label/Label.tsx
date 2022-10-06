@@ -13,7 +13,7 @@ const Label = ({
 }) => {
   return (
     <label
-      css={tw`flex items-center font-semibold text-gray-900 text-sm my-1.5 dark:(text-gray-300)`}
+      css={tw`flex items-baseline font-semibold text-gray-900 text-sm my-1.5 dark:(text-gray-300)`}
       {...props}
     >
       {number && <Caption css={tw`mr-3`}>{number}</Caption>}
