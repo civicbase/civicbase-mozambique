@@ -1,11 +1,17 @@
 import { useEffect } from 'react'
+import { useFormContext } from 'react-hook-form'
 import * as Section from '.'
 
 type StepsProps = {
   id: number
+  onNext: () => void
+  onPrevious: () => void
 }
 
-const Steps = ({ id }: StepsProps) => {
+const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
+  const { getValues } = useFormContext()
+  const sanitationType = getValues('step2.sanitationType')
+
   useEffect(() => {
     const body = document.querySelector('#content')
 
@@ -43,13 +49,29 @@ const Steps = ({ id }: StepsProps) => {
     case 12:
       return <Section.Step12 />
     case 13:
-      return <Section.Step13 />
+      if (sanitationType === 'Flush to Septic Tank') {
+        return <Section.Step13 />
+      } else {
+        onNext()
+        return null
+      }
     case 14:
-      return <Section.Step14 />
+      if (sanitationType === 'Flush to Septic Tank') {
+        return <Section.Step14 />
+      } else {
+        onNext()
+        return null
+      }
     case 15:
       return <Section.Step15 />
-    // case 16:
-    //   return <Section.Step16 />
+    case 16:
+      if (sanitationType === 'Flush to Sewer') {
+        return <Section.Step16 />
+      } else {
+        onNext()
+        return null
+      }
+
     // case 17:
     //   return <Section.Step17 />
     // case 18:

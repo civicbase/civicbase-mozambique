@@ -79,4 +79,10 @@ export interface FormValues {
   step15: {
     showContent: 'A' | 'B'
   }
+  step16: {
+    satisfaction: {
+      sewer: string
+      last6Months: string
+    }
+  }
 }

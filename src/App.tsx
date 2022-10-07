@@ -57,23 +57,13 @@ const App = () => {
 
   const handlePrevious = () => {
     if (step > 1) {
-      const sanitationType = methods.getValues('step2.sanitationType')
-      if (sanitationType !== 'Flush to Septic Tank' && step === 15) {
-        setStep(step - 3)
-      } else {
-        setStep(step - 1)
-      }
+      setStep(step - 1)
     }
   }
   const handleNext = () => {
     methods.trigger(`step${step}` as any).then(isValid => {
       if (isValid) {
-        const sanitationType = methods.getValues('step2.sanitationType')
-        if (sanitationType !== 'Flush to Septic Tank' && step + 1 === 13) {
-          setStep(step + 3)
-        } else {
-          setStep(step + 1)
-        }
+        setStep(step + 1)
       }
     })
   }
@@ -93,7 +83,13 @@ const App = () => {
         })}
       >
         <PagesLayout
-          content={<Content step={step} />}
+          content={
+            <Content
+              onNext={handleNext}
+              onPrevious={handlePrevious}
+              step={step}
+            />
+          }
           header={<Header />}
           footer={
             <Footer
@@ -101,14 +97,7 @@ const App = () => {
               onNext={handleNext}
               hideNext={step === 28}
               isSubmitStep={step === 28}
-              hidePrevious={
-                step === 1 ||
-                step === 3 ||
-                step === 4 ||
-                step === 5 ||
-                step === 6 ||
-                step === 7
-              }
+              hidePrevious={true}
               isStart={step === 1}
               step={step}
             />

@@ -2,10 +2,18 @@ import tw from 'twin.macro'
 import Steps from 'components/Steps'
 import { memo } from 'react'
 
-const Content = ({ step }: { step: number }) => {
+const Content = ({
+  step,
+  onNext,
+  onPrevious,
+}: {
+  step: number
+  onNext: () => void
+  onPrevious: () => void
+}) => {
   return (
     <div css={tw`relative mb-8`}>
-      <Steps id={step} />
+      <Steps id={step} onNext={onNext} onPrevious={onPrevious} />
     </div>
   )
 }
