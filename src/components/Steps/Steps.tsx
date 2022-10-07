@@ -44,8 +44,8 @@ const Steps = ({ id }: StepsProps) => {
       return <Section.Step12 />
     case 13:
       return <Section.Step13 />
-    // case 14:
-    //   return <Section.Step14 />
+    case 14:
+      return <Section.Step14 />
     // case 15:
     //   return <Section.Step15 />
     // case 16:

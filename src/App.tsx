@@ -33,13 +33,21 @@ const App = () => {
         },
       },
       step7: {
-        amountPreference: 8500,
+        amountPreference: '8500',
       },
       step9: {
-        pricePreference: 80,
+        pricePreference: '80',
       },
       step11: {
-        feePreference: 50,
+        feePreference: '50',
+      },
+      step14: {
+        fsm: {
+          tooExpensive: '8700',
+          tooCheap: '8700',
+          expensive: '8700',
+          greatValue: '8700',
+        },
       },
     },
     resolver: zodResolver(validation),
@@ -50,8 +58,8 @@ const App = () => {
   const handlePrevious = () => {
     if (step > 1) {
       const sanitationType = methods.getValues('step2.sanitationType')
-      if (sanitationType !== 'Flush to Septic Tank' && step === 14) {
-        setStep(step - 2)
+      if (sanitationType !== 'Flush to Septic Tank' && step === 15) {
+        setStep(step - 3)
       } else {
         setStep(step - 1)
       }
@@ -62,7 +70,7 @@ const App = () => {
       if (isValid) {
         const sanitationType = methods.getValues('step2.sanitationType')
         if (sanitationType !== 'Flush to Septic Tank' && step + 1 === 13) {
-          setStep(step + 2)
+          setStep(step + 3)
         } else {
           setStep(step + 1)
         }

@@ -26,7 +26,7 @@ const validationSchema = z.object({
   }),
   step7: z.object({
     showContent: z.string(),
-    amountPreference: z.number().optional(),
+    amountPreference: z.string().optional(),
     QVSR: z.any().optional(),
   }),
   step8: z.object({
@@ -35,7 +35,7 @@ const validationSchema = z.object({
   }),
   step9: z.object({
     showContent: z.string(),
-    pricePreference: z.number().optional(),
+    pricePreference: z.string().optional(),
     QVSR: z.any().optional(),
   }),
   step10: z.object({
@@ -44,7 +44,7 @@ const validationSchema = z.object({
   }),
   step11: z.object({
     showContent: z.string(),
-    feePreference: z.number().optional(),
+    feePreference: z.string().optional(),
     QVSR: z.any().optional(),
   }),
   step12: z.object({
@@ -64,6 +64,19 @@ const validationSchema = z.object({
       serviceHowMuch: z.number().optional(),
     })
     .optional(),
+  step14: z
+    .object({
+      fsm: z
+        .object({
+          tooExpensive: z.string().optional(),
+          tooCheap: z.string().optional(),
+          expensive: z.string().optional(),
+          greatValue: z.string().optional(),
+        })
+        .optional(),
+    })
+    .optional(),
+
   // step1: z.object({
   //   unique_id: z.string().min(1, { message: 'Please input unique id' }),
   //   bill: z.object({

@@ -32,7 +32,7 @@ export interface FormValues {
   }
   step7: {
     showContent: 'QVSR' | 'Slider'
-    amountPreference?: number
+    amountPreference?: string
     QVSR?: Quadratic
   }
   step8: {
@@ -41,7 +41,7 @@ export interface FormValues {
   }
   step9: {
     showContent: string
-    pricePreference?: number
+    pricePreference?: string
     QVSR?: Quadratic
   }
   step10: {
@@ -50,22 +50,30 @@ export interface FormValues {
   }
   step11: {
     showContent: string
-    feePreference?: number
+    feePreference?: string
     QVSR?: Quadratic
   }
   step12: {
     revisePrice: string
     willingPay?: number
   }
-  step13: {
-    emptiedSepticTank?: string
-    contactedServiceProvider?: string
-    lastTimeContacted?: string
-    contactedWho?: any
-    contactedOther?: string
-    SASBNotContactedReasons?: any
-    whatServices?: string
-    paidService?: string
-    serviceHowMuch?: number
+  step13?: {
+    emptiedSepticTank: string
+    contactedServiceProvider: string
+    lastTimeContacted: string
+    contactedWho: any
+    contactedOther: string
+    SASBNotContactedReasons: any
+    whatServices: string
+    paidService: string
+    serviceHowMuch: number
+  }
+  step14?: {
+    fsm: {
+      tooExpensive: string
+      tooCheap: string
+      expensive: string
+      greatValue: string
+    }
   }
 }
