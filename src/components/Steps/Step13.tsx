@@ -3,6 +3,7 @@ import Checkbox from 'components/Form/Checkbox'
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
+import Heading from 'components/Heading'
 import Typography from 'components/Typography'
 import { memo } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
@@ -23,6 +24,8 @@ const Step13 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="WTP for Fecal Sludge Management Services" />
+
       <div>
         <Label number="4.25" required>
           Since April 2021, have you ever emptied your septic tank ?
@@ -205,7 +208,9 @@ const Step13 = () => {
 
       {paid === 'Yes' && (
         <div>
-          <Label required>How much did you pay for the service?</Label>
+          <Label number="4.33" required>
+            How much did you pay for the service?
+          </Label>
           <Input
             {...register('step13.serviceHowMuch', {
               valueAsNumber: true,

@@ -7,11 +7,14 @@ type Question = {
 type Quadratic = Question[]
 
 export interface FormValues {
+  date: string
+  sewerWillingPay: string | number
   step1: {
     uniqueId: string
     language: string
   }
   step2: {
+    neighborhood: string
     sanitationType: string
     dwellingType: string
     waterBill: {
@@ -24,14 +27,14 @@ export interface FormValues {
   }
   step4: Quadratic
   step5: {
-    showContent: 'A' | 'B'
+    content: 'Treatment' | 'Control'
   }
   step6: {
     relevantInformation: string
     shareInformation: string
   }
   step7: {
-    showContent: 'QVSR' | 'Slider'
+    content: 'Treatment - QVSR' | 'Control - Price Slider'
     amountPreference?: string
     QVSR?: Quadratic
   }
@@ -40,7 +43,7 @@ export interface FormValues {
     willingPay?: number
   }
   step9: {
-    showContent: string
+    content: 'Treatment - QVSR' | 'Control - Price Slider'
     pricePreference?: string
     QVSR?: Quadratic
   }
@@ -49,7 +52,7 @@ export interface FormValues {
     willingPay?: number
   }
   step11: {
-    showContent: string
+    content: 'Treatment - QVSR' | 'Control - Price Slider'
     feePreference?: string
     QVSR?: Quadratic
   }
@@ -69,6 +72,7 @@ export interface FormValues {
     serviceHowMuch: number
   }
   step14?: {
+    SASBService
     fsm: {
       tooExpensive: string
       tooCheap: string
@@ -77,7 +81,7 @@ export interface FormValues {
     }
   }
   step15: {
-    showContent: 'A' | 'B'
+    content: 'Treatment' | 'Control'
   }
   step16: {
     satisfaction: {

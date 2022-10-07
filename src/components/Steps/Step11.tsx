@@ -1,5 +1,6 @@
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
+import Heading from 'components/Heading'
 import Typography, { Caption } from 'components/Typography'
 import Quadratic from 'methods/Quadratic'
 import { useFormContext } from 'react-hook-form'
@@ -8,6 +9,8 @@ import tw from 'twin.macro'
 const QVSR = () => {
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="WTP - Monthly Sanitation Tax/Sewer Service Fee" />
+
       <Typography css={tw`text-justify`}>
         <Caption css={tw`mr-3`}>4.21</Caption>NOW, imagine that SASB were to
         introduce a new monthly fee to solve drainage issues in your
@@ -56,6 +59,8 @@ const Slider = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="WTP - Monthly Sanitation Tax/Sewer Service Fee" />
+
       <Typography css={tw`text-justify`}>
         <Caption css={tw`mr-3`}>4.22</Caption>NOW, imagine that SASB were to
         introduce a new monthly fee to solve drainage issues in your
@@ -101,9 +106,9 @@ const Slider = () => {
 
 const Step11 = () => {
   const { getValues } = useFormContext()
-  const content = getValues('step11.showContent')
+  const content = getValues('step11.content')
 
-  if (content === 'QVSR') {
+  if (content === 'Treatment - QVSR') {
     return <QVSR />
   } else {
     return <Slider />

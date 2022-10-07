@@ -61,8 +61,8 @@ const Quadratic = ({
 
             <div css={tw`flex justify-center mt-12`}>
               <Vote
-                thumbsDown="Agree"
-                thumbsUp="Disagree"
+                thumbsDown="Disagree"
+                thumbsUp="Agree"
                 total={credits}
                 handleVote={(direction: number) => vote(index, direction)}
                 vote={question.vote}

@@ -2,6 +2,7 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
+import Heading from 'components/Heading'
 import Typography from 'components/Typography'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
@@ -18,6 +19,8 @@ const Step12 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="Community Price Point - New Monthly Drainage Service Fee" />
+
       <Typography css={tw`text-justify`}>
         Now, we would like to share with you what your community thinks about
         the price to be paid for A new monthly drainage service fee.

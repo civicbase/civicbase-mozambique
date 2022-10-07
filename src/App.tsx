@@ -23,6 +23,8 @@ const App = () => {
 
   const methods = useForm<FormValues>({
     defaultValues: {
+      date: new Date().toISOString(),
+      sewerWillingPay: 0,
       step1: {
         language: language === 'pt' ? 'Português' : 'English',
         uniqueId: params.uniqueId,
@@ -33,21 +35,25 @@ const App = () => {
         },
       },
       step5: {
-        showContent: Math.random() < 0.5 ? 'A' : 'B',
+        content: Math.random() < 0.5 ? 'Treatment' : 'Control',
       },
       step7: {
         amountPreference: '8500',
-        showContent: Math.random() < 0.5 ? 'QVSR' : 'Slider',
+        content:
+          Math.random() < 0.5 ? 'Treatment - QVSR' : 'Control - Price Slider',
       },
       step9: {
         pricePreference: '80',
-        showContent: Math.random() < 0.5 ? 'QVSR' : 'Slider',
+        content:
+          Math.random() < 0.5 ? 'Treatment - QVSR' : 'Control - Price Slider',
       },
       step11: {
         feePreference: '50',
-        showContent: Math.random() < 0.5 ? 'QVSR' : 'Slider',
+        content:
+          Math.random() < 0.5 ? 'Treatment - QVSR' : 'Control - Price Slider',
       },
       step14: {
+        SASBService: '8700',
         fsm: {
           tooExpensive: '8700',
           tooCheap: '8700',
@@ -56,12 +62,14 @@ const App = () => {
         },
       },
       step15: {
-        showContent: Math.random() < 0.5 ? 'A' : 'B',
+        content: Math.random() < 0.5 ? 'Treatment' : 'Control',
       },
     },
     resolver: zodResolver(validation),
   })
 
+  const sewerWillingPay = methods.watch('sewerWillingPay')
+  console.log('sewerWillingPay', sewerWillingPay)
   console.log('errors', methods.formState.errors)
 
   const handlePrevious = () => {

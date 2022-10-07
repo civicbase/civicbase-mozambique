@@ -1,5 +1,6 @@
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
+import Heading from 'components/Heading'
 import Typography, { Caption } from 'components/Typography'
 import Quadratic from 'methods/Quadratic'
 import { useFormContext } from 'react-hook-form'
@@ -8,10 +9,12 @@ import tw from 'twin.macro'
 const QVSR = () => {
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="WTP - Monthly Sanitation Tax/Sewer Service Fee" />
+
       <Typography css={tw`text-justify`}>
-        <Caption css={tw`mr-3`}>4.17</Caption>NOW, we will be asking you about
-        your willingness to pay for the monthly sanitation tax or sewer service
-        fee.
+        <Caption css={tw`mr-3`}>4.17 Treatment - QVSR</Caption>NOW, we will be
+        asking you about your willingness to pay for the monthly sanitation tax
+        or sewer service fee.
       </Typography>
 
       <Typography css={tw`text-justify`}>
@@ -57,10 +60,12 @@ const Slider = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="WTP - Monthly Sanitation Tax/Sewer Service Fee" />
+
       <Typography css={tw`text-justify`}>
-        <Caption css={tw`mr-3`}>4.18</Caption>NOW, we will be asking you about
-        your willingness to pay for the monthly sanitation tax or sewer service
-        fee.
+        <Caption css={tw`mr-3`}>4.18 Control - Price Slider</Caption>NOW, we
+        will be asking you about your willingness to pay for the monthly
+        sanitation tax or sewer service fee.
       </Typography>
 
       <Typography css={tw`text-justify`}>
@@ -86,7 +91,7 @@ const Slider = () => {
       </Typography>
 
       <div>
-        <Label>${price}</Label>
+        <Label>${price} MT</Label>
         <input
           type="range"
           css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
@@ -103,9 +108,9 @@ const Slider = () => {
 
 const Step9 = () => {
   const { getValues } = useFormContext()
-  const content = getValues('step9.showContent')
+  const content = getValues('step9.content')
 
-  if (content === 'QVSR') {
+  if (content === 'Treatment - QVSR') {
     return <QVSR />
   } else {
     return <Slider />

@@ -4,6 +4,7 @@ import Label from 'components/Form/Label'
 import Dropdown from 'components/Dropdown'
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
+import Heading from 'components/Heading'
 
 const Step2 = () => {
   const {
@@ -18,6 +19,38 @@ const Step2 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="Background Data" />
+
+      <div>
+        <Label number="4.2" required>
+          Neighborhood
+        </Label>
+        <Controller
+          name="step2.neighborhood"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              options={[
+                'Pioneiros',
+                'Chaimiti',
+                'Esturro',
+                'Ponta Gea',
+                'Chipangara',
+                'Matacuane',
+                'Macurungo',
+                'Macuti',
+                'Munhava Central',
+              ]}
+              value={field.value}
+              onChange={field.onChange}
+              placeholder="Please select a sanitatition service"
+              error={!!errors?.step2?.neighborhood}
+            />
+          )}
+        />
+        <FieldErrorMessage name="step2.neighborhood" errors={errors} />
+      </div>
+
       <div>
         <Label number="4.3" required>
           What type of sanitation service do you have?

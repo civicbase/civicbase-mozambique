@@ -6,6 +6,7 @@ import { Controller, useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 import { useI18nContext } from 'i18n/i18n-react'
 import { useEffect } from 'react'
+import Heading from 'components/Heading'
 
 const bill = () => {
   const { LL, setLocale } = useI18nContext()
@@ -28,6 +29,11 @@ const bill = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading
+        title="Section 4: Willingness to Pay"
+        subtitle="Background Data"
+      />
+
       <div>
         <Label number="4.1" required>
           Please enter unique ID

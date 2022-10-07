@@ -1,3 +1,4 @@
+import Heading from 'components/Heading'
 import Typography, { Caption } from 'components/Typography'
 import Quadratic from 'methods/Quadratic'
 import { useFormContext } from 'react-hook-form'
@@ -7,34 +8,33 @@ const Step4 = () => {
   const {} = useFormContext()
 
   const questions = [
-    'piped water network',
-    'sewer network in your city',
-    'Drainage network in your city',
-    'electricity coverage in your city',
-    'coverage of paved roads in your city',
-    'Coastal embankments',
+    'piped water provision for households in the city',
+    'sewer connection services for toilets in the city ',
+    'improved drainage provision in the city',
+    'electricity supply for households in your city.',
+    'coverage of paved roads in your city.',
   ]
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="Service Prioritization" />
+
       <Typography css={tw`text-justify`}>
-        <Caption css={tw`mr-3`}>4.8</Caption>Your neighborhood is asked to
-        participate in a vote. When you make your decisions, please imagine
-        everyone else in your neighborhood will be participating in this
-        exercise too.
+        <Caption css={tw`mr-3`}>4.8</Caption>Households in your neighborhood are
+        being asked to participate in a vote. When you make your decisions,
+        please imagine everyone else in your neighborhood will be participating
+        in this exercise too.
       </Typography>
 
       <Typography css={tw`text-justify`}>
-        Please look at the options provided and indicate how much votes you
-        would like to allocate to each option. If you dislike any of the
+        As a resident of the City of Beira, which of the public service options
+        below do you VALUE MOST?
+      </Typography>
+
+      <Typography css={tw`text-justify`}>
+        Please look at the options provided and indicate how many votes you
+        would like to allocate to each option. If you do not prefer any of the
         options, you can also "downvote" them.
-      </Typography>
-
-      <Typography css={tw`text-justify`}>
-        Now, Imagine that the city of Beira has received MONEY to improve its
-        public services. In your opinion, which of the different options is
-        IMPORTANT to you? You may allocate your votes for more than one option.
-        Invest the money to improve the quality and to expand the...
       </Typography>
 
       <Quadratic qs={questions} step="step4" />

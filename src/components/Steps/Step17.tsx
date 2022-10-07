@@ -1,10 +1,10 @@
-import { Controller, useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
-import Dropdown from 'components/Dropdown'
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
 import Typography from 'components/Typography'
+import Heading from 'components/Heading'
 
 const Step17 = () => {
   const {
@@ -15,6 +15,8 @@ const Step17 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="Sharing of Satisfaction" />
+
       <div>
         <Label number="4.51" required>
           On the scale of 1 to 10, with one being the lowest and 10 being the
@@ -52,6 +54,12 @@ const Step17 = () => {
           each person. For closeness , please refer to the diagram provided
           above
         </Label>
+        <div>
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/self_diagram.jpg`}
+            alt="service"
+          />
+        </div>
         TODO
       </div>
     </div>

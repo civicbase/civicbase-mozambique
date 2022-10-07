@@ -1,3 +1,4 @@
+import Heading from 'components/Heading'
 import Typography, { Caption } from 'components/Typography'
 import { memo } from 'react'
 import { useFormContext } from 'react-hook-form'
@@ -6,17 +7,19 @@ import tw from 'twin.macro'
 const Step5 = () => {
   const { getValues } = useFormContext()
 
-  const content = getValues('step5.showContent')
+  const content = getValues('step5.content')
 
   return (
-    <div>
-      {content === 'A' && (
+    <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="Information Experiment" />
+
+      {content === 'Treatment' && (
         <div css={tw`grid grid-cols-1 gap-2`}>
           <Typography css={tw`text-justify`}>
-            <Caption css={tw`mr-3`}>4.9</Caption> I've been thinking about how
-            the utility SASB has been managing sanitation services. And though I
-            don't know much about sanitation, in my personal opinion, they've
-            been doing a good job
+            <Caption css={tw`mr-3`}>4.9 Treatment</Caption> I've been thinking
+            about how the utility SASB has been managing sanitation services.
+            And though I don't know much about sanitation, in my personal
+            opinion, they've been doing a good job
           </Typography>
 
           <Typography css={tw`text-justify`}>
@@ -43,12 +46,12 @@ const Step5 = () => {
           </div>
         </div>
       )}
-      {content === 'B' && (
+      {content === 'Control' && (
         <Typography css={tw`text-justify`}>
-          <Caption css={tw`mr-3`}>4.10</Caption>I've been thinking about how the
-          utility SASB has been managing sanitation services. And though I don't
-          know much about sanitation, in my personal opinion, they've been doing
-          a good job
+          <Caption css={tw`mr-3`}>4.10 Control</Caption>I've been thinking about
+          how the utility SASB has been managing sanitation services. And though
+          I don't know much about sanitation, in my personal opinion, they've
+          been doing a good job
         </Typography>
       )}
     </div>

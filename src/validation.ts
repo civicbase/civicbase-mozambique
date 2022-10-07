@@ -5,27 +5,61 @@ const validationSchema = z.object({
     uniqueId: z.string(),
     language: z.string(),
   }),
-  step2: z.object({
-    sanitationType: z.string(),
-    dwellingType: z.string(),
-    waterBill: z.object({
-      share: z.string().optional(),
-      shareNumber: z.number().optional(),
-    }),
-  }),
+  step2: z
+    .object({
+      neighborhood: z.string(),
+      sanitationType: z.string(),
+      dwellingType: z.string(),
+      waterBill: z.object({
+        share: z.string().optional(),
+        shareNumber: z.number().optional(),
+      }),
+    })
+    .refine(
+      step => {
+        if (step.dwellingType === 'Compound / Collective') {
+          return step.waterBill.share
+        }
+        return true
+      },
+      {
+        message: 'Required',
+        path: ['waterBill.share'],
+      },
+    )
+    .refine(
+      step => {
+        if (step.dwellingType === 'Compound / Collective') {
+          if (step.waterBill.share === 'Yes') {
+            if (step.waterBill.shareNumber) {
+              return (
+                step.waterBill.shareNumber >= 0 &&
+                step.waterBill.shareNumber <= 20
+              )
+            }
+          }
+        }
+
+        return true
+      },
+      {
+        message: 'Number must be greater than 0 and less than 20',
+        path: ['waterBill.shareNumber'],
+      },
+    ),
   step3: z.object({
     compare: z.string(),
   }),
   step4: z.any(),
   step5: z.object({
-    showContent: z.string(),
+    content: z.string(),
   }),
   step6: z.object({
     relevantInformation: z.string(),
     shareInformation: z.string(),
   }),
   step7: z.object({
-    showContent: z.string(),
+    content: z.string(),
     amountPreference: z.string().optional(),
     QVSR: z.any().optional(),
   }),
@@ -34,7 +68,7 @@ const validationSchema = z.object({
     willingPay: z.number().optional(),
   }),
   step9: z.object({
-    showContent: z.string(),
+    content: z.string(),
     pricePreference: z.string().optional(),
     QVSR: z.any().optional(),
   }),
@@ -43,7 +77,7 @@ const validationSchema = z.object({
     willingPay: z.number().optional(),
   }),
   step11: z.object({
-    showContent: z.string(),
+    content: z.string(),
     feePreference: z.string().optional(),
     QVSR: z.any().optional(),
   }),
@@ -66,6 +100,7 @@ const validationSchema = z.object({
     .optional(),
   step14: z
     .object({
+      SASBService: z.string().optional(),
       fsm: z
         .object({
           tooExpensive: z.string().optional(),
@@ -77,7 +112,7 @@ const validationSchema = z.object({
     })
     .optional(),
   step15: z.object({
-    showContent: z.string(),
+    content: z.string(),
   }),
   step16: z
     .object({

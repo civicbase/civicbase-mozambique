@@ -5,6 +5,7 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
 import Typography from 'components/Typography'
+import Heading from 'components/Heading'
 
 const Step6 = () => {
   const {
@@ -15,8 +16,10 @@ const Step6 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="Sharing Information" />
+
       <div>
-        <Label number="4.11" required>
+        <Label number="4.11 Treatment" required>
           Do you think what I have just shared with you is important to you and
           the people in this neighborhood?
         </Label>
@@ -37,7 +40,7 @@ const Step6 = () => {
       </div>
 
       <div>
-        <Label number="4.12" required>
+        <Label number="4.12 Control" required>
           On the scale of 1 to 10, with one being the lowest and 10 being the
           highest,how likely are you to share what I have just told you to other
           people in this neighborhood?

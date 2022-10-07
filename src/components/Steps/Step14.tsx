@@ -1,30 +1,52 @@
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
-import Typography from 'components/Typography'
+import Heading from 'components/Heading'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step14 = () => {
   const {
-    control,
     register,
     watch,
     formState: { errors },
   } = useFormContext()
 
+  const SASBService = watch('step14.SASBService')
   const tooExpensive = watch('step14.fsm.tooExpensive')
   const tooCheap = watch('step14.fsm.tooCheap')
   const expensive = watch('step14.fsm.expensive')
   const greatValue = watch('step14.fsm.greatValue')
 
-  console.log('tooExpensive', typeof tooExpensive)
-
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Typography>
-        Currently, SASB offers the service to remove the fecal sludge and clean
-        your septic tank for a total of 8700MT.
-      </Typography>
+      <Heading subtitle="WTP for Fecal Sludge Management Services" />
+
+      <div>
+        <Label number="4.34" required>
+          Currently, SASB offers the service to remove the fecal sludge and
+          clean your septic tank for a total of 8700MT.
+        </Label>
+
+        <div>
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/service_table.jpg`}
+            alt="service"
+          />
+        </div>
+
+        <div css={tw`mt-10`}>
+          <Label>${SASBService} MT</Label>
+          <input
+            type="range"
+            css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
+            min="6900"
+            max="10400"
+            step="100"
+            {...register(`step14.SASBService`)}
+          />
+          <FieldErrorMessage name="step14.SASBService" errors={errors} />
+        </div>
+      </div>
 
       <div>
         <Label number="4.35" required>
@@ -33,7 +55,7 @@ const Step14 = () => {
         </Label>
 
         <div css={tw`mt-10`}>
-          <Label>${tooExpensive}</Label>
+          <Label>${tooExpensive} MT</Label>
           <input
             type="range"
             css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
@@ -53,7 +75,7 @@ const Step14 = () => {
         </Label>
 
         <div css={tw`mt-10`}>
-          <Label>${tooCheap}</Label>
+          <Label>${tooCheap} MT</Label>
           <input
             type="range"
             css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
@@ -73,7 +95,7 @@ const Step14 = () => {
         </Label>
 
         <div css={tw`mt-10`}>
-          <Label>${expensive}</Label>
+          <Label>${expensive} MT</Label>
           <input
             type="range"
             css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
@@ -93,7 +115,7 @@ const Step14 = () => {
         </Label>
 
         <div css={tw`mt-10`}>
-          <Label>${greatValue}</Label>
+          <Label>${greatValue} MT</Label>
           <input
             type="range"
             css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}

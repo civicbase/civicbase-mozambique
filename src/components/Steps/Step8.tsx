@@ -2,7 +2,9 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
-import Typography from 'components/Typography'
+import Heading from 'components/Heading'
+import Typography, { Caption } from 'components/Typography'
+import { memo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
@@ -17,9 +19,12 @@ const Step8 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="Community Price Point - Sewer Connection Fee" />
+
       <Typography css={tw`text-justify`}>
-        Now we would like to share with you what your community thinks about the
-        price to be paid for the sewer connection fee.
+        <Caption css={tw`mr-3`}>4.15</Caption> Now we would like to share with
+        you what your community thinks about the price to be paid for the sewer
+        connection fee.
       </Typography>
 
       <Typography css={tw`text-justify`}>
@@ -28,7 +33,7 @@ const Step8 = () => {
       </Typography>
 
       <div>
-        <Label number="4.15" required>
+        <Label required>
           Having heard the community's proposal , would you like to revise your
           previously stated price? Remember, your proposed price is (Y)
         </Label>
@@ -69,4 +74,4 @@ const Step8 = () => {
   )
 }
 
-export default Step8
+export default memo(Step8)

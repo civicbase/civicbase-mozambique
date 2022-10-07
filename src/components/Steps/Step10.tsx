@@ -2,7 +2,8 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
-import Typography from 'components/Typography'
+import Heading from 'components/Heading'
+import Typography, { Caption } from 'components/Typography'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
@@ -17,9 +18,12 @@ const Step10 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="Community Price Point - Monthly Sanitation Tax/Sewer Service Fee" />
+
       <Typography css={tw`text-justify`}>
-        Now we would like to share with you what your community thinks about the
-        price to be paid for the monthly sanitation tax
+        <Caption css={tw`mr-3`}>4.19</Caption> Now we would like to share with
+        you what your community thinks about the price to be paid for the
+        monthly sanitation tax
       </Typography>
 
       <Typography css={tw`text-justify`}>
@@ -28,7 +32,7 @@ const Step10 = () => {
       </Typography>
 
       <div>
-        <Label number="4.19" required>
+        <Label required>
           Having heard the community's proposal , would you like to revise your
           previously stated price? Remember, your proposed price is (Y)
         </Label>

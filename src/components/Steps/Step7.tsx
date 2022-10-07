@@ -1,5 +1,6 @@
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
+import Heading from 'components/Heading'
 import Typography, { Caption } from 'components/Typography'
 import Quadratic from 'methods/Quadratic'
 import { useFormContext } from 'react-hook-form'
@@ -8,13 +9,16 @@ import tw from 'twin.macro'
 const QVSR = () => {
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="WTP - Sewer Connection Fee" />
+
       <Typography css={tw`text-justify`}>
-        <Caption css={tw`mr-3`}>4.13</Caption>In this survey, everyone in this
-        neighborhood is being asked to help decide the price for the sewer
-        connection fee. As you cast your votes or make your decisions, please
-        imagine that everyone else in your neighborhood is also participating in
-        this exercise. Thus, the collective decision by the neighborhood will be
-        important for SASB to decide the pricing of their sewer connection fee.
+        <Caption css={tw`mr-3`}>4.13 Treatment - QVSR</Caption>In this survey,
+        everyone in this neighborhood is being asked to help decide the price
+        for the sewer connection fee. As you cast your votes or make your
+        decisions, please imagine that everyone else in your neighborhood is
+        also participating in this exercise. Thus, the collective decision by
+        the neighborhood will be important for SASB to decide the pricing of
+        their sewer connection fee.
       </Typography>
 
       <Typography css={tw`text-justify`}>
@@ -50,13 +54,16 @@ const Slider = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="WTP - Sewer Connection Fee" />
+
       <Typography css={tw`text-justify`}>
-        <Caption css={tw`mr-3`}>4.14</Caption>In this survey, everyone in this
-        neighborhood is being asked to help decide the price for the sewer
-        connection fee. As you cast your votes or make your decisions, please
-        imagine that everyone else in your neighborhood is also participating in
-        this exercise. Thus, the collective decision by the neighborhood will be
-        important for SASB to decide the pricing of their sewer connection fee.
+        <Caption css={tw`mr-3`}>4.14 Control - Price Slider</Caption>In this
+        survey, everyone in this neighborhood is being asked to help decide the
+        price for the sewer connection fee. As you cast your votes or make your
+        decisions, please imagine that everyone else in your neighborhood is
+        also participating in this exercise. Thus, the collective decision by
+        the neighborhood will be important for SASB to decide the pricing of
+        their sewer connection fee.
       </Typography>
 
       <Typography css={tw`text-justify`}>
@@ -72,7 +79,7 @@ const Slider = () => {
       </Typography>
 
       <div>
-        <Label>${amount}</Label>
+        <Label>${amount} MT</Label>
         <input
           type="range"
           css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
@@ -89,9 +96,9 @@ const Slider = () => {
 
 const Step7 = () => {
   const { getValues } = useFormContext()
-  const content = getValues('step7.showContent')
+  const content = getValues('step7.content')
 
-  if (content === 'QVSR') {
+  if (content === 'Treatment - QVSR') {
     return <QVSR />
   } else {
     return <Slider />

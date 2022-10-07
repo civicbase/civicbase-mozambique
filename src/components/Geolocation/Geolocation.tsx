@@ -24,7 +24,7 @@ const GeolocationMessage = ({
           />
         </div>
         <Subtitle>
-          LL Training Project for SASB, Beira, Mozambique - Household Survey
+          FLL Training Project for SASB, Beira, Mozambique - Household Survey
         </Subtitle>
       </div>
       <img

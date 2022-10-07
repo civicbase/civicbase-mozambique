@@ -1,14 +1,18 @@
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
+import Heading from 'components/Heading'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step16 = () => {
   const { register, getValues } = useFormContext()
   const sanitationType = getValues('step2.sanitationType')
+  const contactedSASB = getValues('step13.contactedWho.SASB')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="Satisfaction towards SASB's Services" />
+
       {sanitationType === 'Flush to Sewer' && (
         <>
           <div>
@@ -123,7 +127,7 @@ const Step16 = () => {
         </div>
       </div>
 
-      {sanitationType === 'Flush to Septic Tank' && (
+      {sanitationType === 'Flush to Septic Tank' && contactedSASB && (
         <>
           <div>
             <Label number="4.45" required>
