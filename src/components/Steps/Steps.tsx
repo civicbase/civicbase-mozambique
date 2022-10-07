@@ -65,12 +65,7 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 15:
       return <Section.Step15 />
     case 16:
-      if (sanitationType === 'Flush to Sewer') {
-        return <Section.Step16 />
-      } else {
-        onNext()
-        return null
-      }
+      return <Section.Step16 />
 
     // case 17:
     //   return <Section.Step17 />

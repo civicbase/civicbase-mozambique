@@ -82,7 +82,15 @@ export interface FormValues {
   step16: {
     satisfaction: {
       sewer: string
-      last6Months: string
+      sewerlast6Months: string
+      qualityDrainage: string
+      qualityDrainageLast6Months: string
+      SASBFecalSludgeDeslidgingService: string
+      qualityFecalSludgeLast6Months: string
+      SASBCustomerService: string
+      SASBCustomerServiceLast6Months: string
+      beiraMunicipality: string
+      beiraMunicipalityLast6Months: string
     }
   }
 }

@@ -84,7 +84,15 @@ const validationSchema = z.object({
       satisfaction: z
         .object({
           sewer: z.string().optional(),
-          last6Months: z.string().optional(),
+          sewerlast6Months: z.string().optional(),
+          qualityDrainage: z.string().optional(),
+          qualityDrainageLast6Months: z.string().optional(),
+          SASBFecalSludgeDeslidgingService: z.string().optional(),
+          qualityFecalSludgeLast6Months: z.string().optional(),
+          SASBCustomerService: z.string().optional(),
+          SASBCustomerServiceLast6Months: z.string().optional(),
+          beiraMunicipality: z.string().optional(),
+          beiraMunicipalityLast6Months: z.string().optional(),
         })
         .optional(),
     })
