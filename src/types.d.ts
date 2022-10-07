@@ -76,4 +76,7 @@ export interface FormValues {
       greatValue: string
     }
   }
+  step15: {
+    showContent: 'A' | 'B'
+  }
 }

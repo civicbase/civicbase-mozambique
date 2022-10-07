@@ -76,6 +76,9 @@ const validationSchema = z.object({
         .optional(),
     })
     .optional(),
+  step15: z.object({
+    showContent: z.string(),
+  }),
 
   // step1: z.object({
   //   unique_id: z.string().min(1, { message: 'Please input unique id' }),
