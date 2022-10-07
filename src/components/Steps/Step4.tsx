@@ -34,7 +34,7 @@ const Step4 = () => {
       <Typography css={tw`text-justify`}>
         Please look at the options provided and indicate how many votes you
         would like to allocate to each option. If you do not prefer any of the
-        options, you can also "downvote" them.
+        options, you can also "downvote" them. (Enumerator May Demonstrate)
       </Typography>
 
       <Quadratic qs={questions} step="step4" />

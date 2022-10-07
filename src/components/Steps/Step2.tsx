@@ -95,7 +95,8 @@ const Step2 = () => {
         <FieldErrorMessage name="step2.dwellingType" errors={errors} />
       </div>
 
-      {dwellingType === 'Compound / Collective' && (
+      {(dwellingType === 'Compound / Collective' ||
+        dwellingType === 'Multistoried buildings') && (
         <>
           <div>
             <Label number="4.5" required>

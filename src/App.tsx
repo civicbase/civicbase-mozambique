@@ -68,8 +68,20 @@ const App = () => {
     resolver: zodResolver(validation),
   })
 
-  const sewerWillingPay = methods.watch('sewerWillingPay')
-  console.log('sewerWillingPay', sewerWillingPay)
+  const content5 = methods.getValues('step5.content')
+  const content7 = methods.getValues('step7.content')
+  const content9 = methods.getValues('step9.content')
+  const content11 = methods.getValues('step11.content')
+  const content15 = methods.getValues('step15.content')
+
+  console.table([
+    { page: 5, content: content5 },
+    { page: 7, content: content7 },
+    { page: 9, content: content9 },
+    { page: 11, content: content11 },
+    { page: 15, content: content15 },
+  ])
+
   console.log('errors', methods.formState.errors)
 
   const handlePrevious = () => {

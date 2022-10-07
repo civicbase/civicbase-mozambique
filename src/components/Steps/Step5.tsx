@@ -39,9 +39,12 @@ const Step5 = () => {
               3) promptly addressing customer complaints and
             </Typography>
             <Typography css={tw`text-justify`}>
-              4) reducing service disruptions. This innovative training program
-              has improved service reliability by 55 percent and complaints
-              response time by 34 percent in another country.
+              4) reducing service disruptions.
+            </Typography>
+            <Typography css={tw`text-justify`}>
+              This innovative training program has improved service reliability
+              by 55 percent and complaints response time by 34 percent in
+              another country.
             </Typography>
           </div>
         </div>

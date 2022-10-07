@@ -41,7 +41,17 @@ const QVSR = () => {
       </Typography>
 
       <Quadratic
-        qs={['30', '35', '40', '45', '50', '55', '60', '65', '70']}
+        qs={[
+          '30 MT',
+          '35 MT',
+          '40 MT',
+          '45 MT',
+          '50 MT',
+          '55 MT',
+          '60 MT',
+          '65 MT',
+          '70 MT',
+        ]}
         step="step11.QVSR"
       />
     </div>
@@ -89,7 +99,7 @@ const Slider = () => {
       </Typography>
 
       <div>
-        <Label>${fee}</Label>
+        <Label>{fee} MT</Label>
         <input
           type="range"
           css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}

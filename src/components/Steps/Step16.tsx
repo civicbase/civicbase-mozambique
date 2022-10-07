@@ -10,7 +10,7 @@ const Step16 = () => {
   const contactedSASB = getValues('step13.contactedWho.SASB')
 
   return (
-    <div css={tw`grid grid-cols-1 gap-6`}>
+    <div css={tw`grid grid-cols-1 gap-10`}>
       <Heading subtitle="Satisfaction towards SASB's Services" />
 
       {sanitationType === 'Flush to Sewer' && (
@@ -32,7 +32,7 @@ const Step16 = () => {
                   css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
                   key={option}
                 >
-                  <span css={tw`text-center`}>{option}</span>
+                  <span css={tw`text-center text-sm`}>{option}</span>
                   <Radio
                     {...register(`step16.satisfaction.sewer`)}
                     value={option}
@@ -60,7 +60,7 @@ const Step16 = () => {
                   css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
                   key={option}
                 >
-                  <span css={tw`text-center`}>{option}</span>
+                  <span css={tw`text-center text-sm`}>{option}</span>
                   <Radio
                     {...register(`step16.satisfaction.sewerlast6Months`)}
                     value={option}
@@ -89,7 +89,7 @@ const Step16 = () => {
               css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
               key={option}
             >
-              <span css={tw`text-center`}>{option}</span>
+              <span css={tw`text-center text-sm`}>{option}</span>
               <Radio
                 {...register(`step16.satisfaction.qualityDrainage`)}
                 value={option}
@@ -117,7 +117,7 @@ const Step16 = () => {
               css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
               key={option}
             >
-              <span css={tw`text-center`}>{option}</span>
+              <span css={tw`text-center text-sm`}>{option}</span>
               <Radio
                 {...register(`step16.satisfaction.qualityDrainageLast6Months`)}
                 value={option}
@@ -146,7 +146,7 @@ const Step16 = () => {
                   css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
                   key={option}
                 >
-                  <span css={tw`text-center`}>{option}</span>
+                  <span css={tw`text-center text-sm`}>{option}</span>
                   <Radio
                     {...register(
                       `step16.satisfaction.SASBFecalSludgeDeslidgingService`,
@@ -177,7 +177,7 @@ const Step16 = () => {
                   css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
                   key={option}
                 >
-                  <span css={tw`text-center`}>{option}</span>
+                  <span css={tw`text-center text-sm`}>{option}</span>
                   <Radio
                     {...register(
                       `step16.satisfaction.qualityFecalSludgeLast6Months`,
@@ -209,7 +209,7 @@ const Step16 = () => {
               css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
               key={option}
             >
-              <span css={tw`text-center`}>{option}</span>
+              <span css={tw`text-center text-sm`}>{option}</span>
               <Radio
                 {...register(`step16.satisfaction.SASBCustomerService`)}
                 value={option}
@@ -237,7 +237,7 @@ const Step16 = () => {
               css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
               key={option}
             >
-              <span css={tw`text-center`}>{option}</span>
+              <span css={tw`text-center text-sm`}>{option}</span>
               <Radio
                 {...register(
                   `step16.satisfaction.SASBCustomerServiceLast6Months`,
@@ -266,7 +266,7 @@ const Step16 = () => {
               css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
               key={option}
             >
-              <span css={tw`text-center`}>{option}</span>
+              <span css={tw`text-center text-sm`}>{option}</span>
               <Radio
                 {...register(`step16.satisfaction.beiraMunicipality`)}
                 value={option}
@@ -294,7 +294,7 @@ const Step16 = () => {
               css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
               key={option}
             >
-              <span css={tw`text-center`}>{option}</span>
+              <span css={tw`text-center text-sm`}>{option}</span>
               <Radio
                 {...register(
                   `step16.satisfaction.beiraMunicipalityLast6Months`,

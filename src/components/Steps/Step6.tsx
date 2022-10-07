@@ -1,6 +1,5 @@
-import { Controller, useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
-import Dropdown from 'components/Dropdown'
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
@@ -19,28 +18,37 @@ const Step6 = () => {
       <Heading subtitle="Sharing Information" />
 
       <div>
-        <Label number="4.11 Treatment" required>
-          Do you think what I have just shared with you is important to you and
-          the people in this neighborhood?
+        <Label number="4.11" required>
+          One the scale of 0 to 5, with 0 being not at all important and 5 being
+          very important, do you think what I have just shared with you is
+          important to you and the people in this neighborhood?
         </Label>
-        <Controller
-          name="step6.relevantInformation"
-          control={control}
-          render={({ field }) => (
-            <Dropdown
-              options={['Yes', 'No']}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Please select an option"
-              error={!!errors?.step6?.relevantInformation}
-            />
-          )}
-        />
+
+        <div css={tw`flex flex-col mt-10`}>
+          <div css={tw`flex justify-between mb-5`}>
+            <Typography>Not at all Important</Typography>
+            <Typography>Very Important</Typography>
+          </div>
+          <div css={tw`flex justify-between`}>
+            {[0, 1, 2, 3, 4, 5].map(option => (
+              <label
+                css={tw`flex flex-col space-y-2 items-center select-none`}
+                key={option}
+              >
+                <Radio
+                  {...register(`step6.relevantInformation`)}
+                  value={option}
+                />
+                <span css={tw`text-center`}>{option}</span>
+              </label>
+            ))}
+          </div>
+        </div>
         <FieldErrorMessage name="step6.relevantInformation" errors={errors} />
       </div>
 
       <div>
-        <Label number="4.12 Control" required>
+        <Label number="4.12" required>
           On the scale of 1 to 10, with one being the lowest and 10 being the
           highest,how likely are you to share what I have just told you to other
           people in this neighborhood?
@@ -63,6 +71,7 @@ const Step6 = () => {
             ))}
           </div>
         </div>
+
         <FieldErrorMessage name="step6.shareInformation" errors={errors} />
       </div>
     </div>
