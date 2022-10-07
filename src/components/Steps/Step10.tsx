@@ -10,7 +10,6 @@ const Step10 = () => {
   const {
     register,
     watch,
-    control,
     formState: { errors },
   } = useFormContext()
 
@@ -18,12 +17,12 @@ const Step10 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Typography>
+      <Typography css={tw`text-justify`}>
         Now we would like to share with you what your community thinks about the
         price to be paid for the monthly sanitation tax
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         For the monthly sanitation tax, They propose an average price of (X).
         You proposed the price (Y).
       </Typography>
@@ -51,7 +50,7 @@ const Step10 = () => {
 
       {(revisedPrice === 'Revise up' || revisedPrice === 'Revise down') && (
         <div>
-          <Label required>
+          <Label number="4.20" required>
             Please let us know the new price that you would be willing to pay?
           </Label>
           <Input

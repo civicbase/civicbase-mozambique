@@ -1,6 +1,6 @@
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
-import Typography from 'components/Typography'
+import Typography, { Caption } from 'components/Typography'
 import Quadratic from 'methods/Quadratic'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
@@ -8,13 +8,14 @@ import tw from 'twin.macro'
 const QVSR = () => {
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Typography>
-        NOW, imagine that SASB were to introduce a new monthly fee to solve
-        drainage issues in your neighborhood. We will be asking you about your
-        willingness to pay for such a fee.
+      <Typography css={tw`text-justify`}>
+        <Caption css={tw`mr-3`}>4.21</Caption>NOW, imagine that SASB were to
+        introduce a new monthly fee to solve drainage issues in your
+        neighborhood. We will be asking you about your willingness to pay for
+        such a fee.
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         In this survey, everyone in this neighborhood is being asked to help
         decide the price for NEW monthly drainage fee. This new fee could help
         SASB to reduce the drainage problem in your neighborhood like flooding
@@ -24,13 +25,13 @@ const QVSR = () => {
         important for SASB to decide the pricing of their services.
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         IF SASB were to introduce the new monthly fee to improve drainage
         conditions in your neighborhood, what should the monthly service fee be
         for everyone in your neighborhood including yourself?
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         Please look at the options provided and indicate how many votes you
         would like to allocate to each price option. If you dislike any of the
         options, you can also "downvote" them.
@@ -39,7 +40,6 @@ const QVSR = () => {
       <Quadratic
         qs={['30', '35', '40', '45', '50', '55', '60', '65', '70']}
         step="step11.QVSR"
-        credits={1000}
       />
     </div>
   )
@@ -56,13 +56,14 @@ const Slider = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Typography>
-        NOW, imagine that SASB were to introduce a new monthly fee to solve
-        drainage issues in your neighborhood. We will be asking you about your
-        willingness to pay for such a fee.
+      <Typography css={tw`text-justify`}>
+        <Caption css={tw`mr-3`}>4.22</Caption>NOW, imagine that SASB were to
+        introduce a new monthly fee to solve drainage issues in your
+        neighborhood. We will be asking you about your willingness to pay for
+        such a fee.
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         In this survey, everyone in this neighborhood is being asked to help
         decide the price for NEW monthly drainage fee. This new fee could help
         SASB to reduce the drainage problem in your neighborhood like flooding
@@ -72,13 +73,13 @@ const Slider = () => {
         important for SASB to decide the pricing of their services.
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         IF SASB were to introduce the new monthly fee to improve drainage
         conditions in your neighborhood, what should the monthly service fee be
         for everyone in your neighborhood including yourself?
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         Please use the slider to indicate your preferred price.
       </Typography>
 
@@ -99,12 +100,10 @@ const Slider = () => {
 }
 
 const Step11 = () => {
-  const { setValue } = useFormContext()
-  const isHeads = Math.random() < 0.5
+  const { getValues } = useFormContext()
+  const content = getValues('step11.showContent')
 
-  setValue('step11.showContent', isHeads ? 'QVSR' : 'Slider')
-
-  if (isHeads) {
+  if (content === 'QVSR') {
     return <QVSR />
   } else {
     return <Slider />

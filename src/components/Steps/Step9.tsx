@@ -1,6 +1,6 @@
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
-import Typography from 'components/Typography'
+import Typography, { Caption } from 'components/Typography'
 import Quadratic from 'methods/Quadratic'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
@@ -8,12 +8,13 @@ import tw from 'twin.macro'
 const QVSR = () => {
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Typography>
-        NOW, we will be asking you about your willingness to pay for the monthly
-        sanitation tax or sewer service fee.
+      <Typography css={tw`text-justify`}>
+        <Caption css={tw`mr-3`}>4.17</Caption>NOW, we will be asking you about
+        your willingness to pay for the monthly sanitation tax or sewer service
+        fee.
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         In this survey, everyone in this neighborhood is being asked to help
         decide the price for the monthly sanitation tax or the sewer service
         fee. Currently, this constitutes 20 percent of your water bill. Based on
@@ -25,22 +26,21 @@ const QVSR = () => {
         services.
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         The monthly sanitation tax covers the costs of maintaining and repairing
         the sewer lines. What should the monthly tax be for everyone in your
         neighborhood including yourself ?
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         Please look at the options provided and indicate how many votes you
         would like to allocate to each price option. If you dislike any of the
-        options, you can also "downvote" them.{' '}
+        options, you can also "downvote" them.
       </Typography>
 
       <Quadratic
         qs={['64', '68', '72', '76', '80', '84', '88', '92', '96']}
         step="step9.QVSR"
-        credits={1000}
       />
     </div>
   )
@@ -57,12 +57,13 @@ const Slider = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Typography>
-        NOW, we will be asking you about your willingness to pay for the monthly
-        sanitation tax or sewer service fee.
+      <Typography css={tw`text-justify`}>
+        <Caption css={tw`mr-3`}>4.18</Caption>NOW, we will be asking you about
+        your willingness to pay for the monthly sanitation tax or sewer service
+        fee.
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         In this survey, everyone in this neighborhood is being asked to help
         decide the price for the monthly sanitation tax or the sewer service
         fee. Currently, this constitutes 20 percent of your water bill. Based on
@@ -74,13 +75,13 @@ const Slider = () => {
         services.
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         The monthly sanitation tax covers the costs of maintaining and repairing
         the sewer lines. What should the monthly tax be for everyone in your
         neighborhood including yourself?
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         Please use the slider to indicate your preferred price.
       </Typography>
 
@@ -101,12 +102,10 @@ const Slider = () => {
 }
 
 const Step9 = () => {
-  const { setValue } = useFormContext()
-  const isHeads = Math.random() < 0.5
+  const { getValues } = useFormContext()
+  const content = getValues('step9.showContent')
 
-  setValue('step9.showContent', isHeads ? 'QVSR' : 'Slider')
-
-  if (isHeads) {
+  if (content === 'QVSR') {
     return <QVSR />
   } else {
     return <Slider />

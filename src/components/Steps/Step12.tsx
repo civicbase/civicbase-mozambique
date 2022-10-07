@@ -18,12 +18,12 @@ const Step12 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Typography>
+      <Typography css={tw`text-justify`}>
         Now, we would like to share with you what your community thinks about
         the price to be paid for A new monthly drainage service fee.
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         For the NEW monthly drainage fee . They propose an average price of (X).
         You proposed the price (Y).
       </Typography>
@@ -51,7 +51,7 @@ const Step12 = () => {
 
       {(revisedPrice === 'Revise up' || revisedPrice === 'Revise down') && (
         <div>
-          <Label required>
+          <Label number="4.24" required>
             Please let us know the new price that you would be willing to pay?
           </Label>
           <Input

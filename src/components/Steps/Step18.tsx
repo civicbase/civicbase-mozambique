@@ -17,7 +17,7 @@ const Step18 = () => {
           As previously mentioned at the start of the survey, your responses
           will be confidential. However, today, you have a chance to submit your
           satisfaction directly to SASB through us. This will enable them to
-          follow up with you. Would you like to do that ?
+          follow up with you. Would you like to do that?
         </Label>
         <Controller
           name="step18.shareSASBSatisfaction"

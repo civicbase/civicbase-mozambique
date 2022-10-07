@@ -32,14 +32,20 @@ const App = () => {
           shareNumber: 0,
         },
       },
+      step5: {
+        showContent: Math.random() < 0.5 ? 'A' : 'B',
+      },
       step7: {
         amountPreference: '8500',
+        showContent: Math.random() < 0.5 ? 'QVSR' : 'Slider',
       },
       step9: {
         pricePreference: '80',
+        showContent: Math.random() < 0.5 ? 'QVSR' : 'Slider',
       },
       step11: {
         feePreference: '50',
+        showContent: Math.random() < 0.5 ? 'QVSR' : 'Slider',
       },
       step14: {
         fsm: {
@@ -48,6 +54,9 @@ const App = () => {
           expensive: '8700',
           greatValue: '8700',
         },
+      },
+      step15: {
+        showContent: Math.random() < 0.5 ? 'A' : 'B',
       },
     },
     resolver: zodResolver(validation),

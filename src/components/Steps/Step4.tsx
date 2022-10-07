@@ -1,4 +1,4 @@
-import Typography from 'components/Typography'
+import Typography, { Caption } from 'components/Typography'
 import Quadratic from 'methods/Quadratic'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
@@ -17,19 +17,20 @@ const Step4 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Typography>
-        Your neighborhood is asked to participate in a vote. When you make your
-        decisions, please imagine everyone else in your neighborhood will be
-        participating in this exercise too.
+      <Typography css={tw`text-justify`}>
+        <Caption css={tw`mr-3`}>4.8</Caption>Your neighborhood is asked to
+        participate in a vote. When you make your decisions, please imagine
+        everyone else in your neighborhood will be participating in this
+        exercise too.
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         Please look at the options provided and indicate how much votes you
         would like to allocate to each option. If you dislike any of the
         options, you can also "downvote" them.
       </Typography>
 
-      <Typography>
+      <Typography css={tw`text-justify`}>
         Now, Imagine that the city of Beira has received MONEY to improve its
         public services. In your opinion, which of the different options is
         IMPORTANT to you? You may allocate your votes for more than one option.

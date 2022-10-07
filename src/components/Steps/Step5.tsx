@@ -1,44 +1,58 @@
+import Typography, { Caption } from 'components/Typography'
+import { memo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step5 = () => {
-  const { setValue } = useFormContext()
+  const { getValues } = useFormContext()
 
-  const isHeads = Math.random() < 0.5
-
-  setValue('step5.showContent', isHeads ? 'A' : 'B')
+  const content = getValues('step5.showContent')
 
   return (
-    <div css={tw`grid grid-cols-1 gap-2`}>
-      {isHeads && (
-        <>
+    <div>
+      {content === 'A' && (
+        <div css={tw`grid grid-cols-1 gap-2`}>
+          <Typography css={tw`text-justify`}>
+            <Caption css={tw`mr-3`}>4.9</Caption> I've been thinking about how
+            the utility SASB has been managing sanitation services. And though I
+            don't know much about sanitation, in my personal opinion, they've
+            been doing a good job
+          </Typography>
+
+          <Typography css={tw`text-justify`}>
+            And in order to improve service quality, SASB has implemented an
+            innovative new training program for its workers since February 2022.
+            The program involves
+          </Typography>
+
           <div>
-            In response to customer complaints , SASB has implemented a training
-            program for its workers to improve service quality since February
-            2022. The program involves
+            <Typography css={tw`text-justify`}>
+              1) quickly fixing sewer blockages or bursts
+            </Typography>
+            <Typography css={tw`text-justify`}>
+              2) improving drainage
+            </Typography>
+            <Typography css={tw`text-justify`}>
+              3) promptly addressing customer complaints and
+            </Typography>
+            <Typography css={tw`text-justify`}>
+              4) reducing service disruptions. This innovative training program
+              has improved service reliability by 55 percent and complaints
+              response time by 34 percent in another country.
+            </Typography>
           </div>
-          <div>
-            <div>1) fixing sewer blockages or bursts in a timely manner</div>
-            <div>2) improving drainage conditions in the city</div>
-            <div>3) promptly addressing customer complaints and</div>
-            <div>
-              4) reducing service disruptions. A similar training program has
-              improved service reliability by 55 percent and complaints response
-              time by 34 percent.
-            </div>
-          </div>
-        </>
-      )}
-      {!isHeads && (
-        <div>
-          So I've been thinking about the current conditions of City and how the
-          City Government has been dealing with everything and while I don't
-          really know how great they have been doing, in my personal opinion, I
-          really like them.
         </div>
+      )}
+      {content === 'B' && (
+        <Typography css={tw`text-justify`}>
+          <Caption css={tw`mr-3`}>4.10</Caption>I've been thinking about how the
+          utility SASB has been managing sanitation services. And though I don't
+          know much about sanitation, in my personal opinion, they've been doing
+          a good job
+        </Typography>
       )}
     </div>
   )
 }
 
-export default Step5
+export default memo(Step5)
