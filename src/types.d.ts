@@ -57,4 +57,15 @@ export interface FormValues {
     revisePrice: string
     willingPay?: number
   }
+  step13: {
+    emptiedSepticTank?: string
+    contactedServiceProvider?: string
+    lastTimeContacted?: string
+    contactedWho?: any
+    contactedOther?: string
+    SASBNotContactedReasons?: any
+    whatServices?: string
+    paidService?: string
+    serviceHowMuch?: number
+  }
 }

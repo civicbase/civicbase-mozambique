@@ -51,6 +51,19 @@ const validationSchema = z.object({
     revisePrice: z.string(),
     willingPay: z.number().optional(),
   }),
+  step13: z
+    .object({
+      emptiedSepticTank: z.string().optional(),
+      contactedServiceProvider: z.string().optional(),
+      lastTimeContacted: z.string().optional(),
+      contactedWho: z.any().optional(),
+      contactedOther: z.string().optional(),
+      SASBNotContactedReasons: z.any().optional(),
+      whatServices: z.string().optional(),
+      paidService: z.string().optional(),
+      serviceHowMuch: z.number().optional(),
+    })
+    .optional(),
   // step1: z.object({
   //   unique_id: z.string().min(1, { message: 'Please input unique id' }),
   //   bill: z.object({
