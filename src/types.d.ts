@@ -96,4 +96,8 @@ export interface FormValues {
   step17: {
     SASBSatisfaction: string
   }
+  step18: {
+    shareSASBSatisfaction: string
+    knowHowContactSASB: string
+  }
 }
