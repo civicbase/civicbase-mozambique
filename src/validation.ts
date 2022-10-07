@@ -97,6 +97,9 @@ const validationSchema = z.object({
         .optional(),
     })
     .optional(),
+  step17: z.object({
+    SASBSatisfaction: z.string(),
+  }),
 
   // step1: z.object({
   //   unique_id: z.string().min(1, { message: 'Please input unique id' }),

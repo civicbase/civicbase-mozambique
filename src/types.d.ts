@@ -93,4 +93,7 @@ export interface FormValues {
       beiraMunicipalityLast6Months: string
     }
   }
+  step17: {
+    SASBSatisfaction: string
+  }
 }
