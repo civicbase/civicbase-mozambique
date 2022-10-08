@@ -23,7 +23,7 @@ const App = () => {
 
   const methods = useForm<FormValues>({
     defaultValues: {
-      date: new Date().toISOString(),
+      startAt: new Date().toISOString(),
       sewerWillingPay: 0,
       step1: {
         language: language === 'pt' ? 'Português' : 'English',
@@ -85,7 +85,11 @@ const App = () => {
     { page: 15, content: content15 },
   ])
 
-  console.log('errors', methods.formState.errors)
+  // const values = methods.getValues()
+
+  // console.log('values', values)
+
+  // console.log('errors', methods.formState.errors)
 
   const handlePrevious = () => {
     if (step > 1) {

@@ -15,8 +15,6 @@ const Step28 = () => {
 
   const revisedPrice = watch('step28.revise_stated_price')
 
-  console.log('errors', errors)
-
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
       <div>

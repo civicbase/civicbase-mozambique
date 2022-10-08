@@ -1,13 +1,13 @@
-type Question = {
+export type Question = {
   credits: number
   order: number
   statement: string
   vote: number
 }
-type Quadratic = Question[]
+export type Quadratic = Question[]
 
 export interface FormValues {
-  date: string
+  startAt: string
   sewerWillingPay: string | number
   step1: {
     uniqueId: string

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
+import { getMostVoted } from 'utils/quadratic'
 import * as Section from '.'
 
 type StepsProps = {
@@ -9,7 +10,7 @@ type StepsProps = {
 }
 
 const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
-  const { getValues } = useFormContext()
+  const { getValues, setValue } = useFormContext()
   const sanitationType = getValues('step2.sanitationType')
 
   useEffect(() => {
@@ -40,12 +41,60 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
       return <Section.Step7 />
     case 8:
       return <Section.Step8 />
-    case 9:
+    case 9: {
+      const revise = getValues('step8.revisePrice') !== 'Stay the same'
+
+      if (!revise) {
+        const content = getValues('step7.content')
+
+        if (content === 'Treatment - QVSR') {
+          const quadratic = getValues('step7.QVSR')
+          const mostVoted = getMostVoted(quadratic)
+
+          if (mostVoted) {
+            const value = mostVoted.statement.match(/\d+/)
+
+            if (value && value[0]) {
+              setValue('step8.willingPay', Number(value[0]))
+            }
+          }
+        } else {
+          const value = getValues('step7.amountPreference')
+
+          setValue('step8.willingPay', Number(value))
+        }
+      }
+
       return <Section.Step9 />
+    }
     case 10:
       return <Section.Step10 />
-    case 11:
+    case 11: {
+      const revise = getValues('step10.revisePrice') !== 'Stay the same'
+
+      if (!revise) {
+        const content = getValues('step9.content')
+
+        if (content === 'Treatment - QVSR') {
+          const quadratic = getValues('step9.QVSR')
+          const mostVoted = getMostVoted(quadratic)
+
+          if (mostVoted) {
+            const value = mostVoted.statement.match(/\d+/)
+
+            if (value && value[0]) {
+              setValue('step10.willingPay', Number(value[0]))
+            }
+          }
+        } else {
+          const value = getValues('step9.pricePreference')
+
+          setValue('step10.willingPay', Number(value))
+        }
+      }
+
       return <Section.Step11 />
+    }
     case 12:
       return <Section.Step12 />
     case 13:
@@ -62,8 +111,32 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
         onNext()
         return null
       }
-    case 15:
+    case 15: {
+      const revise = getValues('step12.revisePrice') !== 'Stay the same'
+
+      if (!revise) {
+        const content = getValues('step11.content')
+
+        if (content === 'Treatment - QVSR') {
+          const quadratic = getValues('step11.QVSR')
+          const mostVoted = getMostVoted(quadratic)
+
+          if (mostVoted) {
+            const value = mostVoted.statement.match(/\d+/)
+
+            if (value && value[0]) {
+              setValue('step12.willingPay', Number(value[0]))
+            }
+          }
+        } else {
+          const value = getValues('step11.feePreference')
+
+          setValue('step12.willingPay', Number(value))
+        }
+      }
+
       return <Section.Step15 />
+    }
     case 16:
       return <Section.Step16 />
     case 17:
