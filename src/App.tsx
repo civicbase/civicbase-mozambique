@@ -30,6 +30,7 @@ const App = () => {
         uniqueId: params.uniqueId,
       },
       step2: {
+        sanitationType: 'Flush to Sewer', // TODO: remove
         waterBill: {
           shareNumber: 0,
         },
@@ -97,11 +98,11 @@ const App = () => {
     }
   }
   const handleNext = () => {
-    methods.trigger(`step${step}` as any).then(isValid => {
-      if (isValid) {
-        setStep(step + 1)
-      }
-    })
+    // methods.trigger(`step${step}` as any).then(isValid => {
+    // if (isValid) {
+    setStep(step + 1)
+    // }
+    // })
   }
 
   return (

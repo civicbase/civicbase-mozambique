@@ -8,6 +8,7 @@ export type Quadratic = Question[]
 
 export interface FormValues {
   startAt: string
+  finishAt: string
   sewerWillingPay: string | number
   step1: {
     uniqueId: string
@@ -112,5 +113,77 @@ export interface FormValues {
   step18: {
     shareSASBSatisfaction: string
     knowHowContactSASB: string
+  }
+  step19: {
+    oftenSewerDwellingCompoundProblem: string
+    sewerDwellingCompoundReductions: string
+    oftenSewerProblem: string
+    sewerReductions: string
+    oftenBadSmellDwellingCompound: string
+    sewerBadSmellDwellingCompoundReductions: string
+  }
+  step20?: {
+    contacted?: string
+    contactedMonth?: string
+    contactedYear?: string
+    problem?: string
+    contactedWho?: string
+    contactedOther?: string
+    whyDidntContacted?: any
+    treatFairPolite?: string
+    moreThanOneCall?: string
+    bribe?: string
+    anotherEntity?: string
+    problemResolved?: string
+    howLong?: string
+  }
+  step21: {
+    revisePrice: string
+    willingPay?: number
+  }
+  step22: {
+    revisePrice: string
+    willingPay?: number
+  }
+  step23: {
+    treatFairPolite: string
+    moreThanOneCall: string
+    bribe: string
+    dealthWith: string
+    problemResolved: string
+    howLong: string
+  }
+  step24: {
+    revisePrice: string
+    willingPay?: number
+  }
+  step25: {
+    drainageBoxBlocked: string
+    drainageBoxBlockReductions: string
+    drainageDitchBlock: string
+    drainageDitchBlockReductions: string
+    walkedWater: string
+    soakedPassingCar: string
+    StagnantWaterDisease: string
+    StagnantWaterReductions: string
+    floodAfterRain: string
+    floodAfterRainReductions: string
+  }
+  step26: {
+    contactedDrainageIssue: string
+    contacted?: {
+      month?: string
+      year?: string
+      problem?: string
+      other?: string
+      who?: any
+    }
+    SASBNotContactedReasons?: any
+    treatFairPolite?: string
+    moreThanOneCall?: string
+    bribe?: string
+    anotherEntity?: string
+    problemResolved?: string
+    howLong?: string
   }
 }

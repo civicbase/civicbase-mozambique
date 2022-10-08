@@ -153,6 +153,82 @@ const validationSchema = z.object({
     shareSASBSatisfaction: z.string(),
     knowHowContactSASB: z.string(),
   }),
+  step19: z.object({
+    oftenSewerDwellingCompoundProblem: z.string(),
+    sewerDwellingCompoundReductions: z.string().optional(),
+    oftenSewerProblem: z.string(),
+    sewerReductions: z.string(),
+    oftenBadSmellDwellingCompound: z.string().optional(),
+    sewerBadSmellDwellingCompoundReductions: z.string().optional(),
+  }),
+  step20: z
+    .object({
+      contacted: z.string().optional(),
+      contactedMonth: z.string().optional(),
+      contactedYear: z.string().optional(),
+      problem: z.string().optional(),
+      contactedWho: z.string().optional(),
+      contactedOther: z.string().optional(),
+      whyDidntContacted: z.any().optional(),
+      treatFairPolite: z.string().optional(),
+      moreThanOneCall: z.string().optional(),
+      bribe: z.string().optional(),
+      anotherEntity: z.string().optional(),
+      problemResolved: z.string().optional(),
+      howLong: z.string().optional(),
+    })
+    .optional(),
+  step21: z.object({
+    revisePrice: z.string(),
+    willingPay: z.number().optional(),
+  }),
+  step22: z.object({
+    revisePrice: z.string(),
+    willingPay: z.number().optional(),
+  }),
+  step23: z.object({
+    treatFairPolite: z.string(),
+    moreThanOneCall: z.string(),
+    bribe: z.string(),
+    dealthWith: z.string(),
+    problemResolved: z.string(),
+    howLong: z.string(),
+  }),
+  step24: z.object({
+    revisePrice: z.string(),
+    willingPay: z.number().optional(),
+  }),
+  step25: z.object({
+    drainageBoxBlocked: z.string(),
+    drainageBoxBlockReductions: z.string(),
+    drainageDitchBlock: z.string(),
+    drainageDitchBlockReductions: z.string(),
+    walkedWater: z.string(),
+    soakedPassingCar: z.string(),
+    StagnantWaterDisease: z.string(),
+    StagnantWaterReductions: z.string(),
+    floodAfterRain: z.string(),
+    floodAfterRainReductions: z.string(),
+  }),
+  step26: z.object({
+    contactedDrainageIssue: z.string(),
+    contacted: z
+      .object({
+        month: z.string().optional(),
+        year: z.string().optional(),
+        problem: z.string().optional(),
+        other: z.string().optional(),
+        who: z.any().optional(),
+      })
+      .optional(),
+    SASBNotContactedReasons: z.string().optional(),
+    treatFairPolite: z.string().optional(),
+    moreThanOneCall: z.string().optional(),
+    bribe: z.string().optional(),
+    anotherEntity: z.string().optional(),
+    problemResolved: z.string().optional(),
+    howLong: z.string().optional(),
+  }),
 })
 
 export default validationSchema

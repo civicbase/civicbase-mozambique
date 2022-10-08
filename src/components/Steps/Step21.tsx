@@ -2,6 +2,7 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
+import Heading from 'components/Heading'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
@@ -9,19 +10,20 @@ const Step21 = () => {
   const {
     register,
     watch,
-    control,
     formState: { errors },
   } = useFormContext()
 
-  const revisedPrice = watch('step21.revise_stated_price')
+  const revisedPrice = watch('step21.revisePrice')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
+      <Heading subtitle="Revising WTP: Sewer Connection Fee" />
+
       <div>
-        <Label required>
-          Having shared your experience with the sewer connection , would you
-          like to revise your previously stated price for the monthly sewer
-          charge ? Remember, your proposed price is (Y1)
+        <Label number="5.20" required>
+          On reflection, would you like to revise the previously stated price
+          for the one time sewer connection fee? Remember, your proposed price
+          is (Y)
         </Label>
 
         <div css={tw`flex justify-between`}>
@@ -31,10 +33,7 @@ const Step21 = () => {
               key={option}
             >
               <span css={tw`text-center`}>{option}</span>
-              <Radio
-                {...register(`step21.revise_stated_price`)}
-                value={option}
-              />
+              <Radio {...register(`step21.revisePrice`)} value={option} />
             </label>
           ))}
         </div>
@@ -42,19 +41,19 @@ const Step21 = () => {
 
       {(revisedPrice === 'Revise up' || revisedPrice === 'Revise down') && (
         <div>
-          <Label required>
+          <Label number="5.21" required>
             Please let us know the new price that you would be willing to pay?
           </Label>
           <Input
-            {...register('step21.willing_pay', {
+            {...register('step21.willingPay', {
               required: true,
               valueAsNumber: true,
             })}
-            error={!!errors?.step16?.willing_pay}
+            error={!!errors?.step21?.willingPay}
             type="number"
           />
 
-          <FieldErrorMessage name="step21.willing_pay" errors={errors} />
+          <FieldErrorMessage name="step21.willingPay" errors={errors} />
         </div>
       )}
     </div>

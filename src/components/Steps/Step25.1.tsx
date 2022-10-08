@@ -2,27 +2,25 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
-import Heading from 'components/Heading'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
-const Step22 = () => {
+const Step25 = () => {
   const {
     register,
     watch,
     formState: { errors },
   } = useFormContext()
 
-  const revisedPrice = watch('step22.revisePrice')
+  const revisedPrice = watch('step25.revise_stated_price')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="Revising WTP : Monthly Sanitation Tax/Sewer Service Fee" />
       <div>
-        <Label number="5.22" required>
-          On reflection, would you like to revise the previously stated price
-          for the for the monthly sanitation tax or sewer service fee? Remember,
-          your proposed price is (Y)
+        <Label required>
+          Having shared your experience with the drainage conditions in your
+          neighborhood, would you like to revise the previously stated price for
+          the FSM ? Remember, your proposed price is (Y)
         </Label>
 
         <div css={tw`flex justify-between`}>
@@ -32,7 +30,10 @@ const Step22 = () => {
               key={option}
             >
               <span css={tw`text-center`}>{option}</span>
-              <Radio {...register(`step22.revisePrice`)} value={option} />
+              <Radio
+                {...register(`step25.revise_stated_price`)}
+                value={option}
+              />
             </label>
           ))}
         </div>
@@ -40,23 +41,23 @@ const Step22 = () => {
 
       {(revisedPrice === 'Revise up' || revisedPrice === 'Revise down') && (
         <div>
-          <Label number="5.23" required>
+          <Label required>
             Please let us know the new price that you would be willing to pay?
           </Label>
           <Input
-            {...register('step22.willingPay', {
+            {...register('step25.willing_pay', {
               required: true,
               valueAsNumber: true,
             })}
-            error={!!errors?.step22?.willingPay}
+            error={!!errors?.step16?.willing_pay}
             type="number"
           />
 
-          <FieldErrorMessage name="step22.willingPay" errors={errors} />
+          <FieldErrorMessage name="step25.willing_pay" errors={errors} />
         </div>
       )}
     </div>
   )
 }
 
-export default Step22
+export default Step25
