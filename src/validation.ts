@@ -88,14 +88,18 @@ const validationSchema = z.object({
   step13: z
     .object({
       emptiedSepticTank: z.string().optional(),
-      contactedServiceProvider: z.string().optional(),
-      lastTimeContacted: z.string().optional(),
-      contactedWho: z.any().optional(),
-      contactedOther: z.string().optional(),
-      SASBNotContactedReasons: z.any().optional(),
-      whatServices: z.string().optional(),
-      paidService: z.string().optional(),
-      serviceHowMuch: z.number().optional(),
+      serviceProvider: z.object({
+        contacted: z.string().optional(),
+        contactedMonth: z.string().optional(),
+        contactedYear: z.string().optional(),
+        who: z.any().optional(),
+        other: z.string().optional(),
+        service: z.string().optional(),
+        paid: z.string().optional(),
+        howMuch: z.number().optional(),
+        unknownHowMuch: z.boolean().optional(),
+      }),
+      SASBNotContactedReasons: z.any(),
     })
     .optional(),
   step14: z
@@ -134,6 +138,16 @@ const validationSchema = z.object({
     .optional(),
   step17: z.object({
     SASBSatisfaction: z.string(),
+    share: z
+      .array(
+        z.object({
+          name: z.string().min(1),
+          relationship: z.string(),
+          closeness: z.string(),
+        }),
+      )
+      .min(1)
+      .max(5),
   }),
   step18: z.object({
     shareSASBSatisfaction: z.string(),

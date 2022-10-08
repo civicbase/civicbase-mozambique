@@ -4,7 +4,6 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Heading from 'components/Heading'
-import Typography from 'components/Typography'
 import { memo } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
@@ -17,10 +16,10 @@ const Step13 = () => {
     formState: { errors },
   } = useFormContext()
 
-  const contacted = watch('step13.contactedServiceProvider')
-  const contactedOther = watch('step13.contactedWho.Other')
-  const contactedSASB = watch('step13.contactedWho.SASB')
-  const paid = watch('step13.paidService')
+  const contacted = watch('step13.serviceProvider.contacted')
+  const contactedOther = watch('step13.serviceProvider.who.Other')
+  const contactedSASB = watch('step13.serviceProvider.who.SASB')
+  const paid = watch('step13.serviceProvider.paid')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -51,7 +50,7 @@ const Step13 = () => {
           Did you contact a service provider to empty the cesspool?
         </Label>
         <Controller
-          name="step13.contactedServiceProvider"
+          name="step13.serviceProvider.contacted"
           control={control}
           render={({ field }) => (
             <Dropdown
@@ -59,12 +58,12 @@ const Step13 = () => {
               value={field.value}
               onChange={field.onChange}
               placeholder="Please select an option"
-              error={!!errors?.step13?.contactedServiceProvider}
+              error={!!errors?.step13?.serviceProvider?.contacted}
             />
           )}
         />
         <FieldErrorMessage
-          name="step13.contactedServiceProvider"
+          name="step13.serviceProvider.contacted"
           errors={errors}
         />
       </div>
@@ -76,22 +75,74 @@ const Step13 = () => {
               When was the last time you contacted someone to empty the
               cesspool?
             </Label>
-            <Typography>TODO: Month - Year</Typography>
-            {/* <Controller
-          name="step13.service_provider.contacted"
-          control={control}
-          render={({ field }) => (
-            <Dropdown
-              options={['Yes', 'No']}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Please select an option"
-              error={!!errors?.step13?.service_provider?.contacted}
-            />
-          )}
-        /> */}
+
+            <div css={tw`flex space-x-2`}>
+              <Controller
+                name="step13.serviceProvider.contactedMonth"
+                control={control}
+                render={({ field }) => (
+                  <div css={tw`flex-1`}>
+                    <Dropdown
+                      options={[
+                        'January',
+                        'February',
+                        'March',
+                        'April',
+                        'May',
+                        'June',
+                        'July',
+                        'August',
+                        'September',
+                        'October',
+                        'November',
+                        'December',
+                      ]}
+                      value={field.value}
+                      onChange={field.onChange}
+                      placeholder="Month"
+                      error={!!errors?.step13?.serviceProvider?.contactedMonth}
+                    />
+                  </div>
+                )}
+              />
+              <Controller
+                name="step13.serviceProvider.contactedYear"
+                control={control}
+                render={({ field }) => (
+                  <div css={tw`flex-1`}>
+                    <Dropdown
+                      options={[
+                        '2010',
+                        '2011',
+                        '2012',
+                        '2013',
+                        '2014',
+                        '2015',
+                        '2016',
+                        '2017',
+                        '2018',
+                        '2019',
+                        '2020',
+                        '2021',
+                        '2022',
+                      ]}
+                      value={field.value}
+                      onChange={field.onChange}
+                      placeholder="Year"
+                      error={!!errors?.step13?.serviceProvider?.contactedYear}
+                    />
+                  </div>
+                )}
+              />
+            </div>
+
             <FieldErrorMessage
-              name="step13.lastTimeContacted"
+              name="step13.serviceProvider.contactedMonth"
+              errors={errors}
+            />
+
+            <FieldErrorMessage
+              name="step13.serviceProvider.contactedYear"
               errors={errors}
             />
           </div>
@@ -107,7 +158,9 @@ const Step13 = () => {
                   css={tw`inline-flex space-x-4 items-center select-none`}
                   key={option}
                 >
-                  <Checkbox {...register(`step13.contactedWho.${option}`)} />
+                  <Checkbox
+                    {...register(`step13.serviceProvider.who.${option}`)}
+                  />
                   <span>{option}</span>
                 </label>
               ))}
@@ -120,13 +173,16 @@ const Step13 = () => {
                 Specify other
               </Label>
               <Input
-                {...register('step13.contactedOther', {
+                {...register('step13.serviceProvider.other', {
                   required: true,
                 })}
                 error={!!errors?.step13?.service_provider?.how_much}
               />
 
-              <FieldErrorMessage name="step13.contactedOther" errors={errors} />
+              <FieldErrorMessage
+                name="step13.serviceProvider.other"
+                errors={errors}
+              />
             </div>
           )}
 
@@ -167,7 +223,7 @@ const Step13 = () => {
           What services did you request
         </Label>
         <Controller
-          name="step13.whatServices"
+          name="step13.serviceProvider.service"
           control={control}
           render={({ field }) => (
             <Dropdown
@@ -179,11 +235,14 @@ const Step13 = () => {
               value={field.value}
               onChange={field.onChange}
               placeholder="Please select an option"
-              error={!!errors?.step13?.whatServices}
+              error={!!errors?.step13?.serviceProvider?.service}
             />
           )}
         />
-        <FieldErrorMessage name="step13.whatServices" errors={errors} />
+        <FieldErrorMessage
+          name="step13.serviceProvider.service"
+          errors={errors}
+        />
       </div>
 
       <div>
@@ -191,7 +250,7 @@ const Step13 = () => {
           Did you pay for the service?
         </Label>
         <Controller
-          name="step13.paidService"
+          name="step13.serviceProvider.paid"
           control={control}
           render={({ field }) => (
             <Dropdown
@@ -199,11 +258,11 @@ const Step13 = () => {
               value={field.value}
               onChange={field.onChange}
               placeholder="Please select an option"
-              error={!!errors?.step13?.paidService}
+              error={!!errors?.step13?.serviceProvider?.paid}
             />
           )}
         />
-        <FieldErrorMessage name="step13.paidService" errors={errors} />
+        <FieldErrorMessage name="step13.serviceProvider.paid" errors={errors} />
       </div>
 
       {paid === 'Yes' && (
@@ -212,15 +271,15 @@ const Step13 = () => {
             How much did you pay for the service?
           </Label>
           <Input
-            {...register('step13.serviceHowMuch', {
+            {...register('step13.serviceProvider.howMuch', {
               valueAsNumber: true,
             })}
-            error={!!errors?.step13?.serviceHowMuch}
+            error={!!errors?.step13?.serviceProvider?.howMuch}
             type="number"
           />
 
           <label css={tw`inline-flex space-x-4 items-center select-none mt-2`}>
-            <Checkbox {...register(`step13.serviceHowMuch.IDontKnow`)} />
+            <Checkbox {...register(`step13.serviceProvider.unknownHowMuch`)} />
             <span>I don't know</span>
           </label>
         </div>

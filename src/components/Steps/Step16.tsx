@@ -29,7 +29,7 @@ const Step16 = () => {
                 'Dissastisfied',
               ].map(option => (
                 <label
-                  css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+                  css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
                   key={option}
                 >
                   <span css={tw`text-center text-sm`}>{option}</span>
@@ -57,7 +57,7 @@ const Step16 = () => {
                 `Don't know`,
               ].map(option => (
                 <label
-                  css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+                  css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
                   key={option}
                 >
                   <span css={tw`text-center text-sm`}>{option}</span>
@@ -86,7 +86,7 @@ const Step16 = () => {
             'Dissastisfied',
           ].map(option => (
             <label
-              css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+              css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
               key={option}
             >
               <span css={tw`text-center text-sm`}>{option}</span>
@@ -114,7 +114,7 @@ const Step16 = () => {
             `Don't know`,
           ].map(option => (
             <label
-              css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+              css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
               key={option}
             >
               <span css={tw`text-center text-sm`}>{option}</span>
@@ -143,7 +143,7 @@ const Step16 = () => {
                 'Dissastisfied',
               ].map(option => (
                 <label
-                  css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+                  css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
                   key={option}
                 >
                   <span css={tw`text-center text-sm`}>{option}</span>
@@ -174,7 +174,7 @@ const Step16 = () => {
                 'Not Applicable',
               ].map(option => (
                 <label
-                  css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+                  css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
                   key={option}
                 >
                   <span css={tw`text-center text-sm`}>{option}</span>
@@ -206,7 +206,7 @@ const Step16 = () => {
             'Not Applicable',
           ].map(option => (
             <label
-              css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+              css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
               key={option}
             >
               <span css={tw`text-center text-sm`}>{option}</span>
@@ -234,7 +234,7 @@ const Step16 = () => {
             `Don't know`,
           ].map(option => (
             <label
-              css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+              css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
               key={option}
             >
               <span css={tw`text-center text-sm`}>{option}</span>
@@ -263,7 +263,7 @@ const Step16 = () => {
             'Dissastisfied',
           ].map(option => (
             <label
-              css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+              css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
               key={option}
             >
               <span css={tw`text-center text-sm`}>{option}</span>
@@ -291,7 +291,7 @@ const Step16 = () => {
             `Don't know`,
           ].map(option => (
             <label
-              css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
+              css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
               key={option}
             >
               <span css={tw`text-center text-sm`}>{option}</span>

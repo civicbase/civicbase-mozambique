@@ -62,14 +62,18 @@ export interface FormValues {
   }
   step13?: {
     emptiedSepticTank: string
-    contactedServiceProvider: string
-    lastTimeContacted: string
-    contactedWho: any
-    contactedOther: string
+    serviceProvider: {
+      contacted: string
+      contactedMonth: string
+      contactedYear: string
+      who: any
+      other?: string
+      service: string
+      paid: string
+      howMuch?: number
+      unknownHowMuch?: boolean
+    }
     SASBNotContactedReasons: any
-    whatServices: string
-    paidService: string
-    serviceHowMuch: number
   }
   step14?: {
     SASBService
@@ -99,6 +103,11 @@ export interface FormValues {
   }
   step17: {
     SASBSatisfaction: string
+    share?: {
+      name: string
+      relationship: string | null
+      closeness: string | null
+    }[]
   }
   step18: {
     shareSASBSatisfaction: string

@@ -64,6 +64,9 @@ const App = () => {
       step15: {
         content: Math.random() < 0.5 ? 'Treatment' : 'Control',
       },
+      step17: {
+        share: [{ name: '', relationship: null, closeness: null }],
+      },
     },
     resolver: zodResolver(validation),
   })
