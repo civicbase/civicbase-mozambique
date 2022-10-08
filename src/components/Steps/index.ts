@@ -25,6 +25,5 @@ export { default as Step24 } from './Step24'
 export { default as Step25 } from './Step25'
 export { default as Step26 } from './Step26'
 export { default as Step27 } from './Step27'
-export { default as Step28 } from './Step28'
 
 export { default } from './Steps'
