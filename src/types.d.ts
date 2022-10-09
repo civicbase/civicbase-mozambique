@@ -77,7 +77,6 @@ export interface FormValues {
     SASBNotContactedReasons: any
   }
   step14?: {
-    SASBService
     fsm: {
       tooExpensive: string
       tooCheap: string

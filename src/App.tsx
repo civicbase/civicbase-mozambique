@@ -65,7 +65,6 @@ const App = () => {
         content: QVSRSliderContent,
       },
       step14: {
-        SASBService: '8700',
         fsm: {
           tooExpensive: '8700',
           tooCheap: '8700',

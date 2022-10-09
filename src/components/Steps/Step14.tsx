@@ -11,7 +11,6 @@ const Step14 = () => {
     formState: { errors },
   } = useFormContext()
 
-  const SASBService = watch('step14.SASBService')
   const tooExpensive = watch('step14.fsm.tooExpensive')
   const tooCheap = watch('step14.fsm.tooCheap')
   const expensive = watch('step14.fsm.expensive')
@@ -32,19 +31,6 @@ const Step14 = () => {
             src={`${process.env.PUBLIC_URL}/assets/service_table.jpg`}
             alt="service"
           />
-        </div>
-
-        <div css={tw`mt-10`}>
-          <Label>${SASBService} MT</Label>
-          <input
-            type="range"
-            css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
-            min="6900"
-            max="10400"
-            step="100"
-            {...register(`step14.SASBService`)}
-          />
-          <FieldErrorMessage name="step14.SASBService" errors={errors} />
         </div>
       </div>
 

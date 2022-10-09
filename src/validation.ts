@@ -104,7 +104,6 @@ const validationSchema = z.object({
     .optional(),
   step14: z
     .object({
-      SASBService: z.string().optional(),
       fsm: z
         .object({
           tooExpensive: z.string().optional(),
