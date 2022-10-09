@@ -19,7 +19,7 @@ const Step20 = () => {
   const connection = getValues('step2.sanitationType')
   const contacted = getValues('step13.serviceProvider.contacted')
   const contactecSASB = getValues(`step13.serviceProvider.who.SASB`)
-  const contactedOther = watch('step13.contactedWho') === 'Other'
+  const contactedOther = watch('step20.contactedWho.Other')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -60,7 +60,7 @@ const Step20 = () => {
               name="step20.contactedMonth"
               control={control}
               render={({ field }) => (
-                <div css={tw`flex-1`}>
+                <div css={tw`flex-1 flex flex-col`}>
                   <Dropdown
                     options={[
                       'January',
@@ -81,6 +81,11 @@ const Step20 = () => {
                     placeholder="Month"
                     error={!!errors?.step20?.contactedMonth}
                   />
+
+                  <FieldErrorMessage
+                    name="step20.contactedMonth"
+                    errors={errors}
+                  />
                 </div>
               )}
             />
@@ -88,7 +93,7 @@ const Step20 = () => {
               name="step20.contactedYear"
               control={control}
               render={({ field }) => (
-                <div css={tw`flex-1`}>
+                <div css={tw`flex-1 flex flex-col`}>
                   <Dropdown
                     options={[
                       '2010',
@@ -110,14 +115,15 @@ const Step20 = () => {
                     placeholder="Year"
                     error={!!errors?.step20?.contactedYear}
                   />
+
+                  <FieldErrorMessage
+                    name="step20.contactedYear"
+                    errors={errors}
+                  />
                 </div>
               )}
             />
           </div>
-
-          <FieldErrorMessage name="step20.contactedMonth" errors={errors} />
-
-          <FieldErrorMessage name="step20.contactedYear" errors={errors} />
         </div>
       )}
 
@@ -157,25 +163,18 @@ const Step20 = () => {
           <Label number="5.11" required>
             Who did you contact?
           </Label>
-          <Controller
-            name="step20.contactedWho"
-            control={control}
-            render={({ field }) => (
-              <Dropdown
-                options={[
-                  'Landlord',
-                  'Plumber',
-                  'SASB',
-                  'Building Manager',
-                  'Other',
-                ]}
-                value={field.value}
-                onChange={field.onChange}
-                placeholder="Please select an option"
-                error={!!errors?.step20?.contactedWho}
-              />
-            )}
-          />
+          <div css={tw`flex flex-col space-y-4 mt-4`}>
+            {['Landlord', 'Plumber', 'SASB', 'Other'].map(option => (
+              <label
+                css={tw`inline-flex space-x-4 items-center select-none`}
+                key={option}
+              >
+                <Checkbox {...register(`step20.contactedWho.${option}`)} />
+                <span>{option}</span>
+              </label>
+            ))}
+          </div>
+
           <FieldErrorMessage name="step20.contactedWho" errors={errors} />
         </div>
       )}
@@ -301,7 +300,7 @@ const Step20 = () => {
             control={control}
             render={({ field }) => (
               <Dropdown
-                options={['Yes', 'No']}
+                options={['Referred to another entity', 'Dealth by SASB']}
                 value={field.value}
                 onChange={field.onChange}
                 placeholder="Please select an option"
@@ -346,7 +345,7 @@ const Step20 = () => {
             render={({ field }) => (
               <Dropdown
                 options={[
-                  ' A few days but within a week',
+                  'A few days but within a week',
                   'Between 1 and 2 weeks',
                   'Less than a month',
                   'More than a month',

@@ -115,7 +115,7 @@ export interface FormValues {
     knowHowContactSASB: string
   }
   step19: {
-    oftenSewerDwellingCompoundProblem: string
+    oftenSewerDwellingCompoundProblem?: string
     sewerDwellingCompoundReductions: string
     oftenSewerProblem: string
     sewerReductions: string
@@ -127,7 +127,7 @@ export interface FormValues {
     contactedMonth?: string
     contactedYear?: string
     problem?: string
-    contactedWho?: string
+    contactedWho?: any
     contactedOther?: string
     whyDidntContacted?: any
     treatFairPolite?: string
@@ -185,5 +185,9 @@ export interface FormValues {
     anotherEntity?: string
     problemResolved?: string
     howLong?: string
+  }
+  step27: {
+    revisePrice: string
+    willingPay?: number
   }
 }

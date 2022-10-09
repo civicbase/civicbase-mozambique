@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import PagesLayout from 'layout/Pages'
@@ -13,6 +13,11 @@ import { createAnswer } from 'services/answer'
 import { transform } from 'transform'
 import params from 'utils/params'
 import { FormValues } from 'types.d'
+import { getRandomQVSRSlider, getRandomTreatmentControl } from 'utils/random'
+import {
+  manualStep19Validation,
+  manualStep20Validation,
+} from 'utils/validation'
 
 const App = () => {
   const [step, setStep] = useState(1)
@@ -20,6 +25,16 @@ const App = () => {
   const { latitude, longitude, error } = useGeolocation(userGesture)
   const { run } = useAsync()
   const language = navigator.language.split(/[-_]/)[0]
+
+  const content = useMemo(() => getRandomTreatmentControl(), [])
+  const QVSRSliderContent = useMemo(() => getRandomQVSRSlider(), [])
+
+  useEffect(() => {
+    console.table([
+      { page: [7, 9, 11], content: QVSRSliderContent },
+      { page: [5, 15], content: content },
+    ])
+  }, [])
 
   const methods = useForm<FormValues>({
     defaultValues: {
@@ -30,28 +45,24 @@ const App = () => {
         uniqueId: params.uniqueId,
       },
       step2: {
-        sanitationType: 'Flush to Sewer', // TODO: remove
         waterBill: {
           shareNumber: 0,
         },
       },
       step5: {
-        content: Math.random() < 0.5 ? 'Treatment' : 'Control',
+        content: content,
       },
       step7: {
         amountPreference: '8500',
-        content:
-          Math.random() < 0.5 ? 'Treatment - QVSR' : 'Control - Price Slider',
+        content: QVSRSliderContent,
       },
       step9: {
         pricePreference: '80',
-        content:
-          Math.random() < 0.5 ? 'Treatment - QVSR' : 'Control - Price Slider',
+        content: QVSRSliderContent,
       },
       step11: {
         feePreference: '50',
-        content:
-          Math.random() < 0.5 ? 'Treatment - QVSR' : 'Control - Price Slider',
+        content: QVSRSliderContent,
       },
       step14: {
         SASBService: '8700',
@@ -63,7 +74,7 @@ const App = () => {
         },
       },
       step15: {
-        content: Math.random() < 0.5 ? 'Treatment' : 'Control',
+        content: content,
       },
       step17: {
         share: [{ name: '', relationship: null, closeness: null }],
@@ -71,20 +82,6 @@ const App = () => {
     },
     resolver: zodResolver(validation),
   })
-
-  const content5 = methods.getValues('step5.content')
-  const content7 = methods.getValues('step7.content')
-  const content9 = methods.getValues('step9.content')
-  const content11 = methods.getValues('step11.content')
-  const content15 = methods.getValues('step15.content')
-
-  console.table([
-    { page: 5, content: content5 },
-    { page: 7, content: content7 },
-    { page: 9, content: content9 },
-    { page: 11, content: content11 },
-    { page: 15, content: content15 },
-  ])
 
   // const values = methods.getValues()
 
@@ -98,11 +95,25 @@ const App = () => {
     }
   }
   const handleNext = () => {
-    // methods.trigger(`step${step}` as any).then(isValid => {
-    // if (isValid) {
-    setStep(step + 1)
-    // }
-    // })
+    if (step === 20) {
+      const isValid = manualStep20Validation(methods)
+
+      if (isValid) {
+        setStep(step + 1)
+      }
+    } else if (step === 19) {
+      const isValid = manualStep19Validation(methods)
+
+      if (isValid) {
+        setStep(step + 1)
+      }
+    } else {
+      methods.trigger(`step${step}` as any).then(isValid => {
+        if (isValid) {
+          setStep(step + 1)
+        }
+      })
+    }
   }
 
   return (

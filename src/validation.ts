@@ -153,21 +153,23 @@ const validationSchema = z.object({
     shareSASBSatisfaction: z.string(),
     knowHowContactSASB: z.string(),
   }),
-  step19: z.object({
-    oftenSewerDwellingCompoundProblem: z.string(),
-    sewerDwellingCompoundReductions: z.string().optional(),
-    oftenSewerProblem: z.string(),
-    sewerReductions: z.string(),
-    oftenBadSmellDwellingCompound: z.string().optional(),
-    sewerBadSmellDwellingCompoundReductions: z.string().optional(),
-  }),
+  step19: z
+    .object({
+      oftenSewerDwellingCompoundProblem: z.string(),
+      sewerDwellingCompoundReductions: z.string(),
+      oftenSewerProblem: z.string(),
+      sewerReductions: z.string(),
+      oftenBadSmellDwellingCompound: z.string(),
+      sewerBadSmellDwellingCompoundReductions: z.string(),
+    })
+    .partial(),
   step20: z
     .object({
       contacted: z.string().optional(),
       contactedMonth: z.string().optional(),
       contactedYear: z.string().optional(),
       problem: z.string().optional(),
-      contactedWho: z.string().optional(),
+      contactedWho: z.any().optional(),
       contactedOther: z.string().optional(),
       whyDidntContacted: z.any().optional(),
       treatFairPolite: z.string().optional(),
@@ -228,6 +230,10 @@ const validationSchema = z.object({
     anotherEntity: z.string().optional(),
     problemResolved: z.string().optional(),
     howLong: z.string().optional(),
+  }),
+  step27: z.object({
+    revisePrice: z.string(),
+    willingPay: z.number().optional(),
   }),
 })
 

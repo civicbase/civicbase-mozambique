@@ -16,7 +16,7 @@ const Step26 = () => {
     formState: { errors },
   } = useFormContext()
 
-  const contacted = getValues('step26.serviceProvider.contacted')
+  const contacted = getValues('step13.serviceProvider.contacted')
   const otherProblem = watch('step26.contacted.problem') === 'Other'
   const contactedSASB = getValues('step13.serviceProvider.who.SASB')
 
@@ -295,7 +295,7 @@ const Step26 = () => {
             control={control}
             render={({ field }) => (
               <Dropdown
-                options={['Yes', 'No']}
+                options={['Referred to another entity', 'Dealth by SASB']}
                 value={field.value}
                 onChange={field.onChange}
                 placeholder="Please select an option"

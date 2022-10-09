@@ -1,3 +1,4 @@
+import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
 import Heading from 'components/Heading'
@@ -5,7 +6,11 @@ import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step16 = () => {
-  const { register, getValues } = useFormContext()
+  const {
+    register,
+    getValues,
+    formState: { errors },
+  } = useFormContext()
   const sanitationType = getValues('step2.sanitationType')
   const contactedSASB = getValues('step13.contactedWho.SASB')
 
@@ -40,6 +45,11 @@ const Step16 = () => {
                 </label>
               ))}
             </div>
+
+            <FieldErrorMessage
+              name="step16.satisfaction.sewer"
+              errors={errors}
+            />
           </div>
 
           <div>
@@ -68,6 +78,11 @@ const Step16 = () => {
                 </label>
               ))}
             </div>
+
+            <FieldErrorMessage
+              name="step16.satisfaction.sewerlast6Months"
+              errors={errors}
+            />
           </div>
         </>
       )}
@@ -97,6 +112,11 @@ const Step16 = () => {
             </label>
           ))}
         </div>
+
+        <FieldErrorMessage
+          name="step16.satisfaction.qualityDrainage"
+          errors={errors}
+        />
       </div>
 
       <div>
@@ -125,6 +145,11 @@ const Step16 = () => {
             </label>
           ))}
         </div>
+
+        <FieldErrorMessage
+          name="step16.satisfaction.qualityDrainageLast6Months"
+          errors={errors}
+        />
       </div>
 
       {sanitationType === 'Flush to Septic Tank' && contactedSASB && (
@@ -156,6 +181,11 @@ const Step16 = () => {
                 </label>
               ))}
             </div>
+
+            <FieldErrorMessage
+              name="step16.satisfaction.SASBFecalSludgeDeslidgingService"
+              errors={errors}
+            />
           </div>
 
           <div>
@@ -187,6 +217,11 @@ const Step16 = () => {
                 </label>
               ))}
             </div>
+
+            <FieldErrorMessage
+              name="step16.satisfaction.qualityFecalSludgeLast6Months"
+              errors={errors}
+            />
           </div>
         </>
       )}
@@ -217,6 +252,11 @@ const Step16 = () => {
             </label>
           ))}
         </div>
+
+        <FieldErrorMessage
+          name="step16.satisfaction.SASBCustomerService"
+          errors={errors}
+        />
       </div>
 
       <div>
@@ -247,6 +287,11 @@ const Step16 = () => {
             </label>
           ))}
         </div>
+
+        <FieldErrorMessage
+          name="step16.satisfaction.SASBCustomerServiceLast6Months"
+          errors={errors}
+        />
       </div>
 
       <div>
@@ -274,6 +319,11 @@ const Step16 = () => {
             </label>
           ))}
         </div>
+
+        <FieldErrorMessage
+          name="step16.satisfaction.beiraMunicipality"
+          errors={errors}
+        />
       </div>
 
       <div>
@@ -304,6 +354,11 @@ const Step16 = () => {
             </label>
           ))}
         </div>
+
+        <FieldErrorMessage
+          name="step16.satisfaction.beiraMunicipalityLast6Months"
+          errors={errors}
+        />
       </div>
     </div>
   )
