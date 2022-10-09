@@ -150,15 +150,17 @@ const Step20 = () => {
             Who did you contact?
           </Label>
           <div css={tw`flex flex-col space-y-4 mt-4`}>
-            {['Landlord', 'Plumber', 'SASB', 'Other'].map(option => (
-              <label
-                css={tw`inline-flex space-x-4 items-center select-none`}
-                key={option}
-              >
-                <Checkbox {...register(`step20.contactedWho.${option}`)} />
-                <span>{option}</span>
-              </label>
-            ))}
+            {['Landlord', 'Plumber', 'SASB', 'Building Manager', 'Other'].map(
+              option => (
+                <label
+                  css={tw`inline-flex space-x-4 items-center select-none`}
+                  key={option}
+                >
+                  <Checkbox {...register(`step20.contactedWho.${option}`)} />
+                  <span>{option}</span>
+                </label>
+              ),
+            )}
           </div>
 
           <FieldErrorMessage name="step20.contactedWho" errors={errors} />

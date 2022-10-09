@@ -1,6 +1,8 @@
 import * as z from 'zod'
 
 const validationSchema = z.object({
+  startAt: z.string(),
+  finishAt: z.string(),
   step1: z.object({
     uniqueId: z.string(),
     language: z.string(),

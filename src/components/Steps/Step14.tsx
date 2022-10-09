@@ -1,6 +1,7 @@
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
 import Heading from 'components/Heading'
+import Typography, { Caption } from 'components/Typography'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
@@ -21,10 +22,11 @@ const Step14 = () => {
       <Heading subtitle="WTP for Fecal Sludge Management Services" />
 
       <div>
-        <Label number="4.34" required>
-          Currently, SASB offers the service to remove the fecal sludge and
-          clean your septic tank for a total of 8700MT.
-        </Label>
+        <Typography css={tw`text-justify`}>
+          <Caption css={tw`mr-3`}>4.34</Caption>Currently, SASB offers the
+          service to remove the fecal sludge and clean your septic tank for a
+          total of 8700MT.
+        </Typography>
 
         <div>
           <img

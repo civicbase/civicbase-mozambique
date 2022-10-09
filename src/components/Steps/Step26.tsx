@@ -158,15 +158,17 @@ const Step26 = () => {
           </Label>
 
           <div css={tw`flex flex-col space-y-4 mt-4`}>
-            {['Landlord', 'Plumber', 'SASB', 'Other'].map(option => (
-              <label
-                css={tw`inline-flex space-x-4 items-center select-none`}
-                key={option}
-              >
-                <Checkbox {...register(`step26.contacted.who.${option}`)} />
-                <span>{option}</span>
-              </label>
-            ))}
+            {['Landlord', 'Plumber', 'SASB', 'Building Manager', 'Other'].map(
+              option => (
+                <label
+                  css={tw`inline-flex space-x-4 items-center select-none`}
+                  key={option}
+                >
+                  <Checkbox {...register(`step26.contacted.who.${option}`)} />
+                  <span>{option}</span>
+                </label>
+              ),
+            )}
           </div>
         </div>
       )}

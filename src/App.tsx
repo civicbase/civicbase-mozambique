@@ -18,6 +18,7 @@ import {
   manualStep19Validation,
   manualStep20Validation,
 } from 'utils/validation'
+import ValidationSummary from 'components/ValidationSummary'
 
 const App = () => {
   const [step, setStep] = useState(1)
@@ -39,7 +40,6 @@ const App = () => {
   const methods = useForm<FormValues>({
     defaultValues: {
       startAt: new Date().toISOString(),
-      sewerWillingPay: 0,
       step1: {
         language: language === 'pt' ? 'Português' : 'English',
         uniqueId: params.uniqueId,
@@ -115,12 +115,15 @@ const App = () => {
     }
   }
 
+  const errors = methods.formState.errors
+  const literalStep = `step${step}`
+
   return (
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(values => {
           const answer = transform(values)
-
+          debugger
           console.log('answer', {
             ...answer,
             geolocation: { latitude, longitude },
@@ -137,13 +140,18 @@ const App = () => {
               step={step}
             />
           }
-          header={<Header />}
+          header={
+            <>
+              {/* <ValidationSummary step={step} /> */}
+              <Header />
+            </>
+          }
           footer={
             <Footer
               onPrevious={handlePrevious}
               onNext={handleNext}
-              hideNext={step === 28}
-              isSubmitStep={step === 28}
+              hideNext={step === 27}
+              isSubmitStep={step === 27}
               hidePrevious={true}
               isStart={step === 1}
               step={step}

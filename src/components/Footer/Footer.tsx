@@ -19,7 +19,9 @@ const Footer = ({
   step: number
   isStart?: boolean
 }) => {
-  const { setValue } = useFormContext()
+  const {
+    formState: { errors },
+  } = useFormContext()
 
   return (
     <div
@@ -43,7 +45,14 @@ const Footer = ({
         </Button>
       )}
 
-      <div css={tw`absolute bottom-4 right-4`}>{step}</div>
+      <div
+        css={[
+          tw`absolute bottom-4 right-4`,
+          errors[`step${step}`] && tw`text-red-600`,
+        ]}
+      >
+        {step}
+      </div>
     </div>
   )
 }
