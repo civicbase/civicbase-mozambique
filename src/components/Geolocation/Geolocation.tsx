@@ -1,6 +1,7 @@
 import tw from 'twin.macro'
 import Button from 'components/Button'
 import { Subtitle } from 'components/Typography'
+import locationImage from '../../images/location.png'
 
 type GeolocationMessageProps = {
   error?: GeolocationPositionError
@@ -27,10 +28,7 @@ const GeolocationMessage = ({
           FLL Training Project for SASB, Beira, Mozambique - Household Survey
         </Subtitle>
       </div>
-      <img
-        src={`${process.env.PUBLIC_URL}/assets/location.png`}
-        alt="location"
-      />
+      <img src={locationImage} alt="location" />
       <Button
         variant="primary"
         onClick={handleShareGeolocation}

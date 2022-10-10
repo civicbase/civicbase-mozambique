@@ -9,6 +9,7 @@ import Dropdown from 'components/Dropdown'
 import Input from 'components/Form/Input'
 import AddButton from 'components/AddButton'
 import { GrAdd } from 'react-icons/gr'
+import diagram from '../../images/self_diagram.jpg'
 
 const Step17 = () => {
   const {
@@ -70,10 +71,7 @@ const Step17 = () => {
           above
         </Label>
         <div>
-          <img
-            src={`${process.env.PUBLIC_URL}/assets/self_diagram.jpg`}
-            alt="service"
-          />
+          <img src={diagram} alt="service" />
         </div>
 
         <div css={tw`flex space-x-2 items-end`}>

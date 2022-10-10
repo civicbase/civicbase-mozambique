@@ -166,11 +166,11 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 23: {
       const contactecSASB = getValues(`step13.serviceProvider.who.SASB`)
 
-      if (contactecSASB) {
-        return <Section.Step23 />
-      } else {
+      if (!contactecSASB) {
         onNext()
         return null
+      } else {
+        return <Section.Step23 />
       }
     }
     case 24:

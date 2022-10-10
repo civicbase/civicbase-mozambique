@@ -5,6 +5,8 @@ import Typography, { Caption } from 'components/Typography'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
+import image from '../../images/service_table.jpg'
+
 const Step14 = () => {
   const {
     register,
@@ -29,10 +31,7 @@ const Step14 = () => {
         </Typography>
 
         <div>
-          <img
-            src={`${process.env.PUBLIC_URL}/assets/service_table.jpg`}
-            alt="service"
-          />
+          <img src={image} alt="service" />
         </div>
       </div>
 

@@ -18,10 +18,6 @@ export interface FormValues {
     neighborhood: string
     sanitationType: string
     dwellingType: string
-    waterBill: {
-      share: string
-      shareNumber: number
-    }
   }
   step3: {
     compare: string
@@ -144,7 +140,7 @@ export interface FormValues {
     revisePrice: string
     willingPay?: number
   }
-  step23: {
+  step23?: {
     treatFairPolite: string
     moreThanOneCall: string
     bribe: string

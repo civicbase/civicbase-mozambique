@@ -44,11 +44,6 @@ const App = () => {
         language: language === 'pt' ? 'Português' : 'English',
         uniqueId: params.uniqueId,
       },
-      step2: {
-        waterBill: {
-          shareNumber: 0,
-        },
-      },
       step5: {
         content: content,
       },
@@ -86,7 +81,7 @@ const App = () => {
 
   // console.log('values', values)
 
-  // console.log('errors', methods.formState.errors)
+  console.log('errors', methods.formState.errors)
 
   const handlePrevious = () => {
     if (step > 1) {
@@ -115,21 +110,18 @@ const App = () => {
     }
   }
 
-  const errors = methods.formState.errors
-  const literalStep = `step${step}`
-
   return (
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(values => {
-          const answer = transform(values)
-          debugger
-          console.log('answer', {
-            ...answer,
+          const answer = transform({
+            ...values,
             geolocation: { latitude, longitude },
           })
 
-          run(createAnswer({ ...answer, geolocation: { latitude, longitude } }))
+          console.log('answer', answer)
+
+          run(createAnswer(answer))
         })}
       >
         <PagesLayout

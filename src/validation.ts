@@ -7,48 +7,11 @@ const validationSchema = z.object({
     uniqueId: z.string(),
     language: z.string(),
   }),
-  step2: z
-    .object({
-      neighborhood: z.string(),
-      sanitationType: z.string(),
-      dwellingType: z.string(),
-      waterBill: z.object({
-        share: z.string().optional(),
-        shareNumber: z.number().optional(),
-      }),
-    })
-    .refine(
-      step => {
-        if (step.dwellingType === 'Compound / Collective') {
-          return step.waterBill.share
-        }
-        return true
-      },
-      {
-        message: 'Required',
-        path: ['waterBill.share'],
-      },
-    )
-    .refine(
-      step => {
-        if (step.dwellingType === 'Compound / Collective') {
-          if (step.waterBill.share === 'Yes') {
-            if (step.waterBill.shareNumber) {
-              return (
-                step.waterBill.shareNumber >= 0 &&
-                step.waterBill.shareNumber <= 20
-              )
-            }
-          }
-        }
-
-        return true
-      },
-      {
-        message: 'Number must be greater than 0 and less than 20',
-        path: ['waterBill.shareNumber'],
-      },
-    ),
+  step2: z.object({
+    neighborhood: z.string(),
+    sanitationType: z.string(),
+    dwellingType: z.string(),
+  }),
   step3: z.object({
     compare: z.string(),
   }),
@@ -189,14 +152,16 @@ const validationSchema = z.object({
     revisePrice: z.string(),
     willingPay: z.number().optional(),
   }),
-  step23: z.object({
-    treatFairPolite: z.string(),
-    moreThanOneCall: z.string(),
-    bribe: z.string(),
-    dealthWith: z.string(),
-    problemResolved: z.string(),
-    howLong: z.string(),
-  }),
+  step23: z
+    .object({
+      treatFairPolite: z.string(),
+      moreThanOneCall: z.string(),
+      bribe: z.string(),
+      dealthWith: z.string(),
+      problemResolved: z.string(),
+      howLong: z.string(),
+    })
+    .optional(),
   step24: z.object({
     revisePrice: z.string(),
     willingPay: z.number().optional(),
@@ -224,7 +189,7 @@ const validationSchema = z.object({
         who: z.any().optional(),
       })
       .optional(),
-    SASBNotContactedReasons: z.string().optional(),
+    SASBNotContactedReasons: z.any().optional(),
     treatFairPolite: z.string().optional(),
     moreThanOneCall: z.string().optional(),
     bribe: z.string().optional(),

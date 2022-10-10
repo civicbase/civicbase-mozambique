@@ -36,6 +36,8 @@ const Step22 = () => {
             </label>
           ))}
         </div>
+
+        <FieldErrorMessage name="step22.revisePrice" errors={errors} />
       </div>
 
       {(revisedPrice === 'Revise up' || revisedPrice === 'Revise down') && (
