@@ -10,10 +10,12 @@ const Step21 = () => {
   const {
     register,
     watch,
+    getValues,
     formState: { errors },
   } = useFormContext()
 
   const revisedPrice = watch('step21.revisePrice')
+  const y = getValues('step8.willingPay')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -23,7 +25,7 @@ const Step21 = () => {
         <Label number="5.20" required>
           On reflection, would you like to revise the previously stated price
           for the one time sewer connection fee? Remember, your proposed price
-          is (Y)
+          is ({y} MT)
         </Label>
 
         <div css={tw`flex justify-between`}>

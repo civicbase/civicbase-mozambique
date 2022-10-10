@@ -9,19 +9,20 @@ const Step27 = () => {
   const {
     register,
     watch,
-    control,
+    getValues,
     formState: { errors },
   } = useFormContext()
 
   const revisedPrice = watch('step27.revisePrice')
+  const y = getValues('step11.feePreference')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
       <div>
-        <Label required>
+        <Label number="6.24" required>
           On reflection, would you like to revise the previously stated price
           for a NEW monthly drainage maintenance fee ? Remember, your proposed
-          price is (Y)
+          price is ({y} MT)
         </Label>
 
         <div css={tw`flex justify-between`}>
@@ -39,7 +40,7 @@ const Step27 = () => {
 
       {(revisedPrice === 'Revise up' || revisedPrice === 'Revise down') && (
         <div>
-          <Label required>
+          <Label number="6.25" required>
             Please let us know the new price that you would be willing to pay?
           </Label>
           <Input
