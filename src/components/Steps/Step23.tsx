@@ -3,10 +3,12 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
 import Heading from 'components/Heading'
+import { useI18nContext } from 'i18n/i18n-react'
 import { Controller, useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step23 = () => {
+  const { LL } = useI18nContext()
   const {
     register,
     control,
@@ -15,22 +17,21 @@ const Step23 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="Experience Interacting with SASB when dealing with Septic Tank" />
+      <Heading subtitle={LL.headings[23]()} />
 
       <div>
         <Label number="5.24" required>
-          Did the person who dealt with your complaint treat you in a fair and
-          polite manner?
+          {LL.questions[524]()}
         </Label>
         <Controller
           name="step23.treatFairPolite"
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={['Yes', 'No']}
+              options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select an option"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step23?.treatFairPolite}
             />
           )}
@@ -40,18 +41,17 @@ const Step23 = () => {
 
       <div>
         <Label number="5.25" required>
-          Did you need to make more than one call before they entered into
-          action?
+          {LL.questions[525]()}
         </Label>
         <Controller
           name="step23.moreThanOneCall"
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={['Yes', 'No']}
+              options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select an option"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step23?.moreThanOneCall}
             />
           )}
@@ -61,18 +61,17 @@ const Step23 = () => {
 
       <div>
         <Label number="5.26" required>
-          Did you feel that you needed to pay some sort of bribe or gift to the
-          employee to make the request to be processed faster?
+          {LL.questions[526]()}
         </Label>
         <Controller
           name="step23.bribe"
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={['Yes', 'No']}
+              options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select an option"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step23?.bribe}
             />
           )}
@@ -82,18 +81,17 @@ const Step23 = () => {
 
       <div>
         <Label number="5.27" required>
-          Has your matter been dealt with by the SASB itself or have you been
-          referred to another entity?
+          {LL.questions[527]()}
         </Label>
         <Controller
           name="step23.dealthWith"
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={['Referred to another entity', 'Dealth by SASB']}
+              options={[LL.choices.entity[0](), LL.choices.entity[1]()]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select an option"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step23?.dealthWith}
             />
           )}
@@ -103,17 +101,17 @@ const Step23 = () => {
 
       <div>
         <Label number="5.28" required>
-          Has the problem been resolved?
+          {LL.questions[528]()}
         </Label>
         <Controller
           name="step23.problemResolved"
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={['Yes', 'No']}
+              options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select an option"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step23?.problemResolved}
             />
           )}
@@ -123,14 +121,14 @@ const Step23 = () => {
 
       <div>
         <Label number="5.29" required>
-          How long did the resolution take since you have put in the request?
+          {LL.questions[529]()}
         </Label>
 
         {[
-          'A few days but within a week',
-          'Between 1 and 2 weeks',
-          'Less than a month',
-          'More than a month',
+          LL.choices.howLong[0](),
+          LL.choices.howLong[1](),
+          LL.choices.howLong[2](),
+          LL.choices.howLong[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}

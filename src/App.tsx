@@ -19,8 +19,10 @@ import {
   manualStep20Validation,
 } from 'utils/validation'
 import ValidationSummary from 'components/ValidationSummary'
+import { useI18nContext } from 'i18n/i18n-react'
 
 const App = () => {
+  const { LL } = useI18nContext()
   const [step, setStep] = useState(1)
   const [userGesture, setUserGesture] = useState(false)
   const { latitude, longitude, error } = useGeolocation(userGesture)
@@ -41,7 +43,10 @@ const App = () => {
     defaultValues: {
       startAt: new Date().toISOString(),
       step1: {
-        language: language === 'pt' ? 'Português' : 'English',
+        language:
+          language === 'pt'
+            ? LL.choices.languages[1]()
+            : LL.choices.languages[0](),
         uniqueId: params.uniqueId,
       },
       step5: {
@@ -56,7 +61,7 @@ const App = () => {
         content: QVSRSliderContent,
       },
       step11: {
-        feePreference: '50',
+        feePreference: '0',
         content: QVSRSliderContent,
       },
       step14: {
@@ -102,11 +107,11 @@ const App = () => {
         setStep(step + 1)
       }
     } else {
-      methods.trigger(`step${step}` as any).then(isValid => {
-        if (isValid) {
-          setStep(step + 1)
-        }
-      })
+      // methods.trigger(`step${step}` as any).then(isValid => {
+      //   if (isValid) {
+      setStep(step + 1)
+      //   }
+      // })
     }
   }
 
@@ -144,7 +149,7 @@ const App = () => {
               onNext={handleNext}
               hideNext={step === 27}
               isSubmitStep={step === 27}
-              hidePrevious={true}
+              hidePrevious={step === 1}
               isStart={step === 1}
               step={step}
             />

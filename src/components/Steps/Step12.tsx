@@ -3,15 +3,16 @@ import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
 import Heading from 'components/Heading'
-import Typography from 'components/Typography'
+import Typography, { Caption } from 'components/Typography'
+import { useI18nContext } from 'i18n/i18n-react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step12 = () => {
+  const { LL } = useI18nContext()
   const {
     register,
     watch,
-    control,
     formState: { errors },
   } = useFormContext()
 
@@ -19,26 +20,26 @@ const Step12 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="Community Price Point - New Monthly Drainage Service Fee" />
+      <Heading subtitle={LL.headings[12]()} />
 
       <Typography css={tw`text-justify`}>
-        Now, we would like to share with you what your community thinks about
-        the price to be paid for A new monthly drainage service fee.
+        <Caption css={tw`mr-3`}>4.23</Caption>
+        {LL.questions[423].paragraph1()}
       </Typography>
 
       <Typography css={tw`text-justify`}>
-        For the NEW monthly drainage fee . They propose an average price of (X).
-        You proposed the price (Y).
+        {LL.questions[423].paragraph2()}
       </Typography>
 
       <div>
-        <Label number="4.23" required>
-          Having heard the community's proposal , would you like to revise your
-          previously stated price? Remember, your proposed price is (Y)
-        </Label>
+        <Label required>{LL.questions[423].paragraph3()}</Label>
 
         <div css={tw`flex justify-between`}>
-          {['Revise up', 'Stay the same', 'Revise down'].map(option => (
+          {[
+            LL.choices.revise[0](),
+            LL.choices.revise[1](),
+            LL.choices.revise[2](),
+          ].map(option => (
             <label
               css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
               key={option}
@@ -52,10 +53,11 @@ const Step12 = () => {
         <FieldErrorMessage name="step12.revisePrice" errors={errors} />
       </div>
 
-      {(revisedPrice === 'Revise up' || revisedPrice === 'Revise down') && (
+      {(revisedPrice === LL.choices.revise[0]() ||
+        revisedPrice === LL.choices.revise[2]()) && (
         <div>
           <Label number="4.24" required>
-            Please let us know the new price that you would be willing to pay?
+            {LL.questions.willingPay()}
           </Label>
           <Input
             {...register('step12.willingPay', {

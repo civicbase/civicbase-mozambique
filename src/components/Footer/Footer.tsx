@@ -1,6 +1,7 @@
 import tw from 'twin.macro'
 import Button from 'components/Button'
 import { useFormContext } from 'react-hook-form'
+import { useI18nContext } from 'i18n/i18n-react'
 
 const Footer = ({
   onPrevious,
@@ -8,7 +9,7 @@ const Footer = ({
   hidePrevious = false,
   hideNext = false,
   isSubmitStep = false,
-  step, //temporary
+  step,
   isStart,
 }: {
   onPrevious: () => void
@@ -19,6 +20,7 @@ const Footer = ({
   step: number
   isStart?: boolean
 }) => {
+  const { LL } = useI18nContext()
   const {
     formState: { errors },
   } = useFormContext()
@@ -29,19 +31,19 @@ const Footer = ({
     >
       {!hidePrevious && (
         <Button variant="secondary" onClick={onPrevious}>
-          Previous
+          {LL.actions.previous()}
         </Button>
       )}
 
       {!hideNext && (
         <Button variant="primary" onClick={onNext}>
-          {isStart ? 'Start Survey' : 'Next'}
+          {isStart ? LL.actions.startSurvey() : LL.actions.next()}
         </Button>
       )}
 
       {isSubmitStep && (
         <Button variant="tertiary" type="submit">
-          Submit
+          {LL.actions.submit()}
         </Button>
       )}
 

@@ -4,8 +4,10 @@ import Label from 'components/Form/Label'
 import Dropdown from 'components/Dropdown'
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Heading from 'components/Heading'
+import { useI18nContext } from 'i18n/i18n-react'
 
 const Step3 = () => {
+  const { LL } = useI18nContext()
   const {
     control,
     formState: { errors },
@@ -13,14 +15,11 @@ const Step3 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="Background Data" />
+      <Heading subtitle={LL.headings[3]()} />
 
       <div>
         <Label number="4.7" required>
-          Based on information we have collected, we found that households in
-          your community typically pays around 620 meticals for the monthly
-          water bill including the sanitation tax. How does this compare to the
-          amount you typically pay?
+          {LL.questions[47]()}
         </Label>
 
         <Controller
@@ -28,10 +27,14 @@ const Step3 = () => {
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={['Higher', 'About Right', 'Lower']}
+              options={[
+                LL.choices.compare[0](),
+                LL.choices.compare[1](),
+                LL.choices.compare[2](),
+              ]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select one option"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step3?.compare}
             />
           )}

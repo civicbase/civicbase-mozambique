@@ -2,10 +2,12 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
+import { useI18nContext } from 'i18n/i18n-react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step27 = () => {
+  const { LL } = useI18nContext()
   const {
     register,
     watch,
@@ -20,13 +22,15 @@ const Step27 = () => {
     <div css={tw`grid grid-cols-1 gap-6`}>
       <div>
         <Label number="6.24" required>
-          On reflection, would you like to revise the previously stated price
-          for a NEW monthly drainage maintenance fee ? Remember, your proposed
-          price is ({y} MT)
+          {LL.questions[624]({ y })}
         </Label>
 
         <div css={tw`flex justify-between`}>
-          {['Revise up', 'Stay the same', 'Revise down'].map(option => (
+          {[
+            LL.choices.revise[0](),
+            LL.choices.revise[1](),
+            LL.choices.revise[2](),
+          ].map(option => (
             <label
               css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
               key={option}
@@ -38,10 +42,11 @@ const Step27 = () => {
         </div>
       </div>
 
-      {(revisedPrice === 'Revise up' || revisedPrice === 'Revise down') && (
+      {(revisedPrice === LL.choices.revise[0]() ||
+        revisedPrice === LL.choices.revise[2]()) && (
         <div>
           <Label number="6.25" required>
-            Please let us know the new price that you would be willing to pay?
+            {LL.questions.willingPay()}
           </Label>
           <Input
             {...register('step27.willingPay', {

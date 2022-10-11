@@ -10,8 +10,10 @@ import Input from 'components/Form/Input'
 import AddButton from 'components/AddButton'
 import { GrAdd } from 'react-icons/gr'
 import diagram from '../../images/self_diagram.jpg'
+import { useI18nContext } from 'i18n/i18n-react'
 
 const Step17 = () => {
+  const { LL } = useI18nContext()
   const {
     register,
     control,
@@ -31,19 +33,17 @@ const Step17 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="Sharing of Satisfaction" />
+      <Heading subtitle={LL.headings[17]()} />
 
       <div>
         <Label number="4.51" required>
-          On the scale of 1 to 10, with one being the lowest and 10 being the
-          highest, how likely are you to share YOUR SATISFACTION towards the
-          SASB's services mentioned above to other people in this neighborhood?
+          {LL.questions[451]()}
         </Label>
 
         <div css={tw`flex flex-col mt-10`}>
           <div css={tw`flex justify-between mb-5`}>
-            <Typography>Strongly Disagree</Typography>
-            <Typography>Strongly Agree</Typography>
+            <Typography>{LL.help.stronglyDisagree()}</Typography>
+            <Typography>{LL.help.stronglyAgree()}</Typography>
           </div>
           <div css={tw`flex justify-between`}>
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(option => (
@@ -65,19 +65,16 @@ const Step17 = () => {
 
       <div>
         <Label number="4.52" required>
-          With whom would you like to share YOUR SATISFACTION/OPINON to? You may
-          provide up to 5 names. Specify your relationship and closeness for
-          each person. For closeness , please refer to the diagram provided
-          above
+          {LL.questions[452]()}
         </Label>
         <div>
           <img src={diagram} alt="service" />
         </div>
 
         <div css={tw`flex space-x-2 items-end`}>
-          <Hint css={tw`flex-[2]`}>Name</Hint>
-          <Hint css={tw`flex-[2]`}>Relationship</Hint>
-          <Hint css={tw`flex-1`}>Closeness</Hint>
+          <Hint css={tw`flex-[2]`}>{LL.placeholder.name()}</Hint>
+          <Hint css={tw`flex-[2]`}>{LL.placeholder.relationship()}</Hint>
+          <Hint css={tw`flex-1`}>{LL.placeholder.closeness()}</Hint>
         </div>
 
         <div css={tw`space-y-4`}>
@@ -97,7 +94,7 @@ const Step17 = () => {
                       required: true,
                     })}
                     error={hasNameError}
-                    placeholder="Name"
+                    placeholder={LL.placeholder.name()}
                   />
                 </div>
                 <Controller
@@ -107,15 +104,15 @@ const Step17 = () => {
                     <div css={tw`flex-[2]`}>
                       <Dropdown
                         options={[
-                          'Neighbor',
-                          'Work Colleague',
-                          'Friend Acquaintance',
-                          'Family Member',
-                          'Other',
+                          LL.choices.relationship[0](),
+                          LL.choices.relationship[1](),
+                          LL.choices.relationship[2](),
+                          LL.choices.relationship[3](),
+                          LL.choices.relationship[4](),
                         ]}
                         value={field.value}
                         onChange={field.onChange}
-                        placeholder="Relationship"
+                        placeholder={LL.placeholder.relationship()}
                         error={hasRelationshipError}
                       />
                     </div>
@@ -130,7 +127,7 @@ const Step17 = () => {
                         options={['1', '2', '3', '4', '5']}
                         value={field.value}
                         onChange={field.onChange}
-                        placeholder="Closeness"
+                        placeholder={LL.placeholder.closeness()}
                         error={hasclosenessError}
                       />
                     </div>
@@ -145,7 +142,7 @@ const Step17 = () => {
           <AddButton onClick={handleAddPerson} disabled={fields.length >= 5}>
             <div css={tw`flex items-center space-x-4`}>
               <GrAdd />
-              <Typography>Add person</Typography>
+              <Typography>{LL.placeholder.addPerson()}</Typography>
             </div>
           </AddButton>
         </div>

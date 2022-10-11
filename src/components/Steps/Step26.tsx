@@ -4,10 +4,12 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Heading from 'components/Heading'
+import { useI18nContext } from 'i18n/i18n-react'
 import { Controller, useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step26 = () => {
+  const { LL } = useI18nContext()
   const {
     register,
     control,
@@ -19,25 +21,25 @@ const Step26 = () => {
   const contacted = getValues('step13.serviceProvider.contacted')
   const otherProblem = watch('step26.contacted.problem') === 'Other'
   const contactedSASB = getValues('step13.serviceProvider.who.SASB')
+  const contactedDrainageIssue = watch('step26.contactedDrainageIssue')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="Experience Interacting with SASB when dealing with Drainage Issues" />
+      <Heading subtitle={LL.headings[26]()} />
 
       <div>
         <Label number="6.12" required>
-          Since April 2021, have you contacted someone to resolve the DRAINAGE
-          issues you faced before?
+          {LL.questions[612]()}
         </Label>
         <Controller
           name="step26.contactedDrainageIssue"
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={['Yes', 'No']}
+              options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select an option"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step26?.contactedDrainageIssue}
             />
           )}
@@ -48,300 +50,324 @@ const Step26 = () => {
         />
       </div>
 
-      {contacted === 'Yes' && (
+      {contactedDrainageIssue === LL.choices.yesNo[0]() && (
         <>
-          <div>
-            <Label number="6.13" required>
-              When was the last time you contacted someone for help with a
-              drainage problem?
-            </Label>
+          {contacted === LL.choices.yesNo[0]() && (
+            <>
+              <div>
+                <Label number="6.13" required>
+                  {LL.questions[613]()}
+                </Label>
 
-            <div css={tw`flex space-x-2`}>
+                <div css={tw`flex space-x-2`}>
+                  <Controller
+                    name="step26.contacted.month"
+                    control={control}
+                    render={({ field }) => (
+                      <div css={tw`flex-1`}>
+                        <Dropdown
+                          options={[
+                            LL.choices.months[0](),
+                            LL.choices.months[1](),
+                            LL.choices.months[2](),
+                            LL.choices.months[3](),
+                            LL.choices.months[4](),
+                            LL.choices.months[5](),
+                            LL.choices.months[6](),
+                            LL.choices.months[7](),
+                            LL.choices.months[8](),
+                            LL.choices.months[9](),
+                            LL.choices.months[10](),
+                            LL.choices.months[11](),
+                          ]}
+                          value={field.value}
+                          onChange={field.onChange}
+                          placeholder={LL.placeholder.month()}
+                          error={!!errors?.step26?.contacted?.month}
+                        />
+                      </div>
+                    )}
+                  />
+                  <Controller
+                    name="step26.contacted.year"
+                    control={control}
+                    render={({ field }) => (
+                      <div css={tw`flex-1`}>
+                        <Dropdown
+                          options={['2022', '2021']}
+                          value={field.value}
+                          onChange={field.onChange}
+                          placeholder={LL.placeholder.year()}
+                          error={!!errors?.step26?.contacted?.year}
+                        />
+                      </div>
+                    )}
+                  />
+                </div>
+
+                <FieldErrorMessage
+                  name="step26.contacted.month"
+                  errors={errors}
+                />
+
+                <FieldErrorMessage
+                  name="step26.contacted.year"
+                  errors={errors}
+                />
+              </div>
+            </>
+          )}
+
+          {contacted === LL.choices.yesNo[0]() && (
+            <div>
+              <Label number="6.14" required>
+                {LL.questions[614]()}
+              </Label>
               <Controller
-                name="step26.contacted.month"
+                name="step26.contacted.problem"
                 control={control}
                 render={({ field }) => (
-                  <div css={tw`flex-1`}>
-                    <Dropdown
-                      options={[
-                        'January',
-                        'February',
-                        'March',
-                        'April',
-                        'May',
-                        'June',
-                        'July',
-                        'August',
-                        'September',
-                        'October',
-                        'November',
-                        'December',
-                      ]}
-                      value={field.value}
-                      onChange={field.onChange}
-                      placeholder="Month"
-                      error={!!errors?.step26?.contacted?.month}
-                    />
-                  </div>
+                  <Dropdown
+                    options={[
+                      LL.choices[614][0](),
+                      LL.choices[614][1](),
+                      LL.choices[614][2](),
+                      LL.choices[614][3](),
+                      LL.choices[614][4](),
+                      LL.choices[614][5](),
+                    ]}
+                    value={field.value}
+                    onChange={field.onChange}
+                    placeholder={LL.choices.placeholder()}
+                    error={!!errors?.step26?.contacted?.problem}
+                  />
                 )}
               />
-              <Controller
-                name="step26.contacted.year"
-                control={control}
-                render={({ field }) => (
-                  <div css={tw`flex-1`}>
-                    <Dropdown
-                      options={['2022', '2021']}
-                      value={field.value}
-                      onChange={field.onChange}
-                      placeholder="Year"
-                      error={!!errors?.step26?.contacted?.year}
-                    />
-                  </div>
-                )}
+              <FieldErrorMessage
+                name="step26.contacted.problem"
+                errors={errors}
               />
             </div>
+          )}
 
-            <FieldErrorMessage name="step26.contacted.month" errors={errors} />
+          {otherProblem && (
+            <div>
+              <Label number="6.15" required>
+                {LL.questions[615]()}
+              </Label>
+              <Input
+                {...register('step26.contacted.other', { required: true })}
+                error={!!errors?.step26?.contacted?.other}
+              />
+              <FieldErrorMessage
+                name="step26.contacted.other"
+                errors={errors}
+              />
+            </div>
+          )}
 
-            <FieldErrorMessage name="step26.contacted.year" errors={errors} />
-          </div>
+          {contacted === LL.choices.yesNo[0]() && (
+            <div>
+              <Label number="6.16" required>
+                {LL.questions[616]()}
+              </Label>
+
+              <div css={tw`flex flex-col space-y-4 mt-4`}>
+                {[
+                  LL.choices.serviceProvider[0](),
+                  LL.choices.serviceProvider[1](),
+                  LL.choices.serviceProvider[2](),
+                  LL.choices.serviceProvider[3](),
+                  LL.choices.serviceProvider[4](),
+                ].map(option => (
+                  <label
+                    css={tw`inline-flex space-x-4 items-center select-none`}
+                    key={option}
+                  >
+                    <Checkbox {...register(`step26.contacted.who.${option}`)} />
+                    <span>{option}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {!contactedSASB && (
+            <div>
+              <Label number="6.17" required>
+                {LL.questions[617]()}
+              </Label>
+
+              <div css={tw`flex flex-col space-y-4 mt-4`}>
+                {[
+                  LL.choices[617][0](),
+                  LL.choices[617][1](),
+                  LL.choices[617][2](),
+                  LL.choices[617][3](),
+                  LL.choices[617][4](),
+                  LL.choices[617][5](),
+                  LL.choices[617][6](),
+                ].map((option, index) => (
+                  <label
+                    css={tw`inline-flex space-x-4 items-center select-none`}
+                    key={option}
+                  >
+                    <Checkbox
+                      {...register(`step26.SASBNotContactedReasons.${index}`)}
+                    />
+                    <span>{option}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {contactedSASB && (
+            <div>
+              <Label number="6.18" required>
+                {LL.questions[618]()}
+              </Label>
+              <Controller
+                name="step26.treatFairPolite"
+                control={control}
+                render={({ field }) => (
+                  <Dropdown
+                    options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
+                    value={field.value}
+                    onChange={field.onChange}
+                    placeholder={LL.choices.placeholder()}
+                    error={!!errors?.step26?.treatFairPolite}
+                  />
+                )}
+              />
+              <FieldErrorMessage
+                name="step26.treatFairPolite"
+                errors={errors}
+              />
+            </div>
+          )}
+
+          {contactedSASB && (
+            <div>
+              <Label number="6.19" required>
+                {LL.questions[619]()}
+              </Label>
+              <Controller
+                name="step26.moreThanOneCall"
+                control={control}
+                render={({ field }) => (
+                  <Dropdown
+                    options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
+                    value={field.value}
+                    onChange={field.onChange}
+                    placeholder={LL.choices.placeholder()}
+                    error={!!errors?.step26?.moreThanOneCall}
+                  />
+                )}
+              />
+              <FieldErrorMessage
+                name="step26.moreThanOneCall"
+                errors={errors}
+              />
+            </div>
+          )}
+
+          {contactedSASB && (
+            <div>
+              <Label number="6.20" required>
+                {LL.questions[620]()}
+              </Label>
+              <Controller
+                name="step26.bribe"
+                control={control}
+                render={({ field }) => (
+                  <Dropdown
+                    options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
+                    value={field.value}
+                    onChange={field.onChange}
+                    placeholder={LL.choices.placeholder()}
+                    error={!!errors?.step26?.bribe}
+                  />
+                )}
+              />
+              <FieldErrorMessage name="step26.bribe" errors={errors} />
+            </div>
+          )}
+
+          {contactedSASB && (
+            <div>
+              <Label number="6.21" required>
+                {LL.questions[621]()}
+              </Label>
+              <Controller
+                name="step26.anotherEntity"
+                control={control}
+                render={({ field }) => (
+                  <Dropdown
+                    options={[LL.choices.entity[0](), LL.choices.entity[1]()]}
+                    value={field.value}
+                    onChange={field.onChange}
+                    placeholder={LL.choices.placeholder()}
+                    error={!!errors?.step26?.anotherEntity}
+                  />
+                )}
+              />
+              <FieldErrorMessage name="step26.anotherEntity" errors={errors} />
+            </div>
+          )}
+
+          {contactedSASB && (
+            <div>
+              <Label number="6.22" required>
+                {LL.questions[622]()}
+              </Label>
+              <Controller
+                name="step26.problemResolved"
+                control={control}
+                render={({ field }) => (
+                  <Dropdown
+                    options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
+                    value={field.value}
+                    onChange={field.onChange}
+                    placeholder={LL.choices.placeholder()}
+                    error={!!errors?.step26?.problemResolved}
+                  />
+                )}
+              />
+              <FieldErrorMessage
+                name="step26.problemResolved"
+                errors={errors}
+              />
+            </div>
+          )}
+
+          {contactedSASB && (
+            <div>
+              <Label number="6.23" required>
+                {LL.questions[623]()}
+              </Label>
+              <Controller
+                name="step26.howLong"
+                control={control}
+                render={({ field }) => (
+                  <Dropdown
+                    options={[
+                      LL.choices.howLong[0](),
+                      LL.choices.howLong[1](),
+                      LL.choices.howLong[2](),
+                      LL.choices.howLong[3](),
+                    ]}
+                    value={field.value}
+                    onChange={field.onChange}
+                    placeholder={LL.choices.placeholder()}
+                    error={!!errors?.step26?.howLong}
+                  />
+                )}
+              />
+              <FieldErrorMessage name="step26.howLong" errors={errors} />
+            </div>
+          )}
         </>
-      )}
-
-      {contacted === 'Yes' && (
-        <div>
-          <Label number="6.14" required>
-            What was the problem about?
-          </Label>
-          <Controller
-            name="step26.contacted.problem"
-            control={control}
-            render={({ field }) => (
-              <Dropdown
-                options={[
-                  'Channels and boxes open',
-                  'Overflowing boxes',
-                  'Flooded roads',
-                  'Flooded courtyard after rain',
-                  'House flooded after rain',
-                  'Other',
-                ]}
-                value={field.value}
-                onChange={field.onChange}
-                placeholder="Please select an option"
-                error={!!errors?.step26?.contacted?.problem}
-              />
-            )}
-          />
-          <FieldErrorMessage name="step26.contacted.problem" errors={errors} />
-        </div>
-      )}
-
-      {otherProblem && (
-        <div>
-          <Label number="6.15" required>
-            Specify other
-          </Label>
-          <Input
-            {...register('step26.contacted.other', { required: true })}
-            error={!!errors?.step26?.contacted?.other}
-          />
-          <FieldErrorMessage name="step26.contacted.other" errors={errors} />
-        </div>
-      )}
-
-      {contacted === 'Yes' && (
-        <div>
-          <Label number="6.16" required>
-            Who did you contact?
-          </Label>
-
-          <div css={tw`flex flex-col space-y-4 mt-4`}>
-            {['Landlord', 'Plumber', 'SASB', 'Building Manager', 'Other'].map(
-              option => (
-                <label
-                  css={tw`inline-flex space-x-4 items-center select-none`}
-                  key={option}
-                >
-                  <Checkbox {...register(`step26.contacted.who.${option}`)} />
-                  <span>{option}</span>
-                </label>
-              ),
-            )}
-          </div>
-        </div>
-      )}
-
-      {!contactedSASB && (
-        <div>
-          <Label number="6.17" required>
-            Why didn't you contact SASB for the problem?
-          </Label>
-
-          <div css={tw`flex flex-col space-y-4 mt-4`}>
-            {[
-              `Don't know how to contact`,
-              'SASB usually take so long',
-              'SASB will not solve that problem for me',
-              'Do not trust SASB',
-              'Someone else will call',
-              'More convenient to call a plumber to fix my problem',
-              'Cheaper to call a plumber',
-            ].map((option, index) => (
-              <label
-                css={tw`inline-flex space-x-4 items-center select-none`}
-                key={option}
-              >
-                <Checkbox
-                  {...register(`step26.SASBNotContactedReasons.${index}`)}
-                />
-                <span>{option}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {contactedSASB && (
-        <div>
-          <Label number="6.18" required>
-            Did the person who dealt with your complaint treat you in a fair and
-            polite manner?
-          </Label>
-          <Controller
-            name="step26.treatFairPolite"
-            control={control}
-            render={({ field }) => (
-              <Dropdown
-                options={['Yes', 'No']}
-                value={field.value}
-                onChange={field.onChange}
-                placeholder="Please select an option"
-                error={!!errors?.step26?.treatFairPolite}
-              />
-            )}
-          />
-          <FieldErrorMessage name="step26.treatFairPolite" errors={errors} />
-        </div>
-      )}
-
-      {contactedSASB && (
-        <div>
-          <Label number="6.19" required>
-            Did you need to make more than one call before they entered into
-            action?
-          </Label>
-          <Controller
-            name="step26.moreThanOneCall"
-            control={control}
-            render={({ field }) => (
-              <Dropdown
-                options={['Yes', 'No']}
-                value={field.value}
-                onChange={field.onChange}
-                placeholder="Please select an option"
-                error={!!errors?.step26?.moreThanOneCall}
-              />
-            )}
-          />
-          <FieldErrorMessage name="step26.moreThanOneCall" errors={errors} />
-        </div>
-      )}
-
-      {contactedSASB && (
-        <div>
-          <Label number="6.20" required>
-            Did you feel that you needed to pay some sort of bribe or gift to
-            the employee to make the request to be processed faster?
-          </Label>
-          <Controller
-            name="step26.bribe"
-            control={control}
-            render={({ field }) => (
-              <Dropdown
-                options={['Yes', 'No']}
-                value={field.value}
-                onChange={field.onChange}
-                placeholder="Please select an option"
-                error={!!errors?.step26?.bribe}
-              />
-            )}
-          />
-          <FieldErrorMessage name="step26.bribe" errors={errors} />
-        </div>
-      )}
-
-      {contactedSASB && (
-        <div>
-          <Label number="6.21" required>
-            Has your matter been dealt with by the SASB itself or have you been
-            referred to another entity?
-          </Label>
-          <Controller
-            name="step26.anotherEntity"
-            control={control}
-            render={({ field }) => (
-              <Dropdown
-                options={['Referred to another entity', 'Dealth by SASB']}
-                value={field.value}
-                onChange={field.onChange}
-                placeholder="Please select an option"
-                error={!!errors?.step26?.anotherEntity}
-              />
-            )}
-          />
-          <FieldErrorMessage name="step26.anotherEntity" errors={errors} />
-        </div>
-      )}
-
-      {contactedSASB && (
-        <div>
-          <Label number="6.22" required>
-            Has the problem been resolved?
-          </Label>
-          <Controller
-            name="step26.problemResolved"
-            control={control}
-            render={({ field }) => (
-              <Dropdown
-                options={['Yes', 'No']}
-                value={field.value}
-                onChange={field.onChange}
-                placeholder="Please select an option"
-                error={!!errors?.step26?.problemResolved}
-              />
-            )}
-          />
-          <FieldErrorMessage name="step26.problemResolved" errors={errors} />
-        </div>
-      )}
-
-      {contactedSASB && (
-        <div>
-          <Label number="6.23" required>
-            How long did the resolution take since you have put in the request?
-          </Label>
-          <Controller
-            name="step26.howLong"
-            control={control}
-            render={({ field }) => (
-              <Dropdown
-                options={[
-                  ' A few days but within a week',
-                  'Between 1 and 2 weeks',
-                  'Less than a month',
-                  'More than a month',
-                ]}
-                value={field.value}
-                onChange={field.onChange}
-                placeholder="Please select an option"
-                error={!!errors?.step26?.howLong}
-              />
-            )}
-          />
-          <FieldErrorMessage name="step26.howLong" errors={errors} />
-        </div>
       )}
     </div>
   )

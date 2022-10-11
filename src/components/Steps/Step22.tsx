@@ -3,10 +3,12 @@ import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
 import Heading from 'components/Heading'
+import { useI18nContext } from 'i18n/i18n-react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step22 = () => {
+  const { LL } = useI18nContext()
   const {
     register,
     watch,
@@ -19,16 +21,18 @@ const Step22 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="Revising WTP : Monthly Sanitation Tax/Sewer Service Fee" />
+      <Heading subtitle={LL.headings[22]()} />
       <div>
         <Label number="5.22" required>
-          On reflection, would you like to revise the previously stated price
-          for the for the monthly sanitation tax or sewer service fee? Remember,
-          your proposed price is ({y} MT)
+          {LL.questions[522]({ y })}
         </Label>
 
         <div css={tw`flex justify-between`}>
-          {['Revise up', 'Stay the same', 'Revise down'].map(option => (
+          {[
+            LL.choices.revise[0](),
+            LL.choices.revise[1](),
+            LL.choices.revise[2](),
+          ].map(option => (
             <label
               css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
               key={option}
@@ -42,10 +46,11 @@ const Step22 = () => {
         <FieldErrorMessage name="step22.revisePrice" errors={errors} />
       </div>
 
-      {(revisedPrice === 'Revise up' || revisedPrice === 'Revise down') && (
+      {(revisedPrice === LL.choices.revise[0]() ||
+        revisedPrice === LL.choices.revise[2]()) && (
         <div>
           <Label number="5.23" required>
-            Please let us know the new price that you would be willing to pay?
+            {LL.questions.willingPay()}
           </Label>
           <Input
             {...register('step22.willingPay', {

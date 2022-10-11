@@ -3,39 +3,36 @@ import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
 import Heading from 'components/Heading'
 import Typography, { Caption } from 'components/Typography'
-import { Controller, useFormContext } from 'react-hook-form'
+import { useI18nContext } from 'i18n/i18n-react'
+import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step25 = () => {
+  const { LL } = useI18nContext()
   const {
     register,
-    watch,
     formState: { errors },
   } = useFormContext()
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="Experience with Drainage Condition" />
+      <Heading subtitle={LL.headings[25]()} />
 
       <Typography>
-        <Caption css={tw`mr-3`}>6.1</Caption>I will now ask you about your
-        experiences with rainwater drainage around your block. For each
-        experience, we want to know in how many months this happened to you
-        during the last 12 months. Even if it happened just once during a month,
-        we would like to count that month
+        <Caption css={tw`mr-3`}>6.1</Caption>
+        {LL.questions[61]()}
       </Typography>
 
       <div>
         <Label number="6.2" required>
-          In the last 12 months, in how many months did the drainage box in your
-          nighborhood block got obstructed and overflowed?
+          {LL.questions[62]()}
         </Label>
 
         {[
-          'Yes, during 1 or 2 months (Rarely)',
-          'Yes, 3 months or more but not all (Sometimes)',
-          'Yes, all months (Regularly)',
-          'No, never',
+          LL.choices.problems[0](),
+          LL.choices.problems[1](),
+          LL.choices.problems[2](),
+          LL.choices.problems[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -51,16 +48,14 @@ const Step25 = () => {
 
       <div>
         <Label number="6.3" required>
-          If you compare the frequency of obstructed drainage boxes in your
-          neighborhood block between April and September 2021 to those in the
-          past 6 months, have you noticed any REDUCTIONS?
+          {LL.questions[63]()}
         </Label>
 
         {[
-          'No, it has gotten worse',
-          'No change',
-          'Yes, it has reduced',
-          `Don't know`,
+          LL.choices.satisfaction[0](),
+          LL.choices.satisfaction[1](),
+          LL.choices.satisfaction[2](),
+          LL.choices.satisfaction[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -82,15 +77,14 @@ const Step25 = () => {
 
       <div>
         <Label number="6.4" required>
-          In the last 12 months, how many months did you see that a drainage
-          ditch/manhole was left open in your neighborhood block?
+          {LL.questions[64]()}
         </Label>
 
         {[
-          'Yes, during 1 or 2 months (Rarely)',
-          'Yes, 3 months or more but not all (Sometimes)',
-          'Yes, all months (Regularly)',
-          'No, never',
+          LL.choices.problems[0](),
+          LL.choices.problems[1](),
+          LL.choices.problems[2](),
+          LL.choices.problems[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -106,16 +100,14 @@ const Step25 = () => {
 
       <div>
         <Label number="6.5" required>
-          If you compare the frequency of drainage ditches or manhole being left
-          open in your neighborhood block between April and September 2021 to
-          those in the past 6 months, have you noticed any REDUCTIONS?
+          {LL.questions[65]()}
         </Label>
 
         {[
-          'No, it has gotten worse',
-          'No change',
-          'Yes, it has reduced',
-          `Don't know`,
+          LL.choices.satisfaction[0](),
+          LL.choices.satisfaction[1](),
+          LL.choices.satisfaction[2](),
+          LL.choices.satisfaction[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -137,15 +129,14 @@ const Step25 = () => {
 
       <div>
         <Label number="6.6" required>
-          In the last 12 months, how many months have you had to walk through
-          water?
+          {LL.questions[66]()}
         </Label>
 
         {[
-          'Yes, during 1 or 2 months (Rarely)',
-          'Yes, 3 months or more but not all (Sometimes)',
-          'Yes, all months (Regularly)',
-          'No, never',
+          LL.choices.problems[0](),
+          LL.choices.problems[1](),
+          LL.choices.problems[2](),
+          LL.choices.problems[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -161,15 +152,14 @@ const Step25 = () => {
 
       <div>
         <Label number="6.7" required>
-          In the last 12 months, how many months did you get soaked “take a
-          shower” because of passing cars?
+          {LL.questions[67]()}
         </Label>
 
         {[
-          'Yes, during 1 or 2 months (Rarely)',
-          'Yes, 3 months or more but not all (Sometimes)',
-          'Yes, all months (Regularly)',
-          'No, never',
+          LL.choices.problems[0](),
+          LL.choices.problems[1](),
+          LL.choices.problems[2](),
+          LL.choices.problems[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -185,15 +175,14 @@ const Step25 = () => {
 
       <div>
         <Label number="6.8" required>
-          In the last 12 months, in how many months were you afraid of catching
-          a disease because of stagnant water on the street?
+          {LL.questions[68]()}
         </Label>
 
         {[
-          'Yes, during 1 or 2 months (Rarely)',
-          'Yes, 3 months or more but not all (Sometimes)',
-          'Yes, all months (Regularly)',
-          'No, never',
+          LL.choices.problems[0](),
+          LL.choices.problems[1](),
+          LL.choices.problems[2](),
+          LL.choices.problems[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -212,16 +201,14 @@ const Step25 = () => {
 
       <div>
         <Label number="6.9" required>
-          If you compare the frequency of water logging and stagnant water in
-          your neighborhood block between April and September 2021 to those in
-          the past 6 months, have you noticed any REDUCTIONS?
+          {LL.questions[69]()}
         </Label>
 
         {[
-          'No, it has gotten worse',
-          'No change',
-          'Yes, it has reduced',
-          `Don't know`,
+          LL.choices.satisfaction[0](),
+          LL.choices.satisfaction[1](),
+          LL.choices.satisfaction[2](),
+          LL.choices.satisfaction[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -243,15 +230,14 @@ const Step25 = () => {
 
       <div>
         <Label number="6.10" required>
-          In the last 12 months, in how many months did your neighborhood
-          experience flood after a rain ?
+          {LL.questions[610]()}
         </Label>
 
         {[
-          'Yes, during 1 or 2 months (Rarely)',
-          'Yes, 3 months or more but not all (Sometimes)',
-          'Yes, all months (Regularly)',
-          'No, never',
+          LL.choices.problems[0](),
+          LL.choices.problems[1](),
+          LL.choices.problems[2](),
+          LL.choices.problems[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -267,16 +253,14 @@ const Step25 = () => {
 
       <div>
         <Label number="6.11" required>
-          If you compare the frequency of floods after a rain in your
-          neighborhood block between April and September 2021 to those from
-          April this year, have you noticed any REDUCTIONS?
+          {LL.questions[611]()}
         </Label>
 
         {[
-          'No, it has gotten worse',
-          'No change',
-          'Yes, it has reduced',
-          `Don't know`,
+          LL.choices.satisfaction[0](),
+          LL.choices.satisfaction[1](),
+          LL.choices.satisfaction[2](),
+          LL.choices.satisfaction[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}

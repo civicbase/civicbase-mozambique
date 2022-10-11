@@ -5,8 +5,10 @@ import Dropdown from 'components/Dropdown'
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Heading from 'components/Heading'
+import { useI18nContext } from 'i18n/i18n-react'
 
 const Step2 = () => {
+  const { LL } = useI18nContext()
   const {
     control,
     formState: { errors },
@@ -19,11 +21,11 @@ const Step2 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="Background Data" />
+      <Heading subtitle={LL.headings[2]()} />
 
       <div>
         <Label number="4.2" required>
-          Neighborhood
+          {LL.questions[42]()}
         </Label>
         <Controller
           name="step2.neighborhood"
@@ -43,7 +45,7 @@ const Step2 = () => {
               ]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select a sanitatition service"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step2?.neighborhood}
             />
           )}
@@ -53,17 +55,20 @@ const Step2 = () => {
 
       <div>
         <Label number="4.3" required>
-          What type of sanitation service do you have?
+          {LL.questions[43]()}
         </Label>
         <Controller
           name="step2.sanitationType"
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={['Flush to Sewer', 'Flush to Septic Tank']}
+              options={[
+                LL.choices.sanitationType[0](),
+                LL.choices.sanitationType[1](),
+              ]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select a sanitatition service"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step2?.sanitationType}
             />
           )}
@@ -73,7 +78,7 @@ const Step2 = () => {
 
       <div>
         <Label number="4.4" required>
-          What type of dweling is this?
+          {LL.questions[44]()}
         </Label>
         <Controller
           name="step2.dwellingType"
@@ -81,13 +86,13 @@ const Step2 = () => {
           render={({ field }) => (
             <Dropdown
               options={[
-                'Singular',
-                'Compound / Collective',
-                'Multistoried buildings',
+                LL.choices.dwellingType[0](),
+                LL.choices.dwellingType[1](),
+                LL.choices.dwellingType[2](),
               ]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select a dwelling type"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step2?.dwellingType}
             />
           )}
@@ -95,22 +100,22 @@ const Step2 = () => {
         <FieldErrorMessage name="step2.dwellingType" errors={errors} />
       </div>
 
-      {(dwellingType === 'Compound / Collective' ||
-        dwellingType === 'Multistoried buildings') && (
+      {(dwellingType === LL.choices.dwellingType[1]() ||
+        dwellingType === LL.choices.dwellingType[2]()) && (
         <>
           <div>
             <Label number="4.5" required>
-              Do you share your water bill with other households?
+              {LL.questions[45]()}
             </Label>
             <Controller
               name="step2.waterBill.share"
               control={control}
               render={({ field }) => (
                 <Dropdown
-                  options={['Yes', 'No']}
+                  options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
                   value={field.value}
                   onChange={field.onChange}
-                  placeholder="Please select one option"
+                  placeholder={LL.choices.placeholder()}
                   error={!!errors?.step2?.waterBill?.share}
                 />
               )}
@@ -118,11 +123,11 @@ const Step2 = () => {
             <FieldErrorMessage name="step2.waterBill.share" errors={errors} />
           </div>
 
-          {shareBill === 'Yes' && (
+          {shareBill === LL.choices.yesNo[0]() && (
             <>
               <div>
                 <Label number="4.6" required>
-                  With how many households do you share your water bill?
+                  {LL.questions[46]()}
                 </Label>
                 <Input
                   {...register('step2.waterBill.shareNumber', {

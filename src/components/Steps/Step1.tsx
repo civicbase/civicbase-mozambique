@@ -7,8 +7,9 @@ import tw from 'twin.macro'
 import { useI18nContext } from 'i18n/i18n-react'
 import { useEffect } from 'react'
 import Heading from 'components/Heading'
+import { LANGUAGE } from 'utils/enums'
 
-const bill = () => {
+const Step1 = () => {
   const { LL, setLocale } = useI18nContext()
   const {
     control,
@@ -19,10 +20,12 @@ const bill = () => {
 
   const language = watch('step1.language')
 
+  console.log('language', language)
+
   useEffect(() => {
-    if (language === 'English') {
+    if (language === LL.choices.languages[0]()) {
       setLocale('en')
-    } else if (language === 'Português') {
+    } else if (language === LL.choices.languages[1]()) {
       setLocale('pt')
     }
   }, [language])
@@ -31,12 +34,13 @@ const bill = () => {
     <div css={tw`grid grid-cols-1 gap-6`}>
       <Heading
         title="Section 4: Willingness to Pay"
-        subtitle="Background Data"
+        subtitle={LL.headings[1]()}
       />
 
       <div>
         <Label number="4.1" required>
-          Please enter unique ID
+          {/* Please enter unique ID */}
+          {LL.questions[41]()}
         </Label>
         <Input
           {...register('step1.uniqueId', { required: true })}
@@ -47,19 +51,21 @@ const bill = () => {
       </div>
 
       <div>
-        <Label required>{LL.LANGUAGE()}</Label>
+        <Label required>{LL.questions.language()}</Label>
         <Controller
           name="step1.language"
           control={control}
-          render={({ field }) => (
-            <Dropdown
-              options={['English', 'Português']}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Please select a language"
-              error={!!errors?.step1?.language}
-            />
-          )}
+          render={({ field }) => {
+            return (
+              <Dropdown
+                options={[LL.choices.languages[0](), LL.choices.languages[1]()]}
+                value={field.value}
+                onChange={field.onChange}
+                placeholder={LL.choices.placeholder()}
+                error={!!errors?.step1?.language}
+              />
+            )
+          }}
         />
         <FieldErrorMessage name="step1.language" errors={errors} />
       </div>
@@ -67,4 +73,4 @@ const bill = () => {
   )
 }
 
-export default bill
+export default Step1

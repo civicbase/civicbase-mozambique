@@ -4,11 +4,13 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Heading from 'components/Heading'
+import { useI18nContext } from 'i18n/i18n-react'
 import { memo } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step13 = () => {
+  const { LL } = useI18nContext()
   const {
     control,
     register,
@@ -23,21 +25,21 @@ const Step13 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="WTP for Fecal Sludge Management Services" />
+      <Heading subtitle={LL.headings[13]()} />
 
       <div>
         <Label number="4.25" required>
-          Since April 2021, have you ever emptied your septic tank ?
+          {LL.questions[425]()}
         </Label>
         <Controller
           name="step13.emptiedSepticTank"
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={['Yes', 'No']}
+              options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select an option"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step13?.emptiedSepticTank}
             />
           )}
@@ -47,17 +49,17 @@ const Step13 = () => {
 
       <div>
         <Label number="4.26" required>
-          Did you contact a service provider to empty the cesspool?
+          {LL.questions[426]()}
         </Label>
         <Controller
           name="step13.serviceProvider.contacted"
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={['Yes', 'No']}
+              options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select an option"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step13?.serviceProvider?.contacted}
             />
           )}
@@ -68,12 +70,11 @@ const Step13 = () => {
         />
       </div>
 
-      {contacted === 'Yes' && (
+      {contacted === LL.choices.yesNo[0]() && (
         <>
           <div>
             <Label number="4.27" required>
-              When was the last time you contacted someone to empty the
-              cesspool?
+              {LL.questions[427]()}
             </Label>
 
             <div css={tw`flex space-x-2`}>
@@ -84,22 +85,22 @@ const Step13 = () => {
                   <div css={tw`flex-1`}>
                     <Dropdown
                       options={[
-                        'January',
-                        'February',
-                        'March',
-                        'April',
-                        'May',
-                        'June',
-                        'July',
-                        'August',
-                        'September',
-                        'October',
-                        'November',
-                        'December',
+                        LL.choices.months[0](),
+                        LL.choices.months[1](),
+                        LL.choices.months[2](),
+                        LL.choices.months[3](),
+                        LL.choices.months[4](),
+                        LL.choices.months[5](),
+                        LL.choices.months[6](),
+                        LL.choices.months[7](),
+                        LL.choices.months[8](),
+                        LL.choices.months[9](),
+                        LL.choices.months[10](),
+                        LL.choices.months[11](),
                       ]}
                       value={field.value}
                       onChange={field.onChange}
-                      placeholder="Month"
+                      placeholder={LL.placeholder.month()}
                       error={!!errors?.step13?.serviceProvider?.contactedMonth}
                     />
                   </div>
@@ -114,7 +115,7 @@ const Step13 = () => {
                       options={['2022', '2021']}
                       value={field.value}
                       onChange={field.onChange}
-                      placeholder="Year"
+                      placeholder={LL.placeholder.year()}
                       error={!!errors?.step13?.serviceProvider?.contactedYear}
                     />
                   </div>
@@ -135,30 +136,34 @@ const Step13 = () => {
 
           <div>
             <Label number="4.28" required>
-              Who did you contact?
+              {LL.questions[428]()}
             </Label>
 
             <div css={tw`flex flex-col space-y-4 mt-4`}>
-              {['Landlord', 'Plumber', 'SASB', 'Building Manager', 'Other'].map(
-                option => (
-                  <label
-                    css={tw`inline-flex space-x-4 items-center select-none`}
-                    key={option}
-                  >
-                    <Checkbox
-                      {...register(`step13.serviceProvider.who.${option}`)}
-                    />
-                    <span>{option}</span>
-                  </label>
-                ),
-              )}
+              {[
+                LL.choices.serviceProvider[0](),
+                LL.choices.serviceProvider[1](),
+                LL.choices.serviceProvider[2](),
+                LL.choices.serviceProvider[3](),
+                LL.choices.serviceProvider[4](),
+              ].map(option => (
+                <label
+                  css={tw`inline-flex space-x-4 items-center select-none`}
+                  key={option}
+                >
+                  <Checkbox
+                    {...register(`step13.serviceProvider.who.${option}`)}
+                  />
+                  <span>{option}</span>
+                </label>
+              ))}
             </div>
           </div>
 
           {contactedOther && (
             <div>
               <Label number="4.29" required>
-                Specify other
+                {LL.questions[429]()}
               </Label>
               <Input
                 {...register('step13.serviceProvider.other', {
@@ -177,18 +182,18 @@ const Step13 = () => {
           {!contactedSASB && (
             <div>
               <Label number="4.30" required>
-                Why didn't you contact SASB for the problem?
+                {LL.questions[430]()}
               </Label>
 
               <div css={tw`flex flex-col space-y-4 mt-4`}>
                 {[
-                  `Don't know how to contact`,
-                  'SASB usually take so long',
-                  'SASB will not solve that problem for me',
-                  'Do not trust SASB',
-                  'Someone else will call',
-                  'More convenient to call a plumber to fix my problem',
-                  'Cheaper to call a plumber',
+                  LL.choices[430][0](),
+                  LL.choices[430][1](),
+                  LL.choices[430][2](),
+                  LL.choices[430][3](),
+                  LL.choices[430][4](),
+                  LL.choices[430][5](),
+                  LL.choices[430][6](),
                 ].map((option, index) => (
                   <label
                     css={tw`inline-flex space-x-4 items-center select-none`}
@@ -208,7 +213,7 @@ const Step13 = () => {
 
       <div>
         <Label number="4.31" required>
-          What services did you request
+          {LL.questions[431]()}
         </Label>
         <Controller
           name="step13.serviceProvider.service"
@@ -216,13 +221,13 @@ const Step13 = () => {
           render={({ field }) => (
             <Dropdown
               options={[
-                'Fecal Sludge removal',
-                'Fecal Sludge Removal (Priority Request)',
-                'Cleaning of Septic Tank',
+                LL.choices[431][0](),
+                LL.choices[431][1](),
+                LL.choices[431][2](),
               ]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select an option"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step13?.serviceProvider?.service}
             />
           )}
@@ -235,17 +240,17 @@ const Step13 = () => {
 
       <div>
         <Label number="4.32" required>
-          Did you pay for the service?
+          {LL.questions[432]()}
         </Label>
         <Controller
           name="step13.serviceProvider.paid"
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={['Yes', 'No']}
+              options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
               value={field.value}
               onChange={field.onChange}
-              placeholder="Please select an option"
+              placeholder={LL.choices.placeholder()}
               error={!!errors?.step13?.serviceProvider?.paid}
             />
           )}
@@ -253,10 +258,10 @@ const Step13 = () => {
         <FieldErrorMessage name="step13.serviceProvider.paid" errors={errors} />
       </div>
 
-      {paid === 'Yes' && (
+      {paid === LL.choices.yesNo[0]() && (
         <div>
           <Label number="4.33" required>
-            How much did you pay for the service?
+            {LL.questions[433]()}
           </Label>
           <Input
             {...register('step13.serviceProvider.howMuch', {
@@ -268,7 +273,7 @@ const Step13 = () => {
 
           <label css={tw`inline-flex space-x-4 items-center select-none mt-2`}>
             <Checkbox {...register(`step13.serviceProvider.unknownHowMuch`)} />
-            <span>I don't know</span>
+            <span>{LL.questions.IDK()}</span>
           </label>
         </div>
       )}

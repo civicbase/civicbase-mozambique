@@ -2,12 +2,14 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
 import Heading from 'components/Heading'
 import Typography, { Caption } from 'components/Typography'
+import { useI18nContext } from 'i18n/i18n-react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 import image from '../../images/service_table.jpg'
 
 const Step14 = () => {
+  const { LL } = useI18nContext()
   const {
     register,
     watch,
@@ -21,13 +23,12 @@ const Step14 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="WTP for Fecal Sludge Management Services" />
+      <Heading subtitle={LL.headings[14]()} />
 
       <div>
         <Typography css={tw`text-justify`}>
-          <Caption css={tw`mr-3`}>4.34</Caption>Currently, SASB offers the
-          service to remove the fecal sludge and clean your septic tank for a
-          total of 8700MT.
+          <Caption css={tw`mr-3`}>4.34</Caption>
+          {LL.questions[434]()}
         </Typography>
 
         <div>
@@ -37,12 +38,11 @@ const Step14 = () => {
 
       <div>
         <Label number="4.35" required>
-          At what price would you consider that the FSM collection fee will be
-          TOO EXPENSIVE that you would not consider paying for the service?
+          {LL.questions[435]()}
         </Label>
 
         <div css={tw`mt-10`}>
-          <Label>${tooExpensive} MT</Label>
+          <Label>{tooExpensive} MT</Label>
           <input
             type="range"
             css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
@@ -57,12 +57,11 @@ const Step14 = () => {
 
       <div>
         <Label number="4.36" required>
-          At what price would you do you think that the FSM collection fee is
-          TOO LOW that you think the service quality will be bad?
+          {LL.questions[436]()}
         </Label>
 
         <div css={tw`mt-10`}>
-          <Label>${tooCheap} MT</Label>
+          <Label>{tooCheap} MT</Label>
           <input
             type="range"
             css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
@@ -77,12 +76,11 @@ const Step14 = () => {
 
       <div>
         <Label number="4.37" required>
-          At what price would you consider the FSM collection fee starting to
-          become expensive, but you would give it some thought before ordering?
+          {LL.questions[437]()}
         </Label>
 
         <div css={tw`mt-10`}>
-          <Label>${expensive} MT</Label>
+          <Label>{expensive} MT</Label>
           <input
             type="range"
             css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
@@ -97,12 +95,11 @@ const Step14 = () => {
 
       <div>
         <Label number="4.38" required>
-          At what price would you consider the FSM collection fee to a bargain
-          or great value for money?
+          {LL.questions[438]()}
         </Label>
 
         <div css={tw`mt-10`}>
-          <Label>${greatValue} MT</Label>
+          <Label>{greatValue} MT</Label>
           <input
             type="range"
             css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}

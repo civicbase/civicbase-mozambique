@@ -1,3 +1,4 @@
+import { useI18nContext } from 'i18n/i18n-react'
 import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { getMostVoted } from 'utils/quadratic'
@@ -10,6 +11,7 @@ type StepsProps = {
 }
 
 const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
+  const { LL } = useI18nContext()
   const { getValues, setValue } = useFormContext()
   const sanitationType = getValues('step2.sanitationType')
 
@@ -42,7 +44,7 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 8:
       return <Section.Step8 />
     case 9: {
-      const revise = getValues('step8.revisePrice') !== 'Stay the same'
+      const revise = getValues('step8.revisePrice') !== LL.choices.revise[1]()
 
       if (!revise) {
         const content = getValues('step7.content')
@@ -70,7 +72,7 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 10:
       return <Section.Step10 />
     case 11: {
-      const revise = getValues('step10.revisePrice') !== 'Stay the same'
+      const revise = getValues('step10.revisePrice') !== LL.choices.revise[1]()
 
       if (!revise) {
         const content = getValues('step9.content')
@@ -98,21 +100,21 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 12:
       return <Section.Step12 />
     case 13:
-      if (sanitationType === 'Flush to Septic Tank') {
+      if (sanitationType === LL.choices.sanitationType[1]()) {
         return <Section.Step13 />
       } else {
         onNext()
         return null
       }
     case 14:
-      if (sanitationType === 'Flush to Septic Tank') {
+      if (sanitationType === LL.choices.sanitationType[1]()) {
         return <Section.Step14 />
       } else {
         onNext()
         return null
       }
     case 15: {
-      const revise = getValues('step12.revisePrice') !== 'Stay the same'
+      const revise = getValues('step12.revisePrice') !== LL.choices.revise[1]()
 
       if (!revise) {
         const content = getValues('step11.content')
@@ -150,8 +152,8 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
       const contacted = getValues('step13.serviceProvider.contacted')
 
       if (
-        connection !== 'Flush to Sewer' &&
-        (!contacted || contacted === 'No')
+        connection !== LL.choices.sanitationType[0]() &&
+        (!contacted || contacted === LL.choices.yesNo[1]())
       ) {
         onNext()
         return null

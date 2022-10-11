@@ -3,10 +3,12 @@ import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
 import Heading from 'components/Heading'
 import Typography, { Caption } from 'components/Typography'
+import { useI18nContext } from 'i18n/i18n-react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step19 = () => {
+  const { LL } = useI18nContext()
   const {
     register,
     getValues,
@@ -17,28 +19,24 @@ const Step19 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="Experience with Household Sewer Services" />
+      <Heading subtitle={LL.headings[19]()} />
 
       <Typography>
-        <Caption css={tw`mr-3`}>5.1</Caption>I will now ask you about your
-        experiences with your sewer connection in your household and
-        neighborhood block . For each experience, we want to know in how many
-        months this happened to you since April 2022. Even if it happened just
-        once during a month, we would like to count that month
+        <Caption css={tw`mr-3`}>5.1</Caption>
+        {LL.questions[51]()}
       </Typography>
 
-      {connection === 'Flush to Sewer' && (
+      {connection === LL.choices.sanitationType[0]() && (
         <div>
           <Label number="5.2" required>
-            How often did you experience a sewer blockage/breakage/overflow in
-            your dwelling or compound?
+            {LL.questions[52]()}
           </Label>
 
           {[
-            'Yes, during 1 or 2 months (Rarely)',
-            'Yes, 3 months or more but not all (Sometimes)',
-            'Yes, all months (Regularly)',
-            'No, never',
+            LL.choices.problems[0](),
+            LL.choices.problems[1](),
+            LL.choices.problems[2](),
+            LL.choices.problems[3](),
           ].map(option => (
             <label
               css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -59,19 +57,17 @@ const Step19 = () => {
         </div>
       )}
 
-      {connection === 'Flush to Sewer' && (
+      {connection === LL.choices.sanitationType[0]() && (
         <div>
           <Label number="5.3" required>
-            If you compare the frequency of sewer blockages/breakages/overflows
-            in your dwelling or compound between April and September 2021 to
-            those in the last 6 months, have you noticed any REDUCTIONS?
+            {LL.questions[53]()}
           </Label>
 
           {[
-            'No, it has gotten worse',
-            'No change',
-            'Yes, it has reduced',
-            `Don't know`,
+            LL.choices.satisfaction[0](),
+            LL.choices.satisfaction[1](),
+            LL.choices.satisfaction[2](),
+            LL.choices.satisfaction[3](),
           ].map(option => (
             <label
               css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -94,15 +90,14 @@ const Step19 = () => {
 
       <div>
         <Label number="5.4" required>
-          How often did you experience a sewer blockage/breakage/overflow in
-          your neighborhood block?
+          {LL.questions[54]()}
         </Label>
 
         {[
-          'Yes, during 1 or 2 months (Rarely)',
-          'Yes, 3 months or more but not all (Sometimes)',
-          'Yes, all months (Regularly)',
-          'No, never',
+          LL.choices.problems[0](),
+          LL.choices.problems[1](),
+          LL.choices.problems[2](),
+          LL.choices.problems[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -118,16 +113,14 @@ const Step19 = () => {
 
       <div>
         <Label number="5.5" required>
-          If you compare the frequency of sewer blockages/breakages/overflows in
-          your neighborhood block between April and September 2021 to those in
-          the last 6 months, have you noticed any REDUCTIONS?
+          {LL.questions[55]()}
         </Label>
 
         {[
-          'No, it has gotten worse',
-          'No change',
-          'Yes, it has reduced',
-          `Don't know`,
+          LL.choices.satisfaction[0](),
+          LL.choices.satisfaction[1](),
+          LL.choices.satisfaction[2](),
+          LL.choices.satisfaction[3](),
         ].map(option => (
           <label
             css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -141,18 +134,17 @@ const Step19 = () => {
         <FieldErrorMessage name="step19.sewerReductions" errors={errors} />
       </div>
 
-      {connection === 'Flush to Sewer' && (
+      {connection === LL.choices.sanitationType[0]() && (
         <div>
           <Label number="5.6" required>
-            How often did you experience bad sewer smell in your dwelling or
-            compound?
+            {LL.questions[56]()}
           </Label>
 
           {[
-            'Yes, during 1 or 2 months (Rarely)',
-            'Yes, 3 months or more but not all (Sometimes)',
-            'Yes, all months (Regularly)',
-            'No, never',
+            LL.choices.problems[0](),
+            LL.choices.problems[1](),
+            LL.choices.problems[2](),
+            LL.choices.problems[3](),
           ].map(option => (
             <label
               css={tw`flex space-x-2 space-y-4 items-baseline select-none`}
@@ -173,19 +165,17 @@ const Step19 = () => {
         </div>
       )}
 
-      {connection === 'Flush to Sewer' && (
+      {connection === LL.choices.sanitationType[0]() && (
         <div>
           <Label number="5.7" required>
-            If you compare the frequency of bad sewer smell in your dwelling or
-            compound between April and September 2021 to those in the last 6
-            months, have you noticed any REDUCTIONS?
+            {LL.questions[57]()}
           </Label>
 
           {[
-            'No, it has gotten worse',
-            'No change',
-            'Yes, it has reduced',
-            `Don't know`,
+            LL.choices.satisfaction[0](),
+            LL.choices.satisfaction[1](),
+            LL.choices.satisfaction[2](),
+            LL.choices.satisfaction[3](),
           ].map(option => (
             <label
               css={tw`flex space-x-2 space-y-4 items-baseline select-none`}

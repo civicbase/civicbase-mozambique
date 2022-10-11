@@ -2,42 +2,33 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
 import Heading from 'components/Heading'
 import Typography, { Caption } from 'components/Typography'
+import { useI18nContext } from 'i18n/i18n-react'
 import Quadratic from 'methods/Quadratic'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const QVSR = () => {
+  const { LL } = useI18nContext()
+
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="WTP - Monthly Sanitation Tax/Sewer Service Fee" />
+      <Heading subtitle={LL.headings[11]()} />
 
       <Typography css={tw`text-justify`}>
-        <Caption css={tw`mr-3`}>4.21</Caption>NOW, imagine that SASB were to
-        introduce a new monthly fee to solve drainage issues in your
-        neighborhood. We will be asking you about your willingness to pay for
-        such a fee.
+        <Caption css={tw`mr-3`}>4.21</Caption>
+        {LL.questions[421].paragraph1()}
       </Typography>
 
       <Typography css={tw`text-justify`}>
-        In this survey, everyone in this neighborhood is being asked to help
-        decide the price for NEW monthly drainage fee. This new fee could help
-        SASB to reduce the drainage problem in your neighborhood like flooding
-        and water logging. As you cast your votes or make your decisions, please
-        imagine everyone else in your neighborhood will be participating in this
-        exercise too. Thus, the collective decision by the neighborhood will be
-        important for SASB to decide the pricing of their services.
+        {LL.questions[421].paragraph2()}
       </Typography>
 
       <Typography css={tw`text-justify`}>
-        IF SASB were to introduce the new monthly fee to improve drainage
-        conditions in your neighborhood, what should the monthly service fee be
-        for everyone in your neighborhood including yourself?
+        {LL.questions[421].paragraph3()}
       </Typography>
 
       <Typography css={tw`text-justify`}>
-        Please look at the options provided and indicate how many votes you
-        would like to allocate to each price option. If you dislike any of the
-        options, you can also "downvote" them.
+        {LL.questions.QVSRInstruction()}
       </Typography>
 
       <Quadratic
@@ -59,6 +50,7 @@ const QVSR = () => {
 }
 
 const Slider = () => {
+  const { LL } = useI18nContext()
   const {
     register,
     watch,
@@ -72,30 +64,20 @@ const Slider = () => {
       <Heading subtitle="WTP - Monthly Sanitation Tax/Sewer Service Fee" />
 
       <Typography css={tw`text-justify`}>
-        <Caption css={tw`mr-3`}>4.22</Caption>NOW, imagine that SASB were to
-        introduce a new monthly fee to solve drainage issues in your
-        neighborhood. We will be asking you about your willingness to pay for
-        such a fee.
+        <Caption css={tw`mr-3`}>4.22</Caption>
+        {LL.questions[422].paragraph1()}
       </Typography>
 
       <Typography css={tw`text-justify`}>
-        In this survey, everyone in this neighborhood is being asked to help
-        decide the price for NEW monthly drainage fee. This new fee could help
-        SASB to reduce the drainage problem in your neighborhood like flooding
-        and water logging. As you cast your votes or make your decisions, please
-        imagine everyone else in your neighborhood will be participating in this
-        exercise too. Thus, the collective decision by the neighborhood will be
-        important for SASB to decide the pricing of their services.
+        {LL.questions[422].paragraph2()}
       </Typography>
 
       <Typography css={tw`text-justify`}>
-        IF SASB were to introduce the new monthly fee to improve drainage
-        conditions in your neighborhood, what should the monthly service fee be
-        for everyone in your neighborhood including yourself?
+        {LL.questions[422].paragraph3()}
       </Typography>
 
       <Typography css={tw`text-justify`}>
-        Please use the slider to indicate your preferred price.
+        {LL.questions.SliderInstruction()}
       </Typography>
 
       <div>
@@ -103,9 +85,9 @@ const Slider = () => {
         <input
           type="range"
           css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
-          min="30"
-          max="70"
-          step="5"
+          min="0"
+          max="80"
+          step="10"
           {...register(`step11.feePreference`)}
         />
         <FieldErrorMessage name="step11.feePreference" errors={errors} />

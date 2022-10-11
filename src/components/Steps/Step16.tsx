@@ -2,10 +2,12 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
 import Radio from 'components/Form/Radio'
 import Heading from 'components/Heading'
+import { useI18nContext } from 'i18n/i18n-react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
 const Step16 = () => {
+  const { LL } = useI18nContext()
   const {
     register,
     getValues,
@@ -16,22 +18,21 @@ const Step16 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-10`}>
-      <Heading subtitle="Satisfaction towards SASB's Services" />
+      <Heading subtitle={LL.headings[16]()} />
 
-      {sanitationType === 'Flush to Sewer' && (
+      {sanitationType === LL.choices.sanitationType[0]() && (
         <>
           <div>
             <Label number="4.41" required>
-              Overall, are you satisfied with the quality of your CURRENT sewer
-              services?
+              {LL.questions[441]()}
             </Label>
 
             <div css={tw`flex justify-between`}>
               {[
-                'Satisfied',
-                'Somewhat Satisfied',
-                'Somewhat Dissatisfied',
-                'Dissastisfied',
+                LL.choices.satisfactionLevel[0](),
+                LL.choices.satisfactionLevel[1](),
+                LL.choices.satisfactionLevel[2](),
+                LL.choices.satisfactionLevel[3](),
               ].map(option => (
                 <label
                   css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
@@ -54,17 +55,15 @@ const Step16 = () => {
 
           <div>
             <Label number="4.42" required>
-              If you compare the quality of sewer services you received between
-              April and September 2021 to the services you received in the last
-              6 months, have you noticed any improvements?
+              {LL.questions[442]()}
             </Label>
 
             <div css={tw`flex justify-between`}>
               {[
-                'No, it has gotten worse',
-                'No change',
-                'Yes, it has improved',
-                `Don't know`,
+                LL.choices.satisfaction[0](),
+                LL.choices.satisfaction[1](),
+                LL.choices.satisfaction[2](),
+                LL.choices.satisfaction[3](),
               ].map(option => (
                 <label
                   css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
@@ -89,16 +88,15 @@ const Step16 = () => {
 
       <div>
         <Label number="4.43" required>
-          Overall, are you satisfied with the quality of drainage services by
-          SASB in your neighborhood?
+          {LL.questions[443]()}
         </Label>
 
         <div css={tw`flex justify-between`}>
           {[
-            'Satisfied',
-            'Somewhat Satisfied',
-            'Somewhat Dissatisfied',
-            'Dissastisfied',
+            LL.choices.satisfactionLevel[0](),
+            LL.choices.satisfactionLevel[1](),
+            LL.choices.satisfactionLevel[2](),
+            LL.choices.satisfactionLevel[3](),
           ].map(option => (
             <label
               css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
@@ -121,17 +119,15 @@ const Step16 = () => {
 
       <div>
         <Label number="4.44" required>
-          If you compare the quality of drainage services between April and
-          September 2021 tothe services in the last 6 months, have you noticed
-          any improvements?
+          {LL.questions[444]()}
         </Label>
 
         <div css={tw`flex justify-between`}>
           {[
-            'No, it has gotten worse',
-            'No change',
-            'Yes, it has improved',
-            `Don't know`,
+            LL.choices.satisfaction[0](),
+            LL.choices.satisfaction[1](),
+            LL.choices.satisfaction[2](),
+            LL.choices.satisfaction[3](),
           ].map(option => (
             <label
               css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
@@ -152,20 +148,19 @@ const Step16 = () => {
         />
       </div>
 
-      {sanitationType === 'Flush to Septic Tank' && contactedSASB && (
+      {sanitationType === LL.choices.sanitationType[1]() && contactedSASB && (
         <>
           <div>
             <Label number="4.45" required>
-              Overall, are you satisfied with the quality of SASB fecal sludge
-              desludging services?
+              {LL.questions[445]()}
             </Label>
 
             <div css={tw`flex justify-between`}>
               {[
-                'Satisfied',
-                'Somewhat Satisfied',
-                'Somewhat Dissatisfied',
-                'Dissastisfied',
+                LL.choices.satisfactionLevel[0](),
+                LL.choices.satisfactionLevel[1](),
+                LL.choices.satisfactionLevel[2](),
+                LL.choices.satisfactionLevel[3](),
               ].map(option => (
                 <label
                   css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
@@ -190,18 +185,16 @@ const Step16 = () => {
 
           <div>
             <Label number="4.46" required>
-              If you compare the quality of fecal sludge desludging services you
-              received between April and September 2021 to the services you
-              received in the last 6 months, have you noticed any improvements?
+              {LL.questions[446]()}
             </Label>
 
             <div css={tw`flex justify-between`}>
               {[
-                'No, it has gotten worse',
-                'No change',
-                'Yes, it has improved',
-                `Don't know`,
-                'Not Applicable',
+                LL.choices.satisfaction[0](),
+                LL.choices.satisfaction[1](),
+                LL.choices.satisfaction[2](),
+                LL.choices.satisfaction[3](),
+                LL.choices.notAplicable(),
               ].map(option => (
                 <label
                   css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
@@ -228,17 +221,16 @@ const Step16 = () => {
 
       <div>
         <Label number="4.47" required>
-          Overall, are you satisfied with the quality of SASB customer service
-          when responding to your questions, complaints and requests?
+          {LL.questions[447]()}
         </Label>
 
         <div css={tw`flex justify-between`}>
           {[
-            'Satisfied',
-            'Somewhat Satisfied',
-            'Somewhat Dissatisfied',
-            'Dissastisfied',
-            'Not Applicable',
+            LL.choices.satisfactionLevel[0](),
+            LL.choices.satisfactionLevel[1](),
+            LL.choices.satisfactionLevel[2](),
+            LL.choices.satisfactionLevel[3](),
+            LL.choices.notAplicable(),
           ].map(option => (
             <label
               css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
@@ -261,17 +253,15 @@ const Step16 = () => {
 
       <div>
         <Label number="4.48" required>
-          If you compare the quality of SASB's CUSTOMER services you received
-          between April and September 2021 to the services you received in the
-          last 6 months, have you noticed any improvements?
+          {LL.questions[448]()}
         </Label>
 
         <div css={tw`flex justify-between`}>
           {[
-            'No, it has gotten worse',
-            'No change',
-            'Yes, it has improved',
-            `Don't know`,
+            LL.choices.satisfaction[0](),
+            LL.choices.satisfaction[1](),
+            LL.choices.satisfaction[2](),
+            LL.choices.satisfaction[3](),
           ].map(option => (
             <label
               css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
@@ -296,16 +286,15 @@ const Step16 = () => {
 
       <div>
         <Label number="4.49" required>
-          Overall, are you satisfied with the quality of public service by the
-          Municipality of Beira?
+          {LL.questions[449]()}
         </Label>
 
         <div css={tw`flex justify-between`}>
           {[
-            'Satisfied',
-            'Somewhat Satisfied',
-            'Somewhat Dissatisfied',
-            'Dissastisfied',
+            LL.choices.satisfactionLevel[0](),
+            LL.choices.satisfactionLevel[1](),
+            LL.choices.satisfactionLevel[2](),
+            LL.choices.satisfactionLevel[3](),
           ].map(option => (
             <label
               css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
@@ -328,17 +317,15 @@ const Step16 = () => {
 
       <div>
         <Label number="4.50" required>
-          If you compare the quality of Beira Municipality's public services you
-          received between April and September 2021 to the services you received
-          in the last 6 months, have you noticed any improvements?
+          {LL.questions[450]()}
         </Label>
 
         <div css={tw`flex justify-between`}>
           {[
-            'No, it has gotten worse',
-            'No change',
-            'Yes, it has improved',
-            `Don't know`,
+            LL.choices.satisfaction[0](),
+            LL.choices.satisfaction[1](),
+            LL.choices.satisfaction[2](),
+            LL.choices.satisfaction[3](),
           ].map(option => (
             <label
               css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}

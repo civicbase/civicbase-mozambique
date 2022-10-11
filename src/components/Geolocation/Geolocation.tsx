@@ -2,6 +2,7 @@ import tw from 'twin.macro'
 import Button from 'components/Button'
 import { Subtitle } from 'components/Typography'
 import locationImage from '../../images/location.png'
+import { useI18nContext } from 'i18n/i18n-react'
 
 type GeolocationMessageProps = {
   error?: GeolocationPositionError
@@ -12,6 +13,8 @@ const GeolocationMessage = ({
   error,
   handleShareGeolocation,
 }: GeolocationMessageProps) => {
+  const { LL } = useI18nContext()
+
   return (
     <div
       css={tw`backdrop-blur-3xl absolute w-full h-full left-0 bg-white bg-opacity-90 flex justify-center items-center flex-col z-50`}
@@ -34,7 +37,7 @@ const GeolocationMessage = ({
         onClick={handleShareGeolocation}
         css={tw`flex items-center`}
       >
-        Enable Location
+        {LL.actions.enableLocation()}
       </Button>
       {error && <div>Reason: {error.message}</div>}
     </div>
