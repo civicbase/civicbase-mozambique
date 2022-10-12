@@ -9,6 +9,8 @@ const en: BaseTranslation = {
     closeness: 'Closeness',
     addPerson: 'Add Person',
     reset: 'Reset',
+    completion: `Your survey has been submitted. Please continue with the ODK portion of
+    the survey.`,
   },
   help: {
     notImportant: 'Not at all Important',

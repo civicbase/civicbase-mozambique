@@ -43,6 +43,11 @@ type RootTranslation = {
 		 * R​e​s​e​t
 		 */
 		reset: string
+		/**
+		 * Y​o​u​r​ ​s​u​r​v​e​y​ ​h​a​s​ ​b​e​e​n​ ​s​u​b​m​i​t​t​e​d​.​ ​P​l​e​a​s​e​ ​c​o​n​t​i​n​u​e​ ​w​i​t​h​ ​t​h​e​ ​O​D​K​ ​p​o​r​t​i​o​n​ ​o​f​
+	​ ​ ​ ​ ​t​h​e​ ​s​u​r​v​e​y​.
+		 */
+		completion: string
 	}
 	help: {
 		/**
@@ -1384,6 +1389,11 @@ export type TranslationFunctions = {
 		 * Reset
 		 */
 		reset: () => LocalizedString
+		/**
+		 * Your survey has been submitted. Please continue with the ODK portion of
+	    the survey.
+		 */
+		completion: () => LocalizedString
 	}
 	help: {
 		/**

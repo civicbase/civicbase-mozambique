@@ -184,6 +184,8 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 27:
       setValue('finishAt', new Date().toISOString())
       return <Section.Step27 />
+    case 28:
+      return <Section.Completion />
 
     default:
       return <div>Error</div>

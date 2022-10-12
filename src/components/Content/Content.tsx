@@ -12,7 +12,7 @@ const Content = ({
   onPrevious: () => void
 }) => {
   return (
-    <div css={tw`relative mb-8`}>
+    <div css={tw`relative mb-8 h-full`}>
       <Steps id={step} onNext={onNext} onPrevious={onPrevious} />
     </div>
   )

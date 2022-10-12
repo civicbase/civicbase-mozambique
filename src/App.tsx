@@ -147,8 +147,8 @@ const App = () => {
             <Footer
               onPrevious={handlePrevious}
               onNext={handleNext}
-              hideNext={step === 27}
-              isSubmitStep={step === 27}
+              hideNext={step === 28}
+              isSubmitStep={step === 28}
               hidePrevious={step === 1}
               isStart={step === 1}
               step={step}
