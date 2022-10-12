@@ -20,6 +20,16 @@ const useQuadratic = (survey: any) => {
   )
   const [availableCredits, setAvailableCredits] = useState(credits || 0)
 
+  const reset = () => {
+    const newQuestions = questions.map(question => ({
+      ...question,
+      vote: 0,
+      credits: 0,
+    }))
+
+    setQuestions(newQuestions)
+  }
+
   const canVote = (index: number, vote: number) => {
     let simulatedCost = 0
 
@@ -71,6 +81,7 @@ const useQuadratic = (survey: any) => {
     vote,
     questions,
     availableCredits,
+    reset,
   }
 }
 

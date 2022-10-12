@@ -8,6 +8,7 @@ const pt: BaseTranslation = {
     relationship: 'Relação',
     closeness: 'Closeness',
     addPerson: 'Adicionar Pessoa',
+    reset: 'Reset',
   },
   help: {
     notImportant: 'Not at all Important',
@@ -16,6 +17,8 @@ const pt: BaseTranslation = {
     stronglyAgree: 'Strongly Agree',
   },
   choices: {
+    QVSRReset: `Do you agree with the allocation of your votes? If you agree, select
+    next. If not, you may click on reset and reallocate your votes.`,
     howLong: [
       'A few days but within a week',
       'Between 1 and 2 weeks',

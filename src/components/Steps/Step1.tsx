@@ -20,8 +20,6 @@ const Step1 = () => {
 
   const language = watch('step1.language')
 
-  console.log('language', language)
-
   useEffect(() => {
     if (language === LL.choices.languages[0]()) {
       setLocale('en')

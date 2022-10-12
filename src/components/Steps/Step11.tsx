@@ -6,9 +6,19 @@ import { useI18nContext } from 'i18n/i18n-react'
 import Quadratic from 'methods/Quadratic'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
+import { useState } from 'react'
+import { Quadratic as QuadraticType } from 'types.d'
+import PanelExpand from 'components/PanelExpand'
+import VoteSummary from 'components/VoteSummary'
+import Button from 'components/Button'
+import { hasVoted } from 'utils/quadratic'
 
 const QVSR = () => {
   const { LL } = useI18nContext()
+  const { watch } = useFormContext()
+  const [isReset, setReset] = useState(false)
+  const results: QuadraticType = watch('step11.QVSR')
+  const isVoted = hasVoted(results)
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -43,8 +53,34 @@ const QVSR = () => {
           '65 MT',
           '70 MT',
         ]}
+        isReset={isReset}
         step="step11.QVSR"
       />
+
+      {results && isVoted && (
+        <PanelExpand title="The allocation of your votes:">
+          <VoteSummary results={results} />
+        </PanelExpand>
+      )}
+
+      {results && isVoted && (
+        <div>
+          <Label required>{LL.choices.QVSRReset()}</Label>
+
+          <div css={tw`flex justify-center`}>
+            <Button
+              type="button"
+              variant="tertiary"
+              onClick={() => {
+                setReset(true)
+                setTimeout(() => setReset(false), 1000)
+              }}
+            >
+              {LL.placeholder.reset()}
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

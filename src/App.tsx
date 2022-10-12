@@ -86,7 +86,7 @@ const App = () => {
 
   // console.log('values', values)
 
-  console.log('errors', methods.formState.errors)
+  // console.log('errors', methods.formState.errors)
 
   const handlePrevious = () => {
     if (step > 1) {

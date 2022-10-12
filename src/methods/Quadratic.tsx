@@ -11,10 +11,12 @@ const Quadratic = ({
   qs,
   step,
   credits = 100,
+  isReset = false,
 }: {
   qs: any[]
   step: string
   credits?: number
+  isReset?: boolean
 }) => {
   const {
     setValue,
@@ -30,7 +32,14 @@ const Quadratic = ({
     })),
   }
 
-  const { questions, availableCredits, vote, canVote } = useQuadratic(survey)
+  const { questions, availableCredits, vote, canVote, reset } =
+    useQuadratic(survey)
+
+  useEffect(() => {
+    if (isReset) {
+      reset()
+    }
+  }, [isReset])
 
   useEffect(() => {
     if (questions) {

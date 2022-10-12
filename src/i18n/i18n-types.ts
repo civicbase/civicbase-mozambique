@@ -39,6 +39,10 @@ type RootTranslation = {
 		 * A​d​d​ ​P​e​r​s​o​n
 		 */
 		addPerson: string
+		/**
+		 * R​e​s​e​t
+		 */
+		reset: string
 	}
 	help: {
 		/**
@@ -245,6 +249,11 @@ type RootTranslation = {
 			 */
 			'6': string
 		}
+		/**
+		 * D​o​ ​y​o​u​ ​a​g​r​e​e​ ​w​i​t​h​ ​t​h​e​ ​a​l​l​o​c​a​t​i​o​n​ ​o​f​ ​y​o​u​r​ ​v​o​t​e​s​?​ ​I​f​ ​y​o​u​ ​a​g​r​e​e​,​ ​s​e​l​e​c​t​
+	​ ​ ​ ​ ​n​e​x​t​.​ ​I​f​ ​n​o​t​,​ ​y​o​u​ ​m​a​y​ ​c​l​i​c​k​ ​o​n​ ​r​e​s​e​t​ ​a​n​d​ ​r​e​a​l​l​o​c​a​t​e​ ​y​o​u​r​ ​v​o​t​e​s​.
+		 */
+		QVSRReset: string
 		howLong: {
 			/**
 			 * A​ ​f​e​w​ ​d​a​y​s​ ​b​u​t​ ​w​i​t​h​i​n​ ​a​ ​w​e​e​k
@@ -1371,6 +1380,10 @@ export type TranslationFunctions = {
 		 * Add Person
 		 */
 		addPerson: () => LocalizedString
+		/**
+		 * Reset
+		 */
+		reset: () => LocalizedString
 	}
 	help: {
 		/**
@@ -1577,6 +1590,11 @@ export type TranslationFunctions = {
 			 */
 			'6': () => LocalizedString
 		}
+		/**
+		 * Do you agree with the allocation of your votes? If you agree, select
+	    next. If not, you may click on reset and reallocate your votes.
+		 */
+		QVSRReset: () => LocalizedString
 		howLong: {
 			/**
 			 * A few days but within a week
