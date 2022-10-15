@@ -31,7 +31,7 @@ const Display = ({
   return (
     <div css={tw`flex flex-col items-center`}>
       <div
-        css={tw`h-28 w-28 border rounded-full flex justify-center items-center overflow-hidden relative`}
+        css={tw`h-24 w-24 border rounded-full flex justify-center items-center overflow-hidden relative`}
       >
         <div
           css={[

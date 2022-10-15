@@ -148,17 +148,14 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 19:
       return <Section.Step19 />
     case 20: {
-      const connection = getValues('step2.sanitationType')
-      const contacted = getValues('step13.serviceProvider.contacted')
+      const sewerConnection =
+        getValues('step2.sanitationType') === LL.choices.sanitationType[0]()
 
-      if (
-        connection !== LL.choices.sanitationType[0]() &&
-        (!contacted || contacted === LL.choices.yesNo[1]())
-      ) {
+      if (sewerConnection) {
+        return <Section.Step20 />
+      } else {
         onNext()
         return null
-      } else {
-        return <Section.Step20 />
       }
     }
     case 21:
@@ -168,15 +165,22 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 23: {
       const contactecSASB = getValues(`step13.serviceProvider.who.SASB`)
 
-      if (!contactecSASB) {
+      if (contactecSASB) {
+        return <Section.Step23 />
+      } else {
         onNext()
         return null
-      } else {
-        return <Section.Step23 />
       }
     }
     case 24:
-      return <Section.Step24 />
+      const contactecSASB = getValues(`step13.serviceProvider.who.SASB`)
+
+      if (contactecSASB) {
+        return <Section.Step24 />
+      } else {
+        onNext()
+        return null
+      }
     case 25:
       return <Section.Step25 />
     case 26:

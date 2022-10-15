@@ -14,18 +14,22 @@ function shuffle(array: any[]) {
   return array
 }
 
-export const createQuestions = (questions: any[]) => {
-  const newQs = questions.map(question => ({
+export const createQuestions = (questions: any[], sort: boolean) => {
+  const newQs = questions.map((question, index) => ({
     ...question,
     vote: 0,
     credits: 0,
-    order: 0,
-  }))
-
-  return shuffle(newQs).map((question, index) => ({
-    ...question,
     order: index,
   }))
+
+  if (sort) {
+    return shuffle(newQs).map((question, index) => ({
+      ...question,
+      order: index,
+    }))
+  } else {
+    return newQs
+  }
 }
 
 export const setSurveyTaken = (

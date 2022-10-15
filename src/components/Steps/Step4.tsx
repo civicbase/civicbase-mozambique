@@ -45,9 +45,9 @@ const Step4 = () => {
         {LL.questions.QVSRInstruction()}
       </Typography>
 
-      <Typography css={tw`text-justify`}>{LL.questions.QVSRInfo()}</Typography>
+      {/* <Typography css={tw`text-justify`}>{LL.questions.QVSRInfo()}</Typography> */}
 
-      <Quadratic qs={questions} isReset={isReset} step="step4" />
+      <Quadratic qs={questions} isReset={isReset} step="step4" sort={true} />
 
       {results && isVoted && (
         <PanelExpand title="The allocation of your votes:">
@@ -56,11 +56,12 @@ const Step4 = () => {
       )}
 
       {results && isVoted && (
-        <div>
-          <Label required>{LL.choices.QVSRReset()}</Label>
+        <div css={tw`flex space-x-2`}>
+          <Typography>{LL.choices.QVSRReset()}</Typography>
 
           <div css={tw`flex justify-center`}>
             <Button
+              css={tw`height[fit-content]`}
               type="button"
               variant="tertiary"
               onClick={() => {

@@ -7,7 +7,6 @@ import tw from 'twin.macro'
 import { useI18nContext } from 'i18n/i18n-react'
 import { useEffect } from 'react'
 import Heading from 'components/Heading'
-import { LANGUAGE } from 'utils/enums'
 
 const Step1 = () => {
   const { LL, setLocale } = useI18nContext()
@@ -37,7 +36,6 @@ const Step1 = () => {
 
       <div>
         <Label number="4.1" required>
-          {/* Please enter unique ID */}
           {LL.questions[41]()}
         </Label>
         <Input

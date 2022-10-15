@@ -18,6 +18,10 @@ export interface FormValues {
     neighborhood: string
     sanitationType: string
     dwellingType: string
+    waterBill: {
+      share: string
+      shareNumber: number
+    }
   }
   step3: {
     compare: string
@@ -89,8 +93,8 @@ export interface FormValues {
       sewerlast6Months: string
       qualityDrainage: string
       qualityDrainageLast6Months: string
-      SASBFecalSludgeDeslidgingService: string
-      qualityFecalSludgeLast6Months: string
+      SASBFecalSludgeDeslidgingService: string | null
+      qualityFecalSludgeLast6Months: string | null
       SASBCustomerService: string
       SASBCustomerServiceLast6Months: string
       beiraMunicipality: string

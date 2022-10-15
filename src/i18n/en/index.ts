@@ -1,6 +1,11 @@
 import type { BaseTranslation } from '../i18n-types'
 
 const en: BaseTranslation = {
+  errors: {
+    required: 'Required',
+    number: 'Expected a number',
+    string: 'Expected an answer',
+  },
   placeholder: {
     month: 'Month',
     year: 'Year',
@@ -9,8 +14,10 @@ const en: BaseTranslation = {
     closeness: 'Closeness',
     addPerson: 'Add Person',
     reset: 'Reset',
-    completion: `Your survey has been submitted. Please continue with the ODK portion of
-    the survey.`,
+    completion: `Your survey has been submitted.`,
+    agree: `Agree`,
+    disagree: `Disagree`,
+    credits: 'Credits',
   },
   help: {
     notImportant: 'Not at all Important',
@@ -19,8 +26,19 @@ const en: BaseTranslation = {
     stronglyAgree: 'Strongly Agree',
   },
   choices: {
-    QVSRReset: `Do you agree with the allocation of your votes? If you agree, select
-    next. If not, you may click on reset and reallocate your votes.`,
+    likely: [
+      'Very Unlikely',
+      'Somewhat unlikely',
+      'Somewhat likely',
+      'Very Likely',
+    ],
+    importance: [
+      'Not at all important',
+      'Low importance',
+      'Important',
+      'Very Important',
+    ],
+    QVSRReset: `Do you agree with the allocation of your votes? If you agree, select next. If not, you may click on reset and reallocate your votes.`,
     howLong: [
       'A few days but within a week',
       'Between 1 and 2 weeks',
@@ -41,11 +59,12 @@ const en: BaseTranslation = {
       'Family Member',
       'Other',
     ],
-    notAplicable: 'Not Applicable',
+    notAplicable: 'Not Applicable (Only emptied once since April 2021)',
+    satisfy: ['Very Satisfied', 'Satisfied', 'Less satisfied', 'Dissatisfied'],
     satisfaction: [
-      'No, it has gotten worse',
+      'It has gotten worse',
       'No change',
-      'Yes, it has improved',
+      'It has improved',
       `Don't know`,
     ],
     satisfactionLevel: [
@@ -56,9 +75,10 @@ const en: BaseTranslation = {
     ],
     serviceProvider: [
       'Landlord',
-      'Plumber',
+      'Intermediary',
       'SASB',
-      'Building Manager',
+      'Private operator',
+      'Manager of condominium/building',
       'Other',
     ],
     months: [
@@ -80,16 +100,17 @@ const en: BaseTranslation = {
     yesNo: ['Yes', 'No'],
     placeholder: 'Please select one option',
     languages: ['English', 'Portuguese'],
-    sanitationType: ['Flush to Sewer', 'Flush to Septic Tank'],
+    sanitationType: ['sewer connection', 'Septic Tank'],
     dwellingType: [
       'Singular',
       'Compound / Collective',
       'Multistoried buildings',
+      'Appartment in multistoried building with shared sanitation',
     ],
     48: [
       'piped water provision for households in the city',
-      'sewer connection services for toilets in the city ',
-      'improved drainage provision in the city',
+      'sewer connection services in the city',
+      'drainage provision in the city',
       'electricity supply for households in your city.',
       'coverage of paved roads in your city.',
     ],
@@ -162,7 +183,7 @@ const en: BaseTranslation = {
     8: `Community Price Point - Sewer Connection Fee`,
     9: `WTP - Monthly Sanitation Tax/Sewer Service Fee`,
     10: `Community Price Point - Monthly Sanitation Tax/Sewer Service Fee`,
-    11: `WTP - Monthly Sanitation Tax/Sewer Service Fee`,
+    11: `WTP - New Monthly  Drainage Service Fee`,
     12: `Community Price Point - New Monthly Drainage Service Fee`,
     13: `WTP for Fecal Sludge Management Services`,
     14: `WTP for Fecal Sludge Management Services`,
@@ -200,12 +221,8 @@ const en: BaseTranslation = {
     water bill including the sanitation tax. How does this compare to the
     amount you typically pay?`,
     48: {
-      paragraph1: `Households in your neighborhood are
-      being asked to participate in a vote. When you make your decisions,
-      please imagine everyone else in your neighborhood will be participating
-      in this exercise too.`,
-      paragraph2: `As a resident of the City of Beira, which of the public service options
-      below do you VALUE MOST?`,
+      paragraph1: `Residents in your neighborhood are being asked to participate in a vote. When you make your decisions, please imagine everyone else in your neighborhood will be participating in this exercise too.`,
+      paragraph2: `Please distribute your votes according to the importance the following public services have for you today`,
     },
 
     49: {
@@ -228,26 +245,13 @@ const en: BaseTranslation = {
     how the utility SASB has been managing sanitation services. And though
     I don't know much about sanitation, in my personal opinion, they've
     been doing a good job`,
-    411: `One the scale of 0 to 5, with 0 being not at all important and 5 being
-    very important, do you think what I have just shared with you is
-    important to you and the people in this neighborhood?`,
-    412: `On the scale of 1 to 10, with one being the lowest and 10 being the
-    highest,how likely are you to share what I have just told you to other
-    people in this neighborhood?`,
+    411: `One the scale of 1 to 4, with 1 being not at all important and 4 being very important, do you think what I have just shared with you is important to you and the people in this neighborhood?`,
+    412: `On the scale of 1 to 4 with one being the lowest and  4 being the highest,how likely are you to share what I have just told you to other people in this neighborhood?`,
     413: {
-      paragraph1: `In this survey,
-    everyone in this neighborhood is being asked to help decide the price
-    for the sewer connection fee. As you cast your votes or make your
-    decisions, please imagine that everyone else in your neighborhood is
-    also participating in this exercise. Thus, the collective decision by
-    the neighborhood will be important for SASB to decide the pricing of
-    their sewer connection fee.`,
-      paragraph2: `For households who would want a NEW sewer connection, they will be
-    required to pay a ONE TIME fee which covers the material and labor cost
-    of constructing the sewer lines. What should the sewer connection fee be
-    for everyone in your neighborhood including yourself ? You may allocate
-    your votes for more than one of the price options below. From the information that we have gathered, the average price that households pay for sewer connections is roughly 8500 MT`,
+      paragraph1: `In this survey, everyone in this neighborhood is being asked to help decide the price for the sewer connection fee. As you cast your votes or make your decisions, please imagine that everyone else in your neighborhood is also participating in this exercise. Thus, the collective decision by the neighborhood will be important for SASB to decide the pricing of their sewer connection fee.`,
+      paragraph2: `Pediram a todos os moradores do seu bairro para ajudar na tomada de decisão sobre a taxa de ligação ao esgoto. Quando votar ou tomar as suas decisões, por favor imagine que todos os seus vizinhos também participam deste exercício também.  Assim, a decisão colectiva sobre bairro será importante para o SASB tomar uma decisão em relação ao valor da taxa da ligação ao sistema de esgoto`,
     },
+
     414: {
       paragraph1: `survey, everyone in this neighborhood is being asked to help decide the
       price for the sewer connection fee. As you cast your votes or make your
@@ -266,9 +270,9 @@ const en: BaseTranslation = {
       you what your community thinks about the price to be paid for the sewer
       connection fee.`,
       paragraph2: `For the sewer connection fee. They propose an average price of (X),
-      whereas you proposed the price (Y).`,
+      whereas you proposed the price ({y} MT).`,
       paragraph3: `Having heard the community's proposal , would you like to revise your
-      previously stated price? Remember, your proposed price is (Y)`,
+      previously stated price? Remember, your proposed price is ({y} MT)`,
     },
     417: {
       paragraph1: `NOW, we will be
@@ -309,9 +313,9 @@ const en: BaseTranslation = {
       you what your community thinks about the price to be paid for the
       monthly sanitation tax`,
       paragraph2: `For the monthly sanitation tax, They propose an average price of (X).
-      You proposed the price (Y).`,
+      You proposed the price ({y} MT).`,
       paragraph3: `Having heard the community's proposal , would you like to revise your
-      previously stated price? Remember, your proposed price is (Y)`,
+      previously stated price? Remember, your proposed price is ({y} MT)`,
     },
     421: {
       paragraph1: `NOW, imagine that SASB were to
@@ -346,13 +350,10 @@ const en: BaseTranslation = {
       for everyone in your neighborhood including yourself?`,
     },
     423: {
-      paragraph1: `Now, we would like to share with
-      you what your community thinks about the price to be paid for A new
-      monthly drainage service fee.`,
-      paragraph2: `For the NEW monthly drainage fee . They propose an average price of (X).
-      You proposed the price (Y).`,
+      paragraph1: `Now, we would like to share with you what your community thinks about the price to be paid for the hypothetical monthly drainage service fee.`,
+      paragraph2: `For the hypothetical monthly drainage fee. They propose an average price of (X). You proposed the price ({y} MT)`,
       paragraph3: `Having heard the community's proposal , would you like to revise your
-      previously stated price? Remember, your proposed price is (Y)`,
+      previously stated price? Remember, your proposed price is ({y} MT)`,
     },
     425: `Since April 2021, have you ever emptied your septic tank?`,
     426: `Did you contact a service provider to empty the cesspool?`,
@@ -394,44 +395,33 @@ const en: BaseTranslation = {
     any improvements?`,
     445: `Overall, are you satisfied with the quality of SASB fecal sludge
     desludging services?`,
-    446: `If you compare the quality of fecal sludge desludging services you
-    received between April and September 2021 to the services you
-    received in the last 6 months, have you noticed any improvements?`,
+    446: `If you compare the quality of fecal sludge desludging services you received between April and September 2021 to the services you received in the last 6 months, have you noticed any changes?`,
     447: `Overall, are you satisfied with the quality of SASB customer service
     when responding to your questions, complaints and requests?`,
-    448: `If you compare the quality of SASB's CUSTOMER services you received
-    between April and September 2021 to the services you received in the
-    last 6 months, have you noticed any improvements?`,
+    448: `If you compare the quality of SASB's CUSTOMER services you received between April and September 2021 to the services you received in the last 6 months, have you noticed any change?`,
     449: `Overall, are you satisfied with the quality of public service by the
     Municipality of Beira?`,
-    450: `If you compare the quality of Beira Municipality's public services you
-    received between April and September 2021 to the services you received
-    in the last 6 months, have you noticed any improvements?`,
-    451: `On the scale of 1 to 10, with one being the lowest and 10 being the
-    highest, how likely are you to share YOUR SATISFACTION towards the
-    SASB's services mentioned above to other people in this neighborhood?`,
+    450: `If you compare the quality of Beira Municipality's public services you received between April and September 2021 to the services you received in the last 6 months, have you noticed any change?`,
+    451: `On the scale of 1 to 4, with 1 being the lowest and 4 being the highest, how likely are you to share YOUR SATISFACTION towards the SASB's services mentioned above to other people in this neighborhood?`,
     452: `With whom would you like to share YOUR SATISFACTION/OPINON to? You may
     provide up to 5 names. Specify your relationship and closeness for
     each person. For closeness , please refer to the diagram provided
     above`,
-    453: `As previously mentioned at the start of the survey, your responses
-    will be confidential. However, today, you have a chance to submit your
-    satisfaction directly to SASB through us. This will enable them to
-    follow up with you. Would you like to do that?`,
+    453: `As previously mentioned at the start of the survey, your responses will be confidential. However, today, you have a chance to submit your satisfaction directly to SASB through us. This will enable them to follow up with you. Would you like to do that ? (There is no obligation to submit this to SASB)`,
     454: `Do you know how to contact SASB when you are faced with sanitation or
     drainage related issues?`,
     51: `I will now ask you about your experiences with your  sewer connection in your household and neighborhood block . For each experience, we want to know in how many months this happened to you in the last 6 months. Even if it happened just once during a month, we would like to count that month`,
     52: `In the last 6 months, how often did you experience a sewer blockage/breakage/overflow in your dwelling or compound?`,
-    53: `If you compare the frequency of sewer blockages/breakages/overflows in your dwelling or compound between April and September 2021 to those in the last 6 months, have you noticed any REDUCTIONS?`,
+    53: `If you compare the frequency of sewer blockages/breakages/overflows in your dwelling or compound between April and September 2021 to those in the last 6 months, have you noticed any change?`,
     54: `In the last 6 months, how often did you experience a sewer blockage/breakage/overflow in your neighborhood block?`,
-    55: `If you compare the frequency of sewer blockages/breakages/overflows in your neighborhood block between April and September 2021 to those in the last 6 months, have you noticed any REDUCTIONS?`,
+    55: `If you compare the frequency of sewer blockages/breakages/overflows in your neighborhood block between April and September 2021 to those in the last 6 months, have you noticed any change?`,
     56: `In the last 6 months, how often did you experience bad sewer smell in your dwelling or compound?`,
-    57: `If you compare the frequency of bad sewer smell in your dwelling or compound between April and September 2021 to those in the last 6 months, have you noticed any REDUCTIONS?`,
+    57: `If you compare the frequency of bad sewer smell in your dwelling or compound between April and September 2021 to those in the last 6 months, have you noticed any change?`,
     58: `Since April 2021, Have you ever contacted anyone to resolve your
     sewer issues before?`,
     59: `When was the last time you contacted someone for help with a sewer
     problem?`,
-    510: `What was the problem about?`,
+    510: `What was the sewage related problem?`,
     511: `Who did you contact?`,
     512: `Specify other`,
     513: `Why didn't you contact SASB for the problem?`,
@@ -461,19 +451,18 @@ const en: BaseTranslation = {
     referred to another entity?`,
     528: `Has the problem been resolved?`,
     529: `How long did the resolution take since you have put in the request?`,
-    530: `On reflection, would you like to revise the previously stated price
-    for the service ? Remember, your proposed price is ({y} MT)`,
+    530: `On reflection, would you like to revise the  previously stated price for the FSM service ? Remember, your proposed price is ({y} MT)`,
     61: `I will now ask you about your experiences with rainwater drainage around your block. For each experience, we want to know in how many months this happened to you in the last 6 months. Even if it happened just once during a month, we would like to count that month`,
     62: `In the last 6 months, how often did the drainage boxes in your neighborhood block got obstructed and overflowed?`,
-    63: `If you compare the frequency of obstructed drainage boxes in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any REDUCTIONS?`,
+    63: `If you compare the frequency of obstructed drainage boxes in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any change?`,
     64: `In the last 6 months, how often did you see that a drainage ditch/manhole was left open in your neighborhood block?`,
     65: `If you compare the frequency of drainage ditches or manhole being left open in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any REDUCTIONS?`,
     66: `In the last 6 months, how often  have you had to walk through water?`,
     67: `In the last 6 months, how often did you get soaked “take a shower” because of passing cars?`,
     68: `In the last 6 months, how often were you afraid of catching a disease because of stagnant water on the street?`,
-    69: `If you compare the frequency of water logging and stagnant water in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any REDUCTIONS?`,
+    69: `If you compare the frequency of water logging and stagnant water in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any change?`,
     610: `In the last 6 months, how often did your neighborhood experience flood after a rain?`,
-    611: ` If you compare the frequency of floods after a rain in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any REDUCTIONS?`,
+    611: `If you compare the frequency of floods after a rain in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any change?`,
     612: `Since April 2021, have you contacted someone to resolve the DRAINAGE
     issues you faced before?`,
     613: `When was the last time you contacted someone for help with a
@@ -482,16 +471,12 @@ const en: BaseTranslation = {
     615: `Specify other`,
     616: `Who did you contact?`,
     617: `Why didn't you contact SASB for the problem?`,
-    618: `Did the person who dealt with your complaint treat you in a fair and
-    polite manner?`,
-    619: `Did you need to make more than one call before they entered into
-    action?`,
-    620: `Did you feel that you needed to pay some sort of bribe or gift to
-    the employee to make the request to be processed faster?`,
-    621: `Has your matter been dealt with by the SASB itself or have you been
-    referred to another entity?`,
-    622: `Has the problem been resolved?`,
-    623: `How long did the resolution take since you have put in the request?`,
+    618: `(Caso tenha contactado o SASB), a pessoa que lhe atendeu tratou-lhe duma forma correcta e educada?`,
+    619: `(Caso tenha sido o SASB), teve que fazer mais que uma chamada até que começaram a intervir?`,
+    620: `(Caso tenha contactado o SASB), sentiu a necessidade de subornar ou oferecer algo ao funcionário para que o atendimento fosse rápido?`,
+    621: `(Caso tenha contactado o SASB), o seu problema foi tratado pelo próprio SASB ou foi encaminhado para outra entidade?`,
+    622: `(Caso tenha contactado o SASB) O seu poblema ficou resolvido?`,
+    623: `(Caso tenha contactado o SASB) Quanto tempo levou a solução do problema contando a partir do momento que fez o primeiro contacto?`,
     624: `On reflection, would you like to revise the previously stated price
     for a NEW monthly drainage maintenance fee ? Remember, your proposed
     price is ({y} MT)`,

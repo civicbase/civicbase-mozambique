@@ -41,12 +41,13 @@ const Step17 = () => {
         </Label>
 
         <div css={tw`flex flex-col mt-10`}>
-          <div css={tw`flex justify-between mb-5`}>
-            <Typography>{LL.help.stronglyDisagree()}</Typography>
-            <Typography>{LL.help.stronglyAgree()}</Typography>
-          </div>
           <div css={tw`flex justify-between`}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(option => (
+            {[
+              LL.choices.likely[0](),
+              LL.choices.likely[1](),
+              LL.choices.likely[2](),
+              LL.choices.likely[3](),
+            ].map(option => (
               <label
                 css={tw`flex flex-col space-y-2 items-center select-none`}
                 key={option}

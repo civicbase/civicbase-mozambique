@@ -89,6 +89,7 @@ const Step2 = () => {
                 LL.choices.dwellingType[0](),
                 LL.choices.dwellingType[1](),
                 LL.choices.dwellingType[2](),
+                LL.choices.dwellingType[3](),
               ]}
               value={field.value}
               onChange={field.onChange}
@@ -129,6 +130,7 @@ const Step2 = () => {
                 <Label number="4.6" required>
                   {LL.questions[46]()}
                 </Label>
+
                 <Input
                   {...register('step2.waterBill.shareNumber', {
                     required: true,
@@ -137,6 +139,7 @@ const Step2 = () => {
                   error={!!errors?.step2?.waterBill?.shareNumber}
                   type="number"
                 />
+
                 <FieldErrorMessage
                   name="step2.waterBill.shareNumber"
                   errors={errors}

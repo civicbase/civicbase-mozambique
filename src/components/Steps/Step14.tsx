@@ -31,9 +31,9 @@ const Step14 = () => {
           {LL.questions[434]()}
         </Typography>
 
-        <div>
+        {/* <div>
           <img src={image} alt="service" />
-        </div>
+        </div> */}
       </div>
 
       <div>

@@ -40,6 +40,8 @@ const Step27 = () => {
             </label>
           ))}
         </div>
+
+        <FieldErrorMessage name="step27.revisePrice" errors={errors} />
       </div>
 
       {(revisedPrice === LL.choices.revise[0]() ||

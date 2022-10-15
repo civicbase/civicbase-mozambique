@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import PagesLayout from 'layout/Pages'
-import validation from './validation'
+import validationSchema from './validation'
 import Content from 'components/Content'
 import Geolocation from 'components/Geolocation'
 import useGeolocation from 'hooks/use-geolocation'
@@ -14,11 +14,7 @@ import { transform } from 'transform'
 import params from 'utils/params'
 import { FormValues } from 'types.d'
 import { getRandomQVSRSlider, getRandomTreatmentControl } from 'utils/random'
-import {
-  manualStep19Validation,
-  manualStep20Validation,
-} from 'utils/validation'
-import ValidationSummary from 'components/ValidationSummary'
+import validator from 'validations'
 import { useI18nContext } from 'i18n/i18n-react'
 
 const App = () => {
@@ -49,6 +45,11 @@ const App = () => {
             : LL.choices.languages[0](),
         uniqueId: params.uniqueId,
       },
+      step2: {
+        waterBill: {
+          shareNumber: 0,
+        },
+      },
       step5: {
         content: content,
       },
@@ -56,13 +57,27 @@ const App = () => {
         amountPreference: '8500',
         content: QVSRSliderContent,
       },
+      step8: {
+        willingPay: 0,
+      },
       step9: {
         pricePreference: '80',
         content: QVSRSliderContent,
       },
+      step10: {
+        willingPay: 0,
+      },
       step11: {
         feePreference: '0',
         content: QVSRSliderContent,
+      },
+      step12: {
+        willingPay: 0,
+      },
+      step13: {
+        serviceProvider: {
+          howMuch: 0,
+        },
       },
       step14: {
         fsm: {
@@ -79,40 +94,60 @@ const App = () => {
         share: [{ name: '', relationship: null, closeness: null }],
       },
     },
-    resolver: zodResolver(validation),
+    resolver: zodResolver(validationSchema(LL)),
   })
-
-  // const values = methods.getValues()
-
-  // console.log('values', values)
 
   // console.log('errors', methods.formState.errors)
 
   const handlePrevious = () => {
     if (step > 1) {
-      setStep(step - 1)
+      switch (step) {
+        case 15:
+          const sanitationType = methods.getValues('step2.sanitationType')
+
+          if (sanitationType !== LL.choices.sanitationType[1]()) {
+            setStep(step - 3)
+          } else {
+            setStep(step - 1)
+          }
+          break
+
+        case 21:
+          const sewerConnection =
+            methods.getValues('step2.sanitationType') ===
+            LL.choices.sanitationType[0]()
+          if (!sewerConnection) {
+            setStep(step - 2)
+          } else {
+            setStep(step - 1)
+          }
+
+          break
+
+        case 25:
+          const contactecSASB = methods.getValues(
+            `step13.serviceProvider.who.SASB`,
+          )
+
+          if (!contactecSASB) {
+            setStep(step - 3)
+          } else {
+            setStep(step - 1)
+          }
+          break
+
+        default:
+          setStep(step - 1)
+          break
+      }
     }
   }
   const handleNext = () => {
-    if (step === 20) {
-      const isValid = manualStep20Validation(methods)
-
+    validator(step, methods, LL).then(isValid => {
       if (isValid) {
         setStep(step + 1)
       }
-    } else if (step === 19) {
-      const isValid = manualStep19Validation(methods)
-
-      if (isValid) {
-        setStep(step + 1)
-      }
-    } else {
-      // methods.trigger(`step${step}` as any).then(isValid => {
-      //   if (isValid) {
-      setStep(step + 1)
-      //   }
-      // })
-    }
+    })
   }
 
   return (
@@ -127,6 +162,8 @@ const App = () => {
           console.log('answer', answer)
 
           run(createAnswer(answer))
+
+          setStep(step + 1)
         })}
       >
         <PagesLayout
@@ -137,19 +174,14 @@ const App = () => {
               step={step}
             />
           }
-          header={
-            <>
-              {/* <ValidationSummary step={step} /> */}
-              <Header />
-            </>
-          }
+          header={<Header />}
           footer={
             <Footer
               onPrevious={handlePrevious}
               onNext={handleNext}
-              hideNext={step === 28}
-              isSubmitStep={step === 28}
-              hidePrevious={step === 1}
+              hideNext={step === 27 || step === 28}
+              isSubmitStep={step === 27}
+              hidePrevious={step === 1 || step === 28}
               isStart={step === 1}
               step={step}
             />

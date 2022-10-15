@@ -3,6 +3,7 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import { Headline } from 'components/Typography'
 import Vote from 'components/Vote'
 import useQuadratic from 'hooks/use-quadratic'
+import { useI18nContext } from 'i18n/i18n-react'
 import { memo, useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
@@ -12,12 +13,15 @@ const Quadratic = ({
   step,
   credits = 100,
   isReset = false,
+  sort = false,
 }: {
   qs: any[]
   step: string
   credits?: number
   isReset?: boolean
+  sort?: boolean
 }) => {
+  const { LL } = useI18nContext()
   const {
     setValue,
     formState: { errors },
@@ -32,8 +36,10 @@ const Quadratic = ({
     })),
   }
 
-  const { questions, availableCredits, vote, canVote, reset } =
-    useQuadratic(survey)
+  const { questions, availableCredits, vote, canVote, reset } = useQuadratic(
+    survey,
+    sort,
+  )
 
   useEffect(() => {
     if (isReset) {
@@ -53,7 +59,7 @@ const Quadratic = ({
         <DynamicBar
           total={credits}
           availableCredits={availableCredits}
-          language="Credits"
+          language={LL.placeholder.credits()}
         />
       </div>
 
@@ -62,23 +68,26 @@ const Quadratic = ({
         const canVoteDown = canVote(index, -1)
 
         return (
-          <div key={question.statement} css={tw`flex w-full flex-col mb-12`}>
+          <div
+            key={question.statement}
+            css={tw`flex w-full mb-12 justify-between`}
+          >
             <Headline css={tw`mb-4 flex`}>
               {index + 1}.&nbsp;
               {question.statement}
             </Headline>
 
-            <div css={tw`flex justify-center mt-12`}>
+            <div css={tw`flex justify-center`}>
               <Vote
-                thumbsDown="Disagree"
-                thumbsUp="Agree"
+                thumbsDown={LL.placeholder.disagree()}
+                thumbsUp={LL.placeholder.agree()}
                 total={credits}
                 handleVote={(direction: number) => vote(index, direction)}
                 vote={question.vote}
                 creditSpent={question.credits}
                 canVoteUp={canVoteUp}
                 canVoteDown={canVoteDown}
-                token="Credits"
+                token={LL.placeholder.credits()}
               />
             </div>
           </div>

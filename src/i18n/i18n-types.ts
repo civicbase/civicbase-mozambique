@@ -14,6 +14,20 @@ export type Translation = RootTranslation
 export type Translations = RootTranslation
 
 type RootTranslation = {
+	errors: {
+		/**
+		 * R​e​q​u​i​r​e​d
+		 */
+		required: string
+		/**
+		 * E​x​p​e​c​t​e​d​ ​a​ ​n​u​m​b​e​r
+		 */
+		number: string
+		/**
+		 * E​x​p​e​c​t​e​d​ ​a​n​ ​a​n​s​w​e​r
+		 */
+		string: string
+	}
 	placeholder: {
 		/**
 		 * M​o​n​t​h
@@ -44,10 +58,21 @@ type RootTranslation = {
 		 */
 		reset: string
 		/**
-		 * Y​o​u​r​ ​s​u​r​v​e​y​ ​h​a​s​ ​b​e​e​n​ ​s​u​b​m​i​t​t​e​d​.​ ​P​l​e​a​s​e​ ​c​o​n​t​i​n​u​e​ ​w​i​t​h​ ​t​h​e​ ​O​D​K​ ​p​o​r​t​i​o​n​ ​o​f​
-	​ ​ ​ ​ ​t​h​e​ ​s​u​r​v​e​y​.
+		 * Y​o​u​r​ ​s​u​r​v​e​y​ ​h​a​s​ ​b​e​e​n​ ​s​u​b​m​i​t​t​e​d​.
 		 */
 		completion: string
+		/**
+		 * A​g​r​e​e
+		 */
+		agree: string
+		/**
+		 * D​i​s​a​g​r​e​e
+		 */
+		disagree: string
+		/**
+		 * C​r​e​d​i​t​s
+		 */
+		credits: string
 	}
 	help: {
 		/**
@@ -74,11 +99,11 @@ type RootTranslation = {
 			 */
 			'0': string
 			/**
-			 * s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​s​e​r​v​i​c​e​s​ ​f​o​r​ ​t​o​i​l​e​t​s​ ​i​n​ ​t​h​e​ ​c​i​t​y​ 
+			 * s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​s​e​r​v​i​c​e​s​ ​i​n​ ​t​h​e​ ​c​i​t​y
 			 */
 			'1': string
 			/**
-			 * i​m​p​r​o​v​e​d​ ​d​r​a​i​n​a​g​e​ ​p​r​o​v​i​s​i​o​n​ ​i​n​ ​t​h​e​ ​c​i​t​y
+			 * d​r​a​i​n​a​g​e​ ​p​r​o​v​i​s​i​o​n​ ​i​n​ ​t​h​e​ ​c​i​t​y
 			 */
 			'2': string
 			/**
@@ -254,9 +279,44 @@ type RootTranslation = {
 			 */
 			'6': string
 		}
+		likely: {
+			/**
+			 * V​e​r​y​ ​U​n​l​i​k​e​l​y
+			 */
+			'0': string
+			/**
+			 * S​o​m​e​w​h​a​t​ ​u​n​l​i​k​e​l​y
+			 */
+			'1': string
+			/**
+			 * S​o​m​e​w​h​a​t​ ​l​i​k​e​l​y
+			 */
+			'2': string
+			/**
+			 * V​e​r​y​ ​L​i​k​e​l​y
+			 */
+			'3': string
+		}
+		importance: {
+			/**
+			 * N​o​t​ ​a​t​ ​a​l​l​ ​i​m​p​o​r​t​a​n​t
+			 */
+			'0': string
+			/**
+			 * L​o​w​ ​i​m​p​o​r​t​a​n​c​e
+			 */
+			'1': string
+			/**
+			 * I​m​p​o​r​t​a​n​t
+			 */
+			'2': string
+			/**
+			 * V​e​r​y​ ​I​m​p​o​r​t​a​n​t
+			 */
+			'3': string
+		}
 		/**
-		 * D​o​ ​y​o​u​ ​a​g​r​e​e​ ​w​i​t​h​ ​t​h​e​ ​a​l​l​o​c​a​t​i​o​n​ ​o​f​ ​y​o​u​r​ ​v​o​t​e​s​?​ ​I​f​ ​y​o​u​ ​a​g​r​e​e​,​ ​s​e​l​e​c​t​
-	​ ​ ​ ​ ​n​e​x​t​.​ ​I​f​ ​n​o​t​,​ ​y​o​u​ ​m​a​y​ ​c​l​i​c​k​ ​o​n​ ​r​e​s​e​t​ ​a​n​d​ ​r​e​a​l​l​o​c​a​t​e​ ​y​o​u​r​ ​v​o​t​e​s​.
+		 * D​o​ ​y​o​u​ ​a​g​r​e​e​ ​w​i​t​h​ ​t​h​e​ ​a​l​l​o​c​a​t​i​o​n​ ​o​f​ ​y​o​u​r​ ​v​o​t​e​s​?​ ​I​f​ ​y​o​u​ ​a​g​r​e​e​,​ ​s​e​l​e​c​t​ ​n​e​x​t​.​ ​I​f​ ​n​o​t​,​ ​y​o​u​ ​m​a​y​ ​c​l​i​c​k​ ​o​n​ ​r​e​s​e​t​ ​a​n​d​ ​r​e​a​l​l​o​c​a​t​e​ ​y​o​u​r​ ​v​o​t​e​s​.
 		 */
 		QVSRReset: string
 		howLong: {
@@ -328,12 +388,30 @@ type RootTranslation = {
 			'4': string
 		}
 		/**
-		 * N​o​t​ ​A​p​p​l​i​c​a​b​l​e
+		 * N​o​t​ ​A​p​p​l​i​c​a​b​l​e​ ​(​O​n​l​y​ ​e​m​p​t​i​e​d​ ​o​n​c​e​ ​s​i​n​c​e​ ​A​p​r​i​l​ ​2​0​2​1​)
 		 */
 		notAplicable: string
+		satisfy: {
+			/**
+			 * V​e​r​y​ ​S​a​t​i​s​f​i​e​d
+			 */
+			'0': string
+			/**
+			 * S​a​t​i​s​f​i​e​d
+			 */
+			'1': string
+			/**
+			 * L​e​s​s​ ​s​a​t​i​s​f​i​e​d
+			 */
+			'2': string
+			/**
+			 * D​i​s​s​a​t​i​s​f​i​e​d
+			 */
+			'3': string
+		}
 		satisfaction: {
 			/**
-			 * N​o​,​ ​i​t​ ​h​a​s​ ​g​o​t​t​e​n​ ​w​o​r​s​e
+			 * I​t​ ​h​a​s​ ​g​o​t​t​e​n​ ​w​o​r​s​e
 			 */
 			'0': string
 			/**
@@ -341,7 +419,7 @@ type RootTranslation = {
 			 */
 			'1': string
 			/**
-			 * Y​e​s​,​ ​i​t​ ​h​a​s​ ​i​m​p​r​o​v​e​d
+			 * I​t​ ​h​a​s​ ​i​m​p​r​o​v​e​d
 			 */
 			'2': string
 			/**
@@ -373,7 +451,7 @@ type RootTranslation = {
 			 */
 			'0': string
 			/**
-			 * P​l​u​m​b​e​r
+			 * I​n​t​e​r​m​e​d​i​a​r​y
 			 */
 			'1': string
 			/**
@@ -381,13 +459,17 @@ type RootTranslation = {
 			 */
 			'2': string
 			/**
-			 * B​u​i​l​d​i​n​g​ ​M​a​n​a​g​e​r
+			 * P​r​i​v​a​t​e​ ​o​p​e​r​a​t​o​r
 			 */
 			'3': string
 			/**
-			 * O​t​h​e​r
+			 * M​a​n​a​g​e​r​ ​o​f​ ​c​o​n​d​o​m​i​n​i​u​m​/​b​u​i​l​d​i​n​g
 			 */
 			'4': string
+			/**
+			 * O​t​h​e​r
+			 */
+			'5': string
 		}
 		months: {
 			/**
@@ -493,11 +575,11 @@ type RootTranslation = {
 		}
 		sanitationType: {
 			/**
-			 * F​l​u​s​h​ ​t​o​ ​S​e​w​e​r
+			 * s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n
 			 */
 			'0': string
 			/**
-			 * F​l​u​s​h​ ​t​o​ ​S​e​p​t​i​c​ ​T​a​n​k
+			 * S​e​p​t​i​c​ ​T​a​n​k
 			 */
 			'1': string
 		}
@@ -514,6 +596,10 @@ type RootTranslation = {
 			 * M​u​l​t​i​s​t​o​r​i​e​d​ ​b​u​i​l​d​i​n​g​s
 			 */
 			'2': string
+			/**
+			 * A​p​p​a​r​t​m​e​n​t​ ​i​n​ ​m​u​l​t​i​s​t​o​r​i​e​d​ ​b​u​i​l​d​i​n​g​ ​w​i​t​h​ ​s​h​a​r​e​d​ ​s​a​n​i​t​a​t​i​o​n
+			 */
+			'3': string
 		}
 	}
 	actions: {
@@ -580,7 +666,7 @@ type RootTranslation = {
 		 */
 		'10': string
 		/**
-		 * W​T​P​ ​-​ ​M​o​n​t​h​l​y​ ​S​a​n​i​t​a​t​i​o​n​ ​T​a​x​/​S​e​w​e​r​ ​S​e​r​v​i​c​e​ ​F​e​e
+		 * W​T​P​ ​-​ ​N​e​w​ ​M​o​n​t​h​l​y​ ​ ​D​r​a​i​n​a​g​e​ ​S​e​r​v​i​c​e​ ​F​e​e
 		 */
 		'11': string
 		/**
@@ -676,15 +762,11 @@ type RootTranslation = {
 		'47': string
 		'48': {
 			/**
-			 * H​o​u​s​e​h​o​l​d​s​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​a​r​e​
-		​ ​ ​ ​ ​ ​ ​b​e​i​n​g​ ​a​s​k​e​d​ ​t​o​ ​p​a​r​t​i​c​i​p​a​t​e​ ​i​n​ ​a​ ​v​o​t​e​.​ ​W​h​e​n​ ​y​o​u​ ​m​a​k​e​ ​y​o​u​r​ ​d​e​c​i​s​i​o​n​s​,​
-		​ ​ ​ ​ ​ ​ ​p​l​e​a​s​e​ ​i​m​a​g​i​n​e​ ​e​v​e​r​y​o​n​e​ ​e​l​s​e​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​w​i​l​l​ ​b​e​ ​p​a​r​t​i​c​i​p​a​t​i​n​g​
-		​ ​ ​ ​ ​ ​ ​i​n​ ​t​h​i​s​ ​e​x​e​r​c​i​s​e​ ​t​o​o​.
+			 * R​e​s​i​d​e​n​t​s​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​a​r​e​ ​b​e​i​n​g​ ​a​s​k​e​d​ ​t​o​ ​p​a​r​t​i​c​i​p​a​t​e​ ​i​n​ ​a​ ​v​o​t​e​.​ ​W​h​e​n​ ​y​o​u​ ​m​a​k​e​ ​y​o​u​r​ ​d​e​c​i​s​i​o​n​s​,​ ​p​l​e​a​s​e​ ​i​m​a​g​i​n​e​ ​e​v​e​r​y​o​n​e​ ​e​l​s​e​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​w​i​l​l​ ​b​e​ ​p​a​r​t​i​c​i​p​a​t​i​n​g​ ​i​n​ ​t​h​i​s​ ​e​x​e​r​c​i​s​e​ ​t​o​o​.
 			 */
 			paragraph1: string
 			/**
-			 * A​s​ ​a​ ​r​e​s​i​d​e​n​t​ ​o​f​ ​t​h​e​ ​C​i​t​y​ ​o​f​ ​B​e​i​r​a​,​ ​w​h​i​c​h​ ​o​f​ ​t​h​e​ ​p​u​b​l​i​c​ ​s​e​r​v​i​c​e​ ​o​p​t​i​o​n​s​
-		​ ​ ​ ​ ​ ​ ​b​e​l​o​w​ ​d​o​ ​y​o​u​ ​V​A​L​U​E​ ​M​O​S​T​?
+			 * P​l​e​a​s​e​ ​d​i​s​t​r​i​b​u​t​e​ ​y​o​u​r​ ​v​o​t​e​s​ ​a​c​c​o​r​d​i​n​g​ ​t​o​ ​t​h​e​ ​i​m​p​o​r​t​a​n​c​e​ ​t​h​e​ ​f​o​l​l​o​w​i​n​g​ ​p​u​b​l​i​c​ ​s​e​r​v​i​c​e​s​ ​h​a​v​e​ ​f​o​r​ ​y​o​u​ ​t​o​d​a​y
 			 */
 			paragraph2: string
 		}
@@ -734,7 +816,7 @@ type RootTranslation = {
 		 */
 		'52': string
 		/**
-		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​f​r​e​q​u​e​n​c​y​ ​o​f​ ​s​e​w​e​r​ ​b​l​o​c​k​a​g​e​s​/​b​r​e​a​k​a​g​e​s​/​o​v​e​r​f​l​o​w​s​ ​i​n​ ​y​o​u​r​ ​d​w​e​l​l​i​n​g​ ​o​r​ ​c​o​m​p​o​u​n​d​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​o​s​e​ ​i​n​ ​t​h​e​ ​l​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​R​E​D​U​C​T​I​O​N​S​?
+		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​f​r​e​q​u​e​n​c​y​ ​o​f​ ​s​e​w​e​r​ ​b​l​o​c​k​a​g​e​s​/​b​r​e​a​k​a​g​e​s​/​o​v​e​r​f​l​o​w​s​ ​i​n​ ​y​o​u​r​ ​d​w​e​l​l​i​n​g​ ​o​r​ ​c​o​m​p​o​u​n​d​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​o​s​e​ ​i​n​ ​t​h​e​ ​l​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​c​h​a​n​g​e​?
 		 */
 		'53': string
 		/**
@@ -742,7 +824,7 @@ type RootTranslation = {
 		 */
 		'54': string
 		/**
-		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​f​r​e​q​u​e​n​c​y​ ​o​f​ ​s​e​w​e​r​ ​b​l​o​c​k​a​g​e​s​/​b​r​e​a​k​a​g​e​s​/​o​v​e​r​f​l​o​w​s​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​b​l​o​c​k​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​o​s​e​ ​i​n​ ​t​h​e​ ​l​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​R​E​D​U​C​T​I​O​N​S​?
+		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​f​r​e​q​u​e​n​c​y​ ​o​f​ ​s​e​w​e​r​ ​b​l​o​c​k​a​g​e​s​/​b​r​e​a​k​a​g​e​s​/​o​v​e​r​f​l​o​w​s​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​b​l​o​c​k​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​o​s​e​ ​i​n​ ​t​h​e​ ​l​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​c​h​a​n​g​e​?
 		 */
 		'55': string
 		/**
@@ -750,7 +832,7 @@ type RootTranslation = {
 		 */
 		'56': string
 		/**
-		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​f​r​e​q​u​e​n​c​y​ ​o​f​ ​b​a​d​ ​s​e​w​e​r​ ​s​m​e​l​l​ ​i​n​ ​y​o​u​r​ ​d​w​e​l​l​i​n​g​ ​o​r​ ​c​o​m​p​o​u​n​d​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​o​s​e​ ​i​n​ ​t​h​e​ ​l​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​R​E​D​U​C​T​I​O​N​S​?
+		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​f​r​e​q​u​e​n​c​y​ ​o​f​ ​b​a​d​ ​s​e​w​e​r​ ​s​m​e​l​l​ ​i​n​ ​y​o​u​r​ ​d​w​e​l​l​i​n​g​ ​o​r​ ​c​o​m​p​o​u​n​d​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​o​s​e​ ​i​n​ ​t​h​e​ ​l​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​c​h​a​n​g​e​?
 		 */
 		'57': string
 		/**
@@ -772,7 +854,7 @@ type RootTranslation = {
 		 */
 		'62': string
 		/**
-		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​f​r​e​q​u​e​n​c​y​ ​o​f​ ​o​b​s​t​r​u​c​t​e​d​ ​d​r​a​i​n​a​g​e​ ​b​o​x​e​s​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​b​l​o​c​k​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​o​s​e​ ​i​n​ ​t​h​e​ ​p​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​R​E​D​U​C​T​I​O​N​S​?
+		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​f​r​e​q​u​e​n​c​y​ ​o​f​ ​o​b​s​t​r​u​c​t​e​d​ ​d​r​a​i​n​a​g​e​ ​b​o​x​e​s​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​b​l​o​c​k​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​o​s​e​ ​i​n​ ​t​h​e​ ​p​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​c​h​a​n​g​e​?
 		 */
 		'63': string
 		/**
@@ -796,7 +878,7 @@ type RootTranslation = {
 		 */
 		'68': string
 		/**
-		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​f​r​e​q​u​e​n​c​y​ ​o​f​ ​w​a​t​e​r​ ​l​o​g​g​i​n​g​ ​a​n​d​ ​s​t​a​g​n​a​n​t​ ​w​a​t​e​r​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​b​l​o​c​k​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​o​s​e​ ​i​n​ ​t​h​e​ ​p​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​R​E​D​U​C​T​I​O​N​S​?
+		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​f​r​e​q​u​e​n​c​y​ ​o​f​ ​w​a​t​e​r​ ​l​o​g​g​i​n​g​ ​a​n​d​ ​s​t​a​g​n​a​n​t​ ​w​a​t​e​r​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​b​l​o​c​k​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​o​s​e​ ​i​n​ ​t​h​e​ ​p​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​c​h​a​n​g​e​?
 		 */
 		'69': string
 		/**
@@ -807,34 +889,20 @@ type RootTranslation = {
 		 */
 		'410': string
 		/**
-		 * O​n​e​ ​t​h​e​ ​s​c​a​l​e​ ​o​f​ ​0​ ​t​o​ ​5​,​ ​w​i​t​h​ ​0​ ​b​e​i​n​g​ ​n​o​t​ ​a​t​ ​a​l​l​ ​i​m​p​o​r​t​a​n​t​ ​a​n​d​ ​5​ ​b​e​i​n​g​
-	​ ​ ​ ​ ​v​e​r​y​ ​i​m​p​o​r​t​a​n​t​,​ ​d​o​ ​y​o​u​ ​t​h​i​n​k​ ​w​h​a​t​ ​I​ ​h​a​v​e​ ​j​u​s​t​ ​s​h​a​r​e​d​ ​w​i​t​h​ ​y​o​u​ ​i​s​
-	​ ​ ​ ​ ​i​m​p​o​r​t​a​n​t​ ​t​o​ ​y​o​u​ ​a​n​d​ ​t​h​e​ ​p​e​o​p​l​e​ ​i​n​ ​t​h​i​s​ ​n​e​i​g​h​b​o​r​h​o​o​d​?
+		 * O​n​e​ ​t​h​e​ ​s​c​a​l​e​ ​o​f​ ​1​ ​t​o​ ​4​,​ ​w​i​t​h​ ​1​ ​b​e​i​n​g​ ​n​o​t​ ​a​t​ ​a​l​l​ ​i​m​p​o​r​t​a​n​t​ ​a​n​d​ ​4​ ​b​e​i​n​g​ ​v​e​r​y​ ​i​m​p​o​r​t​a​n​t​,​ ​d​o​ ​y​o​u​ ​t​h​i​n​k​ ​w​h​a​t​ ​I​ ​h​a​v​e​ ​j​u​s​t​ ​s​h​a​r​e​d​ ​w​i​t​h​ ​y​o​u​ ​i​s​ ​i​m​p​o​r​t​a​n​t​ ​t​o​ ​y​o​u​ ​a​n​d​ ​t​h​e​ ​p​e​o​p​l​e​ ​i​n​ ​t​h​i​s​ ​n​e​i​g​h​b​o​r​h​o​o​d​?
 		 */
 		'411': string
 		/**
-		 * O​n​ ​t​h​e​ ​s​c​a​l​e​ ​o​f​ ​1​ ​t​o​ ​1​0​,​ ​w​i​t​h​ ​o​n​e​ ​b​e​i​n​g​ ​t​h​e​ ​l​o​w​e​s​t​ ​a​n​d​ ​1​0​ ​b​e​i​n​g​ ​t​h​e​
-	​ ​ ​ ​ ​h​i​g​h​e​s​t​,​h​o​w​ ​l​i​k​e​l​y​ ​a​r​e​ ​y​o​u​ ​t​o​ ​s​h​a​r​e​ ​w​h​a​t​ ​I​ ​h​a​v​e​ ​j​u​s​t​ ​t​o​l​d​ ​y​o​u​ ​t​o​ ​o​t​h​e​r​
-	​ ​ ​ ​ ​p​e​o​p​l​e​ ​i​n​ ​t​h​i​s​ ​n​e​i​g​h​b​o​r​h​o​o​d​?
+		 * O​n​ ​t​h​e​ ​s​c​a​l​e​ ​o​f​ ​1​ ​t​o​ ​4​ ​w​i​t​h​ ​o​n​e​ ​b​e​i​n​g​ ​t​h​e​ ​l​o​w​e​s​t​ ​a​n​d​ ​ ​4​ ​b​e​i​n​g​ ​t​h​e​ ​h​i​g​h​e​s​t​,​h​o​w​ ​l​i​k​e​l​y​ ​a​r​e​ ​y​o​u​ ​t​o​ ​s​h​a​r​e​ ​w​h​a​t​ ​I​ ​h​a​v​e​ ​j​u​s​t​ ​t​o​l​d​ ​y​o​u​ ​t​o​ ​o​t​h​e​r​ ​p​e​o​p​l​e​ ​i​n​ ​t​h​i​s​ ​n​e​i​g​h​b​o​r​h​o​o​d​?
 		 */
 		'412': string
 		'413': {
 			/**
-			 * I​n​ ​t​h​i​s​ ​s​u​r​v​e​y​,​
-		​ ​ ​ ​ ​e​v​e​r​y​o​n​e​ ​i​n​ ​t​h​i​s​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​s​ ​b​e​i​n​g​ ​a​s​k​e​d​ ​t​o​ ​h​e​l​p​ ​d​e​c​i​d​e​ ​t​h​e​ ​p​r​i​c​e​
-		​ ​ ​ ​ ​f​o​r​ ​t​h​e​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​.​ ​A​s​ ​y​o​u​ ​c​a​s​t​ ​y​o​u​r​ ​v​o​t​e​s​ ​o​r​ ​m​a​k​e​ ​y​o​u​r​
-		​ ​ ​ ​ ​d​e​c​i​s​i​o​n​s​,​ ​p​l​e​a​s​e​ ​i​m​a​g​i​n​e​ ​t​h​a​t​ ​e​v​e​r​y​o​n​e​ ​e​l​s​e​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​s​
-		​ ​ ​ ​ ​a​l​s​o​ ​p​a​r​t​i​c​i​p​a​t​i​n​g​ ​i​n​ ​t​h​i​s​ ​e​x​e​r​c​i​s​e​.​ ​T​h​u​s​,​ ​t​h​e​ ​c​o​l​l​e​c​t​i​v​e​ ​d​e​c​i​s​i​o​n​ ​b​y​
-		​ ​ ​ ​ ​t​h​e​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​w​i​l​l​ ​b​e​ ​i​m​p​o​r​t​a​n​t​ ​f​o​r​ ​S​A​S​B​ ​t​o​ ​d​e​c​i​d​e​ ​t​h​e​ ​p​r​i​c​i​n​g​ ​o​f​
-		​ ​ ​ ​ ​t​h​e​i​r​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​.
+			 * I​n​ ​t​h​i​s​ ​s​u​r​v​e​y​,​ ​e​v​e​r​y​o​n​e​ ​i​n​ ​t​h​i​s​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​s​ ​b​e​i​n​g​ ​a​s​k​e​d​ ​t​o​ ​h​e​l​p​ ​d​e​c​i​d​e​ ​t​h​e​ ​p​r​i​c​e​ ​f​o​r​ ​t​h​e​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​.​ ​A​s​ ​y​o​u​ ​c​a​s​t​ ​y​o​u​r​ ​v​o​t​e​s​ ​o​r​ ​m​a​k​e​ ​y​o​u​r​ ​d​e​c​i​s​i​o​n​s​,​ ​p​l​e​a​s​e​ ​i​m​a​g​i​n​e​ ​t​h​a​t​ ​e​v​e​r​y​o​n​e​ ​e​l​s​e​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​s​ ​a​l​s​o​ ​p​a​r​t​i​c​i​p​a​t​i​n​g​ ​i​n​ ​t​h​i​s​ ​e​x​e​r​c​i​s​e​.​ ​T​h​u​s​,​ ​t​h​e​ ​c​o​l​l​e​c​t​i​v​e​ ​d​e​c​i​s​i​o​n​ ​b​y​ ​t​h​e​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​w​i​l​l​ ​b​e​ ​i​m​p​o​r​t​a​n​t​ ​f​o​r​ ​S​A​S​B​ ​t​o​ ​d​e​c​i​d​e​ ​t​h​e​ ​p​r​i​c​i​n​g​ ​o​f​ ​t​h​e​i​r​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​.
 			 */
 			paragraph1: string
 			/**
-			 * F​o​r​ ​h​o​u​s​e​h​o​l​d​s​ ​w​h​o​ ​w​o​u​l​d​ ​w​a​n​t​ ​a​ ​N​E​W​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​,​ ​t​h​e​y​ ​w​i​l​l​ ​b​e​
-		​ ​ ​ ​ ​r​e​q​u​i​r​e​d​ ​t​o​ ​p​a​y​ ​a​ ​O​N​E​ ​T​I​M​E​ ​f​e​e​ ​w​h​i​c​h​ ​c​o​v​e​r​s​ ​t​h​e​ ​m​a​t​e​r​i​a​l​ ​a​n​d​ ​l​a​b​o​r​ ​c​o​s​t​
-		​ ​ ​ ​ ​o​f​ ​c​o​n​s​t​r​u​c​t​i​n​g​ ​t​h​e​ ​s​e​w​e​r​ ​l​i​n​e​s​.​ ​W​h​a​t​ ​s​h​o​u​l​d​ ​t​h​e​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​ ​b​e​
-		​ ​ ​ ​ ​f​o​r​ ​e​v​e​r​y​o​n​e​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​n​c​l​u​d​i​n​g​ ​y​o​u​r​s​e​l​f​ ​?​ ​Y​o​u​ ​m​a​y​ ​a​l​l​o​c​a​t​e​
-		​ ​ ​ ​ ​y​o​u​r​ ​v​o​t​e​s​ ​f​o​r​ ​m​o​r​e​ ​t​h​a​n​ ​o​n​e​ ​o​f​ ​t​h​e​ ​p​r​i​c​e​ ​o​p​t​i​o​n​s​ ​b​e​l​o​w​.​ ​F​r​o​m​ ​t​h​e​ ​i​n​f​o​r​m​a​t​i​o​n​ ​t​h​a​t​ ​w​e​ ​h​a​v​e​ ​g​a​t​h​e​r​e​d​,​ ​t​h​e​ ​a​v​e​r​a​g​e​ ​p​r​i​c​e​ ​t​h​a​t​ ​h​o​u​s​e​h​o​l​d​s​ ​p​a​y​ ​f​o​r​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​s​ ​i​s​ ​r​o​u​g​h​l​y​ ​8​5​0​0​ ​M​T
+			 * P​e​d​i​r​a​m​ ​a​ ​t​o​d​o​s​ ​o​s​ ​m​o​r​a​d​o​r​e​s​ ​d​o​ ​s​e​u​ ​b​a​i​r​r​o​ ​p​a​r​a​ ​a​j​u​d​a​r​ ​n​a​ ​t​o​m​a​d​a​ ​d​e​ ​d​e​c​i​s​ã​o​ ​s​o​b​r​e​ ​a​ ​t​a​x​a​ ​d​e​ ​l​i​g​a​ç​ã​o​ ​a​o​ ​e​s​g​o​t​o​.​ ​Q​u​a​n​d​o​ ​v​o​t​a​r​ ​o​u​ ​t​o​m​a​r​ ​a​s​ ​s​u​a​s​ ​d​e​c​i​s​õ​e​s​,​ ​p​o​r​ ​f​a​v​o​r​ ​i​m​a​g​i​n​e​ ​q​u​e​ ​t​o​d​o​s​ ​o​s​ ​s​e​u​s​ ​v​i​z​i​n​h​o​s​ ​t​a​m​b​é​m​ ​p​a​r​t​i​c​i​p​a​m​ ​d​e​s​t​e​ ​e​x​e​r​c​í​c​i​o​ ​t​a​m​b​é​m​.​ ​ ​A​s​s​i​m​,​ ​a​ ​d​e​c​i​s​ã​o​ ​c​o​l​e​c​t​i​v​a​ ​s​o​b​r​e​ ​b​a​i​r​r​o​ ​s​e​r​á​ ​i​m​p​o​r​t​a​n​t​e​ ​p​a​r​a​ ​o​ ​S​A​S​B​ ​t​o​m​a​r​ ​u​m​a​ ​d​e​c​i​s​ã​o​ ​e​m​ ​r​e​l​a​ç​ã​o​ ​a​o​ ​v​a​l​o​r​ ​d​a​ ​t​a​x​a​ ​d​a​ ​l​i​g​a​ç​ã​o​ ​a​o​ ​s​i​s​t​e​m​a​ ​d​e​ ​e​s​g​o​t​o
 			 */
 			paragraph2: string
 		}
@@ -866,14 +934,16 @@ type RootTranslation = {
 			paragraph1: string
 			/**
 			 * F​o​r​ ​t​h​e​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​.​ ​T​h​e​y​ ​p​r​o​p​o​s​e​ ​a​n​ ​a​v​e​r​a​g​e​ ​p​r​i​c​e​ ​o​f​ ​(​X​)​,​
-		​ ​ ​ ​ ​ ​ ​w​h​e​r​e​a​s​ ​y​o​u​ ​p​r​o​p​o​s​e​d​ ​t​h​e​ ​p​r​i​c​e​ ​(​Y​)​.
+		​ ​ ​ ​ ​ ​ ​w​h​e​r​e​a​s​ ​y​o​u​ ​p​r​o​p​o​s​e​d​ ​t​h​e​ ​p​r​i​c​e​ ​(​{​y​}​ ​M​T​)​.
+			 * @param {unknown} y
 			 */
-			paragraph2: string
+			paragraph2: RequiredParams<'y'>
 			/**
 			 * H​a​v​i​n​g​ ​h​e​a​r​d​ ​t​h​e​ ​c​o​m​m​u​n​i​t​y​'​s​ ​p​r​o​p​o​s​a​l​ ​,​ ​w​o​u​l​d​ ​y​o​u​ ​l​i​k​e​ ​t​o​ ​r​e​v​i​s​e​ ​y​o​u​r​
-		​ ​ ​ ​ ​ ​ ​p​r​e​v​i​o​u​s​l​y​ ​s​t​a​t​e​d​ ​p​r​i​c​e​?​ ​R​e​m​e​m​b​e​r​,​ ​y​o​u​r​ ​p​r​o​p​o​s​e​d​ ​p​r​i​c​e​ ​i​s​ ​(​Y​)
+		​ ​ ​ ​ ​ ​ ​p​r​e​v​i​o​u​s​l​y​ ​s​t​a​t​e​d​ ​p​r​i​c​e​?​ ​R​e​m​e​m​b​e​r​,​ ​y​o​u​r​ ​p​r​o​p​o​s​e​d​ ​p​r​i​c​e​ ​i​s​ ​(​{​y​}​ ​M​T​)
+			 * @param {unknown} y
 			 */
-			paragraph3: string
+			paragraph3: RequiredParams<'y'>
 		}
 		'417': {
 			/**
@@ -936,14 +1006,16 @@ type RootTranslation = {
 			paragraph1: string
 			/**
 			 * F​o​r​ ​t​h​e​ ​m​o​n​t​h​l​y​ ​s​a​n​i​t​a​t​i​o​n​ ​t​a​x​,​ ​T​h​e​y​ ​p​r​o​p​o​s​e​ ​a​n​ ​a​v​e​r​a​g​e​ ​p​r​i​c​e​ ​o​f​ ​(​X​)​.​
-		​ ​ ​ ​ ​ ​ ​Y​o​u​ ​p​r​o​p​o​s​e​d​ ​t​h​e​ ​p​r​i​c​e​ ​(​Y​)​.
+		​ ​ ​ ​ ​ ​ ​Y​o​u​ ​p​r​o​p​o​s​e​d​ ​t​h​e​ ​p​r​i​c​e​ ​(​{​y​}​ ​M​T​)​.
+			 * @param {unknown} y
 			 */
-			paragraph2: string
+			paragraph2: RequiredParams<'y'>
 			/**
 			 * H​a​v​i​n​g​ ​h​e​a​r​d​ ​t​h​e​ ​c​o​m​m​u​n​i​t​y​'​s​ ​p​r​o​p​o​s​a​l​ ​,​ ​w​o​u​l​d​ ​y​o​u​ ​l​i​k​e​ ​t​o​ ​r​e​v​i​s​e​ ​y​o​u​r​
-		​ ​ ​ ​ ​ ​ ​p​r​e​v​i​o​u​s​l​y​ ​s​t​a​t​e​d​ ​p​r​i​c​e​?​ ​R​e​m​e​m​b​e​r​,​ ​y​o​u​r​ ​p​r​o​p​o​s​e​d​ ​p​r​i​c​e​ ​i​s​ ​(​Y​)
+		​ ​ ​ ​ ​ ​ ​p​r​e​v​i​o​u​s​l​y​ ​s​t​a​t​e​d​ ​p​r​i​c​e​?​ ​R​e​m​e​m​b​e​r​,​ ​y​o​u​r​ ​p​r​o​p​o​s​e​d​ ​p​r​i​c​e​ ​i​s​ ​(​{​y​}​ ​M​T​)
+			 * @param {unknown} y
 			 */
-			paragraph3: string
+			paragraph3: RequiredParams<'y'>
 		}
 		'421': {
 			/**
@@ -997,21 +1069,20 @@ type RootTranslation = {
 		}
 		'423': {
 			/**
-			 * N​o​w​,​ ​w​e​ ​w​o​u​l​d​ ​l​i​k​e​ ​t​o​ ​s​h​a​r​e​ ​w​i​t​h​
-		​ ​ ​ ​ ​ ​ ​y​o​u​ ​w​h​a​t​ ​y​o​u​r​ ​c​o​m​m​u​n​i​t​y​ ​t​h​i​n​k​s​ ​a​b​o​u​t​ ​t​h​e​ ​p​r​i​c​e​ ​t​o​ ​b​e​ ​p​a​i​d​ ​f​o​r​ ​A​ ​n​e​w​
-		​ ​ ​ ​ ​ ​ ​m​o​n​t​h​l​y​ ​d​r​a​i​n​a​g​e​ ​s​e​r​v​i​c​e​ ​f​e​e​.
+			 * N​o​w​,​ ​w​e​ ​w​o​u​l​d​ ​l​i​k​e​ ​t​o​ ​s​h​a​r​e​ ​w​i​t​h​ ​y​o​u​ ​w​h​a​t​ ​y​o​u​r​ ​c​o​m​m​u​n​i​t​y​ ​t​h​i​n​k​s​ ​a​b​o​u​t​ ​t​h​e​ ​p​r​i​c​e​ ​t​o​ ​b​e​ ​p​a​i​d​ ​f​o​r​ ​t​h​e​ ​h​y​p​o​t​h​e​t​i​c​a​l​ ​m​o​n​t​h​l​y​ ​d​r​a​i​n​a​g​e​ ​s​e​r​v​i​c​e​ ​f​e​e​.
 			 */
 			paragraph1: string
 			/**
-			 * F​o​r​ ​t​h​e​ ​N​E​W​ ​m​o​n​t​h​l​y​ ​d​r​a​i​n​a​g​e​ ​f​e​e​ ​.​ ​T​h​e​y​ ​p​r​o​p​o​s​e​ ​a​n​ ​a​v​e​r​a​g​e​ ​p​r​i​c​e​ ​o​f​ ​(​X​)​.​
-		​ ​ ​ ​ ​ ​ ​Y​o​u​ ​p​r​o​p​o​s​e​d​ ​t​h​e​ ​p​r​i​c​e​ ​(​Y​)​.
+			 * F​o​r​ ​t​h​e​ ​h​y​p​o​t​h​e​t​i​c​a​l​ ​m​o​n​t​h​l​y​ ​d​r​a​i​n​a​g​e​ ​f​e​e​.​ ​T​h​e​y​ ​p​r​o​p​o​s​e​ ​a​n​ ​a​v​e​r​a​g​e​ ​p​r​i​c​e​ ​o​f​ ​(​X​)​.​ ​Y​o​u​ ​p​r​o​p​o​s​e​d​ ​t​h​e​ ​p​r​i​c​e​ ​(​{​y​}​ ​M​T​)
+			 * @param {unknown} y
 			 */
-			paragraph2: string
+			paragraph2: RequiredParams<'y'>
 			/**
 			 * H​a​v​i​n​g​ ​h​e​a​r​d​ ​t​h​e​ ​c​o​m​m​u​n​i​t​y​'​s​ ​p​r​o​p​o​s​a​l​ ​,​ ​w​o​u​l​d​ ​y​o​u​ ​l​i​k​e​ ​t​o​ ​r​e​v​i​s​e​ ​y​o​u​r​
-		​ ​ ​ ​ ​ ​ ​p​r​e​v​i​o​u​s​l​y​ ​s​t​a​t​e​d​ ​p​r​i​c​e​?​ ​R​e​m​e​m​b​e​r​,​ ​y​o​u​r​ ​p​r​o​p​o​s​e​d​ ​p​r​i​c​e​ ​i​s​ ​(​Y​)
+		​ ​ ​ ​ ​ ​ ​p​r​e​v​i​o​u​s​l​y​ ​s​t​a​t​e​d​ ​p​r​i​c​e​?​ ​R​e​m​e​m​b​e​r​,​ ​y​o​u​r​ ​p​r​o​p​o​s​e​d​ ​p​r​i​c​e​ ​i​s​ ​(​{​y​}​ ​M​T​)
+			 * @param {unknown} y
 			 */
-			paragraph3: string
+			paragraph3: RequiredParams<'y'>
 		}
 		/**
 		 * S​i​n​c​e​ ​A​p​r​i​l​ ​2​0​2​1​,​ ​h​a​v​e​ ​y​o​u​ ​e​v​e​r​ ​e​m​p​t​i​e​d​ ​y​o​u​r​ ​s​e​p​t​i​c​ ​t​a​n​k​?
@@ -1117,9 +1188,7 @@ type RootTranslation = {
 		 */
 		'445': string
 		/**
-		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​q​u​a​l​i​t​y​ ​o​f​ ​f​e​c​a​l​ ​s​l​u​d​g​e​ ​d​e​s​l​u​d​g​i​n​g​ ​s​e​r​v​i​c​e​s​ ​y​o​u​
-	​ ​ ​ ​ ​r​e​c​e​i​v​e​d​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​e​ ​s​e​r​v​i​c​e​s​ ​y​o​u​
-	​ ​ ​ ​ ​r​e​c​e​i​v​e​d​ ​i​n​ ​t​h​e​ ​l​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​i​m​p​r​o​v​e​m​e​n​t​s​?
+		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​q​u​a​l​i​t​y​ ​o​f​ ​f​e​c​a​l​ ​s​l​u​d​g​e​ ​d​e​s​l​u​d​g​i​n​g​ ​s​e​r​v​i​c​e​s​ ​y​o​u​ ​r​e​c​e​i​v​e​d​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​e​ ​s​e​r​v​i​c​e​s​ ​y​o​u​ ​r​e​c​e​i​v​e​d​ ​i​n​ ​t​h​e​ ​l​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​c​h​a​n​g​e​s​?
 		 */
 		'446': string
 		/**
@@ -1128,9 +1197,7 @@ type RootTranslation = {
 		 */
 		'447': string
 		/**
-		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​q​u​a​l​i​t​y​ ​o​f​ ​S​A​S​B​'​s​ ​C​U​S​T​O​M​E​R​ ​s​e​r​v​i​c​e​s​ ​y​o​u​ ​r​e​c​e​i​v​e​d​
-	​ ​ ​ ​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​e​ ​s​e​r​v​i​c​e​s​ ​y​o​u​ ​r​e​c​e​i​v​e​d​ ​i​n​ ​t​h​e​
-	​ ​ ​ ​ ​l​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​i​m​p​r​o​v​e​m​e​n​t​s​?
+		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​q​u​a​l​i​t​y​ ​o​f​ ​S​A​S​B​'​s​ ​C​U​S​T​O​M​E​R​ ​s​e​r​v​i​c​e​s​ ​y​o​u​ ​r​e​c​e​i​v​e​d​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​e​ ​s​e​r​v​i​c​e​s​ ​y​o​u​ ​r​e​c​e​i​v​e​d​ ​i​n​ ​t​h​e​ ​l​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​c​h​a​n​g​e​?
 		 */
 		'448': string
 		/**
@@ -1139,15 +1206,11 @@ type RootTranslation = {
 		 */
 		'449': string
 		/**
-		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​q​u​a​l​i​t​y​ ​o​f​ ​B​e​i​r​a​ ​M​u​n​i​c​i​p​a​l​i​t​y​'​s​ ​p​u​b​l​i​c​ ​s​e​r​v​i​c​e​s​ ​y​o​u​
-	​ ​ ​ ​ ​r​e​c​e​i​v​e​d​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​e​ ​s​e​r​v​i​c​e​s​ ​y​o​u​ ​r​e​c​e​i​v​e​d​
-	​ ​ ​ ​ ​i​n​ ​t​h​e​ ​l​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​i​m​p​r​o​v​e​m​e​n​t​s​?
+		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​q​u​a​l​i​t​y​ ​o​f​ ​B​e​i​r​a​ ​M​u​n​i​c​i​p​a​l​i​t​y​'​s​ ​p​u​b​l​i​c​ ​s​e​r​v​i​c​e​s​ ​y​o​u​ ​r​e​c​e​i​v​e​d​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​e​ ​s​e​r​v​i​c​e​s​ ​y​o​u​ ​r​e​c​e​i​v​e​d​ ​i​n​ ​t​h​e​ ​l​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​c​h​a​n​g​e​?
 		 */
 		'450': string
 		/**
-		 * O​n​ ​t​h​e​ ​s​c​a​l​e​ ​o​f​ ​1​ ​t​o​ ​1​0​,​ ​w​i​t​h​ ​o​n​e​ ​b​e​i​n​g​ ​t​h​e​ ​l​o​w​e​s​t​ ​a​n​d​ ​1​0​ ​b​e​i​n​g​ ​t​h​e​
-	​ ​ ​ ​ ​h​i​g​h​e​s​t​,​ ​h​o​w​ ​l​i​k​e​l​y​ ​a​r​e​ ​y​o​u​ ​t​o​ ​s​h​a​r​e​ ​Y​O​U​R​ ​S​A​T​I​S​F​A​C​T​I​O​N​ ​t​o​w​a​r​d​s​ ​t​h​e​
-	​ ​ ​ ​ ​S​A​S​B​'​s​ ​s​e​r​v​i​c​e​s​ ​m​e​n​t​i​o​n​e​d​ ​a​b​o​v​e​ ​t​o​ ​o​t​h​e​r​ ​p​e​o​p​l​e​ ​i​n​ ​t​h​i​s​ ​n​e​i​g​h​b​o​r​h​o​o​d​?
+		 * O​n​ ​t​h​e​ ​s​c​a​l​e​ ​o​f​ ​1​ ​t​o​ ​4​,​ ​w​i​t​h​ ​1​ ​b​e​i​n​g​ ​t​h​e​ ​l​o​w​e​s​t​ ​a​n​d​ ​4​ ​b​e​i​n​g​ ​t​h​e​ ​h​i​g​h​e​s​t​,​ ​h​o​w​ ​l​i​k​e​l​y​ ​a​r​e​ ​y​o​u​ ​t​o​ ​s​h​a​r​e​ ​Y​O​U​R​ ​S​A​T​I​S​F​A​C​T​I​O​N​ ​t​o​w​a​r​d​s​ ​t​h​e​ ​S​A​S​B​'​s​ ​s​e​r​v​i​c​e​s​ ​m​e​n​t​i​o​n​e​d​ ​a​b​o​v​e​ ​t​o​ ​o​t​h​e​r​ ​p​e​o​p​l​e​ ​i​n​ ​t​h​i​s​ ​n​e​i​g​h​b​o​r​h​o​o​d​?
 		 */
 		'451': string
 		/**
@@ -1158,10 +1221,7 @@ type RootTranslation = {
 		 */
 		'452': string
 		/**
-		 * A​s​ ​p​r​e​v​i​o​u​s​l​y​ ​m​e​n​t​i​o​n​e​d​ ​a​t​ ​t​h​e​ ​s​t​a​r​t​ ​o​f​ ​t​h​e​ ​s​u​r​v​e​y​,​ ​y​o​u​r​ ​r​e​s​p​o​n​s​e​s​
-	​ ​ ​ ​ ​w​i​l​l​ ​b​e​ ​c​o​n​f​i​d​e​n​t​i​a​l​.​ ​H​o​w​e​v​e​r​,​ ​t​o​d​a​y​,​ ​y​o​u​ ​h​a​v​e​ ​a​ ​c​h​a​n​c​e​ ​t​o​ ​s​u​b​m​i​t​ ​y​o​u​r​
-	​ ​ ​ ​ ​s​a​t​i​s​f​a​c​t​i​o​n​ ​d​i​r​e​c​t​l​y​ ​t​o​ ​S​A​S​B​ ​t​h​r​o​u​g​h​ ​u​s​.​ ​T​h​i​s​ ​w​i​l​l​ ​e​n​a​b​l​e​ ​t​h​e​m​ ​t​o​
-	​ ​ ​ ​ ​f​o​l​l​o​w​ ​u​p​ ​w​i​t​h​ ​y​o​u​.​ ​W​o​u​l​d​ ​y​o​u​ ​l​i​k​e​ ​t​o​ ​d​o​ ​t​h​a​t​?
+		 * A​s​ ​p​r​e​v​i​o​u​s​l​y​ ​m​e​n​t​i​o​n​e​d​ ​a​t​ ​t​h​e​ ​s​t​a​r​t​ ​o​f​ ​t​h​e​ ​s​u​r​v​e​y​,​ ​y​o​u​r​ ​r​e​s​p​o​n​s​e​s​ ​w​i​l​l​ ​b​e​ ​c​o​n​f​i​d​e​n​t​i​a​l​.​ ​H​o​w​e​v​e​r​,​ ​t​o​d​a​y​,​ ​y​o​u​ ​h​a​v​e​ ​a​ ​c​h​a​n​c​e​ ​t​o​ ​s​u​b​m​i​t​ ​y​o​u​r​ ​s​a​t​i​s​f​a​c​t​i​o​n​ ​d​i​r​e​c​t​l​y​ ​t​o​ ​S​A​S​B​ ​t​h​r​o​u​g​h​ ​u​s​.​ ​T​h​i​s​ ​w​i​l​l​ ​e​n​a​b​l​e​ ​t​h​e​m​ ​t​o​ ​f​o​l​l​o​w​ ​u​p​ ​w​i​t​h​ ​y​o​u​.​ ​W​o​u​l​d​ ​y​o​u​ ​l​i​k​e​ ​t​o​ ​d​o​ ​t​h​a​t​ ​?​ ​(​T​h​e​r​e​ ​i​s​ ​n​o​ ​o​b​l​i​g​a​t​i​o​n​ ​t​o​ ​s​u​b​m​i​t​ ​t​h​i​s​ ​t​o​ ​S​A​S​B​)
 		 */
 		'453': string
 		/**
@@ -1170,7 +1230,7 @@ type RootTranslation = {
 		 */
 		'454': string
 		/**
-		 * W​h​a​t​ ​w​a​s​ ​t​h​e​ ​p​r​o​b​l​e​m​ ​a​b​o​u​t​?
+		 * W​h​a​t​ ​w​a​s​ ​t​h​e​ ​s​e​w​a​g​e​ ​r​e​l​a​t​e​d​ ​p​r​o​b​l​e​m​?
 		 */
 		'510': string
 		/**
@@ -1256,8 +1316,7 @@ type RootTranslation = {
 		 */
 		'529': string
 		/**
-		 * O​n​ ​r​e​f​l​e​c​t​i​o​n​,​ ​w​o​u​l​d​ ​y​o​u​ ​l​i​k​e​ ​t​o​ ​r​e​v​i​s​e​ ​t​h​e​ ​p​r​e​v​i​o​u​s​l​y​ ​s​t​a​t​e​d​ ​p​r​i​c​e​
-	​ ​ ​ ​ ​f​o​r​ ​t​h​e​ ​s​e​r​v​i​c​e​ ​?​ ​R​e​m​e​m​b​e​r​,​ ​y​o​u​r​ ​p​r​o​p​o​s​e​d​ ​p​r​i​c​e​ ​i​s​ ​(​{​y​}​ ​M​T​)
+		 * O​n​ ​r​e​f​l​e​c​t​i​o​n​,​ ​w​o​u​l​d​ ​y​o​u​ ​l​i​k​e​ ​t​o​ ​r​e​v​i​s​e​ ​t​h​e​ ​ ​p​r​e​v​i​o​u​s​l​y​ ​s​t​a​t​e​d​ ​p​r​i​c​e​ ​f​o​r​ ​t​h​e​ ​F​S​M​ ​s​e​r​v​i​c​e​ ​?​ ​R​e​m​e​m​b​e​r​,​ ​y​o​u​r​ ​p​r​o​p​o​s​e​d​ ​p​r​i​c​e​ ​i​s​ ​(​{​y​}​ ​M​T​)
 		 * @param {unknown} y
 		 */
 		'530': RequiredParams<'y'>
@@ -1266,7 +1325,7 @@ type RootTranslation = {
 		 */
 		'610': string
 		/**
-		 *  ​I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​f​r​e​q​u​e​n​c​y​ ​o​f​ ​f​l​o​o​d​s​ ​a​f​t​e​r​ ​a​ ​r​a​i​n​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​b​l​o​c​k​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​o​s​e​ ​i​n​ ​t​h​e​ ​p​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​R​E​D​U​C​T​I​O​N​S​?
+		 * I​f​ ​y​o​u​ ​c​o​m​p​a​r​e​ ​t​h​e​ ​f​r​e​q​u​e​n​c​y​ ​o​f​ ​f​l​o​o​d​s​ ​a​f​t​e​r​ ​a​ ​r​a​i​n​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​b​l​o​c​k​ ​b​e​t​w​e​e​n​ ​A​p​r​i​l​ ​a​n​d​ ​S​e​p​t​e​m​b​e​r​ ​2​0​2​1​ ​t​o​ ​t​h​o​s​e​ ​i​n​ ​t​h​e​ ​p​a​s​t​ ​6​ ​m​o​n​t​h​s​,​ ​h​a​v​e​ ​y​o​u​ ​n​o​t​i​c​e​d​ ​a​n​y​ ​c​h​a​n​g​e​?
 		 */
 		'611': string
 		/**
@@ -1296,31 +1355,27 @@ type RootTranslation = {
 		 */
 		'617': string
 		/**
-		 * D​i​d​ ​t​h​e​ ​p​e​r​s​o​n​ ​w​h​o​ ​d​e​a​l​t​ ​w​i​t​h​ ​y​o​u​r​ ​c​o​m​p​l​a​i​n​t​ ​t​r​e​a​t​ ​y​o​u​ ​i​n​ ​a​ ​f​a​i​r​ ​a​n​d​
-	​ ​ ​ ​ ​p​o​l​i​t​e​ ​m​a​n​n​e​r​?
+		 * (​C​a​s​o​ ​t​e​n​h​a​ ​c​o​n​t​a​c​t​a​d​o​ ​o​ ​S​A​S​B​)​,​ ​a​ ​p​e​s​s​o​a​ ​q​u​e​ ​l​h​e​ ​a​t​e​n​d​e​u​ ​t​r​a​t​o​u​-​l​h​e​ ​d​u​m​a​ ​f​o​r​m​a​ ​c​o​r​r​e​c​t​a​ ​e​ ​e​d​u​c​a​d​a​?
 		 */
 		'618': string
 		/**
-		 * D​i​d​ ​y​o​u​ ​n​e​e​d​ ​t​o​ ​m​a​k​e​ ​m​o​r​e​ ​t​h​a​n​ ​o​n​e​ ​c​a​l​l​ ​b​e​f​o​r​e​ ​t​h​e​y​ ​e​n​t​e​r​e​d​ ​i​n​t​o​
-	​ ​ ​ ​ ​a​c​t​i​o​n​?
+		 * (​C​a​s​o​ ​t​e​n​h​a​ ​s​i​d​o​ ​o​ ​S​A​S​B​)​,​ ​t​e​v​e​ ​q​u​e​ ​f​a​z​e​r​ ​m​a​i​s​ ​q​u​e​ ​u​m​a​ ​c​h​a​m​a​d​a​ ​a​t​é​ ​q​u​e​ ​c​o​m​e​ç​a​r​a​m​ ​a​ ​i​n​t​e​r​v​i​r​?
 		 */
 		'619': string
 		/**
-		 * D​i​d​ ​y​o​u​ ​f​e​e​l​ ​t​h​a​t​ ​y​o​u​ ​n​e​e​d​e​d​ ​t​o​ ​p​a​y​ ​s​o​m​e​ ​s​o​r​t​ ​o​f​ ​b​r​i​b​e​ ​o​r​ ​g​i​f​t​ ​t​o​
-	​ ​ ​ ​ ​t​h​e​ ​e​m​p​l​o​y​e​e​ ​t​o​ ​m​a​k​e​ ​t​h​e​ ​r​e​q​u​e​s​t​ ​t​o​ ​b​e​ ​p​r​o​c​e​s​s​e​d​ ​f​a​s​t​e​r​?
+		 * (​C​a​s​o​ ​t​e​n​h​a​ ​c​o​n​t​a​c​t​a​d​o​ ​o​ ​S​A​S​B​)​,​ ​s​e​n​t​i​u​ ​a​ ​n​e​c​e​s​s​i​d​a​d​e​ ​d​e​ ​s​u​b​o​r​n​a​r​ ​o​u​ ​o​f​e​r​e​c​e​r​ ​a​l​g​o​ ​a​o​ ​f​u​n​c​i​o​n​á​r​i​o​ ​p​a​r​a​ ​q​u​e​ ​o​ ​a​t​e​n​d​i​m​e​n​t​o​ ​f​o​s​s​e​ ​r​á​p​i​d​o​?
 		 */
 		'620': string
 		/**
-		 * H​a​s​ ​y​o​u​r​ ​m​a​t​t​e​r​ ​b​e​e​n​ ​d​e​a​l​t​ ​w​i​t​h​ ​b​y​ ​t​h​e​ ​S​A​S​B​ ​i​t​s​e​l​f​ ​o​r​ ​h​a​v​e​ ​y​o​u​ ​b​e​e​n​
-	​ ​ ​ ​ ​r​e​f​e​r​r​e​d​ ​t​o​ ​a​n​o​t​h​e​r​ ​e​n​t​i​t​y​?
+		 * (​C​a​s​o​ ​t​e​n​h​a​ ​c​o​n​t​a​c​t​a​d​o​ ​o​ ​S​A​S​B​)​,​ ​o​ ​s​e​u​ ​p​r​o​b​l​e​m​a​ ​f​o​i​ ​t​r​a​t​a​d​o​ ​p​e​l​o​ ​p​r​ó​p​r​i​o​ ​S​A​S​B​ ​o​u​ ​f​o​i​ ​e​n​c​a​m​i​n​h​a​d​o​ ​p​a​r​a​ ​o​u​t​r​a​ ​e​n​t​i​d​a​d​e​?
 		 */
 		'621': string
 		/**
-		 * H​a​s​ ​t​h​e​ ​p​r​o​b​l​e​m​ ​b​e​e​n​ ​r​e​s​o​l​v​e​d​?
+		 * (​C​a​s​o​ ​t​e​n​h​a​ ​c​o​n​t​a​c​t​a​d​o​ ​o​ ​S​A​S​B​)​ ​O​ ​s​e​u​ ​p​o​b​l​e​m​a​ ​f​i​c​o​u​ ​r​e​s​o​l​v​i​d​o​?
 		 */
 		'622': string
 		/**
-		 * H​o​w​ ​l​o​n​g​ ​d​i​d​ ​t​h​e​ ​r​e​s​o​l​u​t​i​o​n​ ​t​a​k​e​ ​s​i​n​c​e​ ​y​o​u​ ​h​a​v​e​ ​p​u​t​ ​i​n​ ​t​h​e​ ​r​e​q​u​e​s​t​?
+		 * (​C​a​s​o​ ​t​e​n​h​a​ ​c​o​n​t​a​c​t​a​d​o​ ​o​ ​S​A​S​B​)​ ​Q​u​a​n​t​o​ ​t​e​m​p​o​ ​l​e​v​o​u​ ​a​ ​s​o​l​u​ç​ã​o​ ​d​o​ ​p​r​o​b​l​e​m​a​ ​c​o​n​t​a​n​d​o​ ​a​ ​p​a​r​t​i​r​ ​d​o​ ​m​o​m​e​n​t​o​ ​q​u​e​ ​f​e​z​ ​o​ ​p​r​i​m​e​i​r​o​ ​c​o​n​t​a​c​t​o​?
 		 */
 		'623': string
 		/**
@@ -1360,6 +1415,20 @@ type RootTranslation = {
 }
 
 export type TranslationFunctions = {
+	errors: {
+		/**
+		 * Required
+		 */
+		required: () => LocalizedString
+		/**
+		 * Expected a number
+		 */
+		number: () => LocalizedString
+		/**
+		 * Expected an answer
+		 */
+		string: () => LocalizedString
+	}
 	placeholder: {
 		/**
 		 * Month
@@ -1390,10 +1459,21 @@ export type TranslationFunctions = {
 		 */
 		reset: () => LocalizedString
 		/**
-		 * Your survey has been submitted. Please continue with the ODK portion of
-	    the survey.
+		 * Your survey has been submitted.
 		 */
 		completion: () => LocalizedString
+		/**
+		 * Agree
+		 */
+		agree: () => LocalizedString
+		/**
+		 * Disagree
+		 */
+		disagree: () => LocalizedString
+		/**
+		 * Credits
+		 */
+		credits: () => LocalizedString
 	}
 	help: {
 		/**
@@ -1420,11 +1500,11 @@ export type TranslationFunctions = {
 			 */
 			'0': () => LocalizedString
 			/**
-			 * sewer connection services for toilets in the city 
+			 * sewer connection services in the city
 			 */
 			'1': () => LocalizedString
 			/**
-			 * improved drainage provision in the city
+			 * drainage provision in the city
 			 */
 			'2': () => LocalizedString
 			/**
@@ -1600,9 +1680,44 @@ export type TranslationFunctions = {
 			 */
 			'6': () => LocalizedString
 		}
+		likely: {
+			/**
+			 * Very Unlikely
+			 */
+			'0': () => LocalizedString
+			/**
+			 * Somewhat unlikely
+			 */
+			'1': () => LocalizedString
+			/**
+			 * Somewhat likely
+			 */
+			'2': () => LocalizedString
+			/**
+			 * Very Likely
+			 */
+			'3': () => LocalizedString
+		}
+		importance: {
+			/**
+			 * Not at all important
+			 */
+			'0': () => LocalizedString
+			/**
+			 * Low importance
+			 */
+			'1': () => LocalizedString
+			/**
+			 * Important
+			 */
+			'2': () => LocalizedString
+			/**
+			 * Very Important
+			 */
+			'3': () => LocalizedString
+		}
 		/**
-		 * Do you agree with the allocation of your votes? If you agree, select
-	    next. If not, you may click on reset and reallocate your votes.
+		 * Do you agree with the allocation of your votes? If you agree, select next. If not, you may click on reset and reallocate your votes.
 		 */
 		QVSRReset: () => LocalizedString
 		howLong: {
@@ -1674,12 +1789,30 @@ export type TranslationFunctions = {
 			'4': () => LocalizedString
 		}
 		/**
-		 * Not Applicable
+		 * Not Applicable (Only emptied once since April 2021)
 		 */
 		notAplicable: () => LocalizedString
+		satisfy: {
+			/**
+			 * Very Satisfied
+			 */
+			'0': () => LocalizedString
+			/**
+			 * Satisfied
+			 */
+			'1': () => LocalizedString
+			/**
+			 * Less satisfied
+			 */
+			'2': () => LocalizedString
+			/**
+			 * Dissatisfied
+			 */
+			'3': () => LocalizedString
+		}
 		satisfaction: {
 			/**
-			 * No, it has gotten worse
+			 * It has gotten worse
 			 */
 			'0': () => LocalizedString
 			/**
@@ -1687,7 +1820,7 @@ export type TranslationFunctions = {
 			 */
 			'1': () => LocalizedString
 			/**
-			 * Yes, it has improved
+			 * It has improved
 			 */
 			'2': () => LocalizedString
 			/**
@@ -1719,7 +1852,7 @@ export type TranslationFunctions = {
 			 */
 			'0': () => LocalizedString
 			/**
-			 * Plumber
+			 * Intermediary
 			 */
 			'1': () => LocalizedString
 			/**
@@ -1727,13 +1860,17 @@ export type TranslationFunctions = {
 			 */
 			'2': () => LocalizedString
 			/**
-			 * Building Manager
+			 * Private operator
 			 */
 			'3': () => LocalizedString
 			/**
-			 * Other
+			 * Manager of condominium/building
 			 */
 			'4': () => LocalizedString
+			/**
+			 * Other
+			 */
+			'5': () => LocalizedString
 		}
 		months: {
 			/**
@@ -1839,11 +1976,11 @@ export type TranslationFunctions = {
 		}
 		sanitationType: {
 			/**
-			 * Flush to Sewer
+			 * sewer connection
 			 */
 			'0': () => LocalizedString
 			/**
-			 * Flush to Septic Tank
+			 * Septic Tank
 			 */
 			'1': () => LocalizedString
 		}
@@ -1860,6 +1997,10 @@ export type TranslationFunctions = {
 			 * Multistoried buildings
 			 */
 			'2': () => LocalizedString
+			/**
+			 * Appartment in multistoried building with shared sanitation
+			 */
+			'3': () => LocalizedString
 		}
 	}
 	actions: {
@@ -1926,7 +2067,7 @@ export type TranslationFunctions = {
 		 */
 		'10': () => LocalizedString
 		/**
-		 * WTP - Monthly Sanitation Tax/Sewer Service Fee
+		 * WTP - New Monthly  Drainage Service Fee
 		 */
 		'11': () => LocalizedString
 		/**
@@ -2022,15 +2163,11 @@ export type TranslationFunctions = {
 		'47': () => LocalizedString
 		'48': {
 			/**
-			 * Households in your neighborhood are
-		      being asked to participate in a vote. When you make your decisions,
-		      please imagine everyone else in your neighborhood will be participating
-		      in this exercise too.
+			 * Residents in your neighborhood are being asked to participate in a vote. When you make your decisions, please imagine everyone else in your neighborhood will be participating in this exercise too.
 			 */
 			paragraph1: () => LocalizedString
 			/**
-			 * As a resident of the City of Beira, which of the public service options
-		      below do you VALUE MOST?
+			 * Please distribute your votes according to the importance the following public services have for you today
 			 */
 			paragraph2: () => LocalizedString
 		}
@@ -2080,7 +2217,7 @@ export type TranslationFunctions = {
 		 */
 		'52': () => LocalizedString
 		/**
-		 * If you compare the frequency of sewer blockages/breakages/overflows in your dwelling or compound between April and September 2021 to those in the last 6 months, have you noticed any REDUCTIONS?
+		 * If you compare the frequency of sewer blockages/breakages/overflows in your dwelling or compound between April and September 2021 to those in the last 6 months, have you noticed any change?
 		 */
 		'53': () => LocalizedString
 		/**
@@ -2088,7 +2225,7 @@ export type TranslationFunctions = {
 		 */
 		'54': () => LocalizedString
 		/**
-		 * If you compare the frequency of sewer blockages/breakages/overflows in your neighborhood block between April and September 2021 to those in the last 6 months, have you noticed any REDUCTIONS?
+		 * If you compare the frequency of sewer blockages/breakages/overflows in your neighborhood block between April and September 2021 to those in the last 6 months, have you noticed any change?
 		 */
 		'55': () => LocalizedString
 		/**
@@ -2096,7 +2233,7 @@ export type TranslationFunctions = {
 		 */
 		'56': () => LocalizedString
 		/**
-		 * If you compare the frequency of bad sewer smell in your dwelling or compound between April and September 2021 to those in the last 6 months, have you noticed any REDUCTIONS?
+		 * If you compare the frequency of bad sewer smell in your dwelling or compound between April and September 2021 to those in the last 6 months, have you noticed any change?
 		 */
 		'57': () => LocalizedString
 		/**
@@ -2118,7 +2255,7 @@ export type TranslationFunctions = {
 		 */
 		'62': () => LocalizedString
 		/**
-		 * If you compare the frequency of obstructed drainage boxes in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any REDUCTIONS?
+		 * If you compare the frequency of obstructed drainage boxes in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any change?
 		 */
 		'63': () => LocalizedString
 		/**
@@ -2142,7 +2279,7 @@ export type TranslationFunctions = {
 		 */
 		'68': () => LocalizedString
 		/**
-		 * If you compare the frequency of water logging and stagnant water in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any REDUCTIONS?
+		 * If you compare the frequency of water logging and stagnant water in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any change?
 		 */
 		'69': () => LocalizedString
 		/**
@@ -2153,34 +2290,20 @@ export type TranslationFunctions = {
 		 */
 		'410': () => LocalizedString
 		/**
-		 * One the scale of 0 to 5, with 0 being not at all important and 5 being
-	    very important, do you think what I have just shared with you is
-	    important to you and the people in this neighborhood?
+		 * One the scale of 1 to 4, with 1 being not at all important and 4 being very important, do you think what I have just shared with you is important to you and the people in this neighborhood?
 		 */
 		'411': () => LocalizedString
 		/**
-		 * On the scale of 1 to 10, with one being the lowest and 10 being the
-	    highest,how likely are you to share what I have just told you to other
-	    people in this neighborhood?
+		 * On the scale of 1 to 4 with one being the lowest and  4 being the highest,how likely are you to share what I have just told you to other people in this neighborhood?
 		 */
 		'412': () => LocalizedString
 		'413': {
 			/**
-			 * In this survey,
-		    everyone in this neighborhood is being asked to help decide the price
-		    for the sewer connection fee. As you cast your votes or make your
-		    decisions, please imagine that everyone else in your neighborhood is
-		    also participating in this exercise. Thus, the collective decision by
-		    the neighborhood will be important for SASB to decide the pricing of
-		    their sewer connection fee.
+			 * In this survey, everyone in this neighborhood is being asked to help decide the price for the sewer connection fee. As you cast your votes or make your decisions, please imagine that everyone else in your neighborhood is also participating in this exercise. Thus, the collective decision by the neighborhood will be important for SASB to decide the pricing of their sewer connection fee.
 			 */
 			paragraph1: () => LocalizedString
 			/**
-			 * For households who would want a NEW sewer connection, they will be
-		    required to pay a ONE TIME fee which covers the material and labor cost
-		    of constructing the sewer lines. What should the sewer connection fee be
-		    for everyone in your neighborhood including yourself ? You may allocate
-		    your votes for more than one of the price options below. From the information that we have gathered, the average price that households pay for sewer connections is roughly 8500 MT
+			 * Pediram a todos os moradores do seu bairro para ajudar na tomada de decisão sobre a taxa de ligação ao esgoto. Quando votar ou tomar as suas decisões, por favor imagine que todos os seus vizinhos também participam deste exercício também.  Assim, a decisão colectiva sobre bairro será importante para o SASB tomar uma decisão em relação ao valor da taxa da ligação ao sistema de esgoto
 			 */
 			paragraph2: () => LocalizedString
 		}
@@ -2212,14 +2335,14 @@ export type TranslationFunctions = {
 			paragraph1: () => LocalizedString
 			/**
 			 * For the sewer connection fee. They propose an average price of (X),
-		      whereas you proposed the price (Y).
+		      whereas you proposed the price ({y} MT).
 			 */
-			paragraph2: () => LocalizedString
+			paragraph2: (arg: { y: unknown }) => LocalizedString
 			/**
 			 * Having heard the community's proposal , would you like to revise your
-		      previously stated price? Remember, your proposed price is (Y)
+		      previously stated price? Remember, your proposed price is ({y} MT)
 			 */
-			paragraph3: () => LocalizedString
+			paragraph3: (arg: { y: unknown }) => LocalizedString
 		}
 		'417': {
 			/**
@@ -2282,14 +2405,14 @@ export type TranslationFunctions = {
 			paragraph1: () => LocalizedString
 			/**
 			 * For the monthly sanitation tax, They propose an average price of (X).
-		      You proposed the price (Y).
+		      You proposed the price ({y} MT).
 			 */
-			paragraph2: () => LocalizedString
+			paragraph2: (arg: { y: unknown }) => LocalizedString
 			/**
 			 * Having heard the community's proposal , would you like to revise your
-		      previously stated price? Remember, your proposed price is (Y)
+		      previously stated price? Remember, your proposed price is ({y} MT)
 			 */
-			paragraph3: () => LocalizedString
+			paragraph3: (arg: { y: unknown }) => LocalizedString
 		}
 		'421': {
 			/**
@@ -2343,21 +2466,18 @@ export type TranslationFunctions = {
 		}
 		'423': {
 			/**
-			 * Now, we would like to share with
-		      you what your community thinks about the price to be paid for A new
-		      monthly drainage service fee.
+			 * Now, we would like to share with you what your community thinks about the price to be paid for the hypothetical monthly drainage service fee.
 			 */
 			paragraph1: () => LocalizedString
 			/**
-			 * For the NEW monthly drainage fee . They propose an average price of (X).
-		      You proposed the price (Y).
+			 * For the hypothetical monthly drainage fee. They propose an average price of (X). You proposed the price ({y} MT)
 			 */
-			paragraph2: () => LocalizedString
+			paragraph2: (arg: { y: unknown }) => LocalizedString
 			/**
 			 * Having heard the community's proposal , would you like to revise your
-		      previously stated price? Remember, your proposed price is (Y)
+		      previously stated price? Remember, your proposed price is ({y} MT)
 			 */
-			paragraph3: () => LocalizedString
+			paragraph3: (arg: { y: unknown }) => LocalizedString
 		}
 		/**
 		 * Since April 2021, have you ever emptied your septic tank?
@@ -2463,9 +2583,7 @@ export type TranslationFunctions = {
 		 */
 		'445': () => LocalizedString
 		/**
-		 * If you compare the quality of fecal sludge desludging services you
-	    received between April and September 2021 to the services you
-	    received in the last 6 months, have you noticed any improvements?
+		 * If you compare the quality of fecal sludge desludging services you received between April and September 2021 to the services you received in the last 6 months, have you noticed any changes?
 		 */
 		'446': () => LocalizedString
 		/**
@@ -2474,9 +2592,7 @@ export type TranslationFunctions = {
 		 */
 		'447': () => LocalizedString
 		/**
-		 * If you compare the quality of SASB's CUSTOMER services you received
-	    between April and September 2021 to the services you received in the
-	    last 6 months, have you noticed any improvements?
+		 * If you compare the quality of SASB's CUSTOMER services you received between April and September 2021 to the services you received in the last 6 months, have you noticed any change?
 		 */
 		'448': () => LocalizedString
 		/**
@@ -2485,15 +2601,11 @@ export type TranslationFunctions = {
 		 */
 		'449': () => LocalizedString
 		/**
-		 * If you compare the quality of Beira Municipality's public services you
-	    received between April and September 2021 to the services you received
-	    in the last 6 months, have you noticed any improvements?
+		 * If you compare the quality of Beira Municipality's public services you received between April and September 2021 to the services you received in the last 6 months, have you noticed any change?
 		 */
 		'450': () => LocalizedString
 		/**
-		 * On the scale of 1 to 10, with one being the lowest and 10 being the
-	    highest, how likely are you to share YOUR SATISFACTION towards the
-	    SASB's services mentioned above to other people in this neighborhood?
+		 * On the scale of 1 to 4, with 1 being the lowest and 4 being the highest, how likely are you to share YOUR SATISFACTION towards the SASB's services mentioned above to other people in this neighborhood?
 		 */
 		'451': () => LocalizedString
 		/**
@@ -2504,10 +2616,7 @@ export type TranslationFunctions = {
 		 */
 		'452': () => LocalizedString
 		/**
-		 * As previously mentioned at the start of the survey, your responses
-	    will be confidential. However, today, you have a chance to submit your
-	    satisfaction directly to SASB through us. This will enable them to
-	    follow up with you. Would you like to do that?
+		 * As previously mentioned at the start of the survey, your responses will be confidential. However, today, you have a chance to submit your satisfaction directly to SASB through us. This will enable them to follow up with you. Would you like to do that ? (There is no obligation to submit this to SASB)
 		 */
 		'453': () => LocalizedString
 		/**
@@ -2516,7 +2625,7 @@ export type TranslationFunctions = {
 		 */
 		'454': () => LocalizedString
 		/**
-		 * What was the problem about?
+		 * What was the sewage related problem?
 		 */
 		'510': () => LocalizedString
 		/**
@@ -2600,8 +2709,7 @@ export type TranslationFunctions = {
 		 */
 		'529': () => LocalizedString
 		/**
-		 * On reflection, would you like to revise the previously stated price
-	    for the service ? Remember, your proposed price is ({y} MT)
+		 * On reflection, would you like to revise the  previously stated price for the FSM service ? Remember, your proposed price is ({y} MT)
 		 */
 		'530': (arg: { y: unknown }) => LocalizedString
 		/**
@@ -2609,7 +2717,7 @@ export type TranslationFunctions = {
 		 */
 		'610': () => LocalizedString
 		/**
-		 *  If you compare the frequency of floods after a rain in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any REDUCTIONS?
+		 * If you compare the frequency of floods after a rain in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any change?
 		 */
 		'611': () => LocalizedString
 		/**
@@ -2639,31 +2747,27 @@ export type TranslationFunctions = {
 		 */
 		'617': () => LocalizedString
 		/**
-		 * Did the person who dealt with your complaint treat you in a fair and
-	    polite manner?
+		 * (Caso tenha contactado o SASB), a pessoa que lhe atendeu tratou-lhe duma forma correcta e educada?
 		 */
 		'618': () => LocalizedString
 		/**
-		 * Did you need to make more than one call before they entered into
-	    action?
+		 * (Caso tenha sido o SASB), teve que fazer mais que uma chamada até que começaram a intervir?
 		 */
 		'619': () => LocalizedString
 		/**
-		 * Did you feel that you needed to pay some sort of bribe or gift to
-	    the employee to make the request to be processed faster?
+		 * (Caso tenha contactado o SASB), sentiu a necessidade de subornar ou oferecer algo ao funcionário para que o atendimento fosse rápido?
 		 */
 		'620': () => LocalizedString
 		/**
-		 * Has your matter been dealt with by the SASB itself or have you been
-	    referred to another entity?
+		 * (Caso tenha contactado o SASB), o seu problema foi tratado pelo próprio SASB ou foi encaminhado para outra entidade?
 		 */
 		'621': () => LocalizedString
 		/**
-		 * Has the problem been resolved?
+		 * (Caso tenha contactado o SASB) O seu poblema ficou resolvido?
 		 */
 		'622': () => LocalizedString
 		/**
-		 * How long did the resolution take since you have put in the request?
+		 * (Caso tenha contactado o SASB) Quanto tempo levou a solução do problema contando a partir do momento que fez o primeiro contacto?
 		 */
 		'623': () => LocalizedString
 		/**

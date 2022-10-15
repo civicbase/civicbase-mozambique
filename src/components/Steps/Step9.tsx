@@ -41,7 +41,7 @@ const QVSR = () => {
         {LL.questions.QVSRInstruction()}
       </Typography>
 
-      <Typography css={tw`text-justify`}>{LL.questions.QVSRInfo()}</Typography>
+      {/* <Typography css={tw`text-justify`}>{LL.questions.QVSRInfo()}</Typography> */}
 
       <Quadratic
         qs={[
@@ -66,11 +66,12 @@ const QVSR = () => {
       )}
 
       {results && isVoted && (
-        <div>
-          <Label required>{LL.choices.QVSRReset()}</Label>
+        <div css={tw`flex space-x-2`}>
+          <Typography>{LL.choices.QVSRReset()}</Typography>
 
           <div css={tw`flex justify-center`}>
             <Button
+              css={tw`height[fit-content]`}
               type="button"
               variant="tertiary"
               onClick={() => {

@@ -8,14 +8,31 @@ import { useI18nContext } from 'i18n/i18n-react'
 import { memo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
+import { getMostVoted } from 'utils/quadratic'
 
 const Step8 = () => {
   const { LL } = useI18nContext()
   const {
     register,
     watch,
+    getValues,
     formState: { errors },
   } = useFormContext()
+
+  const content = getValues('step7.content')
+
+  let value = 0
+
+  if (content === 'Treatment - QVSR') {
+    const quadratic = getValues('step7.QVSR')
+    const mostVoted = getMostVoted(quadratic)
+    if (mostVoted) {
+      value = mostVoted.statement.match(/\d+/) as any
+    }
+  } else {
+    const slider = getValues('step7.amountPreference')
+    value = slider.match(/\d+/) as any
+  }
 
   const revisedPrice = watch('step8.revisePrice')
 
@@ -29,11 +46,11 @@ const Step8 = () => {
       </Typography>
 
       <Typography css={tw`text-justify`}>
-        {LL.questions[415].paragraph2()}
+        {LL.questions[415].paragraph2({ y: value })}
       </Typography>
 
       <div>
-        <Label required>{LL.questions[415].paragraph3()}</Label>
+        <Label required>{LL.questions[415].paragraph3({ y: value })}</Label>
 
         <div css={tw`flex justify-between`}>
           {[

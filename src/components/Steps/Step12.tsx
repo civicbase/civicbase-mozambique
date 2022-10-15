@@ -7,16 +7,32 @@ import Typography, { Caption } from 'components/Typography'
 import { useI18nContext } from 'i18n/i18n-react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
+import { getMostVoted } from 'utils/quadratic'
 
 const Step12 = () => {
   const { LL } = useI18nContext()
   const {
     register,
+    getValues,
     watch,
     formState: { errors },
   } = useFormContext()
 
   const revisedPrice = watch('step12.revisePrice')
+
+  let value = 0
+  const content = getValues('step11.content')
+
+  if (content === 'Treatment - QVSR') {
+    const quadratic = getValues('step11.QVSR')
+    const mostVoted = getMostVoted(quadratic)
+    if (mostVoted) {
+      value = mostVoted.statement.match(/\d+/) as any
+    }
+  } else {
+    const slider = getValues('step11.feePreference')
+    value = slider.match(/\d+/) as any
+  }
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -28,11 +44,11 @@ const Step12 = () => {
       </Typography>
 
       <Typography css={tw`text-justify`}>
-        {LL.questions[423].paragraph2()}
+        {LL.questions[423].paragraph2({ y: value })}
       </Typography>
 
       <div>
-        <Label required>{LL.questions[423].paragraph3()}</Label>
+        <Label required>{LL.questions[423].paragraph3({ y: value })}</Label>
 
         <div css={tw`flex justify-between`}>
           {[

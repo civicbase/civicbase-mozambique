@@ -9,14 +9,14 @@ type Question = {
   order: number
 }
 
-const useQuadratic = (survey: any) => {
+const useQuadratic = (survey: any, sort: boolean) => {
   const {
     setup: { credits },
     quadratic,
   } = survey
 
   const [questions, setQuestions] = useState<Question[]>(
-    createQuestions(quadratic),
+    createQuestions(quadratic, sort),
   )
   const [availableCredits, setAvailableCredits] = useState(credits || 0)
 

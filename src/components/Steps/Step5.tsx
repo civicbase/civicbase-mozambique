@@ -39,10 +39,11 @@ const Step5 = () => {
             <Typography css={tw`text-justify`}>
               4) {LL.questions[49].paragraph6()}
             </Typography>
-            <Typography css={tw`text-justify`}>
-              {LL.questions[49].paragraph7()}
-            </Typography>
           </div>
+
+          <Typography css={tw`text-justify`}>
+            {LL.questions[49].paragraph7()}
+          </Typography>
         </div>
       )}
       {content === 'Control' && (
