@@ -60,6 +60,7 @@ const en: BaseTranslation = {
       'Other',
     ],
     notAplicable: 'Not Applicable (Only emptied once since April 2021)',
+    notAplicable2: 'Not Aplicable',
     satisfy: ['Very Satisfied', 'Satisfied', 'Less satisfied', 'Dissatisfied'],
     satisfaction: [
       'It has gotten worse',
@@ -103,8 +104,8 @@ const en: BaseTranslation = {
     sanitationType: ['sewer connection', 'Septic Tank'],
     dwellingType: [
       'Singular',
-      'Compound / Collective',
-      'Multistoried buildings',
+      'Compound separated sanitation',
+      'Compound shared sanitation',
       'Appartment in multistoried building with shared sanitation',
     ],
     48: [

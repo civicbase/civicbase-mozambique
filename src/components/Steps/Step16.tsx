@@ -21,6 +21,7 @@ const Step16 = () => {
   const contactedServiceProvider =
     getValues('step13.serviceProvider.contacted') === LL.choices.yesNo[0]()
 
+  // TODO: ohhhh validation bug here?????
   if (
     !(
       sanitationType === LL.choices.sanitationType[1]() &&
@@ -178,10 +179,10 @@ const Step16 = () => {
 
               <div css={tw`flex justify-between`}>
                 {[
-                  LL.choices.satisfy[0](),
-                  LL.choices.satisfy[1](),
-                  LL.choices.satisfy[2](),
-                  LL.choices.satisfy[3](),
+                  LL.choices.satisfactionLevel[0](),
+                  LL.choices.satisfactionLevel[1](),
+                  LL.choices.satisfactionLevel[2](),
+                  LL.choices.satisfactionLevel[3](),
                 ].map(option => (
                   <label
                     css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}
@@ -247,11 +248,11 @@ const Step16 = () => {
 
         <div css={tw`flex justify-between`}>
           {[
-            LL.choices.satisfactionLevel[0](),
-            LL.choices.satisfactionLevel[1](),
-            LL.choices.satisfactionLevel[2](),
-            LL.choices.satisfactionLevel[3](),
-            LL.choices.notAplicable(),
+            LL.choices.satisfy[0](),
+            LL.choices.satisfy[1](),
+            LL.choices.satisfy[2](),
+            LL.choices.satisfy[3](),
+            LL.choices.notAplicable2(),
           ].map(option => (
             <label
               css={tw`flex flex-col justify-between space-y-2 items-center select-none mt-5`}

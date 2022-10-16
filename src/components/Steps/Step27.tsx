@@ -12,11 +12,16 @@ const Step27 = () => {
     register,
     watch,
     getValues,
+    setValue,
     formState: { errors },
   } = useFormContext()
 
   const revisedPrice = watch('step27.revisePrice')
   const y = getValues('step11.feePreference')
+
+  if (revisedPrice === LL.choices.revise[1]()) {
+    setValue('step27.willingPay', y)
+  }
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>

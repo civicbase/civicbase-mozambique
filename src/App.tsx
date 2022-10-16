@@ -97,6 +97,11 @@ const App = () => {
     resolver: zodResolver(validationSchema(LL)),
   })
 
+  const values = methods.getValues()
+  const trans = transform(values, LL)
+
+  console.log('values', trans)
+
   // console.log('errors', methods.formState.errors)
 
   const handlePrevious = () => {
@@ -154,10 +159,13 @@ const App = () => {
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(values => {
-          const answer = transform({
-            ...values,
-            geolocation: { latitude, longitude },
-          })
+          const answer = transform(
+            {
+              ...values,
+              geolocation: { latitude, longitude },
+            },
+            LL,
+          )
 
           console.log('answer', answer)
 

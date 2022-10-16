@@ -55,9 +55,7 @@ const validationSchema = (LL: TranslationFunctions) => {
       revisePrice: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
-      willingPay: z
-        .number({ invalid_type_error: LL.errors.number() })
-        .optional(),
+      willingPay: z.any().optional(),
     }),
     step9: z.object({
       content: z.string(),
@@ -68,9 +66,7 @@ const validationSchema = (LL: TranslationFunctions) => {
       revisePrice: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
-      willingPay: z
-        .number({ invalid_type_error: LL.errors.number() })
-        .optional(),
+      willingPay: z.any().optional(),
     }),
     step11: z.object({
       content: z.string(),
@@ -81,9 +77,7 @@ const validationSchema = (LL: TranslationFunctions) => {
       revisePrice: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
-      willingPay: z
-        .number({ invalid_type_error: LL.errors.number() })
-        .optional(),
+      willingPay: z.any().optional(),
     }),
     step13: z
       .object({
@@ -571,13 +565,13 @@ const validationSchema = (LL: TranslationFunctions) => {
       revisePrice: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
-      willingPay: z.number().optional(),
+      willingPay: z.any().optional(),
     }),
     step22: z.object({
       revisePrice: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
-      willingPay: z.number().optional(),
+      willingPay: z.any().optional(),
     }),
     step23: z
       .object({
@@ -591,12 +585,14 @@ const validationSchema = (LL: TranslationFunctions) => {
         }),
       })
       .optional(),
-    step24: z.object({
-      revisePrice: z.string({
-        invalid_type_error: LL.choices.placeholder(),
-      }),
-      willingPay: z.number().optional(),
-    }),
+    step24: z
+      .object({
+        revisePrice: z.string({
+          invalid_type_error: LL.choices.placeholder(),
+        }),
+        willingPay: z.any().optional(),
+      })
+      .optional(),
     step25: z.object({
       drainageBoxBlocked: z.string({
         invalid_type_error: LL.choices.placeholder(),
@@ -802,7 +798,7 @@ const validationSchema = (LL: TranslationFunctions) => {
       revisePrice: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
-      willingPay: z.number().optional(),
+      willingPay: z.any().optional(),
     }),
   })
 

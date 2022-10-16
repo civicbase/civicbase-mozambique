@@ -391,6 +391,10 @@ type RootTranslation = {
 		 * N​o​t​ ​A​p​p​l​i​c​a​b​l​e​ ​(​O​n​l​y​ ​e​m​p​t​i​e​d​ ​o​n​c​e​ ​s​i​n​c​e​ ​A​p​r​i​l​ ​2​0​2​1​)
 		 */
 		notAplicable: string
+		/**
+		 * N​o​t​ ​A​p​l​i​c​a​b​l​e
+		 */
+		notAplicable2: string
 		satisfy: {
 			/**
 			 * V​e​r​y​ ​S​a​t​i​s​f​i​e​d
@@ -589,11 +593,11 @@ type RootTranslation = {
 			 */
 			'0': string
 			/**
-			 * C​o​m​p​o​u​n​d​ ​/​ ​C​o​l​l​e​c​t​i​v​e
+			 * C​o​m​p​o​u​n​d​ ​s​e​p​a​r​a​t​e​d​ ​s​a​n​i​t​a​t​i​o​n
 			 */
 			'1': string
 			/**
-			 * M​u​l​t​i​s​t​o​r​i​e​d​ ​b​u​i​l​d​i​n​g​s
+			 * C​o​m​p​o​u​n​d​ ​s​h​a​r​e​d​ ​s​a​n​i​t​a​t​i​o​n
 			 */
 			'2': string
 			/**
@@ -1792,6 +1796,10 @@ export type TranslationFunctions = {
 		 * Not Applicable (Only emptied once since April 2021)
 		 */
 		notAplicable: () => LocalizedString
+		/**
+		 * Not Aplicable
+		 */
+		notAplicable2: () => LocalizedString
 		satisfy: {
 			/**
 			 * Very Satisfied
@@ -1990,11 +1998,11 @@ export type TranslationFunctions = {
 			 */
 			'0': () => LocalizedString
 			/**
-			 * Compound / Collective
+			 * Compound separated sanitation
 			 */
 			'1': () => LocalizedString
 			/**
-			 * Multistoried buildings
+			 * Compound shared sanitation
 			 */
 			'2': () => LocalizedString
 			/**

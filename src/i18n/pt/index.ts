@@ -56,6 +56,7 @@ const pt: BaseTranslation = {
     ],
     notAplicable:
       'Não se Aplica (Esvaziado somente uma vez desde Abril de 2021)',
+    notAplicable2: 'Não se Aplica',
     satisfy: [
       'Muito Satisfeito',
       'Satisfeito',

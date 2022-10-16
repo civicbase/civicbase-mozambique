@@ -182,6 +182,29 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
         return null
       }
     case 25:
+      const y1 = getValues('step8.willingPay')
+      const y2 = getValues('step10.willingPay')
+      const y3 = getValues('step14.fsm.greatValue')
+      const revise21 = getValues('step21.revisePrice')
+      const revise22 = getValues('step21.revisePrice')
+      const revise24 = getValues(`step24.revisePrice`)
+
+      console.log('y1', typeof y1)
+      console.log('y2', typeof y2)
+      console.log('y3', typeof y3)
+
+      if (revise21 === LL.choices.revise[1]()) {
+        setValue('step21.willingPay', y1)
+      }
+
+      if (revise22 === LL.choices.revise[1]()) {
+        setValue('step22.willingPay', y2)
+      }
+
+      if (revise24 === LL.choices.revise[1]()) {
+        setValue('step24.willingPay', Number(y3))
+      }
+
       return <Section.Step25 />
     case 26:
       return <Section.Step26 />
