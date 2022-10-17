@@ -1,5 +1,5 @@
-import { TranslationFunctions } from 'i18n/i18n-types'
-import { FormValues } from 'types'
+import { TranslationFunctions } from "i18n/i18n-types";
+import { FormValues } from "types";
 import {
   get411,
   get413,
@@ -34,13 +34,13 @@ import {
   getSatisfy,
   getServiceProvider,
   getYesNo,
-} from 'utils/answer'
+} from "utils/answer";
 
 export interface Values extends FormValues {
   geolocation: {
-    latitude?: number
-    longitude?: number
-  }
+    latitude?: number;
+    longitude?: number;
+  };
 }
 
 export const transform = (values: any, LL: TranslationFunctions) => {
@@ -91,7 +91,7 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     426: getYesNo(values.step13?.serviceProvider.contacted, LL),
     427: getMonthYear(
       values.step13?.serviceProvider.contactedMonth,
-      values.step13?.serviceProvider.contactedYear,
+      values.step13?.serviceProvider.contactedYear
     ),
     428: getServiceProvider(values.step13?.serviceProvider.who, LL),
     429: values.step13?.serviceProvider.other,
@@ -112,25 +112,25 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     443: getSatisfy(values.step16?.satisfaction.qualityDrainage, LL),
     444: getSatisfaction(
       values.step16?.satisfaction.qualityDrainageLast6Months,
-      LL,
+      LL
     ),
     445: getSatisfactionLevel(
       values.step16?.satisfaction.SASBFecalSludgeDeslidgingService,
-      LL,
+      LL
     ),
     446: get446(values, LL),
     447: get447(values, LL),
     448: getSatisfaction(
       values.step16?.satisfaction.SASBCustomerServiceLast6Months,
-      LL,
+      LL
     ),
     449: getSatisfactionLevel(
       values.step16?.satisfaction.beiraMunicipality,
-      LL,
+      LL
     ),
     450: getSatisfaction(
       values.step16?.satisfaction.beiraMunicipalityLast6Months,
-      LL,
+      LL
     ),
     // page17
     451: getLikely(values.step17?.SASBSatisfaction, LL),
@@ -146,13 +146,13 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     56: getProblems(values.step19?.oftenBadSmellDwellingCompound, LL),
     57: getSatisfaction(
       values.step19?.sewerBadSmellDwellingCompoundReductions,
-      LL,
+      LL
     ),
     // page20
     58: getYesNo(values.step20?.contacted, LL),
     59: getMonthYear(
       values.step20?.contactedMonth,
-      values.step20?.contactedYear,
+      values.step20?.contactedYear
     ),
     510: get510(values, LL),
     511: getServiceProvider(values.step20?.contactedWho, LL),
@@ -194,12 +194,12 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     // page26
     612: getYesNo(values.step26?.contactedDrainageIssue, LL),
     613: getMonthYear(
-      values.step26?.contacted.month,
-      values.step26?.contacted.year,
+      values.step26?.contacted?.month,
+      values.step26?.contacted?.year
     ),
     614: get614(values, LL),
-    615: values.step26?.contacted.other,
-    616: getServiceProvider(values.step26?.contacted.who, LL),
+    615: values.step26?.contacted?.other,
+    616: getServiceProvider(values.step26?.contacted?.who, LL),
     617: get617(values, LL),
     618: getYesNo(values.step26?.treatFairPolite, LL),
     619: getYesNo(values.step26?.moreThanOneCall, LL),
@@ -210,7 +210,7 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     // page27
     624: getRevise(values.step27?.revisePrice, LL),
     625: values.step27?.willingPay,
-  }
+  };
 
-  return result
-}
+  return result;
+};

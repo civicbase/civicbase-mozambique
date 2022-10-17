@@ -1,10 +1,10 @@
-import client from './api'
-import ShortUniqueId from 'short-unique-id'
+import client from "./api";
+import ShortUniqueId from "short-unique-id";
 
-const uid = new ShortUniqueId({ length: 16 })
+const uid = new ShortUniqueId({ length: 16 });
 
 export const createAnswer = (answer: any) => {
-  return client('createIndiaAnswer', {
+  return client("answer", {
     body: answer,
-  })
-}
+  });
+};
