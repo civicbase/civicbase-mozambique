@@ -5,10 +5,10 @@ import Radio from 'components/Form/Radio'
 import Heading from 'components/Heading'
 import Typography, { Caption } from 'components/Typography'
 import { useI18nContext } from 'i18n/i18n-react'
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
-import { getMostVoted } from 'utils/quadratic'
+import { getY } from 'utils/setY'
 
 const Step8 = () => {
   const { LL } = useI18nContext()
@@ -16,25 +16,22 @@ const Step8 = () => {
     register,
     watch,
     getValues,
+    setValue,
     formState: { errors },
   } = useFormContext()
 
-  const content = getValues('step7.content')
-
-  let value = 0
-
-  if (content === 'Treatment - QVSR') {
-    const quadratic = getValues('step7.QVSR')
-    const mostVoted = getMostVoted(quadratic)
-    if (mostVoted) {
-      value = mostVoted.statement.match(/\d+/) as any
-    }
-  } else {
-    const slider = getValues('step7.amountPreference')
-    value = slider.match(/\d+/) as any
-  }
-
   const revisedPrice = watch('step8.revisePrice')
+  const y = getY(getValues, {
+    content: 'step7.content',
+    treatment: 'step7.QVSR',
+    control: 'step7.amountPreference',
+  })
+
+  useMemo(() => {
+    if (revisedPrice === LL.choices.revise[1]()) {
+      setValue('step8.willingPay', y)
+    }
+  }, [revisedPrice])
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -45,23 +42,14 @@ const Step8 = () => {
         {LL.questions[415].paragraph1()}
       </Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions[415].paragraph2({ y: value })}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions[415].paragraph2({ y })}</Typography>
 
       <div>
-        <Label required>{LL.questions[415].paragraph3({ y: value })}</Label>
+        <Label required>{LL.questions[415].paragraph3({ y })}</Label>
 
         <div css={tw`flex justify-between`}>
-          {[
-            LL.choices.revise[0](),
-            LL.choices.revise[1](),
-            LL.choices.revise[2](),
-          ].map(option => (
-            <label
-              css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
-              key={option}
-            >
+          {[LL.choices.revise[0](), LL.choices.revise[1](), LL.choices.revise[2]()].map((option) => (
+            <label css={tw`flex flex-col space-y-2 items-center select-none mt-5`} key={option}>
               <span css={tw`text-center`}>{option}</span>
               <Radio {...register(`step8.revisePrice`)} value={option} />
             </label>
@@ -71,8 +59,7 @@ const Step8 = () => {
         <FieldErrorMessage name="step8.revisePrice" errors={errors} />
       </div>
 
-      {(revisedPrice === LL.choices.revise[0]() ||
-        revisedPrice === LL.choices.revise[2]()) && (
+      {(revisedPrice === LL.choices.revise[0]() || revisedPrice === LL.choices.revise[2]()) && (
         <div>
           <Label number="4.16" required>
             {LL.questions.willingPay()}

@@ -1,7 +1,6 @@
 import { useI18nContext } from 'i18n/i18n-react'
 import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { getMostVoted } from 'utils/quadratic'
 import * as Section from '.'
 
 type StepsProps = {
@@ -12,7 +11,7 @@ type StepsProps = {
 
 const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
   const { LL } = useI18nContext()
-  const { getValues, setValue } = useFormContext()
+  const { getValues } = useFormContext()
   const sanitationType = getValues('step2.sanitationType')
 
   useEffect(() => {
@@ -43,60 +42,12 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
       return <Section.Step7 />
     case 8:
       return <Section.Step8 />
-    case 9: {
-      const revise = getValues('step8.revisePrice') !== LL.choices.revise[1]()
-
-      if (!revise) {
-        const content = getValues('step7.content')
-
-        if (content === 'Treatment - QVSR') {
-          const quadratic = getValues('step7.QVSR')
-          const mostVoted = getMostVoted(quadratic)
-
-          if (mostVoted) {
-            const value = mostVoted.statement.match(/\d+/)
-
-            if (value && value[0]) {
-              setValue('step8.willingPay', Number(value[0]))
-            }
-          }
-        } else {
-          const value = getValues('step7.amountPreference')
-
-          setValue('step8.willingPay', Number(value))
-        }
-      }
-
+    case 9:
       return <Section.Step9 />
-    }
     case 10:
       return <Section.Step10 />
-    case 11: {
-      const revise = getValues('step10.revisePrice') !== LL.choices.revise[1]()
-
-      if (!revise) {
-        const content = getValues('step9.content')
-
-        if (content === 'Treatment - QVSR') {
-          const quadratic = getValues('step9.QVSR')
-          const mostVoted = getMostVoted(quadratic)
-
-          if (mostVoted) {
-            const value = mostVoted.statement.match(/\d+/)
-
-            if (value && value[0]) {
-              setValue('step10.willingPay', Number(value[0]))
-            }
-          }
-        } else {
-          const value = getValues('step9.pricePreference')
-
-          setValue('step10.willingPay', Number(value))
-        }
-      }
-
+    case 11:
       return <Section.Step11 />
-    }
     case 12:
       return <Section.Step12 />
     case 13:
@@ -113,32 +64,8 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
         onNext()
         return null
       }
-    case 15: {
-      const revise = getValues('step12.revisePrice') !== LL.choices.revise[1]()
-
-      if (!revise) {
-        const content = getValues('step11.content')
-
-        if (content === 'Treatment - QVSR') {
-          const quadratic = getValues('step11.QVSR')
-          const mostVoted = getMostVoted(quadratic)
-
-          if (mostVoted) {
-            const value = mostVoted.statement.match(/\d+/)
-
-            if (value && value[0]) {
-              setValue('step12.willingPay', Number(value[0]))
-            }
-          }
-        } else {
-          const value = getValues('step11.feePreference')
-
-          setValue('step12.willingPay', Number(value))
-        }
-      }
-
+    case 15:
       return <Section.Step15 />
-    }
     case 16:
       return <Section.Step16 />
     case 17:
@@ -148,8 +75,7 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 19:
       return <Section.Step19 />
     case 20: {
-      const sewerConnection =
-        getValues('step2.sanitationType') === LL.choices.sanitationType[0]()
+      const sewerConnection = getValues('step2.sanitationType') === LL.choices.sanitationType[0]()
 
       if (sewerConnection) {
         return <Section.Step20 />
@@ -182,34 +108,10 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
         return null
       }
     case 25:
-      const y1 = getValues('step8.willingPay')
-      const y2 = getValues('step10.willingPay')
-      const y3 = getValues('step14.fsm.greatValue')
-      const revise21 = getValues('step21.revisePrice')
-      const revise22 = getValues('step21.revisePrice')
-      const revise24 = getValues(`step24.revisePrice`)
-
-      console.log('y1', typeof y1)
-      console.log('y2', typeof y2)
-      console.log('y3', typeof y3)
-
-      if (revise21 === LL.choices.revise[1]()) {
-        setValue('step21.willingPay', y1)
-      }
-
-      if (revise22 === LL.choices.revise[1]()) {
-        setValue('step22.willingPay', y2)
-      }
-
-      if (revise24 === LL.choices.revise[1]()) {
-        setValue('step24.willingPay', Number(y3))
-      }
-
       return <Section.Step25 />
     case 26:
       return <Section.Step26 />
     case 27:
-      setValue('finishAt', new Date().toISOString())
       return <Section.Step27 />
     case 28:
       return <Section.Completion />

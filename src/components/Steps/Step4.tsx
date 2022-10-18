@@ -37,43 +37,35 @@ const Step4 = () => {
         {LL.questions[48].paragraph1()}
       </Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions[48].paragraph2()}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions[48].paragraph2()}</Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions.QVSRInstruction()}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions.QVSRInstruction()}</Typography>
 
       {/* <Typography css={tw`text-justify`}>{LL.questions.QVSRInfo()}</Typography> */}
 
       <Quadratic qs={questions} isReset={isReset} step="step4" sort={true} />
 
-      {results && isVoted && (
-        <PanelExpand title="The allocation of your votes:">
-          <VoteSummary results={results} />
-        </PanelExpand>
-      )}
+      <PanelExpand title="The allocation of your votes:">
+        <VoteSummary results={results} />
+      </PanelExpand>
 
-      {results && isVoted && (
-        <div css={tw`flex space-x-2`}>
-          <Typography>{LL.choices.QVSRReset()}</Typography>
+      <div css={[tw`flex space-x-2`]}>
+        <Typography>{LL.choices.QVSRReset()}</Typography>
 
-          <div css={tw`flex justify-center`}>
-            <Button
-              css={tw`height[fit-content]`}
-              type="button"
-              variant="tertiary"
-              onClick={() => {
-                setReset(true)
-                setTimeout(() => setReset(false), 1000)
-              }}
-            >
-              {LL.placeholder.reset()}
-            </Button>
-          </div>
+        <div css={tw`flex justify-center`}>
+          <Button
+            css={tw`height[fit-content]`}
+            type="button"
+            variant="tertiary"
+            onClick={() => {
+              setReset(true)
+              setTimeout(() => setReset(false), 1000)
+            }}
+          >
+            {LL.placeholder.reset()}
+          </Button>
         </div>
-      )}
+      </div>
     </div>
   )
 }

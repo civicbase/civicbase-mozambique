@@ -30,57 +30,39 @@ const QVSR = () => {
         {LL.questions[413].paragraph1()}
       </Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions[413].paragraph2()}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions[413].paragraph2()}</Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions.QVSRInstruction()}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions.QVSRInstruction()}</Typography>
 
       {/* <Typography css={tw`text-justify`}>{LL.questions.QVSRInfo()}</Typography> */}
 
       <Quadratic
-        qs={[
-          '6500 MT',
-          '7000 MT',
-          '7500 MT',
-          '8000 MT',
-          '8500 MT',
-          '9000 MT',
-          '9500 MT',
-          '10000 MT',
-          '10500 MT',
-        ]}
+        qs={['6500 MT', '7000 MT', '7500 MT', '8000 MT', '8500 MT', '9000 MT', '9500 MT', '10000 MT', '10500 MT']}
         isReset={isReset}
         step="step7.QVSR"
       />
 
-      {results && isVoted && (
-        <PanelExpand title="The allocation of your votes:">
-          <VoteSummary results={results} />
-        </PanelExpand>
-      )}
+      <PanelExpand title="The allocation of your votes:">
+        <VoteSummary results={results} />
+      </PanelExpand>
 
-      {results && isVoted && (
-        <div css={tw`flex space-x-2`}>
-          <Typography>{LL.choices.QVSRReset()}</Typography>
+      <div css={tw`flex space-x-2`}>
+        <Typography>{LL.choices.QVSRReset()}</Typography>
 
-          <div css={tw`flex justify-center`}>
-            <Button
-              css={tw`height[fit-content]`}
-              type="button"
-              variant="tertiary"
-              onClick={() => {
-                setReset(true)
-                setTimeout(() => setReset(false), 1000)
-              }}
-            >
-              {LL.placeholder.reset()}
-            </Button>
-          </div>
+        <div css={tw`flex justify-center`}>
+          <Button
+            css={tw`height[fit-content]`}
+            type="button"
+            variant="tertiary"
+            onClick={() => {
+              setReset(true)
+              setTimeout(() => setReset(false), 1000)
+            }}
+          >
+            {LL.placeholder.reset()}
+          </Button>
         </div>
-      )}
+      </div>
     </div>
   )
 }
@@ -104,13 +86,9 @@ const Slider = () => {
         {LL.questions[414].paragraph1()}
       </Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions[414].paragraph2()}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions[414].paragraph2()}</Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions.SliderInstruction()}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions.SliderInstruction()}</Typography>
 
       <div>
         <Label>{amount} MT</Label>

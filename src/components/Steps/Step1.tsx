@@ -5,7 +5,7 @@ import Dropdown from 'components/Dropdown'
 import { Controller, useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 import { useI18nContext } from 'i18n/i18n-react'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import Heading from 'components/Heading'
 
 const Step1 = () => {
@@ -13,11 +13,21 @@ const Step1 = () => {
   const {
     control,
     watch,
+    setValue,
+    getValues,
     register,
     formState: { errors },
   } = useFormContext()
 
   const language = watch('step1.language')
+
+  useMemo(() => {
+    const s = getValues('section4.startAt')
+
+    if (!s) {
+      setValue('section4.startAt', new Date().toISOString())
+    }
+  }, [])
 
   useEffect(() => {
     if (language === LL.choices.languages[0]()) {
@@ -29,20 +39,13 @@ const Step1 = () => {
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading
-        title="Section 4: Willingness to Pay"
-        subtitle={LL.headings[1]()}
-      />
+      <Heading title="Section 4: Willingness to Pay" subtitle={LL.headings[1]()} />
 
       <div>
         <Label number="4.1" required>
           {LL.questions[41]()}
         </Label>
-        <Input
-          {...register('step1.uniqueId', { required: true })}
-          error={!!errors?.step1?.uniqueId}
-          disabled={true}
-        />
+        <Input {...register('step1.uniqueId', { required: true })} error={!!errors?.step1?.uniqueId} disabled={true} />
         <FieldErrorMessage name="step1.uniqueId" errors={errors} />
       </div>
 

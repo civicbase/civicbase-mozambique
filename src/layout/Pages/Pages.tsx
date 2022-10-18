@@ -7,6 +7,7 @@ type PagesLayoutProps = {
   footer: React.ReactNode
   content: React.ReactNode
   geolocation?: React.ReactNode
+  ODKConfirmation?: React.ReactNode
 }
 
 const styles = {
@@ -16,17 +17,13 @@ const styles = {
   ],
 }
 
-const PagesLayout = ({
-  footer,
-  content,
-  geolocation,
-  header,
-}: PagesLayoutProps) => {
+const PagesLayout = ({ footer, content, geolocation, ODKConfirmation, header }: PagesLayoutProps) => {
   return (
     <div css={styles.container({ hasBackground: true })}>
       <Card css={tw`relative`}>
         {header}
         {geolocation}
+        {ODKConfirmation}
         <div id="content" css={tw`flex-1 overflow-y-auto px-4 py-2`}>
           {content}
         </div>

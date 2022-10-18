@@ -18,6 +18,8 @@ const en: BaseTranslation = {
     agree: `Agree`,
     disagree: `Disagree`,
     credits: 'Credits',
+    ODKConfirmation: `Before proceeding with the Civicbase portion of this survey, please return to ODK and make sure that you have submitted the ODK form`,
+    ODKCTA: `Yes, I have submitted the ODK form, I can proceed`,
   },
   help: {
     notImportant: 'Not at all Important',
@@ -26,25 +28,10 @@ const en: BaseTranslation = {
     stronglyAgree: 'Strongly Agree',
   },
   choices: {
-    likely: [
-      'Very Unlikely',
-      'Somewhat unlikely',
-      'Somewhat likely',
-      'Very Likely',
-    ],
-    importance: [
-      'Not at all important',
-      'Low importance',
-      'Important',
-      'Very Important',
-    ],
+    likely: ['Very Unlikely', 'Somewhat unlikely', 'Somewhat likely', 'Very Likely'],
+    importance: ['Not at all important', 'Low importance', 'Important', 'Very Important'],
     QVSRReset: `Do you agree with the allocation of your votes? If you agree, select next. If not, you may click on reset and reallocate your votes.`,
-    howLong: [
-      'A few days but within a week',
-      'Between 1 and 2 weeks',
-      'Less than a month',
-      'More than a month',
-    ],
+    howLong: ['A few days but within a week', 'Between 1 and 2 weeks', 'Less than a month', 'More than a month'],
     entity: ['Referred to another entity', 'Dealth by SASB'],
     problems: [
       'Yes, during 1 or 2 months (Rarely)',
@@ -52,28 +39,12 @@ const en: BaseTranslation = {
       'Yes, all months (Regularly)',
       'No, never',
     ],
-    relationship: [
-      'Neighbor',
-      'Work Colleague',
-      'Friend Acquaintance',
-      'Family Member',
-      'Other',
-    ],
+    relationship: ['Neighbor', 'Work Colleague', 'Friend Acquaintance', 'Family Member', 'Other'],
     notAplicable: 'Not Applicable (Only emptied once since April 2021)',
     notAplicable2: 'Not Aplicable',
-    satisfy: ['Very Satisfied', 'Satisfied', 'Less satisfied', 'Dissatisfied'],
-    satisfaction: [
-      'It has gotten worse',
-      'No change',
-      'It has improved',
-      `Don't know`,
-    ],
-    satisfactionLevel: [
-      'Satisfied',
-      'Somewhat Satisfied',
-      'Somewhat Dissatisfied',
-      'Dissastisfied',
-    ],
+    satisfy: ['Very Satisfied', 'Satisfied', 'Less satisfied', 'Insatisfied'],
+    satisfaction: ['It has gotten worse', 'No change', 'It has improved', `Don't know`],
+    satisfactionLevel: ['Satisfied', 'Somewhat Satisfied', 'Somewhat Dissatisfied', 'Dissastisfied'],
     serviceProvider: [
       'Landlord',
       'Intermediary',
@@ -124,11 +95,7 @@ const en: BaseTranslation = {
       'More convenient to call a plumber to fix my problem',
       'Cheaper to call a plumber',
     ],
-    431: [
-      'Fecal Sludge removal',
-      'Fecal Sludge Removal (Priority Request)',
-      'Cleaning of Septic Tank',
-    ],
+    431: ['Fecal Sludge removal', 'Fecal Sludge Removal (Priority Request)', 'Cleaning of Septic Tank'],
     510: [
       'Not enough water to flush',
       'Sewer blockage, no proper flow, flow of black water, over flow in your dwelling or compound',

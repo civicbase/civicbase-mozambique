@@ -5,6 +5,18 @@ const validationSchema = (LL: TranslationFunctions) => {
   const schema = z.object({
     startAt: z.string(),
     finishAt: z.string(),
+    section4: z.object({
+      startAt: z.string(),
+      finishAt: z.string(),
+    }),
+    section5: z.object({
+      startAt: z.string(),
+      finishAt: z.string(),
+    }),
+    section6: z.object({
+      startAt: z.string(),
+      finishAt: z.string(),
+    }),
     step1: z.object({
       uniqueId: z.string(),
       language: z.string(),
@@ -23,11 +35,8 @@ const validationSchema = (LL: TranslationFunctions) => {
       })
       .optional()
       .refine(
-        step => {
-          return !(
-            step?.dwellingType !== LL.choices.dwellingType[0]() &&
-            !step?.waterBill?.share
-          )
+        (step) => {
+          return !(step?.dwellingType !== LL.choices.dwellingType[0]() && !step?.waterBill?.share)
         },
         { message: 'Required', path: ['waterBill.share'] },
       ),
@@ -91,16 +100,14 @@ const validationSchema = (LL: TranslationFunctions) => {
             other: z.string().optional(),
             service: z.string().optional(),
             paid: z.string().optional(),
-            howMuch: z
-              .number({ invalid_type_error: LL.errors.number() })
-              .optional(),
+            howMuch: z.number({ invalid_type_error: LL.errors.number() }).optional(),
             unknownHowMuch: z.boolean().optional(),
           })
           .optional(),
         SASBNotContactedReasons: z.any().optional(),
       })
       .refine(
-        step => {
+        (step) => {
           if (step.emptiedSepticTank === LL.choices.yesNo[0]()) {
             return step.serviceProvider?.contacted
           }
@@ -112,7 +119,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
+        (step) => {
           if (
             step.emptiedSepticTank === LL.choices.yesNo[0]() &&
             step.serviceProvider?.contacted === LL.choices.yesNo[0]()
@@ -128,7 +135,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
+        (step) => {
           if (
             step.emptiedSepticTank === LL.choices.yesNo[0]() &&
             step.serviceProvider?.contacted === LL.choices.yesNo[0]()
@@ -144,7 +151,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
+        (step) => {
           if (
             step.emptiedSepticTank === LL.choices.yesNo[0]() &&
             step.serviceProvider?.contacted === LL.choices.yesNo[0]()
@@ -167,7 +174,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
+        (step) => {
           if (
             step.emptiedSepticTank === LL.choices.yesNo[0]() &&
             step.serviceProvider?.contacted === LL.choices.yesNo[0]()
@@ -184,7 +191,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
+        (step) => {
           if (
             step.emptiedSepticTank === LL.choices.yesNo[0]() &&
             step.serviceProvider?.contacted === LL.choices.yesNo[0]()
@@ -209,7 +216,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
+        (step) => {
           if (
             step.emptiedSepticTank === LL.choices.yesNo[0]() &&
             step.serviceProvider?.contacted === LL.choices.yesNo[0]()
@@ -225,7 +232,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
+        (step) => {
           if (
             step.emptiedSepticTank === LL.choices.yesNo[0]() &&
             step.serviceProvider?.contacted === LL.choices.yesNo[0]()
@@ -372,7 +379,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         howLong: z.string().optional(),
       })
       .refine(
-        step => {
+        (step) => {
           if (step.contacted === LL.choices.yesNo[0]()) {
             return step.contactedMonth
           }
@@ -384,7 +391,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
+        (step) => {
           if (step.contacted === LL.choices.yesNo[0]()) {
             return step.contactedYear
           }
@@ -396,7 +403,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
+        (step) => {
           if (step.contacted === LL.choices.yesNo[0]()) {
             return step.problem
           }
@@ -408,7 +415,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
+        (step) => {
           if (step.contacted === LL.choices.yesNo[0]()) {
             return (
               step.contactedWho[LL.choices.serviceProvider[0]()] ||
@@ -428,11 +435,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
-          if (
-            step.contacted === LL.choices.yesNo[0]() &&
-            step.contactedWho[LL.choices.serviceProvider[5]()]
-          ) {
+        (step) => {
+          if (step.contacted === LL.choices.yesNo[0]() && step.contactedWho[LL.choices.serviceProvider[5]()]) {
             return step.contactedOther
           }
           return true
@@ -443,7 +447,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
+        (step) => {
           if (step.contacted === LL.choices.yesNo[0]()) {
             if (!step.contactedWho['SASB']) {
               return (
@@ -465,11 +469,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
-          if (
-            step.contacted === LL.choices.yesNo[0]() &&
-            step.contactedWho['SASB']
-          ) {
+        (step) => {
+          if (step.contacted === LL.choices.yesNo[0]() && step.contactedWho['SASB']) {
             return step.treatFairPolite
           }
 
@@ -481,11 +482,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
-          if (
-            step.contacted === LL.choices.yesNo[0]() &&
-            step.contactedWho['SASB']
-          ) {
+        (step) => {
+          if (step.contacted === LL.choices.yesNo[0]() && step.contactedWho['SASB']) {
             return step.moreThanOneCall
           }
 
@@ -497,11 +495,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
-          if (
-            step.contacted === LL.choices.yesNo[0]() &&
-            step.contactedWho['SASB']
-          ) {
+        (step) => {
+          if (step.contacted === LL.choices.yesNo[0]() && step.contactedWho['SASB']) {
             return step.bribe
           }
 
@@ -513,11 +508,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
-          if (
-            step.contacted === LL.choices.yesNo[0]() &&
-            step.contactedWho['SASB']
-          ) {
+        (step) => {
+          if (step.contacted === LL.choices.yesNo[0]() && step.contactedWho['SASB']) {
             return step.anotherEntity
           }
 
@@ -529,11 +521,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
-          if (
-            step.contacted === LL.choices.yesNo[0]() &&
-            step.contactedWho['SASB']
-          ) {
+        (step) => {
+          if (step.contacted === LL.choices.yesNo[0]() && step.contactedWho['SASB']) {
             return step.problemResolved
           }
 
@@ -545,11 +534,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
-          if (
-            step.contacted === LL.choices.yesNo[0]() &&
-            step.contactedWho['SASB']
-          ) {
+        (step) => {
+          if (step.contacted === LL.choices.yesNo[0]() && step.contactedWho['SASB']) {
             return step.howLong
           }
 
@@ -646,7 +632,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         howLong: z.string().optional(),
       })
       .refine(
-        step => {
+        (step) => {
           if (step.contactedDrainageIssue === LL.choices.yesNo[0]()) {
             return step.contacted?.month
           }
@@ -655,7 +641,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         { message: LL.choices.placeholder(), path: ['contacted.month'] },
       )
       .refine(
-        step => {
+        (step) => {
           if (step.contactedDrainageIssue === LL.choices.yesNo[0]()) {
             return step.contacted?.year
           }
@@ -664,7 +650,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         { message: LL.choices.placeholder(), path: ['contacted.year'] },
       )
       .refine(
-        step => {
+        (step) => {
           if (step.contactedDrainageIssue === LL.choices.yesNo[0]()) {
             return step.contacted?.problem
           }
@@ -673,7 +659,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         { message: LL.choices.placeholder(), path: ['contacted.problem'] },
       )
       .refine(
-        step => {
+        (step) => {
           if (
             step.contactedDrainageIssue === LL.choices.yesNo[0]() &&
             step.contacted?.problem === LL.choices[614][5]()
@@ -685,7 +671,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         { message: LL.errors.string(), path: ['contacted.other'] },
       )
       .refine(
-        step => {
+        (step) => {
           if (step.contactedDrainageIssue === LL.choices.yesNo[0]()) {
             return (
               step.contacted?.who[LL.choices.serviceProvider[0]()] ||
@@ -701,7 +687,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         { message: LL.errors.string(), path: ['contacted.who'] },
       )
       .refine(
-        step => {
+        (step) => {
           if (step.contactedDrainageIssue === LL.choices.yesNo[0]()) {
             if (!step.contacted?.who['SASB']) {
               return (
@@ -723,11 +709,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .refine(
-        step => {
-          if (
-            step.contactedDrainageIssue === LL.choices.yesNo[0]() &&
-            step.contacted?.who['SASB']
-          ) {
+        (step) => {
+          if (step.contactedDrainageIssue === LL.choices.yesNo[0]() && step.contacted?.who['SASB']) {
             return step.treatFairPolite
           }
           return true
@@ -735,11 +718,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         { message: LL.choices.placeholder(), path: ['treatFairPolite'] },
       )
       .refine(
-        step => {
-          if (
-            step.contactedDrainageIssue === LL.choices.yesNo[0]() &&
-            step.contacted?.who['SASB']
-          ) {
+        (step) => {
+          if (step.contactedDrainageIssue === LL.choices.yesNo[0]() && step.contacted?.who['SASB']) {
             return step.moreThanOneCall
           }
           return true
@@ -747,11 +727,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         { message: LL.choices.placeholder(), path: ['moreThanOneCall'] },
       )
       .refine(
-        step => {
-          if (
-            step.contactedDrainageIssue === LL.choices.yesNo[0]() &&
-            step.contacted?.who['SASB']
-          ) {
+        (step) => {
+          if (step.contactedDrainageIssue === LL.choices.yesNo[0]() && step.contacted?.who['SASB']) {
             return step.bribe
           }
           return true
@@ -759,11 +736,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         { message: LL.choices.placeholder(), path: ['bribe'] },
       )
       .refine(
-        step => {
-          if (
-            step.contactedDrainageIssue === LL.choices.yesNo[0]() &&
-            step.contacted?.who['SASB']
-          ) {
+        (step) => {
+          if (step.contactedDrainageIssue === LL.choices.yesNo[0]() && step.contacted?.who['SASB']) {
             return step.anotherEntity
           }
           return true
@@ -771,11 +745,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         { message: LL.choices.placeholder(), path: ['anotherEntity'] },
       )
       .refine(
-        step => {
-          if (
-            step.contactedDrainageIssue === LL.choices.yesNo[0]() &&
-            step.contacted?.who['SASB']
-          ) {
+        (step) => {
+          if (step.contactedDrainageIssue === LL.choices.yesNo[0]() && step.contacted?.who['SASB']) {
             return step.problemResolved
           }
           return true
@@ -783,11 +754,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         { message: LL.choices.placeholder(), path: ['problemResolved'] },
       )
       .refine(
-        step => {
-          if (
-            step.contactedDrainageIssue === LL.choices.yesNo[0]() &&
-            step.contacted?.who['SASB']
-          ) {
+        (step) => {
+          if (step.contactedDrainageIssue === LL.choices.yesNo[0]() && step.contacted?.who['SASB']) {
             return step.howLong
           }
           return true

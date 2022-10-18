@@ -1,5 +1,5 @@
-import { TranslationFunctions } from "i18n/i18n-types";
-import { FormValues } from "types";
+import { TranslationFunctions } from 'i18n/i18n-types'
+import { FormValues } from 'types'
 import {
   get411,
   get413,
@@ -34,13 +34,13 @@ import {
   getSatisfy,
   getServiceProvider,
   getYesNo,
-} from "utils/answer";
+} from 'utils/answer'
 
 export interface Values extends FormValues {
   geolocation: {
-    latitude?: number;
-    longitude?: number;
-  };
+    latitude?: number
+    longitude?: number
+  }
 }
 
 export const transform = (values: any, LL: TranslationFunctions) => {
@@ -50,6 +50,9 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     geolocation: values.geolocation,
     id: values.step1.uniqueId,
     language: values.step1.language,
+    section4: values.section4,
+    section5: values.section5,
+    section6: values.section6,
     // page2
     42: getNeighborhood(values),
     43: getSanitation(values, LL),
@@ -89,10 +92,7 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     // page13
     425: getYesNo(values.step13?.emptiedSepticTank, LL),
     426: getYesNo(values.step13?.serviceProvider.contacted, LL),
-    427: getMonthYear(
-      values.step13?.serviceProvider.contactedMonth,
-      values.step13?.serviceProvider.contactedYear
-    ),
+    427: getMonthYear(values.step13?.serviceProvider.contactedMonth, values.step13?.serviceProvider.contactedYear),
     428: getServiceProvider(values.step13?.serviceProvider.who, LL),
     429: values.step13?.serviceProvider.other,
     430: get430(values, LL),
@@ -110,28 +110,13 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     441: getSatisfactionLevel(values.step16?.satisfaction.sewer, LL),
     442: getSatisfaction(values.step16?.satisfaction.sewerlast6Months, LL),
     443: getSatisfy(values.step16?.satisfaction.qualityDrainage, LL),
-    444: getSatisfaction(
-      values.step16?.satisfaction.qualityDrainageLast6Months,
-      LL
-    ),
-    445: getSatisfactionLevel(
-      values.step16?.satisfaction.SASBFecalSludgeDeslidgingService,
-      LL
-    ),
+    444: getSatisfaction(values.step16?.satisfaction.qualityDrainageLast6Months, LL),
+    445: getSatisfactionLevel(values.step16?.satisfaction.SASBFecalSludgeDeslidgingService, LL),
     446: get446(values, LL),
     447: get447(values, LL),
-    448: getSatisfaction(
-      values.step16?.satisfaction.SASBCustomerServiceLast6Months,
-      LL
-    ),
-    449: getSatisfactionLevel(
-      values.step16?.satisfaction.beiraMunicipality,
-      LL
-    ),
-    450: getSatisfaction(
-      values.step16?.satisfaction.beiraMunicipalityLast6Months,
-      LL
-    ),
+    448: getSatisfaction(values.step16?.satisfaction.SASBCustomerServiceLast6Months, LL),
+    449: getSatisfactionLevel(values.step16?.satisfaction.beiraMunicipality, LL),
+    450: getSatisfaction(values.step16?.satisfaction.beiraMunicipalityLast6Months, LL),
     // page17
     451: getLikely(values.step17?.SASBSatisfaction, LL),
     452: get452(values, LL),
@@ -144,16 +129,10 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     54: getProblems(values.step19?.oftenSewerProblem, LL),
     55: getSatisfaction(values.step19?.sewerReductions, LL),
     56: getProblems(values.step19?.oftenBadSmellDwellingCompound, LL),
-    57: getSatisfaction(
-      values.step19?.sewerBadSmellDwellingCompoundReductions,
-      LL
-    ),
+    57: getSatisfaction(values.step19?.sewerBadSmellDwellingCompoundReductions, LL),
     // page20
     58: getYesNo(values.step20?.contacted, LL),
-    59: getMonthYear(
-      values.step20?.contactedMonth,
-      values.step20?.contactedYear
-    ),
+    59: getMonthYear(values.step20?.contactedMonth, values.step20?.contactedYear),
     510: get510(values, LL),
     511: getServiceProvider(values.step20?.contactedWho, LL),
     512: values.step20?.contactedOther,
@@ -193,10 +172,7 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     611: getSatisfaction(values.step25?.floodAfterRainReductions, LL),
     // page26
     612: getYesNo(values.step26?.contactedDrainageIssue, LL),
-    613: getMonthYear(
-      values.step26?.contacted?.month,
-      values.step26?.contacted?.year
-    ),
+    613: getMonthYear(values.step26?.contacted?.month, values.step26?.contacted?.year),
     614: get614(values, LL),
     615: values.step26?.contacted?.other,
     616: getServiceProvider(values.step26?.contacted?.who, LL),
@@ -210,7 +186,7 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     // page27
     624: getRevise(values.step27?.revisePrice, LL),
     625: values.step27?.willingPay,
-  };
+  }
 
-  return result;
-};
+  return result
+}

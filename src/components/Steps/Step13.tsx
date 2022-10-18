@@ -8,7 +8,6 @@ import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Input from 'components/Form/Input'
 import Label from 'components/Form/Label'
 import Heading from 'components/Heading'
-import image from '../../images/service_table.jpg'
 
 const Step13 = () => {
   const { LL } = useI18nContext()
@@ -19,13 +18,11 @@ const Step13 = () => {
     formState: { errors },
   } = useFormContext()
 
-  const contacted =
-    watch('step13.serviceProvider.contacted') === LL.choices.yesNo[0]()
+  const contacted = watch('step13.serviceProvider.contacted') === LL.choices.yesNo[0]()
   const contactedOther = watch(`step13.serviceProvider.who`)
   const contactedSASB = watch('step13.serviceProvider.who.SASB')
   const paid = watch('step13.serviceProvider.paid') === LL.choices.yesNo[0]()
-  const emptiedSepticTank =
-    watch('step13.emptiedSepticTank') === LL.choices.yesNo[0]()
+  const emptiedSepticTank = watch('step13.emptiedSepticTank') === LL.choices.yesNo[0]()
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -69,10 +66,7 @@ const Step13 = () => {
               />
             )}
           />
-          <FieldErrorMessage
-            name="step13.serviceProvider.contacted"
-            errors={errors}
-          />
+          <FieldErrorMessage name="step13.serviceProvider.contacted" errors={errors} />
         </div>
       )}
 
@@ -109,10 +103,7 @@ const Step13 = () => {
                     error={!!errors?.step13?.serviceProvider?.contactedMonth}
                   />
 
-                  <FieldErrorMessage
-                    name="step13.serviceProvider.contactedMonth"
-                    errors={errors}
-                  />
+                  <FieldErrorMessage name="step13.serviceProvider.contactedMonth" errors={errors} />
                 </div>
               )}
             />
@@ -129,10 +120,7 @@ const Step13 = () => {
                     error={!!errors?.step13?.serviceProvider?.contactedYear}
                   />
 
-                  <FieldErrorMessage
-                    name="step13.serviceProvider.contactedYear"
-                    errors={errors}
-                  />
+                  <FieldErrorMessage name="step13.serviceProvider.contactedYear" errors={errors} />
                 </div>
               )}
             />
@@ -154,47 +142,33 @@ const Step13 = () => {
               LL.choices.serviceProvider[3](),
               LL.choices.serviceProvider[4](),
               LL.choices.serviceProvider[5](),
-            ].map(option => (
-              <label
-                css={tw`inline-flex space-x-4 items-center select-none`}
-                key={option}
-              >
-                <Checkbox
-                  {...register(`step13.serviceProvider.who.${option}`)}
-                />
+            ].map((option) => (
+              <label css={tw`inline-flex space-x-4 items-center select-none`} key={option}>
+                <Checkbox {...register(`step13.serviceProvider.who.${option}`)} />
                 <span>{option}</span>
               </label>
             ))}
 
-            <FieldErrorMessage
-              name="step13.serviceProvider.who"
-              errors={errors}
-            />
+            <FieldErrorMessage name="step13.serviceProvider.who" errors={errors} />
           </div>
         </div>
       )}
 
-      {emptiedSepticTank &&
-        contacted &&
-        contactedOther &&
-        contactedOther[LL.choices.serviceProvider[5]()] && (
-          <div>
-            <Label number="4.29" required>
-              {LL.questions[429]()}
-            </Label>
-            <Input
-              {...register('step13.serviceProvider.other', {
-                required: true,
-              })}
-              error={!!errors?.step13?.serviceProvider?.other}
-            />
+      {emptiedSepticTank && contacted && contactedOther && contactedOther[LL.choices.serviceProvider[5]()] && (
+        <div>
+          <Label number="4.29" required>
+            {LL.questions[429]()}
+          </Label>
+          <Input
+            {...register('step13.serviceProvider.other', {
+              required: true,
+            })}
+            error={!!errors?.step13?.serviceProvider?.other}
+          />
 
-            <FieldErrorMessage
-              name="step13.serviceProvider.other"
-              errors={errors}
-            />
-          </div>
-        )}
+          <FieldErrorMessage name="step13.serviceProvider.other" errors={errors} />
+        </div>
+      )}
 
       {emptiedSepticTank && contacted && !contactedSASB && (
         <div>
@@ -212,21 +186,13 @@ const Step13 = () => {
               LL.choices[430][5](),
               LL.choices[430][6](),
             ].map((option, index) => (
-              <label
-                css={tw`inline-flex space-x-4 items-center select-none`}
-                key={option}
-              >
-                <Checkbox
-                  {...register(`step13.SASBNotContactedReasons.${index}`)}
-                />
+              <label css={tw`inline-flex space-x-4 items-center select-none`} key={option}>
+                <Checkbox {...register(`step13.SASBNotContactedReasons.${index}`)} />
                 <span>{option}</span>
               </label>
             ))}
 
-            <FieldErrorMessage
-              name="step13.SASBNotContactedReasons"
-              errors={errors}
-            />
+            <FieldErrorMessage name="step13.SASBNotContactedReasons" errors={errors} />
           </div>
         </div>
       )}
@@ -241,11 +207,7 @@ const Step13 = () => {
             control={control}
             render={({ field }) => (
               <Dropdown
-                options={[
-                  LL.choices[431][0](),
-                  LL.choices[431][1](),
-                  LL.choices[431][2](),
-                ]}
+                options={[LL.choices[431][0](), LL.choices[431][1](), LL.choices[431][2]()]}
                 value={field.value}
                 onChange={field.onChange}
                 placeholder={LL.choices.placeholder()}
@@ -253,10 +215,7 @@ const Step13 = () => {
               />
             )}
           />
-          <FieldErrorMessage
-            name="step13.serviceProvider.service"
-            errors={errors}
-          />
+          <FieldErrorMessage name="step13.serviceProvider.service" errors={errors} />
         </div>
       )}
       {emptiedSepticTank && contacted && (
@@ -277,10 +236,7 @@ const Step13 = () => {
               />
             )}
           />
-          <FieldErrorMessage
-            name="step13.serviceProvider.paid"
-            errors={errors}
-          />
+          <FieldErrorMessage name="step13.serviceProvider.paid" errors={errors} />
         </div>
       )}
 
@@ -296,10 +252,7 @@ const Step13 = () => {
             error={!!errors?.step13?.serviceProvider?.howMuch}
             type="number"
           />
-          <FieldErrorMessage
-            name="step13.serviceProvider.howMuch"
-            errors={errors}
-          />
+          <FieldErrorMessage name="step13.serviceProvider.howMuch" errors={errors} />
 
           <label css={tw`inline-flex space-x-4 items-center select-none mt-2`}>
             <Checkbox {...register(`step13.serviceProvider.unknownHowMuch`)} />
@@ -307,10 +260,6 @@ const Step13 = () => {
           </label>
         </div>
       )}
-
-      <div>
-        <img src={image} alt="service" />
-      </div>
     </div>
   )
 }

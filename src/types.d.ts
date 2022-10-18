@@ -9,6 +9,18 @@ export type Quadratic = Question[]
 export interface FormValues {
   startAt: string
   finishAt: string | null
+  section4: {
+    startAt?: string
+    finishAt?: string
+  }
+  section5: {
+    startAt?: string
+    finishAt?: string
+  }
+  section6: {
+    startAt?: string
+    finishAt?: string
+  }
   sewerWillingPay: string | number
   step1: {
     uniqueId: string

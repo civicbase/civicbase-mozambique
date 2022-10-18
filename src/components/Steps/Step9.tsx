@@ -29,61 +29,41 @@ const QVSR = () => {
         {LL.questions[417].paragraph1()}
       </Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions[417].paragraph2()}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions[417].paragraph2()}</Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions[417].paragraph3()}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions[417].paragraph3()}</Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions.QVSRInstruction()}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions.QVSRInstruction()}</Typography>
 
       {/* <Typography css={tw`text-justify`}>{LL.questions.QVSRInfo()}</Typography> */}
 
       <Quadratic
-        qs={[
-          '64 MT',
-          '68 MT',
-          '72 MT',
-          '76 MT',
-          '80 MT',
-          '84 MT',
-          '88 MT',
-          '92 MT',
-          '96 MT',
-        ]}
+        qs={['64 MT', '68 MT', '72 MT', '76 MT', '80 MT', '84 MT', '88 MT', '92 MT', '96 MT']}
         isReset={isReset}
         step="step9.QVSR"
       />
 
-      {results && isVoted && (
-        <PanelExpand title="The allocation of your votes:">
-          <VoteSummary results={results} />
-        </PanelExpand>
-      )}
+      <PanelExpand title="The allocation of your votes:">
+        <VoteSummary results={results} />
+      </PanelExpand>
 
-      {results && isVoted && (
-        <div css={tw`flex space-x-2`}>
-          <Typography>{LL.choices.QVSRReset()}</Typography>
+      <div css={tw`flex space-x-2`}>
+        <Typography>{LL.choices.QVSRReset()}</Typography>
 
-          <div css={tw`flex justify-center`}>
-            <Button
-              css={tw`height[fit-content]`}
-              type="button"
-              variant="tertiary"
-              onClick={() => {
-                setReset(true)
-                setTimeout(() => setReset(false), 1000)
-              }}
-            >
-              {LL.placeholder.reset()}
-            </Button>
-          </div>
+        <div css={tw`flex justify-center`}>
+          <Button
+            css={tw`height[fit-content]`}
+            type="button"
+            variant="tertiary"
+            onClick={() => {
+              setReset(true)
+              setTimeout(() => setReset(false), 1000)
+            }}
+          >
+            {LL.placeholder.reset()}
+          </Button>
         </div>
-      )}
+      </div>
     </div>
   )
 }
@@ -107,17 +87,11 @@ const Slider = () => {
         {LL.questions[418].paragraph1()}
       </Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions[418].paragraph2()}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions[418].paragraph2()}</Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions[418].paragraph3()}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions[418].paragraph3()}</Typography>
 
-      <Typography css={tw`text-justify`}>
-        {LL.questions.SliderInstruction()}
-      </Typography>
+      <Typography css={tw`text-justify`}>{LL.questions.SliderInstruction()}</Typography>
 
       <div>
         <Label>{price} MT</Label>

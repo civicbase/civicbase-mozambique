@@ -73,6 +73,14 @@ type RootTranslation = {
 		 * C​r​e​d​i​t​s
 		 */
 		credits: string
+		/**
+		 * B​e​f​o​r​e​ ​p​r​o​c​e​e​d​i​n​g​ ​w​i​t​h​ ​t​h​e​ ​C​i​v​i​c​b​a​s​e​ ​p​o​r​t​i​o​n​ ​o​f​ ​t​h​i​s​ ​s​u​r​v​e​y​,​ ​p​l​e​a​s​e​ ​r​e​t​u​r​n​ ​t​o​ ​O​D​K​ ​a​n​d​ ​m​a​k​e​ ​s​u​r​e​ ​t​h​a​t​ ​y​o​u​ ​h​a​v​e​ ​s​u​b​m​i​t​t​e​d​ ​t​h​e​ ​O​D​K​ ​f​o​r​m
+		 */
+		ODKConfirmation: string
+		/**
+		 * Y​e​s​,​ ​I​ ​h​a​v​e​ ​s​u​b​m​i​t​t​e​d​ ​t​h​e​ ​O​D​K​ ​f​o​r​m​,​ ​I​ ​c​a​n​ ​p​r​o​c​e​e​d
+		 */
+		ODKCTA: string
 	}
 	help: {
 		/**
@@ -409,7 +417,7 @@ type RootTranslation = {
 			 */
 			'2': string
 			/**
-			 * D​i​s​s​a​t​i​s​f​i​e​d
+			 * I​n​s​a​t​i​s​f​i​e​d
 			 */
 			'3': string
 		}
@@ -1478,6 +1486,14 @@ export type TranslationFunctions = {
 		 * Credits
 		 */
 		credits: () => LocalizedString
+		/**
+		 * Before proceeding with the Civicbase portion of this survey, please return to ODK and make sure that you have submitted the ODK form
+		 */
+		ODKConfirmation: () => LocalizedString
+		/**
+		 * Yes, I have submitted the ODK form, I can proceed
+		 */
+		ODKCTA: () => LocalizedString
 	}
 	help: {
 		/**
@@ -1814,7 +1830,7 @@ export type TranslationFunctions = {
 			 */
 			'2': () => LocalizedString
 			/**
-			 * Dissatisfied
+			 * Insatisfied
 			 */
 			'3': () => LocalizedString
 		}
