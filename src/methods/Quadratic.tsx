@@ -36,10 +36,7 @@ const Quadratic = ({
     })),
   }
 
-  const { questions, availableCredits, vote, canVote, reset } = useQuadratic(
-    survey,
-    sort,
-  )
+  const { questions, availableCredits, vote, canVote, reset } = useQuadratic(survey, sort)
 
   useEffect(() => {
     if (isReset) {
@@ -56,11 +53,7 @@ const Quadratic = ({
   return (
     <div>
       <div css={tw`sticky -top-2 z-20 mb-7 bg-white`}>
-        <DynamicBar
-          total={credits}
-          availableCredits={availableCredits}
-          language={LL.placeholder.credits()}
-        />
+        <DynamicBar total={credits} availableCredits={availableCredits} language={LL.placeholder.credits()} />
       </div>
 
       {questions.map((question, index) => {
@@ -68,10 +61,7 @@ const Quadratic = ({
         const canVoteDown = canVote(index, -1)
 
         return (
-          <div
-            key={question.statement}
-            css={tw`flex w-full mb-12 justify-between`}
-          >
+          <div key={question.statement} css={tw`flex mobile:flex-col tablet:flex-row w-full mb-12 justify-between`}>
             <Headline css={tw`mb-4 flex`}>
               {index + 1}.&nbsp;
               {question.statement}

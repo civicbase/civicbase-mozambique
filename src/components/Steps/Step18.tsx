@@ -12,11 +12,6 @@ const Step18 = () => {
     formState: { errors },
   } = useFormContext()
 
-  // TODO address Y
-  //   j. (Y) 4.53 refers to 4.38 price. Set 4.54 to the (Y) 4.53 if stay the same
-
-  // k. (Y) 5.30 refers to 4.54 value. Set 5.31 to (Y) 5.30 if stay the same
-
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
       <div>

@@ -30,17 +30,8 @@ const Display = ({
 
   return (
     <div css={tw`flex flex-col items-center`}>
-      <div
-        css={tw`h-24 w-24 border rounded-full flex justify-center items-center overflow-hidden relative`}
-      >
-        <div
-          css={[
-            tw`h-8 w-8 flex justify-center items-center z-10`,
-            vote !== 0 && tw`text-black`,
-          ]}
-        >
-          {vote}
-        </div>
+      <div css={tw`h-24 w-24 border rounded-full flex justify-center items-center overflow-hidden relative`}>
+        <div css={[tw`h-8 w-8 flex justify-center items-center z-10`, vote !== 0 && tw`text-black`]}>{vote}</div>
         <div
           style={{ width: `${getSize()}%`, height: `${getSize()}%` }}
           css={[
@@ -101,29 +92,16 @@ const Action = ({
     <>
       <div css={tw`mx-6`}>
         <IconButton onClick={handleVoteDown} type="button">
-          <IoIosThumbsDown
-            size={28}
-            color={
-              canVoteDown ? theme`colors.bgColor0` : theme`colors.bgColor8`
-            }
-          />
+          <IoIosThumbsDown size={28} color={canVoteDown ? theme`colors.bgColor0` : theme`colors.bgColor8`} />
         </IconButton>
         <Typography>{thumbsDown}</Typography>
       </div>
 
-      <Display
-        vote={vote}
-        total={total}
-        creditSpent={creditSpent}
-        token={token}
-      />
+      <Display vote={vote} total={total} creditSpent={creditSpent} token={token} />
 
       <div css={tw`mx-6`}>
         <IconButton onClick={handleVoteUp} type="button">
-          <IoIosThumbsUp
-            size={28}
-            color={canVoteUp ? theme`colors.bgColor1` : theme`colors.bgColor8`}
-          />
+          <IoIosThumbsUp size={28} color={canVoteUp ? theme`colors.bgColor1` : theme`colors.bgColor8`} />
         </IconButton>
         <Typography>{thumbsUp}</Typography>
       </div>
@@ -190,9 +168,7 @@ const Vote = ({
         }
         footer={<Footer />}
       >
-        <Typography css={tw`text-black`}>
-          You don&apos;t have enough {token} to cast this vote.
-        </Typography>
+        <Typography css={tw`text-black`}>You don&apos;t have enough {token} to cast this vote.</Typography>
       </Modal>
     </div>
   )

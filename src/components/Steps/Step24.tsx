@@ -17,7 +17,7 @@ const Step24 = () => {
   } = useFormContext()
 
   const revisedPrice = watch('step24.revisePrice')
-  const y = getValues('step14.fsm.greatValue')
+  const y = getValues('step14.fsm.greatValue') // 4.38
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -29,15 +29,8 @@ const Step24 = () => {
         </Label>
 
         <div css={tw`flex justify-between`}>
-          {[
-            LL.choices.revise[0](),
-            LL.choices.revise[1](),
-            LL.choices.revise[2](),
-          ].map(option => (
-            <label
-              css={tw`flex flex-col space-y-2 items-center select-none mt-5`}
-              key={option}
-            >
+          {[LL.choices.revise[0](), LL.choices.revise[1](), LL.choices.revise[2]()].map((option) => (
+            <label css={tw`flex flex-col space-y-2 items-center select-none mt-5`} key={option}>
               <span css={tw`text-center`}>{option}</span>
               <Radio {...register(`step24.revisePrice`)} value={option} />
             </label>
@@ -47,8 +40,7 @@ const Step24 = () => {
         <FieldErrorMessage name="step24.revisePrice" errors={errors} />
       </div>
 
-      {(revisedPrice === LL.choices.revise[0]() ||
-        revisedPrice === LL.choices.revise[2]()) && (
+      {(revisedPrice === LL.choices.revise[0]() || revisedPrice === LL.choices.revise[2]()) && (
         <div>
           <Label number="5.31" required>
             {LL.questions.willingPay()}

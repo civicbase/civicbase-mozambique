@@ -101,7 +101,7 @@ const App = () => {
 
   // console.log('values', trans)
 
-  console.log('errors', methods.formState.errors)
+  // console.log('errors', methods.formState.errors)
 
   const handlePrevious = () => {
     if (step > 1) {
@@ -162,7 +162,7 @@ const App = () => {
             LL,
           )
 
-          console.log('answer', answer)
+          // console.log('answer', answer)git
 
           run(createAnswer(answer))
 
