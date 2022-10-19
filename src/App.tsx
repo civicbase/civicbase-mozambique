@@ -17,6 +17,7 @@ import { getRandomQVSRSlider, getRandomTreatmentControl } from 'utils/random'
 import validator from 'validations'
 import { useI18nContext } from 'i18n/i18n-react'
 import ODKConfirmation from 'components/ODKConfirmation'
+import { getLocalDate } from 'utils/getLocalDate'
 
 const App = () => {
   const { LL } = useI18nContext()
@@ -39,7 +40,7 @@ const App = () => {
 
   const methods = useForm<FormValues>({
     defaultValues: {
-      startAt: new Date().toISOString(),
+      startAt: getLocalDate(),
       step1: {
         language: language === 'pt' ? LL.choices.languages[1]() : LL.choices.languages[0](),
         uniqueId: params.uniqueId,

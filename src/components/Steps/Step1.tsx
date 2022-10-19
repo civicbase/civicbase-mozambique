@@ -7,6 +7,7 @@ import tw from 'twin.macro'
 import { useI18nContext } from 'i18n/i18n-react'
 import { useEffect, useMemo } from 'react'
 import Heading from 'components/Heading'
+import { getLocalDate } from 'utils/getLocalDate'
 
 const Step1 = () => {
   const { LL, setLocale } = useI18nContext()
@@ -25,7 +26,7 @@ const Step1 = () => {
     const s = getValues('section4.startAt')
 
     if (!s) {
-      setValue('section4.startAt', new Date().toISOString())
+      setValue('section4.startAt', getLocalDate())
     }
   }, [])
 

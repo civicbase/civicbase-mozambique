@@ -6,6 +6,7 @@ import { useI18nContext } from 'i18n/i18n-react'
 import { useMemo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
+import { getLocalDate } from 'utils/getLocalDate'
 
 const Step27 = () => {
   const { LL } = useI18nContext()
@@ -24,10 +25,10 @@ const Step27 = () => {
     const f = getValues('section6.finishAt')
 
     if (!f) {
-      setValue('section6.finishAt', new Date().toISOString())
+      setValue('section6.finishAt', getLocalDate())
     }
 
-    setValue('finishAt', new Date().toISOString())
+    setValue('finishAt', getLocalDate())
   }, [])
 
   useMemo(() => {

@@ -4,7 +4,7 @@ import { db } from '../config/firebase'
 const answer = (request: any, response: any) => {
   const answer = {
     ...request.body,
-    createdAt: new Date().toISOString(),
+    createdAt: new Date().toLocaleString(),
   }
 
   db.collection('mozambique')

@@ -33,6 +33,8 @@ const Step8 = () => {
     }
   }, [revisedPrice])
 
+  const min = revisedPrice === LL.choices.revise[0]() ? y : undefined
+
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
       <Heading subtitle={LL.headings[8]()} />
@@ -68,7 +70,9 @@ const Step8 = () => {
             {...register('step8.willingPay', {
               required: true,
               valueAsNumber: true,
+              min: min,
             })}
+            min={min}
             error={!!errors?.step8?.willingPay}
             type="number"
           />

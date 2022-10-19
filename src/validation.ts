@@ -36,7 +36,14 @@ const validationSchema = (LL: TranslationFunctions) => {
       .optional()
       .refine(
         (step) => {
-          return !(step?.dwellingType !== LL.choices.dwellingType[0]() && !step?.waterBill?.share)
+          if (
+            step?.dwellingType !== LL.choices.dwellingType[0]() &&
+            step?.dwellingType !== LL.choices.dwellingType[3]()
+          ) {
+            return step?.waterBill?.share
+          }
+
+          return true
         },
         { message: 'Required', path: ['waterBill.share'] },
       ),

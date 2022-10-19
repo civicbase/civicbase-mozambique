@@ -62,10 +62,7 @@ const Step2 = () => {
           control={control}
           render={({ field }) => (
             <Dropdown
-              options={[
-                LL.choices.sanitationType[0](),
-                LL.choices.sanitationType[1](),
-              ]}
+              options={[LL.choices.sanitationType[0](), LL.choices.sanitationType[1]()]}
               value={field.value}
               onChange={field.onChange}
               placeholder={LL.choices.placeholder()}
@@ -101,8 +98,7 @@ const Step2 = () => {
         <FieldErrorMessage name="step2.dwellingType" errors={errors} />
       </div>
 
-      {(dwellingType === LL.choices.dwellingType[1]() ||
-        dwellingType === LL.choices.dwellingType[2]()) && (
+      {(dwellingType === LL.choices.dwellingType[1]() || dwellingType === LL.choices.dwellingType[2]()) && (
         <>
           <div>
             <Label number="4.5" required>
@@ -140,10 +136,7 @@ const Step2 = () => {
                   type="number"
                 />
 
-                <FieldErrorMessage
-                  name="step2.waterBill.shareNumber"
-                  errors={errors}
-                />
+                <FieldErrorMessage name="step2.waterBill.shareNumber" errors={errors} />
               </div>
             </>
           )}
