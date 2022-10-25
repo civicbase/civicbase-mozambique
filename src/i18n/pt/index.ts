@@ -28,6 +28,7 @@ const pt: BaseTranslation = {
     stronglyAgree: 'Strongly Agree',
   },
   choices: {
+    notSharing: `Not Sharing with Anyone`,
     likely: ['Improvável', 'Pouco provável', 'Provável', 'Muito provável'],
     importance: ['Não importante', 'Pouco importante', 'Importante', 'Muito importante'],
     QVSRReset: `Está de acordo com o resultado dos seus votos? Se está de acordo seleccione próximo, se não pode fazer "reset" e fazer a distribuição novamente`,
@@ -43,7 +44,7 @@ const pt: BaseTranslation = {
     notAplicable: 'Não se Aplica (Esvaziado somente uma vez desde Abril de 2021)',
     notAplicable2: 'Não se Aplica',
     satisfy: ['Muito Satisfeito', 'Satisfeito', 'Insatisfeito', 'Muito Insatisfeito'],
-    satisfaction: ['A qualidade Piorou', 'Não mudou', 'A qualidade Melhorou', 'Não sei dizer'],
+    satisfaction: ['Piorou (Aumentou)', 'Não mudou', 'Melhorou (Reduziu)', 'Não sei dizer'],
     satisfactionLevel: ['Muito Satisfeito', 'Satisfeito', 'Pouco satisfeito', 'Insatisfeito'],
     serviceProvider: [
       'Dono da casa',
@@ -250,7 +251,7 @@ const pt: BaseTranslation = {
     449: `De modo geral, está satisfeito com a qualidade do serviço público do município de Beira?`,
     450: `Comparando a qualidade dos serviços públicos do Município de Beira que recebeu entre Abril e Setembro de 2021 com os serviços durante os últimos 6 meses, você notou alguma mudança na qualidade?`,
     451: `Numa escala de 1 a 4, sendo 1 o menor valor e 4 o maior, quão provável é do (a) senhor (a) partilhar a sua satisfação com os serviços da SASB mencionados acima com outras pessoas do seu bairro.`,
-    452: `Com quem gostaria de partilhar a sua opinão/nível de satisfacção? Pode indicar até cinco pessoas. Faça o favor de especificar o tipo de relacionamento que tem com cada uma destas e também o nível de aproximação ou intimidade. Para intimidade, faça o favor usar do diagrama acima.`,
+    452: `Com quem gostaria de partilhar a sua opinão/nível de satisfação? Pode indicar até três pessoas. Faça o favor de especificar o tipo de relacionamento que tem com cada uma destas e também o nível de aproximação ou intimidade. Para intimidade, faça o favor usar do diagrama acima.`,
     453: `Como mencionado no início da entrevista, suas respostas são confidenciais. Porém, hoje, tem a possibilidade de submeter sua avaliação diretamente ao SASB através deste inquérito. Isso permitirá ao SASB entrar em contacto consigo para dar seguimento. Gostaria de fazer isso? (Não há obrigatoriedade de submeter isto ao SASB)`,
     454: `Sabe como contactar o SASB em caso de problemas relacionados ao saneamento ou drenagem?`,
     51: `Agora vou perguntar sobre suas experiências com a ligação da sua casa ao sistema de esgoto. Para cada experiência, queremos saber em quantos meses isso aconteceu com o senhor (a) nos últimos 6 meses. Mesmo que tenha acontecido apenas uma vez durante um mês, gostaríamos de contar esse mês`,

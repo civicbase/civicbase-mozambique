@@ -292,21 +292,34 @@ const validationSchema = (LL: TranslationFunctions) => {
           .optional(),
       })
       .optional(),
-    step17: z.object({
-      SASBSatisfaction: z.string({
-        invalid_type_error: LL.choices.placeholder(),
-      }),
-      share: z
-        .array(
-          z.object({
-            name: z.string().min(1),
-            relationship: z.string(),
-            closeness: z.string(),
-          }),
-        )
-        .min(1)
-        .max(5),
-    }),
+    step17: z
+      .object({
+        SASBSatisfaction: z.string({
+          invalid_type_error: LL.choices.placeholder(),
+        }),
+        notSharing: z.boolean(),
+        share: z
+          .array(
+            z.object({
+              name: z.string().optional(),
+              relationship: z.string().optional(),
+              closeness: z.string().optional(),
+            }),
+          )
+          .max(3)
+          .optional(),
+      })
+      .optional()
+      .refine(
+        (step) => {
+          if (!step?.notSharing && step?.share) {
+            return step?.share?.length > 0
+          }
+
+          return true
+        },
+        { message: 'Please share one contact', path: ['share'] },
+      ),
     step18: z.object({
       shareSASBSatisfaction: z.string(),
       knowHowContactSASB: z.string(),

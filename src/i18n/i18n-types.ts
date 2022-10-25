@@ -287,6 +287,10 @@ type RootTranslation = {
 			 */
 			'6': string
 		}
+		/**
+		 * N​o​t​ ​S​h​a​r​i​n​g​ ​w​i​t​h​ ​A​n​y​o​n​e
+		 */
+		notSharing: string
 		likely: {
 			/**
 			 * V​e​r​y​ ​U​n​l​i​k​e​l​y
@@ -417,7 +421,7 @@ type RootTranslation = {
 			 */
 			'2': string
 			/**
-			 * I​n​s​a​t​i​s​f​i​e​d
+			 * D​i​s​s​a​t​i​s​f​i​e​d
 			 */
 			'3': string
 		}
@@ -1119,10 +1123,7 @@ type RootTranslation = {
 		 */
 		'451': string
 		/**
-		 * W​i​t​h​ ​w​h​o​m​ ​w​o​u​l​d​ ​y​o​u​ ​l​i​k​e​ ​t​o​ ​s​h​a​r​e​ ​Y​O​U​R​ ​S​A​T​I​S​F​A​C​T​I​O​N​/​O​P​I​N​O​N​ ​t​o​?​ ​Y​o​u​ ​m​a​y​
-	​ ​ ​ ​ ​p​r​o​v​i​d​e​ ​u​p​ ​t​o​ ​5​ ​n​a​m​e​s​.​ ​S​p​e​c​i​f​y​ ​y​o​u​r​ ​r​e​l​a​t​i​o​n​s​h​i​p​ ​a​n​d​ ​c​l​o​s​e​n​e​s​s​ ​f​o​r​
-	​ ​ ​ ​ ​e​a​c​h​ ​p​e​r​s​o​n​.​ ​F​o​r​ ​c​l​o​s​e​n​e​s​s​ ​,​ ​p​l​e​a​s​e​ ​r​e​f​e​r​ ​t​o​ ​t​h​e​ ​d​i​a​g​r​a​m​ ​p​r​o​v​i​d​e​d​
-	​ ​ ​ ​ ​a​b​o​v​e
+		 * W​i​t​h​ ​w​h​o​m​ ​w​o​u​l​d​ ​y​o​u​ ​l​i​k​e​ ​t​o​ ​s​h​a​r​e​ ​Y​O​U​R​ ​S​A​T​I​S​F​A​C​T​I​O​N​/​O​P​I​N​O​N​ ​t​o​?​ ​ ​Y​o​u​ ​m​a​y​ ​p​r​o​v​i​d​e​ ​u​p​ ​t​o​ ​3​ ​n​a​m​e​s​.​ ​S​p​e​c​i​f​y​ ​y​o​u​r​ ​r​e​l​a​t​i​o​n​s​h​i​p​ ​a​n​d​ ​c​l​o​s​e​n​e​s​s​ ​f​o​r​ ​e​a​c​h​ ​p​e​r​s​o​n​.​ ​F​o​r​ ​c​l​o​s​e​n​e​s​s​ ​,​ ​p​l​e​a​s​e​ ​r​e​f​e​r​ ​t​o​ ​t​h​e​ ​d​i​a​g​r​a​m​ ​p​r​o​v​i​d​e​d​ ​a​b​o​v​e​.​ ​I​f​ ​y​o​u​ ​w​o​u​l​d​ ​n​o​t​ ​l​i​k​e​ ​t​o​ ​s​h​a​r​e​ ​y​o​u​r​ ​S​A​T​I​S​F​A​C​T​I​O​N​ ​t​o​ ​a​n​y​o​n​e​ ​,​ ​s​e​l​e​c​t​ ​t​h​e​ ​o​p​t​i​o​n​ ​"​N​o​ ​O​n​e​"
 		 */
 		'452': string
 		/**
@@ -1573,6 +1574,10 @@ export type TranslationFunctions = {
 			 */
 			'6': () => LocalizedString
 		}
+		/**
+		 * Not Sharing with Anyone
+		 */
+		notSharing: () => LocalizedString
 		likely: {
 			/**
 			 * Very Unlikely
@@ -1703,7 +1708,7 @@ export type TranslationFunctions = {
 			 */
 			'2': () => LocalizedString
 			/**
-			 * Insatisfied
+			 * Dissatisfied
 			 */
 			'3': () => LocalizedString
 		}
@@ -2401,10 +2406,7 @@ export type TranslationFunctions = {
 		 */
 		'451': () => LocalizedString
 		/**
-		 * With whom would you like to share YOUR SATISFACTION/OPINON to? You may
-	    provide up to 5 names. Specify your relationship and closeness for
-	    each person. For closeness , please refer to the diagram provided
-	    above
+		 * With whom would you like to share YOUR SATISFACTION/OPINON to?  You may provide up to 3 names. Specify your relationship and closeness for each person. For closeness , please refer to the diagram provided above. If you would not like to share your SATISFACTION to anyone , select the option "No One"
 		 */
 		'452': () => LocalizedString
 		/**

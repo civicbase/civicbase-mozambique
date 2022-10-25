@@ -111,6 +111,7 @@ export interface FormValues {
       relationship: string | null
       closeness: string | null
     }[]
+    notSharing: boolean
   }
   step18: {
     shareSASBSatisfaction: string

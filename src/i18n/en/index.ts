@@ -28,6 +28,7 @@ const en: BaseTranslation = {
     stronglyAgree: 'Strongly Agree',
   },
   choices: {
+    notSharing: `Not Sharing with Anyone`,
     likely: ['Very Unlikely', 'Somewhat unlikely', 'Somewhat likely', 'Very Likely'],
     importance: ['Not at all important', 'Low importance', 'Important', 'Very Important'],
     QVSRReset: `Do you agree with the allocation of your votes? If you agree, select next. If not, you may click on reset and reallocate your votes.`,
@@ -42,7 +43,7 @@ const en: BaseTranslation = {
     relationship: ['Neighbor', 'Work Colleague', 'Friend Acquaintance', 'Family Member', 'Other'],
     notAplicable: 'Not Applicable (Only emptied once since April 2021)',
     notAplicable2: 'Not Aplicable',
-    satisfy: ['Very Satisfied', 'Satisfied', 'Less satisfied', 'Insatisfied'],
+    satisfy: ['Very Satisfied', 'Satisfied', 'Less satisfied', 'Dissatisfied'],
     satisfaction: ['It has gotten worse', 'No change', 'It has improved', `Don't know`],
     satisfactionLevel: ['Satisfied', 'Somewhat Satisfied', 'Somewhat Dissatisfied', 'Dissastisfied'],
     serviceProvider: [
@@ -325,10 +326,7 @@ const en: BaseTranslation = {
     Municipality of Beira?`,
     450: `If you compare the quality of Beira Municipality's public services you received between April and September 2021 to the services you received in the last 6 months, have you noticed any change?`,
     451: `On the scale of 1 to 4, with 1 being the lowest and 4 being the highest, how likely are you to share YOUR SATISFACTION towards the SASB's services mentioned above to other people in this neighborhood?`,
-    452: `With whom would you like to share YOUR SATISFACTION/OPINON to? You may
-    provide up to 5 names. Specify your relationship and closeness for
-    each person. For closeness , please refer to the diagram provided
-    above`,
+    452: `With whom would you like to share YOUR SATISFACTION/OPINON to?  You may provide up to 3 names. Specify your relationship and closeness for each person. For closeness , please refer to the diagram provided above. If you would not like to share your SATISFACTION to anyone , select the option "No One"`,
     453: `As previously mentioned at the start of the survey, your responses will be confidential. However, today, you have a chance to submit your satisfaction directly to SASB through us. This will enable them to follow up with you. Would you like to do that ? (There is no obligation to submit this to SASB)`,
     454: `Do you know how to contact SASB when you are faced with sanitation or
     drainage related issues?`,
