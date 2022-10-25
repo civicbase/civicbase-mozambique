@@ -299,9 +299,9 @@ const validationSchema = (LL: TranslationFunctions) => {
         share: z
           .array(
             z.object({
-              name: z.string().optional(),
-              relationship: z.string().optional(),
-              closeness: z.string().optional(),
+              name: z.string().nullable().optional(),
+              relationship: z.string().nullable().optional(),
+              closeness: z.string().nullable().optional(),
             }),
           )
           .max(3)

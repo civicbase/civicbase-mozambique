@@ -86,7 +86,8 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 21:
       return <Section.Step21 />
     case 22:
-      return <Section.Step22 />
+      onNext()
+      return <></>
     case 23: {
       const contactecSASB = getValues(`step13.serviceProvider.who.SASB`)
 
@@ -105,8 +106,7 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 26:
       return <Section.Step26 />
     case 27:
-      onNext()
-      return <></>
+      return <Section.Step27 />
     case 28:
       return <Section.Completion />
 

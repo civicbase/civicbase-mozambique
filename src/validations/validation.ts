@@ -62,8 +62,6 @@ const validator = async (step: number, methods: UseFormReturn<FormValues, object
     }
     case 21:
       return methods.trigger(`step21`)
-    case 22:
-      return methods.trigger(`step22`)
     case 23: {
       const contactecSASB = methods.getValues(`step13.serviceProvider.who.SASB`)
       if (contactecSASB) {
@@ -75,6 +73,8 @@ const validator = async (step: number, methods: UseFormReturn<FormValues, object
       return methods.trigger(`step25`)
     case 26:
       return methods.trigger(`step26`)
+    case 27:
+      return methods.trigger(`step27`)
     default:
       return true
   }
