@@ -32,8 +32,8 @@ const validator = async (step: number, methods: UseFormReturn<FormValues, object
 
       return methods.trigger(`step3`)
     }
-    case 6:
-      return methods.trigger(`step6`)
+    case 5:
+      return methods.trigger(`step5`)
     case 8:
       return methods.trigger(`step8`)
     case 10:

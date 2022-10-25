@@ -40,8 +40,6 @@ const validationSchema = (LL: TranslationFunctions) => {
     step4: z.any(),
     step5: z.object({
       content: z.string(),
-    }),
-    step6: z.object({
       relevantInformation: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),

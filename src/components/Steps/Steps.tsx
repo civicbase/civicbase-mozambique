@@ -37,7 +37,8 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 5:
       return <Section.Step5 />
     case 6:
-      return <Section.Step6 />
+      onNext()
+      return <></>
     case 7:
       return <Section.Step7 />
     case 8:

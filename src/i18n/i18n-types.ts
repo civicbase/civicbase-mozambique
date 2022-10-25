@@ -892,35 +892,14 @@ type RootTranslation = {
 		 * O​n​ ​t​h​e​ ​s​c​a​l​e​ ​o​f​ ​1​ ​t​o​ ​4​ ​w​i​t​h​ ​o​n​e​ ​b​e​i​n​g​ ​t​h​e​ ​l​o​w​e​s​t​ ​a​n​d​ ​ ​4​ ​b​e​i​n​g​ ​t​h​e​ ​h​i​g​h​e​s​t​,​h​o​w​ ​l​i​k​e​l​y​ ​a​r​e​ ​y​o​u​ ​t​o​ ​s​h​a​r​e​ ​w​h​a​t​ ​I​ ​h​a​v​e​ ​j​u​s​t​ ​t​o​l​d​ ​y​o​u​ ​t​o​ ​o​t​h​e​r​ ​p​e​o​p​l​e​ ​i​n​ ​t​h​i​s​ ​n​e​i​g​h​b​o​r​h​o​o​d​?
 		 */
 		'412': string
-		'413': {
-			/**
-			 * I​n​ ​t​h​i​s​ ​s​u​r​v​e​y​,​ ​e​v​e​r​y​o​n​e​ ​i​n​ ​t​h​i​s​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​s​ ​b​e​i​n​g​ ​a​s​k​e​d​ ​t​o​ ​h​e​l​p​ ​d​e​c​i​d​e​ ​t​h​e​ ​p​r​i​c​e​ ​f​o​r​ ​t​h​e​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​.​ ​A​s​ ​y​o​u​ ​c​a​s​t​ ​y​o​u​r​ ​v​o​t​e​s​ ​o​r​ ​m​a​k​e​ ​y​o​u​r​ ​d​e​c​i​s​i​o​n​s​,​ ​p​l​e​a​s​e​ ​i​m​a​g​i​n​e​ ​t​h​a​t​ ​e​v​e​r​y​o​n​e​ ​e​l​s​e​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​s​ ​a​l​s​o​ ​p​a​r​t​i​c​i​p​a​t​i​n​g​ ​i​n​ ​t​h​i​s​ ​e​x​e​r​c​i​s​e​.​ ​T​h​u​s​,​ ​t​h​e​ ​c​o​l​l​e​c​t​i​v​e​ ​d​e​c​i​s​i​o​n​ ​b​y​ ​t​h​e​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​w​i​l​l​ ​b​e​ ​i​m​p​o​r​t​a​n​t​ ​f​o​r​ ​S​A​S​B​ ​t​o​ ​d​e​c​i​d​e​ ​t​h​e​ ​p​r​i​c​i​n​g​ ​o​f​ ​t​h​e​i​r​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​.
-			 */
-			paragraph1: string
-			/**
-			 * P​e​d​i​r​a​m​ ​a​ ​t​o​d​o​s​ ​o​s​ ​m​o​r​a​d​o​r​e​s​ ​d​o​ ​s​e​u​ ​b​a​i​r​r​o​ ​p​a​r​a​ ​a​j​u​d​a​r​ ​n​a​ ​t​o​m​a​d​a​ ​d​e​ ​d​e​c​i​s​ã​o​ ​s​o​b​r​e​ ​a​ ​t​a​x​a​ ​d​e​ ​l​i​g​a​ç​ã​o​ ​a​o​ ​e​s​g​o​t​o​.​ ​Q​u​a​n​d​o​ ​v​o​t​a​r​ ​o​u​ ​t​o​m​a​r​ ​a​s​ ​s​u​a​s​ ​d​e​c​i​s​õ​e​s​,​ ​p​o​r​ ​f​a​v​o​r​ ​i​m​a​g​i​n​e​ ​q​u​e​ ​t​o​d​o​s​ ​o​s​ ​s​e​u​s​ ​v​i​z​i​n​h​o​s​ ​t​a​m​b​é​m​ ​p​a​r​t​i​c​i​p​a​m​ ​d​e​s​t​e​ ​e​x​e​r​c​í​c​i​o​ ​t​a​m​b​é​m​.​ ​ ​A​s​s​i​m​,​ ​a​ ​d​e​c​i​s​ã​o​ ​c​o​l​e​c​t​i​v​a​ ​s​o​b​r​e​ ​b​a​i​r​r​o​ ​s​e​r​á​ ​i​m​p​o​r​t​a​n​t​e​ ​p​a​r​a​ ​o​ ​S​A​S​B​ ​t​o​m​a​r​ ​u​m​a​ ​d​e​c​i​s​ã​o​ ​e​m​ ​r​e​l​a​ç​ã​o​ ​a​o​ ​v​a​l​o​r​ ​d​a​ ​t​a​x​a​ ​d​a​ ​l​i​g​a​ç​ã​o​ ​a​o​ ​s​i​s​t​e​m​a​ ​d​e​ ​e​s​g​o​t​o
-			 */
-			paragraph2: string
-		}
-		'414': {
-			/**
-			 * s​u​r​v​e​y​,​ ​e​v​e​r​y​o​n​e​ ​i​n​ ​t​h​i​s​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​s​ ​b​e​i​n​g​ ​a​s​k​e​d​ ​t​o​ ​h​e​l​p​ ​d​e​c​i​d​e​ ​t​h​e​
-		​ ​ ​ ​ ​ ​ ​p​r​i​c​e​ ​f​o​r​ ​t​h​e​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​.​ ​A​s​ ​y​o​u​ ​c​a​s​t​ ​y​o​u​r​ ​v​o​t​e​s​ ​o​r​ ​m​a​k​e​ ​y​o​u​r​
-		​ ​ ​ ​ ​ ​ ​d​e​c​i​s​i​o​n​s​,​ ​p​l​e​a​s​e​ ​i​m​a​g​i​n​e​ ​t​h​a​t​ ​e​v​e​r​y​o​n​e​ ​e​l​s​e​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​s​
-		​ ​ ​ ​ ​ ​ ​a​l​s​o​ ​p​a​r​t​i​c​i​p​a​t​i​n​g​ ​i​n​ ​t​h​i​s​ ​e​x​e​r​c​i​s​e​.​ ​T​h​u​s​,​ ​t​h​e​ ​c​o​l​l​e​c​t​i​v​e​ ​d​e​c​i​s​i​o​n​ ​b​y​
-		​ ​ ​ ​ ​ ​ ​t​h​e​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​w​i​l​l​ ​b​e​ ​i​m​p​o​r​t​a​n​t​ ​f​o​r​ ​S​A​S​B​ ​t​o​ ​d​e​c​i​d​e​ ​t​h​e​ ​p​r​i​c​i​n​g​ ​o​f​
-		​ ​ ​ ​ ​ ​ ​t​h​e​i​r​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​.
-			 */
-			paragraph1: string
-			/**
-			 * F​o​r​ ​h​o​u​s​e​h​o​l​d​s​ ​w​h​o​ ​w​o​u​l​d​ ​w​a​n​t​ ​a​ ​N​E​W​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​,​ ​t​h​e​y​ ​w​i​l​l​ ​b​e​
-		​ ​ ​ ​ ​ ​ ​r​e​q​u​i​r​e​d​ ​t​o​ ​p​a​y​ ​a​ ​O​N​E​ ​T​I​M​E​ ​f​e​e​ ​w​h​i​c​h​ ​c​o​v​e​r​s​ ​t​h​e​ ​m​a​t​e​r​i​a​l​ ​a​n​d​ ​l​a​b​o​r​ ​c​o​s​t​
-		​ ​ ​ ​ ​ ​ ​o​f​ ​c​o​n​s​t​r​u​c​t​i​n​g​ ​t​h​e​ ​s​e​w​e​r​ ​l​i​n​e​s​.​ ​W​h​a​t​ ​s​h​o​u​l​d​ ​t​h​e​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​ ​b​e​
-		​ ​ ​ ​ ​ ​ ​f​o​r​ ​e​v​e​r​y​o​n​e​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​n​c​l​u​d​i​n​g​ ​y​o​u​r​s​e​l​f​ ​?​ ​Y​o​u​ ​m​a​y​ ​a​l​l​o​c​a​t​e​
-		​ ​ ​ ​ ​ ​ ​y​o​u​r​ ​v​o​t​e​s​ ​f​o​r​ ​m​o​r​e​ ​t​h​a​n​ ​o​n​e​ ​o​f​ ​t​h​e​ ​p​r​i​c​e​ ​o​p​t​i​o​n​s​ ​b​e​l​o​w​.
-			 */
-			paragraph2: string
-		}
+		/**
+		 * F​o​r​ ​h​o​u​s​e​h​o​l​d​s​ ​w​h​o​ ​w​a​n​t​ ​a​ ​N​E​W​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​,​ ​t​h​e​y​ ​w​i​l​l​ ​b​e​ ​r​e​q​u​i​r​e​d​ ​t​o​ ​p​a​y​ ​a​ ​O​N​E​ ​T​I​M​E​ ​f​e​e​ ​w​h​i​c​h​ ​c​o​v​e​r​s​ ​t​h​e​ ​m​a​t​e​r​i​a​l​ ​a​n​d​ ​l​a​b​o​r​ ​c​o​s​t​ ​o​f​ ​c​o​n​s​t​r​u​c​t​i​n​g​ ​t​h​e​ ​s​e​w​e​r​ ​l​i​n​e​s​.​ ​ ​F​r​o​m​ ​t​h​e​ ​i​n​f​o​r​m​a​t​i​o​n​ ​t​h​a​t​ ​w​e​ ​h​a​v​e​ ​g​a​t​h​e​r​e​d​,​ ​t​h​e​ ​a​v​e​r​a​g​e​ ​p​r​i​c​e​ ​t​h​a​t​ ​h​o​u​s​e​h​o​l​d​s​ ​p​a​y​ ​f​o​r​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​s​ ​i​s​ ​r​o​u​g​h​l​y​ ​8​5​0​0​ ​M​T​.​ ​W​h​a​t​ ​s​h​o​u​l​d​ ​t​h​e​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​ ​b​e​ ​f​o​r​ ​e​v​e​r​y​o​n​e​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​n​c​l​u​d​i​n​g​ ​y​o​u​r​s​e​l​f​?
+		 */
+		'413': string
+		/**
+		 * F​o​r​ ​h​o​u​s​e​h​o​l​d​s​ ​w​h​o​ ​w​a​n​t​ ​a​ ​N​E​W​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​,​ ​t​h​e​y​ ​w​i​l​l​ ​b​e​ ​r​e​q​u​i​r​e​d​ ​t​o​ ​p​a​y​ ​a​ ​O​N​E​ ​T​I​M​E​ ​f​e​e​ ​w​h​i​c​h​ ​c​o​v​e​r​s​ ​t​h​e​ ​m​a​t​e​r​i​a​l​ ​a​n​d​ ​l​a​b​o​r​ ​c​o​s​t​ ​o​f​ ​c​o​n​s​t​r​u​c​t​i​n​g​ ​t​h​e​ ​s​e​w​e​r​ ​l​i​n​e​s​.​ ​ ​F​r​o​m​ ​t​h​e​ ​i​n​f​o​r​m​a​t​i​o​n​ ​t​h​a​t​ ​w​e​ ​h​a​v​e​ ​g​a​t​h​e​r​e​d​,​ ​t​h​e​ ​a​v​e​r​a​g​e​ ​p​r​i​c​e​ ​t​h​a​t​ ​h​o​u​s​e​h​o​l​d​s​ ​p​a​y​ ​f​o​r​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​s​ ​i​s​ ​r​o​u​g​h​l​y​ ​8​5​0​0​ ​M​T​.​ ​W​h​a​t​ ​s​h​o​u​l​d​ ​t​h​e​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​ ​b​e​ ​f​o​r​ ​e​v​e​r​y​o​n​e​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​n​c​l​u​d​i​n​g​ ​y​o​u​r​s​e​l​f​?
+		 */
+		'414': string
 		'415': {
 			/**
 			 * N​o​w​ ​w​e​ ​w​o​u​l​d​ ​l​i​k​e​ ​t​o​ ​s​h​a​r​e​ ​w​i​t​h​
@@ -2179,35 +2158,14 @@ export type TranslationFunctions = {
 		 * On the scale of 1 to 4 with one being the lowest and  4 being the highest,how likely are you to share what I have just told you to other people in this neighborhood?
 		 */
 		'412': () => LocalizedString
-		'413': {
-			/**
-			 * In this survey, everyone in this neighborhood is being asked to help decide the price for the sewer connection fee. As you cast your votes or make your decisions, please imagine that everyone else in your neighborhood is also participating in this exercise. Thus, the collective decision by the neighborhood will be important for SASB to decide the pricing of their sewer connection fee.
-			 */
-			paragraph1: () => LocalizedString
-			/**
-			 * Pediram a todos os moradores do seu bairro para ajudar na tomada de decisão sobre a taxa de ligação ao esgoto. Quando votar ou tomar as suas decisões, por favor imagine que todos os seus vizinhos também participam deste exercício também.  Assim, a decisão colectiva sobre bairro será importante para o SASB tomar uma decisão em relação ao valor da taxa da ligação ao sistema de esgoto
-			 */
-			paragraph2: () => LocalizedString
-		}
-		'414': {
-			/**
-			 * survey, everyone in this neighborhood is being asked to help decide the
-		      price for the sewer connection fee. As you cast your votes or make your
-		      decisions, please imagine that everyone else in your neighborhood is
-		      also participating in this exercise. Thus, the collective decision by
-		      the neighborhood will be important for SASB to decide the pricing of
-		      their sewer connection fee.
-			 */
-			paragraph1: () => LocalizedString
-			/**
-			 * For households who would want a NEW sewer connection, they will be
-		      required to pay a ONE TIME fee which covers the material and labor cost
-		      of constructing the sewer lines. What should the sewer connection fee be
-		      for everyone in your neighborhood including yourself ? You may allocate
-		      your votes for more than one of the price options below.
-			 */
-			paragraph2: () => LocalizedString
-		}
+		/**
+		 * For households who want a NEW sewer connection, they will be required to pay a ONE TIME fee which covers the material and labor cost of constructing the sewer lines.  From the information that we have gathered, the average price that households pay for sewer connections is roughly 8500 MT. What should the sewer connection fee be for everyone in your neighborhood including yourself?
+		 */
+		'413': () => LocalizedString
+		/**
+		 * For households who want a NEW sewer connection, they will be required to pay a ONE TIME fee which covers the material and labor cost of constructing the sewer lines.  From the information that we have gathered, the average price that households pay for sewer connections is roughly 8500 MT. What should the sewer connection fee be for everyone in your neighborhood including yourself?
+		 */
+		'414': () => LocalizedString
 		'415': {
 			/**
 			 * Now we would like to share with

@@ -216,24 +216,8 @@ const en: BaseTranslation = {
     been doing a good job`,
     411: `One the scale of 1 to 4, with 1 being not at all important and 4 being very important, do you think what I have just shared with you is important to you and the people in this neighborhood?`,
     412: `On the scale of 1 to 4 with one being the lowest and  4 being the highest,how likely are you to share what I have just told you to other people in this neighborhood?`,
-    413: {
-      paragraph1: `In this survey, everyone in this neighborhood is being asked to help decide the price for the sewer connection fee. As you cast your votes or make your decisions, please imagine that everyone else in your neighborhood is also participating in this exercise. Thus, the collective decision by the neighborhood will be important for SASB to decide the pricing of their sewer connection fee.`,
-      paragraph2: `Pediram a todos os moradores do seu bairro para ajudar na tomada de decisão sobre a taxa de ligação ao esgoto. Quando votar ou tomar as suas decisões, por favor imagine que todos os seus vizinhos também participam deste exercício também.  Assim, a decisão colectiva sobre bairro será importante para o SASB tomar uma decisão em relação ao valor da taxa da ligação ao sistema de esgoto`,
-    },
-
-    414: {
-      paragraph1: `survey, everyone in this neighborhood is being asked to help decide the
-      price for the sewer connection fee. As you cast your votes or make your
-      decisions, please imagine that everyone else in your neighborhood is
-      also participating in this exercise. Thus, the collective decision by
-      the neighborhood will be important for SASB to decide the pricing of
-      their sewer connection fee.`,
-      paragraph2: `For households who would want a NEW sewer connection, they will be
-      required to pay a ONE TIME fee which covers the material and labor cost
-      of constructing the sewer lines. What should the sewer connection fee be
-      for everyone in your neighborhood including yourself ? You may allocate
-      your votes for more than one of the price options below.`,
-    },
+    413: `For households who want a NEW sewer connection, they will be required to pay a ONE TIME fee which covers the material and labor cost of constructing the sewer lines.  From the information that we have gathered, the average price that households pay for sewer connections is roughly 8500 MT. What should the sewer connection fee be for everyone in your neighborhood including yourself?`,
+    414: `For households who want a NEW sewer connection, they will be required to pay a ONE TIME fee which covers the material and labor cost of constructing the sewer lines.  From the information that we have gathered, the average price that households pay for sewer connections is roughly 8500 MT. What should the sewer connection fee be for everyone in your neighborhood including yourself?`,
     415: {
       paragraph1: `Now we would like to share with
       you what your community thinks about the price to be paid for the sewer

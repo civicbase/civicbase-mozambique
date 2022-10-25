@@ -27,20 +27,12 @@ const QVSR = () => {
 
       <Typography css={tw`text-justify`}>
         <Caption css={tw`mr-3`}>4.13 Treatment - QVSR</Caption>
-        {LL.questions[413].paragraph1()}
+        {LL.questions[413]()}
       </Typography>
-
-      <Typography css={tw`text-justify`}>{LL.questions[413].paragraph2()}</Typography>
 
       <Typography css={tw`text-justify`}>{LL.questions.QVSRInstruction()}</Typography>
 
-      {/* <Typography css={tw`text-justify`}>{LL.questions.QVSRInfo()}</Typography> */}
-
-      <Quadratic
-        qs={['6500 MT', '7000 MT', '7500 MT', '8000 MT', '8500 MT', '9000 MT', '9500 MT', '10000 MT', '10500 MT']}
-        isReset={isReset}
-        step="step7.QVSR"
-      />
+      <Quadratic qs={['6500 MT', '7500 MT', '8500 MT', '9500 MT', '10500 MT']} isReset={isReset} step="step7.QVSR" />
 
       <PanelExpand title="The allocation of your votes:">
         <VoteSummary results={results} />
@@ -83,10 +75,8 @@ const Slider = () => {
 
       <Typography css={tw`text-justify`}>
         <Caption css={tw`mr-3`}>4.14 Control - Price Slider</Caption>
-        {LL.questions[414].paragraph1()}
+        {LL.questions[414]()}
       </Typography>
-
-      <Typography css={tw`text-justify`}>{LL.questions[414].paragraph2()}</Typography>
 
       <Typography css={tw`text-justify`}>{LL.questions.SliderInstruction()}</Typography>
 

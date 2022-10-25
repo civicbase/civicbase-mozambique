@@ -87,11 +87,11 @@ export const get47 = (values: Values, LL: TranslationFunctions) => {
 }
 
 export const get411 = (values: Values, LL: TranslationFunctions) => {
-  if (!values.step6?.relevantInformation) {
+  if (!values.step5?.relevantInformation) {
     return null
   }
 
-  switch (values.step6.relevantInformation) {
+  switch (values.step5.relevantInformation) {
     case LL.choices.importance[0]():
       return 1
     case LL.choices.importance[1]():

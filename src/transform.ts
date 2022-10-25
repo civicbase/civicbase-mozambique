@@ -57,15 +57,14 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     44: getDwelling(values, LL),
     // page3
     45: getYesNo(values.step2?.waterBill.share, LL),
-    46: values.step2?.waterBill.shareNumber,
+    46: values.step3?.waterBill.shareNumber,
     47: get47(values, LL),
     // page4
     48: values.step4,
     // page5
     page5: values.step5?.content,
-    // page6
     411: get411(values, LL),
-    412: getLikely(values.step6?.shareInformation, LL),
+    412: getLikely(values.step5?.shareInformation, LL),
     //page7
     page7: values.step7?.content,
     413: get413(values, LL),

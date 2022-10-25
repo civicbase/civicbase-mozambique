@@ -41,8 +41,6 @@ export interface FormValues {
   step4: Quadratic
   step5: {
     content: 'Treatment' | 'Control'
-  }
-  step6: {
     relevantInformation: string
     shareInformation: string
   }
