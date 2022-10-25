@@ -6,8 +6,6 @@ import {
   get414,
   get417,
   get418,
-  get421,
-  get422,
   get430,
   get431,
   get446,
@@ -82,13 +80,6 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     // page10
     419: getRevise(values.step10?.revisePrice, LL),
     420: values.step10?.willingPay,
-    // page11
-    page11: values.step11?.content,
-    421: get421(values, LL),
-    422: get422(values, LL),
-    // page12
-    423: getRevise(values.step12?.revisePrice, LL),
-    424: values.step12?.willingPay,
     // page13
     425: getYesNo(values.step13?.emptiedSepticTank, LL),
     426: getYesNo(values.step13?.serviceProvider.contacted, LL),
@@ -99,11 +90,6 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     431: get431(values, LL),
     432: getYesNo(values.step13?.serviceProvider.paid, LL),
     433: values.step13?.serviceProvider.howMuch,
-    // page14
-    435: Number(values.step14?.fsm.tooExpensive),
-    436: Number(values.step14?.fsm.tooCheap),
-    437: Number(values.step14?.fsm.expensive),
-    438: Number(values.step14?.fsm.greatValue),
     // page15
     page15: values.step15?.content,
     // page16
@@ -124,8 +110,6 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     453: getYesNo(values.step18?.shareSASBSatisfaction, LL),
     454: getYesNo(values.step18?.knowHowContactSASB, LL),
     // page19
-    52: getProblems(values.step19?.oftenSewerDwellingCompoundProblem, LL),
-    53: getSatisfaction(values.step19?.sewerDwellingCompoundReductions, LL),
     54: getProblems(values.step19?.oftenSewerProblem, LL),
     55: getSatisfaction(values.step19?.sewerReductions, LL),
     56: getProblems(values.step19?.oftenBadSmellDwellingCompound, LL),
@@ -156,20 +140,12 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     527: get527(values, LL),
     528: getYesNo(values.step23?.problemResolved, LL),
     529: getHowLong(values.step23?.howLong, LL),
-    // page24
-    530: getRevise(values.step24?.revisePrice, LL),
-    531: values.step24?.willingPay,
     // page25
     62: getProblems(values.step25?.drainageBoxBlocked, LL),
-    63: getSatisfaction(values.step25?.drainageBoxBlockReductions, LL),
     64: getProblems(values.step25?.drainageDitchBlock, LL),
-    65: getSatisfaction(values.step25?.drainageDitchBlockReductions, LL),
     66: getProblems(values.step25?.walkedWater, LL),
-    67: getProblems(values.step25?.soakedPassingCar, LL),
     68: getProblems(values.step25?.StagnantWaterDisease, LL),
     69: getSatisfaction(values.step25?.StagnantWaterReductions, LL),
-    610: getProblems(values.step25?.floodAfterRain, LL),
-    611: getSatisfaction(values.step25?.floodAfterRainReductions, LL),
     // page26
     612: getYesNo(values.step26?.contactedDrainageIssue, LL),
     613: getMonthYear(values.step26?.contacted?.month, values.step26?.contacted?.year),
@@ -183,9 +159,6 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     621: get621(values, LL),
     622: getYesNo(values.step26?.problemResolved, LL),
     623: getHowLong(values.step26?.howLong, LL),
-    // page27
-    624: getRevise(values.step27?.revisePrice, LL),
-    625: values.step27?.willingPay,
   }
 
   return result

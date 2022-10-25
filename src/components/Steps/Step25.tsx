@@ -58,26 +58,6 @@ const Step25 = () => {
       </div>
 
       <div>
-        <Label number="6.3" required>
-          {LL.questions[63]()}
-        </Label>
-
-        {[
-          LL.choices.satisfaction[0](),
-          LL.choices.satisfaction[1](),
-          LL.choices.satisfaction[2](),
-          LL.choices.satisfaction[3](),
-        ].map((option) => (
-          <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
-            <Radio {...register(`step25.drainageBoxBlockReductions`)} value={option} />
-            <span css={tw`text-center`}>{option}</span>
-          </label>
-        ))}
-
-        <FieldErrorMessage name="step25.drainageBoxBlockReductions" errors={errors} />
-      </div>
-
-      <div>
         <Label number="6.4" required>
           {LL.questions[64]()}
         </Label>
@@ -95,26 +75,6 @@ const Step25 = () => {
       </div>
 
       <div>
-        <Label number="6.5" required>
-          {LL.questions[65]()}
-        </Label>
-
-        {[
-          LL.choices.satisfaction[0](),
-          LL.choices.satisfaction[1](),
-          LL.choices.satisfaction[2](),
-          LL.choices.satisfaction[3](),
-        ].map((option) => (
-          <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
-            <Radio {...register(`step25.drainageDitchBlockReductions`)} value={option} />
-            <span css={tw`text-center`}>{option}</span>
-          </label>
-        ))}
-
-        <FieldErrorMessage name="step25.drainageDitchBlockReductions" errors={errors} />
-      </div>
-
-      <div>
         <Label number="6.6" required>
           {LL.questions[66]()}
         </Label>
@@ -129,23 +89,6 @@ const Step25 = () => {
         )}
 
         <FieldErrorMessage name="step25.walkedWater" errors={errors} />
-      </div>
-
-      <div>
-        <Label number="6.7" required>
-          {LL.questions[67]()}
-        </Label>
-
-        {[LL.choices.problems[0](), LL.choices.problems[1](), LL.choices.problems[2](), LL.choices.problems[3]()].map(
-          (option) => (
-            <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
-              <Radio {...register(`step25.soakedPassingCar`)} value={option} />
-              <span css={tw`text-center`}>{option}</span>
-            </label>
-          ),
-        )}
-
-        <FieldErrorMessage name="step25.soakedPassingCar" errors={errors} />
       </div>
 
       <div>
@@ -183,43 +126,6 @@ const Step25 = () => {
         ))}
 
         <FieldErrorMessage name="step25.StagnantWaterReductions" errors={errors} />
-      </div>
-
-      <div>
-        <Label number="6.10" required>
-          {LL.questions[610]()}
-        </Label>
-
-        {[LL.choices.problems[0](), LL.choices.problems[1](), LL.choices.problems[2](), LL.choices.problems[3]()].map(
-          (option) => (
-            <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
-              <Radio {...register(`step25.floodAfterRain`)} value={option} />
-              <span css={tw`text-center`}>{option}</span>
-            </label>
-          ),
-        )}
-
-        <FieldErrorMessage name="step25.floodAfterRain" errors={errors} />
-      </div>
-
-      <div>
-        <Label number="6.11" required>
-          {LL.questions[611]()}
-        </Label>
-
-        {[
-          LL.choices.satisfaction[0](),
-          LL.choices.satisfaction[1](),
-          LL.choices.satisfaction[2](),
-          LL.choices.satisfaction[3](),
-        ].map((option) => (
-          <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
-            <Radio {...register(`step25.floodAfterRainReductions`)} value={option} />
-            <span css={tw`text-center`}>{option}</span>
-          </label>
-        ))}
-
-        <FieldErrorMessage name="step25.floodAfterRainReductions" errors={errors} />
       </div>
     </div>
   )

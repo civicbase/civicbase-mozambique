@@ -42,47 +42,6 @@ const Step19 = () => {
         {LL.questions[51]()}
       </Typography>
 
-      {connection === LL.choices.sanitationType[0]() && (
-        <div>
-          <Label number="5.2" required>
-            {LL.questions[52]()}
-          </Label>
-
-          {[LL.choices.problems[0](), LL.choices.problems[1](), LL.choices.problems[2](), LL.choices.problems[3]()].map(
-            (option) => (
-              <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
-                <Radio {...register(`step19.oftenSewerDwellingCompoundProblem`)} value={option} />
-                <span css={tw`text-center`}>{option}</span>
-              </label>
-            ),
-          )}
-
-          <FieldErrorMessage name="step19.oftenSewerDwellingCompoundProblem" errors={errors} />
-        </div>
-      )}
-
-      {connection === LL.choices.sanitationType[0]() && (
-        <div>
-          <Label number="5.3" required>
-            {LL.questions[53]()}
-          </Label>
-
-          {[
-            LL.choices.satisfaction[0](),
-            LL.choices.satisfaction[1](),
-            LL.choices.satisfaction[2](),
-            LL.choices.satisfaction[3](),
-          ].map((option) => (
-            <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
-              <Radio {...register(`step19.sewerDwellingCompoundReductions`)} value={option} />
-              <span css={tw`text-center`}>{option}</span>
-            </label>
-          ))}
-
-          <FieldErrorMessage name="step19.sewerDwellingCompoundReductions" errors={errors} />
-        </div>
-      )}
-
       <div>
         <Label number="5.4" required>
           {LL.questions[54]()}

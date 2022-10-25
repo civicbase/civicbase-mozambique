@@ -1,14 +1,11 @@
 import { UseFormReturn } from 'react-hook-form'
 import { FormValues } from 'types.d'
 
-export const manualStep20Validation = (
-  methods: UseFormReturn<FormValues, object>,
-) => {
+export const manualStep20Validation = (methods: UseFormReturn<FormValues, object>) => {
   methods.clearErrors()
   const sanitationType = methods.getValues('step2.sanitationType')
   const contactedSASB = methods.getValues('step13.serviceProvider.who.SASB')
-  const contactedServiceProvider =
-    methods.getValues('step13.serviceProvider.contacted') === 'Yes'
+  const contactedServiceProvider = methods.getValues('step13.serviceProvider.contacted') === 'Yes'
 
   let valid = true
 
@@ -138,70 +135,6 @@ export const manualStep20Validation = (
 
   if (contactedSASB && !howLong) {
     methods.setError('step20.howLong', {
-      type: 'custom',
-      message: 'Required',
-    })
-    valid = false
-  }
-
-  return valid
-}
-
-export const manualStep19Validation = (
-  methods: UseFormReturn<FormValues, object>,
-) => {
-  methods.clearErrors()
-  const sanitationType = methods.getValues('step2.sanitationType')
-  let valid = true
-
-  //   VALIDATE OFTEN SEWER DWELLING COMPOUND PROBLEM 5.2
-  const oftenSewerDwellingCompoundProblem = methods.getValues(
-    'step19.oftenSewerDwellingCompoundProblem',
-  )
-  if (
-    sanitationType === 'Flush to Sewer' &&
-    !oftenSewerDwellingCompoundProblem
-  ) {
-    methods.setError('step19.oftenSewerDwellingCompoundProblem', {
-      type: 'custom',
-      message: 'Required',
-    })
-    valid = false
-  }
-
-  //   VALIDATE OFTEN  DWELLING COMPOUND REDUCTIONS 5.3
-  const sewerDwellingCompoundReductions = methods.getValues(
-    'step19.sewerDwellingCompoundReductions',
-  )
-  if (sanitationType === 'Flush to Sewer' && !sewerDwellingCompoundReductions) {
-    methods.setError('step19.sewerDwellingCompoundReductions', {
-      type: 'custom',
-      message: 'Required',
-    })
-    valid = false
-  }
-
-  //   VALIDATE OFTEN  BAD SMELL DWELLING COMPOUND 5.6
-  const oftenBadSmellDwellingCompound = methods.getValues(
-    'step19.sewerDwellingCompoundReductions',
-  )
-  if (sanitationType === 'Flush to Sewer' && !oftenBadSmellDwellingCompound) {
-    methods.setError('step19.oftenBadSmellDwellingCompound', {
-      type: 'custom',
-      message: 'Required',
-    })
-    valid = false
-  }
-
-  //   VALIDATE SEWER BAD SMELL DWELLING COMPOUND REDUCTIONS 5.7
-  const sewerBadSmellDwellingCompoundReductions = methods.getValues(
-    'step19.sewerBadSmellDwellingCompoundReductions',
-  )
-  if (
-    sanitationType === 'Flush to Sewer' &&
-    !sewerBadSmellDwellingCompoundReductions
-  ) {
-    methods.setError('step19.sewerBadSmellDwellingCompoundReductions', {
       type: 'custom',
       message: 'Required',
     })

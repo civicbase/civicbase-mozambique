@@ -47,9 +47,11 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 10:
       return <Section.Step10 />
     case 11:
-      return <Section.Step11 />
+      onNext()
+      return <></>
     case 12:
-      return <Section.Step12 />
+      onNext()
+      return <></>
     case 13:
       if (sanitationType === LL.choices.sanitationType[1]()) {
         return <Section.Step13 />
@@ -58,12 +60,8 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
         return null
       }
     case 14:
-      if (sanitationType === LL.choices.sanitationType[1]()) {
-        return <Section.Step14 />
-      } else {
-        onNext()
-        return null
-      }
+      onNext()
+      return <></>
     case 15:
       return <Section.Step15 />
     case 16:
@@ -99,20 +97,15 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
       }
     }
     case 24:
-      const contactecSASB = getValues(`step13.serviceProvider.who.SASB`)
-
-      if (contactecSASB) {
-        return <Section.Step24 />
-      } else {
-        onNext()
-        return null
-      }
+      onNext()
+      return <></>
     case 25:
       return <Section.Step25 />
     case 26:
       return <Section.Step26 />
     case 27:
-      return <Section.Step27 />
+      onNext()
+      return <></>
     case 28:
       return <Section.Completion />
 

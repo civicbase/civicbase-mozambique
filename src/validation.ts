@@ -84,17 +84,6 @@ const validationSchema = (LL: TranslationFunctions) => {
       }),
       willingPay: z.any().optional(),
     }),
-    step11: z.object({
-      content: z.string(),
-      feePreference: z.string().optional(),
-      QVSR: z.any().optional(),
-    }),
-    step12: z.object({
-      revisePrice: z.string({
-        invalid_type_error: LL.choices.placeholder(),
-      }),
-      willingPay: z.any().optional(),
-    }),
     step13: z
       .object({
         emptiedSepticTank: z.string().optional(),
@@ -255,18 +244,6 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .optional(),
-    step14: z
-      .object({
-        fsm: z
-          .object({
-            tooExpensive: z.string().optional(),
-            tooCheap: z.string().optional(),
-            expensive: z.string().optional(),
-            greatValue: z.string().optional(),
-          })
-          .optional(),
-      })
-      .optional(),
     step15: z.object({
       content: z.string(),
     }),
@@ -349,12 +326,6 @@ const validationSchema = (LL: TranslationFunctions) => {
     }),
     step19: z
       .object({
-        oftenSewerDwellingCompoundProblem: z.string({
-          invalid_type_error: LL.choices.placeholder(),
-        }),
-        sewerDwellingCompoundReductions: z.string({
-          invalid_type_error: LL.choices.placeholder(),
-        }),
         oftenSewerProblem: z.string({
           invalid_type_error: LL.choices.placeholder(),
         }),
@@ -578,43 +549,20 @@ const validationSchema = (LL: TranslationFunctions) => {
         }),
       })
       .optional(),
-    step24: z
-      .object({
-        revisePrice: z.string({
-          invalid_type_error: LL.choices.placeholder(),
-        }),
-        willingPay: z.any().optional(),
-      })
-      .optional(),
     step25: z.object({
       drainageBoxBlocked: z.string({
-        invalid_type_error: LL.choices.placeholder(),
-      }),
-      drainageBoxBlockReductions: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
       drainageDitchBlock: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
-      drainageDitchBlockReductions: z.string({
-        invalid_type_error: LL.choices.placeholder(),
-      }),
       walkedWater: z.string({
-        invalid_type_error: LL.choices.placeholder(),
-      }),
-      soakedPassingCar: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
       StagnantWaterDisease: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
       StagnantWaterReductions: z.string({
-        invalid_type_error: LL.choices.placeholder(),
-      }),
-      floodAfterRain: z.string({
-        invalid_type_error: LL.choices.placeholder(),
-      }),
-      floodAfterRainReductions: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
     }),
@@ -769,12 +717,6 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
         { message: LL.choices.placeholder(), path: ['howLong'] },
       ),
-    step27: z.object({
-      revisePrice: z.string({
-        invalid_type_error: LL.choices.placeholder(),
-      }),
-      willingPay: z.any().optional(),
-    }),
   })
 
   return schema

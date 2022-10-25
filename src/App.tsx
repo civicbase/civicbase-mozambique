@@ -67,13 +67,6 @@ const App = () => {
       step10: {
         willingPay: 0,
       },
-      step11: {
-        feePreference: '0',
-        content: QVSRSliderContent,
-      },
-      step12: {
-        willingPay: 0,
-      },
       step13: {
         serviceProvider: {
           howMuch: 0,

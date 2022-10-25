@@ -285,28 +285,6 @@ const en: BaseTranslation = {
       paragraph3: `Having heard the community's proposal , would you like to revise your
       previously stated price? Remember, your proposed price is ({y} MT)`,
     },
-    422: {
-      paragraph1: `NOW, imagine that SASB were to
-      introduce a new monthly fee to solve drainage issues in your
-      neighborhood. We will be asking you about your willingness to pay for
-      such a fee.`,
-      paragraph2: `In this survey, everyone in this neighborhood is being asked to help
-      decide the price for NEW monthly drainage fee. This new fee could help
-      SASB to reduce the drainage problem in your neighborhood like flooding
-      and water logging. As you cast your votes or make your decisions, please
-      imagine everyone else in your neighborhood will be participating in this
-      exercise too. Thus, the collective decision by the neighborhood will be
-      important for SASB to decide the pricing of their services.`,
-      paragraph3: `IF SASB were to introduce the new monthly fee to improve drainage
-      conditions in your neighborhood, what should the monthly service fee be
-      for everyone in your neighborhood including yourself?`,
-    },
-    423: {
-      paragraph1: `Now, we would like to share with you what your community thinks about the price to be paid for the hypothetical monthly drainage service fee.`,
-      paragraph2: `For the hypothetical monthly drainage fee. They propose an average price of (X). You proposed the price ({y} MT)`,
-      paragraph3: `Having heard the community's proposal , would you like to revise your
-      previously stated price? Remember, your proposed price is ({y} MT)`,
-    },
     425: `Since April 2021, have you ever emptied your septic tank?`,
     426: `Did you contact a service provider to empty the cesspool?`,
     427: `When was the last time you contacted someone to empty the
@@ -320,14 +298,6 @@ const en: BaseTranslation = {
     434: `Currently, SASB offers the
     service to remove the fecal sludge and clean your septic tank for a
     total of 8700MT.`,
-    435: `At what price would you consider that the FSM collection fee will be
-    TOO EXPENSIVE that you would not consider paying for the service?`,
-    436: `At what price would you do you think that the FSM collection fee is
-    TOO LOW that you think the service quality will be bad?`,
-    437: `At what price would you consider the FSM collection fee starting to
-    become expensive, but you would give it some thought before ordering?`,
-    438: `At what price would you consider the FSM collection fee to a bargain
-    or great value for money?`,
     439: `As I mentioned
     earlier, in my personal opinion, SASB have been doing a good job! They
     have also implemented a spacial training program to improve
@@ -363,8 +333,6 @@ const en: BaseTranslation = {
     454: `Do you know how to contact SASB when you are faced with sanitation or
     drainage related issues?`,
     51: `I will now ask you about your experiences with your  sewer connection in your household and neighborhood block . For each experience, we want to know in how many months this happened to you in the last 6 months. Even if it happened just once during a month, we would like to count that month`,
-    52: `In the last 6 months, how often did you experience a sewer blockage/breakage/overflow in your dwelling or compound?`,
-    53: `If you compare the frequency of sewer blockages/breakages/overflows in your dwelling or compound between April and September 2021 to those in the last 6 months, have you noticed any change?`,
     54: `In the last 6 months, how often did you experience a sewer blockage/breakage/overflow in your neighborhood block?`,
     55: `If you compare the frequency of sewer blockages/breakages/overflows in your neighborhood block between April and September 2021 to those in the last 6 months, have you noticed any change?`,
     56: `In the last 6 months, how often did you experience bad sewer smell in your dwelling or compound?`,
@@ -403,18 +371,12 @@ const en: BaseTranslation = {
     referred to another entity?`,
     528: `Has the problem been resolved?`,
     529: `How long did the resolution take since you have put in the request?`,
-    530: `On reflection, would you like to revise the  previously stated price for the FSM service ? Remember, your proposed price is ({y} MT)`,
     61: `I will now ask you about your experiences with rainwater drainage around your block. For each experience, we want to know in how many months this happened to you in the last 6 months. Even if it happened just once during a month, we would like to count that month`,
     62: `In the last 6 months, how often did the drainage boxes in your neighborhood block got obstructed and overflowed?`,
-    63: `If you compare the frequency of obstructed drainage boxes in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any change?`,
     64: `In the last 6 months, how often did you see that a drainage ditch/manhole was left open in your neighborhood block?`,
-    65: `If you compare the frequency of drainage ditches or manhole being left open in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any REDUCTIONS?`,
     66: `In the last 6 months, how often  have you had to walk through water?`,
-    67: `In the last 6 months, how often did you get soaked “take a shower” because of passing cars?`,
     68: `In the last 6 months, how often were you afraid of catching a disease because of stagnant water on the street?`,
     69: `If you compare the frequency of water logging and stagnant water in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any change?`,
-    610: `In the last 6 months, how often did your neighborhood experience flood after a rain?`,
-    611: `If you compare the frequency of floods after a rain in your neighborhood block between April and September 2021 to those in the past 6 months, have you noticed any change?`,
     612: `Since April 2021, have you contacted someone to resolve the DRAINAGE
     issues you faced before?`,
     613: `When was the last time you contacted someone for help with a
@@ -429,9 +391,6 @@ const en: BaseTranslation = {
     621: `(Caso tenha contactado o SASB), o seu problema foi tratado pelo próprio SASB ou foi encaminhado para outra entidade?`,
     622: `(Caso tenha contactado o SASB) O seu poblema ficou resolvido?`,
     623: `(Caso tenha contactado o SASB) Quanto tempo levou a solução do problema contando a partir do momento que fez o primeiro contacto?`,
-    624: `On reflection, would you like to revise the previously stated price
-    for a NEW monthly drainage maintenance fee ? Remember, your proposed
-    price is ({y} MT)`,
   },
 }
 

@@ -16,8 +16,6 @@ const validator = async (step: number, methods: UseFormReturn<FormValues, object
       return methods.trigger(`step8`)
     case 10:
       return methods.trigger(`step10`)
-    case 12:
-      return methods.trigger(`step12`)
     case 13: {
       const sanitationType = methods.getValues('step2.sanitationType')
       if (sanitationType === LL.choices.sanitationType[1]()) {
@@ -25,8 +23,6 @@ const validator = async (step: number, methods: UseFormReturn<FormValues, object
       }
       return true
     }
-    case 14:
-      return methods.trigger(`step14`)
     case 16:
       return methods.trigger(`step16`)
     case 17:
@@ -53,14 +49,10 @@ const validator = async (step: number, methods: UseFormReturn<FormValues, object
       }
       return true
     }
-    case 24:
-      return methods.trigger(`step24`)
     case 25:
       return methods.trigger(`step25`)
     case 26:
       return methods.trigger(`step26`)
-    case 27:
-      return methods.trigger(`step27`)
     default:
       return true
   }

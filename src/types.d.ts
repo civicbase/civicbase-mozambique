@@ -64,15 +64,6 @@ export interface FormValues {
     revisePrice: string
     willingPay?: number
   }
-  step11: {
-    content: 'Treatment - QVSR' | 'Control - Price Slider'
-    feePreference?: string
-    QVSR?: Quadratic
-  }
-  step12: {
-    revisePrice: string
-    willingPay?: number
-  }
   step13?: {
     emptiedSepticTank: string
     serviceProvider: {
@@ -126,8 +117,6 @@ export interface FormValues {
     knowHowContactSASB: string
   }
   step19: {
-    oftenSewerDwellingCompoundProblem?: string
-    sewerDwellingCompoundReductions: string
     oftenSewerProblem: string
     sewerReductions: string
     oftenBadSmellDwellingCompound: string
@@ -164,21 +153,12 @@ export interface FormValues {
     problemResolved: string
     howLong: string
   }
-  step24: {
-    revisePrice: string
-    willingPay?: number
-  }
   step25: {
     drainageBoxBlocked: string
-    drainageBoxBlockReductions: string
     drainageDitchBlock: string
-    drainageDitchBlockReductions: string
     walkedWater: string
-    soakedPassingCar: string
     StagnantWaterDisease: string
     StagnantWaterReductions: string
-    floodAfterRain: string
-    floodAfterRainReductions: string
   }
   step26: {
     contactedDrainageIssue: string
