@@ -8,8 +8,30 @@ const validator = async (step: number, methods: UseFormReturn<FormValues, object
       return methods.trigger(`step1`)
     case 2:
       return methods.trigger(`step2`)
-    case 3:
+    case 3: {
+      const dwellingType = methods.getValues('step2.dwellingType')
+      const shareBill = methods.getValues('step3.waterBill.share')
+      const shareNumber = methods.getValues('step3.waterBill.shareNumber')
+
+      if (
+        dwellingType === LL.choices.dwellingType[1]() ||
+        dwellingType === LL.choices.dwellingType[2]() ||
+        dwellingType === LL.choices.dwellingType[3]()
+      ) {
+        // methods.trigger(`step3`)
+
+        if (!shareBill) {
+          methods.setError('step3.waterBill.share', {
+            type: 'custom',
+            message: 'Required',
+          })
+
+          return false
+        }
+      }
+
       return methods.trigger(`step3`)
+    }
     case 6:
       return methods.trigger(`step6`)
     case 8:

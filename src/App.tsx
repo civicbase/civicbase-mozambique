@@ -45,7 +45,7 @@ const App = () => {
         language: language === 'pt' ? LL.choices.languages[1]() : LL.choices.languages[0](),
         uniqueId: params.uniqueId,
       },
-      step2: {
+      step3: {
         waterBill: {
           shareNumber: 0,
         },
@@ -95,7 +95,7 @@ const App = () => {
 
   // console.log('values', trans)
 
-  // console.log('errors', methods.formState.errors)
+  console.log('errors', methods.formState.errors)
 
   const handlePrevious = () => {
     if (step > 1) {

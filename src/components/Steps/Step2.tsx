@@ -3,7 +3,6 @@ import { Controller, useFormContext } from 'react-hook-form'
 import Label from 'components/Form/Label'
 import Dropdown from 'components/Dropdown'
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
-import Input from 'components/Form/Input'
 import Heading from 'components/Heading'
 import { useI18nContext } from 'i18n/i18n-react'
 
@@ -12,12 +11,7 @@ const Step2 = () => {
   const {
     control,
     formState: { errors },
-    register,
-    watch,
   } = useFormContext()
-
-  const shareBill = watch('step2.waterBill.share')
-  const dwellingType = watch('step2.dwellingType')
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -97,51 +91,6 @@ const Step2 = () => {
         />
         <FieldErrorMessage name="step2.dwellingType" errors={errors} />
       </div>
-
-      {(dwellingType === LL.choices.dwellingType[1]() || dwellingType === LL.choices.dwellingType[2]()) && (
-        <>
-          <div>
-            <Label number="4.5" required>
-              {LL.questions[45]()}
-            </Label>
-            <Controller
-              name="step2.waterBill.share"
-              control={control}
-              render={({ field }) => (
-                <Dropdown
-                  options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
-                  value={field.value}
-                  onChange={field.onChange}
-                  placeholder={LL.choices.placeholder()}
-                  error={!!errors?.step2?.waterBill?.share}
-                />
-              )}
-            />
-            <FieldErrorMessage name="step2.waterBill.share" errors={errors} />
-          </div>
-
-          {shareBill === LL.choices.yesNo[0]() && (
-            <>
-              <div>
-                <Label number="4.6" required>
-                  {LL.questions[46]()}
-                </Label>
-
-                <Input
-                  {...register('step2.waterBill.shareNumber', {
-                    required: true,
-                    valueAsNumber: true,
-                  })}
-                  error={!!errors?.step2?.waterBill?.shareNumber}
-                  type="number"
-                />
-
-                <FieldErrorMessage name="step2.waterBill.shareNumber" errors={errors} />
-              </div>
-            </>
-          )}
-        </>
-      )}
     </div>
   )
 }

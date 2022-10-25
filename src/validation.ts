@@ -26,29 +26,16 @@ const validationSchema = (LL: TranslationFunctions) => {
         neighborhood: z.string(),
         sanitationType: z.string(),
         dwellingType: z.string(),
-        waterBill: z
-          .object({
-            share: z.string().optional(),
-            shareNumber: z.number().nullish(),
-          })
-          .optional(),
       })
-      .optional()
-      .refine(
-        (step) => {
-          if (
-            step?.dwellingType !== LL.choices.dwellingType[0]() &&
-            step?.dwellingType !== LL.choices.dwellingType[3]()
-          ) {
-            return step?.waterBill?.share
-          }
-
-          return true
-        },
-        { message: 'Required', path: ['waterBill.share'] },
-      ),
+      .optional(),
     step3: z.object({
       compare: z.string(),
+      waterBill: z
+        .object({
+          share: z.string().optional(),
+          shareNumber: z.number().nullish(),
+        })
+        .optional(),
     }),
     step4: z.any(),
     step5: z.object({

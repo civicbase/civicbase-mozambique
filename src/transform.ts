@@ -55,9 +55,9 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     42: getNeighborhood(values),
     43: getSanitation(values, LL),
     44: getDwelling(values, LL),
+    // page3
     45: getYesNo(values.step2?.waterBill.share, LL),
     46: values.step2?.waterBill.shareNumber,
-    // page3
     47: get47(values, LL),
     // page4
     48: values.step4,

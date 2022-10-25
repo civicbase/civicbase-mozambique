@@ -30,12 +30,12 @@ export interface FormValues {
     neighborhood: string
     sanitationType: string
     dwellingType: string
+  }
+  step3: {
     waterBill: {
       share: string
       shareNumber: number
     }
-  }
-  step3: {
     compare: string
   }
   step4: Quadratic
