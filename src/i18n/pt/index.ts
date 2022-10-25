@@ -31,7 +31,7 @@ const pt: BaseTranslation = {
     likely: ['Improvável', 'Pouco provável', 'Provável', 'Muito provável'],
     importance: ['Não importante', 'Pouco importante', 'Importante', 'Muito importante'],
     QVSRReset: `Está de acordo com o resultado dos seus votos? Se está de acordo seleccione próximo, se não pode fazer "reset" e fazer a distribuição novamente`,
-    howLong: ['A few days but within a week', 'Between 1 and 2 weeks', 'Less than a month', 'More than a month'],
+    howLong: ['Poucos dias mas dentro duma semana', 'Entre 1 ou 2 semanas', 'Menos que um mês', 'Mais que um mês'],
     entity: ['Encaminhado para outra entidade', 'Tratado pelo próprio SASB'],
     problems: [
       'Sim, durante 1 ou 2 meses',
@@ -226,11 +226,6 @@ const pt: BaseTranslation = {
       paragraph1: `Agora gostaria de compartilhar consigo o que a sua comunidade acha do valor que deve ser pago para a taxa de ligação ao sistema de esgoto..`,
       paragraph2: `Para a taxa mensal de saneamento a comunidade propõe um preço médio de (X). Você propôs o preço ({y} MT)`,
       paragraph3: `Ouvido a proposta da comunidade prefere mudar o preço que propôs? O preço que mencionou é ({y} MT)`,
-    },
-    421: {
-      paragraph1: `AGORA, imagine que o SASB apresente uma nova taxa mensal para resolver os problemas de drenagem no seu bairro. Queremos fazer algumas perguntas sobre a sua vontade de pagar esta taxa hipotética.`,
-      paragraph2: `Nesta pesquisa, pedimos a todos os moradores deste bairro para ajudar na decisão sobre o valor da taxa mensal de drenagem. Essa taxa é hipotética, se for criada pode ajudar o SASB a reduzir os problemas de drenagem no seu bairro, como inundações e/o alagamentos. Quando estiver a votar ou definir a sua proposta, por favor tome em consideração que todos os residentes do seu bairro irão participar neste exercício. O resultado deste exercício colectivo será importante para o SASB tomar uma decisão sobre a eventual criação desta taxa e o respectivo valor. Note que neste momento não há nenhum plano para a sua criação e que se trata apenas de um exercício meramente experimental.`,
-      paragraph3: `Se o SASB apresentar uma nova taxa mensal para melhorar as condições da drenagem no seu bairro, quanto deveria ser o valor mensal dessa taxa para todos no seu bairro incluindo você.`,
     },
     422: {
       paragraph1: `AGORA, imagine que o SASB apresente uma nova taxa mensal para resolver os problemas de drenagem no seu bairro. Queremos fazer algumas perguntas sobre sua vontade de pagar esta taxa hipotética.`,

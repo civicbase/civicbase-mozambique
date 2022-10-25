@@ -285,22 +285,6 @@ const en: BaseTranslation = {
       paragraph3: `Having heard the community's proposal , would you like to revise your
       previously stated price? Remember, your proposed price is ({y} MT)`,
     },
-    421: {
-      paragraph1: `NOW, imagine that SASB were to
-      introduce a new monthly fee to solve drainage issues in your
-      neighborhood. We will be asking you about your willingness to pay for
-      such a fee.`,
-      paragraph2: `In this survey, everyone in this neighborhood is being asked to help
-      decide the price for NEW monthly drainage fee. This new fee could help
-      SASB to reduce the drainage problem in your neighborhood like flooding
-      and water logging. As you cast your votes or make your decisions, please
-      imagine everyone else in your neighborhood will be participating in this
-      exercise too. Thus, the collective decision by the neighborhood will be
-      important for SASB to decide the pricing of their services.`,
-      paragraph3: `IF SASB were to introduce the new monthly fee to improve drainage
-      conditions in your neighborhood, what should the monthly service fee be
-      for everyone in your neighborhood including yourself?`,
-    },
     422: {
       paragraph1: `NOW, imagine that SASB were to
       introduce a new monthly fee to solve drainage issues in your

@@ -24,15 +24,6 @@ const QVSR = () => {
     <div css={tw`grid grid-cols-1 gap-6`}>
       <Heading subtitle={LL.headings[11]()} />
 
-      <Typography css={tw`text-justify`}>
-        <Caption css={tw`mr-3`}>4.21</Caption>
-        {LL.questions[421].paragraph1()}
-      </Typography>
-
-      <Typography css={tw`text-justify`}>{LL.questions[421].paragraph2()}</Typography>
-
-      <Typography css={tw`text-justify`}>{LL.questions[421].paragraph3()}</Typography>
-
       <Typography css={tw`text-justify`}>{LL.questions.QVSRInstruction()}</Typography>
 
       <Quadratic
