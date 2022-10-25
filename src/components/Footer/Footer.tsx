@@ -26,17 +26,15 @@ const Footer = ({
   } = useFormContext()
 
   return (
-    <div
-      css={[tw`flex justify-evenly mt-3`, hidePrevious && tw`justify-center`]}
-    >
+    <div css={[tw`flex justify-evenly mt-3`, hidePrevious && tw`justify-center`]}>
       {!hidePrevious && (
-        <Button variant="secondary" onClick={onPrevious}>
+        <Button type="button" variant="secondary" onClick={onPrevious}>
           {LL.actions.previous()}
         </Button>
       )}
 
       {!hideNext && (
-        <Button variant="primary" onClick={onNext}>
+        <Button type="button" variant="primary" onClick={onNext}>
           {isStart ? LL.actions.startSurvey() : LL.actions.next()}
         </Button>
       )}
@@ -47,14 +45,7 @@ const Footer = ({
         </Button>
       )}
 
-      <div
-        css={[
-          tw`absolute bottom-4 right-4`,
-          errors[`step${step}`] && tw`text-red-600`,
-        ]}
-      >
-        {step}
-      </div>
+      <div css={[tw`absolute bottom-4 right-4`, errors[`step${step}`] && tw`text-red-600`]}>{step}</div>
     </div>
   )
 }

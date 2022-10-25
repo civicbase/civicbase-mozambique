@@ -113,7 +113,7 @@ const Footer = () => {
   const { closeModal } = useContext(ModalContext)
 
   return (
-    <Button variant="primary" onClick={closeModal}>
+    <Button type="button" variant="primary" onClick={closeModal}>
       Ok
     </Button>
   )

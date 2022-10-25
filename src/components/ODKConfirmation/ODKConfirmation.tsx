@@ -26,7 +26,7 @@ const ODKConfirmation = ({ handleConfirm }: ODKConfirmationProps) => {
         <Typography>{LL.placeholder.ODKConfirmation()}</Typography>
       </div>
 
-      <Button variant="primary" onClick={handleConfirm} css={tw`flex items-center`}>
+      <Button type="button" variant="primary" onClick={handleConfirm} css={tw`flex items-center`}>
         {LL.placeholder.ODKCTA()}
       </Button>
     </div>

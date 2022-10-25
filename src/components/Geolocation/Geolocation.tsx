@@ -9,10 +9,7 @@ type GeolocationMessageProps = {
   handleShareGeolocation: () => void
 }
 
-const GeolocationMessage = ({
-  error,
-  handleShareGeolocation,
-}: GeolocationMessageProps) => {
+const GeolocationMessage = ({ error, handleShareGeolocation }: GeolocationMessageProps) => {
   const { LL } = useI18nContext()
 
   return (
@@ -21,22 +18,12 @@ const GeolocationMessage = ({
     >
       <div css={tw`text-center absolute top-10 mx-10`}>
         <div css={tw`flex justify-center -mt-10`}>
-          <img
-            src={`${process.env.PUBLIC_URL}/assets/logo2.svg`}
-            width={250}
-            alt="logo"
-          />
+          <img src={`${process.env.PUBLIC_URL}/assets/logo2.svg`} width={250} alt="logo" />
         </div>
-        <Subtitle>
-          FLL Training Project for SASB, Beira, Mozambique - Household Survey
-        </Subtitle>
+        <Subtitle>FLL Training Project for SASB, Beira, Mozambique - Household Survey</Subtitle>
       </div>
       <img src={locationImage} alt="location" />
-      <Button
-        variant="primary"
-        onClick={handleShareGeolocation}
-        css={tw`flex items-center`}
-      >
+      <Button type="button" variant="primary" onClick={handleShareGeolocation} css={tw`flex items-center`}>
         {LL.actions.enableLocation()}
       </Button>
       {error && <div>Reason: {error.message}</div>}
