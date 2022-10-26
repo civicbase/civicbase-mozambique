@@ -1,42 +1,165 @@
+import { Controller, useFieldArray, useFormContext } from 'react-hook-form'
+import tw from 'twin.macro'
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
+import Radio from 'components/Form/Radio'
+import Typography, { Hint } from 'components/Typography'
 import Heading from 'components/Heading'
-import Typography from 'components/Typography'
+import Dropdown from 'components/Dropdown'
+import Input from 'components/Form/Input'
+import AddButton from 'components/AddButton'
+import { GrAdd } from 'react-icons/gr'
+import diagram from '../../images/self_diagram.jpg'
 import { useI18nContext } from 'i18n/i18n-react'
-import { useFormContext } from 'react-hook-form'
-import tw from 'twin.macro'
+import Checkbox from 'components/Form/Checkbox'
+import { useEffect } from 'react'
 
 const Step14 = () => {
   const { LL } = useI18nContext()
   const {
     register,
-    formState: { errors },
+    control,
     watch,
+    setValue,
+    formState: { errors },
   } = useFormContext()
 
-  const price = watch('step14.pricePreference')
+  const notSharing = watch('step14.notSharing')
+
+  useEffect(() => {
+    if (notSharing) {
+      setValue('step14.share', [])
+    }
+  }, [])
+
+  const { fields, append } = useFieldArray({
+    control,
+    name: 'step14.share',
+  })
+
+  const handleAddPerson = () => {
+    if (fields.length < 3) {
+      append({ name: '', relationship: null, closeness: null })
+    }
+  }
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle={LL.headings[14]()} />
+      <Heading subtitle={LL.headings[17]()} />
 
       <div>
-        <Label required number="4.34">
-          {LL.questions[434]()}
+        <Label number="4.51" required>
+          {LL.questions[451]()}
         </Label>
 
-        <Typography css={tw`pt-8`}>{price} MT</Typography>
+        <div css={tw`flex flex-col mt-10`}>
+          <div css={tw`flex justify-between`}>
+            {[LL.choices.likely[0](), LL.choices.likely[1](), LL.choices.likely[2](), LL.choices.likely[3]()].map(
+              (option) => (
+                <label css={tw`flex flex-col space-y-2 items-center select-none`} key={option}>
+                  <Radio {...register(`step14.SASBSatisfaction`)} value={option} />
+                  <span css={tw`text-center`}>{option}</span>
+                </label>
+              ),
+            )}
+          </div>
+        </div>
+        <FieldErrorMessage name="step14.SASBSatisfaction" errors={errors} />
+      </div>
 
-        <input
-          type="range"
-          css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
-          min="1850"
-          max="2850"
-          step="100"
-          {...register(`step14.pricePreference`)}
-        />
+      <div>
+        <Label number="4.52" required>
+          {LL.questions[452]()}
+        </Label>
+        <div>
+          <img src={diagram} alt="service" />
+        </div>
 
-        <FieldErrorMessage name="step14.pricePreference" errors={errors} />
+        {!notSharing && (
+          <>
+            <div css={tw`flex space-x-2 items-end`}>
+              <Hint css={tw`flex-[2]`}>{LL.placeholder.name()}</Hint>
+              <Hint css={tw`flex-[2]`}>{LL.placeholder.relationship()}</Hint>
+              <Hint css={tw`flex-1`}>{LL.placeholder.closeness()}</Hint>
+            </div>
+
+            <div css={tw`space-y-4`}>
+              {fields.map((person, index) => {
+                const hasNameError = errors.step14?.share && !!errors.step14.share[index]?.name
+                const hasRelationshipError = errors.step14?.share && !!errors.step14.share[index]?.relationship
+                const hasclosenessError = errors.step14?.share && !!errors.step14.share[index]?.closeness
+
+                return (
+                  <div css={tw`flex space-x-2 items-end`} key={person.id}>
+                    <div css={tw`flex-[2]`}>
+                      <Input
+                        {...register(`step14.share.${index}.name`, {
+                          required: true,
+                        })}
+                        error={hasNameError}
+                        placeholder={LL.placeholder.name()}
+                      />
+                    </div>
+                    <Controller
+                      name={`step14.share.${index}.relationship`}
+                      control={control}
+                      render={({ field }) => (
+                        <div css={tw`flex-[2]`}>
+                          <Dropdown
+                            options={[
+                              LL.choices.relationship[0](),
+                              LL.choices.relationship[1](),
+                              LL.choices.relationship[2](),
+                              LL.choices.relationship[3](),
+                              LL.choices.relationship[4](),
+                            ]}
+                            value={field.value}
+                            onChange={field.onChange}
+                            placeholder={LL.placeholder.relationship()}
+                            error={hasRelationshipError}
+                          />
+                        </div>
+                      )}
+                    />
+                    <Controller
+                      name={`step14.share.${index}.closeness`}
+                      control={control}
+                      render={({ field }) => (
+                        <div css={tw`flex-1`}>
+                          <Dropdown
+                            options={['1', '2', '3', '4', '5']}
+                            value={field.value}
+                            onChange={field.onChange}
+                            placeholder={LL.placeholder.closeness()}
+                            error={hasclosenessError}
+                          />
+                        </div>
+                      )}
+                    />
+                  </div>
+                )
+              })}
+            </div>
+          </>
+        )}
+
+        <div css={tw`mt-4`}>
+          <AddButton onClick={handleAddPerson} disabled={fields.length >= 3 || notSharing}>
+            <div css={tw`flex items-center space-x-4`}>
+              <GrAdd />
+              <Typography>{LL.placeholder.addPerson()}</Typography>
+            </div>
+          </AddButton>
+        </div>
+
+        <div css={tw`mt-4`}>
+          <FieldErrorMessage name="step14.share" errors={errors} />
+
+          <label css={tw`inline-flex space-x-4 items-center select-none mt-2`}>
+            <Checkbox {...register(`step14.notSharing`)} />
+            <span>{LL.choices.notSharing()}</span>
+          </label>
+        </div>
       </div>
     </div>
   )

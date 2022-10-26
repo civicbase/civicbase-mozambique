@@ -34,47 +34,58 @@ const validator = async (step: number, methods: UseFormReturn<FormValues, object
     }
     case 5:
       return methods.trigger(`step5`)
-    case 8:
-      return methods.trigger(`step8`)
-    case 10:
-      return methods.trigger(`step10`)
-    case 13: {
+    case 7:
+      return methods.trigger(`step7`)
+    case 9:
+      return methods.trigger(`step9`)
+    case 10: {
       const sanitationType = methods.getValues('step2.sanitationType')
+      const emptiedSepticTank = methods.getValues('step10.emptiedSepticTank')
+
+      if (!emptiedSepticTank) {
+        methods.setError('step10.emptiedSepticTank', {
+          type: 'custom',
+          message: 'Required',
+        })
+
+        return false
+      }
+
       if (sanitationType === LL.choices.sanitationType[1]()) {
-        return methods.trigger(`step13`)
+        return methods.trigger(`step10`)
       }
       return true
     }
+    case 13:
+      return methods.trigger(`step13`)
+    case 14:
+      return methods.trigger(`step14`)
+    case 15:
+      return methods.trigger(`step15`)
     case 16:
       return methods.trigger(`step16`)
-    case 17:
-      return methods.trigger(`step17`)
-    case 18:
-      return methods.trigger(`step18`)
-    case 19:
-      return methods.trigger(`step19`)
-    case 20: {
+    case 17: {
       const sanitationType = methods.getValues('step2.sanitationType')
       if (sanitationType === LL.choices.sanitationType[0]()) {
-        return methods.trigger(`step20`)
+        return methods.trigger(`step17`)
       }
       return true
     }
+    case 18:
+      return methods.trigger(`step18`)
+    case 19: {
+      const contactecSASB = methods.getValues(`step10.serviceProvider.who.SASB`)
+      if (contactecSASB) {
+        return methods.trigger(`step19`)
+      }
+      return true
+    }
+    case 20:
+      return methods.trigger(`step20`)
     case 21:
       return methods.trigger(`step21`)
-    case 23: {
-      const contactecSASB = methods.getValues(`step13.serviceProvider.who.SASB`)
-      if (contactecSASB) {
-        return methods.trigger(`step23`)
-      }
-      return true
-    }
-    case 25:
-      return methods.trigger(`step25`)
-    case 26:
-      return methods.trigger(`step26`)
-    case 27:
-      return methods.trigger(`step27`)
+    case 22:
+      return methods.trigger(`step22`)
     default:
       return true
   }

@@ -44,25 +44,25 @@ export interface FormValues {
     relevantInformation: string
     shareInformation: string
   }
-  step7: {
+  step6: {
     content: 'Treatment - QVSR' | 'Control - Price Slider'
     amountPreference?: string
     QVSR?: Quadratic
   }
-  step8: {
+  step7: {
     revisePrice: string
     willingPay?: number
   }
-  step9: {
+  step8: {
     content: 'Treatment - QVSR' | 'Control - Price Slider'
     pricePreference?: string
     QVSR?: Quadratic
   }
-  step10: {
+  step9: {
     revisePrice: string
     willingPay?: number
   }
-  step13?: {
+  step10?: {
     emptiedSepticTank: string
     serviceProvider: {
       contacted: string
@@ -77,13 +77,13 @@ export interface FormValues {
     }
     SASBNotContactedReasons: any
   }
-  step14?: {
+  step11?: {
     pricePreference: string
   }
-  step15: {
+  step12: {
     content: 'Treatment' | 'Control'
   }
-  step16: {
+  step13: {
     satisfaction: {
       sewer: string
       sewerlast6Months: string
@@ -97,7 +97,7 @@ export interface FormValues {
       beiraMunicipalityLast6Months: string
     }
   }
-  step17: {
+  step14: {
     SASBSatisfaction: string
     share?: {
       name: string
@@ -106,17 +106,17 @@ export interface FormValues {
     }[]
     notSharing: boolean
   }
-  step18: {
+  step15: {
     shareSASBSatisfaction: string
     knowHowContactSASB: string
   }
-  step19: {
+  step16: {
     oftenSewerProblem: string
     sewerReductions: string
     oftenBadSmellDwellingCompound: string
     sewerBadSmellDwellingCompoundReductions: string
   }
-  step20?: {
+  step17?: {
     contacted?: string
     contactedMonth?: string
     contactedYear?: string
@@ -131,15 +131,11 @@ export interface FormValues {
     problemResolved?: string
     howLong?: string
   }
-  step21: {
+  step18: {
     revisePrice: string
     willingPay?: number
   }
-  step22: {
-    revisePrice: string
-    willingPay?: number
-  }
-  step23?: {
+  step19?: {
     treatFairPolite: string
     moreThanOneCall: string
     bribe: string
@@ -147,14 +143,14 @@ export interface FormValues {
     problemResolved: string
     howLong: string
   }
-  step25: {
+  step20: {
     drainageBoxBlocked: string
     drainageDitchBlock: string
     walkedWater: string
     StagnantWaterDisease: string
     StagnantWaterReductions: string
   }
-  step26: {
+  step21: {
     contactedDrainageIssue: string
     contacted?: {
       month?: string
@@ -171,7 +167,7 @@ export interface FormValues {
     problemResolved?: string
     howLong?: string
   }
-  step27: {
+  step22: {
     revisePrice: string
     willingPay?: number
   }

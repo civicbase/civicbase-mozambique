@@ -47,29 +47,29 @@ const validationSchema = (LL: TranslationFunctions) => {
         invalid_type_error: LL.choices.placeholder(),
       }),
     }),
-    step7: z.object({
+    step6: z.object({
       content: z.string(),
       amountPreference: z.string().optional(),
       QVSR: z.any().optional(),
     }),
-    step8: z.object({
+    step7: z.object({
       revisePrice: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
       willingPay: z.any().optional(),
     }),
-    step9: z.object({
+    step8: z.object({
       content: z.string(),
       pricePreference: z.string().optional(),
       QVSR: z.any().optional(),
     }),
-    step10: z.object({
+    step9: z.object({
       revisePrice: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
       willingPay: z.any().optional(),
     }),
-    step13: z
+    step10: z
       .object({
         emptiedSepticTank: z.string().optional(),
         serviceProvider: z
@@ -229,15 +229,15 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .optional(),
-    step14: z
+    step11: z
       .object({
         pricePreference: z.string(),
       })
       .optional(),
-    step15: z.object({
+    step12: z.object({
       content: z.string(),
     }),
-    step16: z
+    step13: z
       .object({
         satisfaction: z
           .object({
@@ -295,7 +295,7 @@ const validationSchema = (LL: TranslationFunctions) => {
           .optional(),
       })
       .optional(),
-    step17: z
+    step14: z
       .object({
         SASBSatisfaction: z.string({
           invalid_type_error: LL.choices.placeholder(),
@@ -323,11 +323,11 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
         { message: 'Please share one contact', path: ['share'] },
       ),
-    step18: z.object({
+    step15: z.object({
       shareSASBSatisfaction: z.string(),
       knowHowContactSASB: z.string(),
     }),
-    step19: z
+    step16: z
       .object({
         oftenSewerProblem: z.string({
           invalid_type_error: LL.choices.placeholder(),
@@ -343,7 +343,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         }),
       })
       .partial(),
-    step20: z
+    step17: z
       .object({
         contacted: z.string(),
         contactedMonth: z.string().optional(),
@@ -528,19 +528,13 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .optional(),
-    step21: z.object({
+    step18: z.object({
       revisePrice: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
       willingPay: z.any().optional(),
     }),
-    step22: z.object({
-      revisePrice: z.string({
-        invalid_type_error: LL.choices.placeholder(),
-      }),
-      willingPay: z.any().optional(),
-    }),
-    step23: z
+    step19: z
       .object({
         treatFairPolite: z.string(),
         moreThanOneCall: z.string(),
@@ -552,7 +546,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         }),
       })
       .optional(),
-    step25: z.object({
+    step20: z.object({
       drainageBoxBlocked: z.string({
         invalid_type_error: LL.choices.placeholder(),
       }),
@@ -569,7 +563,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         invalid_type_error: LL.choices.placeholder(),
       }),
     }),
-    step26: z
+    step21: z
       .object({
         contactedDrainageIssue: z.string(),
         contacted: z
@@ -720,6 +714,12 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
         { message: LL.choices.placeholder(), path: ['howLong'] },
       ),
+    step22: z.object({
+      revisePrice: z.string({
+        invalid_type_error: LL.choices.placeholder(),
+      }),
+      willingPay: z.any().optional(),
+    }),
   })
 
   return schema

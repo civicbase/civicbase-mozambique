@@ -53,26 +53,26 @@ const App = () => {
       step5: {
         content: content,
       },
-      step7: {
+      step6: {
         amountPreference: '8500',
         content: QVSRSliderContent,
       },
-      step9: {
+      step8: {
         pricePreference: '80',
         content: QVSRSliderContent,
       },
-      step13: {
+      step10: {
         serviceProvider: {
           howMuch: 0,
         },
       },
-      step14: {
+      step11: {
         pricePreference: '2350',
       },
-      step15: {
+      step12: {
         content: content,
       },
-      step17: {
+      step14: {
         share: [{ name: '', relationship: null, closeness: null }],
       },
     },
@@ -89,17 +89,18 @@ const App = () => {
   const handlePrevious = () => {
     if (step > 1) {
       switch (step) {
-        case 15:
+        case 11:
+        case 13:
           const sanitationType = methods.getValues('step2.sanitationType')
 
           if (sanitationType !== LL.choices.sanitationType[1]()) {
-            setStep(step - 3)
+            setStep(step - 2)
           } else {
             setStep(step - 1)
           }
           break
 
-        case 21:
+        case 18:
           const sewerConnection = methods.getValues('step2.sanitationType') === LL.choices.sanitationType[0]()
           if (!sewerConnection) {
             setStep(step - 2)
@@ -108,17 +109,15 @@ const App = () => {
           }
 
           break
-
-        case 25:
-          const contactecSASB = methods.getValues(`step13.serviceProvider.who.SASB`)
+        case 20:
+          const contactecSASB = methods.getValues(`step10.serviceProvider.who.SASB`)
 
           if (!contactecSASB) {
-            setStep(step - 3)
+            setStep(step - 2)
           } else {
             setStep(step - 1)
           }
           break
-
         default:
           setStep(step - 1)
           break
@@ -159,9 +158,9 @@ const App = () => {
             <Footer
               onPrevious={handlePrevious}
               onNext={handleNext}
-              hideNext={step === 27 || step === 28}
-              isSubmitStep={step === 27}
-              hidePrevious={step === 1 || step === 28}
+              hideNext={step === 22 || step === 23}
+              isSubmitStep={step === 22}
+              hidePrevious={step === 1 || step === 23}
               isStart={step === 1}
               step={step}
             />

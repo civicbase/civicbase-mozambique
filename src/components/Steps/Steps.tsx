@@ -37,8 +37,7 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 5:
       return <Section.Step5 />
     case 6:
-      onNext()
-      return <></>
+      return <Section.Step6 />
     case 7:
       return <Section.Step7 />
     case 8:
@@ -46,72 +45,57 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 9:
       return <Section.Step9 />
     case 10:
-      return <Section.Step10 />
+      if (sanitationType === LL.choices.sanitationType[1]()) {
+        return <Section.Step10 />
+      } else {
+        onNext()
+        return null
+      }
     case 11:
-      onNext()
-      return <></>
+      return <Section.Step11 />
     case 12:
-      onNext()
-      return <></>
+      if (sanitationType === LL.choices.sanitationType[1]()) {
+        return <Section.Step12 />
+      } else {
+        onNext()
+        return null
+      }
     case 13:
-      if (sanitationType === LL.choices.sanitationType[1]()) {
-        return <Section.Step13 />
-      } else {
-        onNext()
-        return null
-      }
+      return <Section.Step13 />
     case 14:
-      if (sanitationType === LL.choices.sanitationType[1]()) {
-        return <Section.Step14 />
-      } else {
-        onNext()
-        return null
-      }
+      return <Section.Step14 />
     case 15:
       return <Section.Step15 />
     case 16:
       return <Section.Step16 />
     case 17:
-      return <Section.Step17 />
-    case 18:
-      return <Section.Step18 />
-    case 19:
-      return <Section.Step19 />
-    case 20: {
       const sewerConnection = getValues('step2.sanitationType') === LL.choices.sanitationType[0]()
 
       if (sewerConnection) {
-        return <Section.Step20 />
+        return <Section.Step17 />
+      } else {
+        onNext()
+        return null
+      }
+    case 18:
+      return <Section.Step18 />
+    case 19: {
+      const contactecSASB = getValues(`step10.serviceProvider.who.SASB`)
+
+      if (contactecSASB) {
+        return <Section.Step19 />
       } else {
         onNext()
         return null
       }
     }
+    case 20:
+      return <Section.Step20 />
     case 21:
       return <Section.Step21 />
     case 22:
-      onNext()
-      return <></>
-    case 23: {
-      const contactecSASB = getValues(`step13.serviceProvider.who.SASB`)
-
-      if (contactecSASB) {
-        return <Section.Step23 />
-      } else {
-        onNext()
-        return null
-      }
-    }
-    case 24:
-      onNext()
-      return <></>
-    case 25:
-      return <Section.Step25 />
-    case 26:
-      return <Section.Step26 />
-    case 27:
-      return <Section.Step27 />
-    case 28:
+      return <Section.Step22 />
+    case 23:
       return <Section.Completion />
 
     default:

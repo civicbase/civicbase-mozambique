@@ -1,119 +1,102 @@
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import Label from 'components/Form/Label'
+import Radio from 'components/Form/Radio'
 import Heading from 'components/Heading'
 import Typography, { Caption } from 'components/Typography'
 import { useI18nContext } from 'i18n/i18n-react'
-import Quadratic from 'methods/Quadratic'
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
-import { Quadratic as QuadraticType } from 'types.d'
-import PanelExpand from 'components/PanelExpand'
-import VoteSummary from 'components/VoteSummary'
-import Button from 'components/Button'
-import { hasVoted } from 'utils/quadratic'
+import { getY } from 'utils/setY'
 
-const QVSR = () => {
-  const { LL } = useI18nContext()
-  const { watch } = useFormContext()
-  const [isReset, setReset] = useState(false)
-  const results: QuadraticType = watch('step9.QVSR')
-  const isVoted = hasVoted(results)
-
-  return (
-    <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle={LL.headings[9]()} />
-
-      <Typography css={tw`text-justify`}>
-        <Caption css={tw`mr-3`}>4.17 Treatment - QVSR</Caption>
-        {LL.questions[417].paragraph1()}
-      </Typography>
-
-      <Typography css={tw`text-justify`}>{LL.questions[417].paragraph2()}</Typography>
-
-      <Typography css={tw`text-justify`}>{LL.questions[417].paragraph3()}</Typography>
-
-      <Typography css={tw`text-justify`}>{LL.questions.QVSRInstruction()}</Typography>
-
-      {/* <Typography css={tw`text-justify`}>{LL.questions.QVSRInfo()}</Typography> */}
-
-      <Quadratic qs={['64 MT', '72 MT', '80 MT', '88 MT', '96 MT']} isReset={isReset} step="step9.QVSR" />
-
-      <PanelExpand title="The allocation of your votes:">
-        <VoteSummary results={results} />
-      </PanelExpand>
-
-      <div css={tw`flex space-x-2`}>
-        <Typography>{LL.choices.QVSRReset()}</Typography>
-
-        <div css={tw`flex justify-center`}>
-          <Button
-            css={tw`height[fit-content]`}
-            type="button"
-            variant="tertiary"
-            onClick={() => {
-              setReset(true)
-              setTimeout(() => setReset(false), 1000)
-            }}
-          >
-            {LL.placeholder.reset()}
-          </Button>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-const Slider = () => {
+const Step9 = () => {
   const { LL } = useI18nContext()
   const {
     register,
     watch,
+    getValues,
+    setValue,
     formState: { errors },
   } = useFormContext()
 
-  const price = watch('step9.pricePreference')
+  const price = watch('step9.willingPay')
+  const revisedPrice = watch('step9.revisePrice')
+  const y = getY(getValues, {
+    content: 'step8.content',
+    treatment: 'step8.QVSR',
+    control: 'step8.pricePreference',
+  })
+
+  useEffect(() => {
+    const initial = getY(getValues, {
+      content: 'step8.content',
+      treatment: 'step8.QVSR',
+      control: 'step8.pricePreference',
+    })
+
+    setValue('step9.willingPay', initial)
+  }, [])
+
+  useEffect(() => {
+    if (revisedPrice === LL.choices.revise[1]()) {
+      setValue('step9.willingPay', y)
+    }
+  }, [revisedPrice])
+
+  const isReviseUp = revisedPrice === LL.choices.revise[0]()
+  const isReviseDown = revisedPrice === LL.choices.revise[2]()
+
+  const min = isReviseUp ? y : 0
+  const max = isReviseDown ? y : y * 2
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
-      <Heading subtitle="WTP - Monthly Sanitation Tax/Sewer Service Fee" />
+      <Heading subtitle={LL.headings[10]()} />
 
       <Typography css={tw`text-justify`}>
-        <Caption css={tw`mr-3`}>4.18 Control - Price Slider</Caption>
-        {LL.questions[418].paragraph1()}
+        <Caption css={tw`mr-3`}>4.19</Caption>
+        {LL.questions[419].paragraph1()}
       </Typography>
 
-      <Typography css={tw`text-justify`}>{LL.questions[418].paragraph2()}</Typography>
-
-      <Typography css={tw`text-justify`}>{LL.questions[418].paragraph3()}</Typography>
-
-      <Typography css={tw`text-justify`}>{LL.questions.SliderInstruction()}</Typography>
+      <Typography css={tw`text-justify`}>{LL.questions[419].paragraph2({ y })}</Typography>
 
       <div>
-        <Label>{price} MT</Label>
-        <input
-          type="range"
-          css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
-          min="64"
-          max="96"
-          step="8"
-          {...register(`step9.pricePreference`)}
-        />
-        <FieldErrorMessage name="step9.pricePreference" errors={errors} />
+        <Label required>{LL.questions[419].paragraph3({ y })}</Label>
+
+        <div css={tw`flex justify-between`}>
+          {[LL.choices.revise[0](), LL.choices.revise[1](), LL.choices.revise[2]()].map((option) => (
+            <label css={tw`flex flex-col space-y-2 items-center select-none mt-5`} key={option}>
+              <span css={tw`text-center`}>{option}</span>
+              <Radio {...register(`step9.revisePrice`)} value={option} />
+            </label>
+          ))}
+        </div>
+
+        <FieldErrorMessage name="step9.revisePrice" errors={errors} />
       </div>
+
+      {(revisedPrice === LL.choices.revise[0]() || revisedPrice === LL.choices.revise[2]()) && (
+        <div>
+          <Label number="4.20" required>
+            {LL.questions.willingPay()}
+          </Label>
+
+          <Typography css={tw`mt-8 mb-2`}>{price} MT</Typography>
+
+          <input
+            type="range"
+            css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
+            min={min}
+            max={max}
+            step={4}
+            {...register('step9.willingPay')}
+          />
+
+          <FieldErrorMessage name="step9.willingPay" errors={errors} />
+        </div>
+      )}
     </div>
   )
-}
-
-const Step9 = () => {
-  const { getValues } = useFormContext()
-  const content = getValues('step9.content')
-
-  if (content === 'Treatment - QVSR') {
-    return <QVSR />
-  } else {
-    return <Slider />
-  }
 }
 
 export default Step9

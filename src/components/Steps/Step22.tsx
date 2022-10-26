@@ -4,9 +4,10 @@ import Radio from 'components/Form/Radio'
 import Heading from 'components/Heading'
 import Typography from 'components/Typography'
 import { useI18nContext } from 'i18n/i18n-react'
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
+import { getLocalDate } from 'utils/getLocalDate'
 
 const Step22 = () => {
   const { LL } = useI18nContext()
@@ -20,15 +21,25 @@ const Step22 = () => {
 
   const price = watch('step22.willingPay')
   const revisedPrice = watch('step22.revisePrice')
-  const y = getValues('step10.willingPay') //4.20
+  const y = getValues('step9.willingPay') //4.20
 
   useEffect(() => {
-    const initial = getValues('step10.willingPay')
+    const f = getValues('section6.finishAt')
+
+    if (!f) {
+      setValue('section6.finishAt', getLocalDate())
+    }
+
+    setValue('finishAt', getLocalDate())
+  }, [])
+
+  useEffect(() => {
+    const initial = getValues('step9.willingPay')
 
     setValue('step22.willingPay', initial)
   }, [])
 
-  useMemo(() => {
+  useEffect(() => {
     if (revisedPrice === LL.choices.revise[1]()) {
       setValue('step22.willingPay', y)
     }

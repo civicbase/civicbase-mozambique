@@ -5,7 +5,7 @@ import Dropdown from 'components/Dropdown'
 import { Controller, useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 import { useI18nContext } from 'i18n/i18n-react'
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 import Heading from 'components/Heading'
 import { getLocalDate } from 'utils/getLocalDate'
 
@@ -22,7 +22,7 @@ const Step1 = () => {
 
   const language = watch('step1.language')
 
-  useMemo(() => {
+  useEffect(() => {
     const s = getValues('section4.startAt')
 
     if (!s) {

@@ -1,30 +1,58 @@
-import Heading from 'components/Heading'
-import Typography, { Caption } from 'components/Typography'
-import { useI18nContext } from 'i18n/i18n-react'
-import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
+import { Controller, useFormContext } from 'react-hook-form'
+import Label from 'components/Form/Label'
+import Dropdown from 'components/Dropdown'
+import FieldErrorMessage from 'components/Form/FieldErrorMessage'
+import { useI18nContext } from 'i18n/i18n-react'
 
 const Step15 = () => {
   const { LL } = useI18nContext()
-  const { getValues } = useFormContext()
-  const content = getValues('step15.content')
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext()
 
   return (
-    <div css={tw`grid grid-cols-1 gap-2`}>
-      <Heading subtitle={LL.headings[15]()} />
+    <div css={tw`grid grid-cols-1 gap-6`}>
+      <div>
+        <Label number="4.53" required>
+          {LL.questions[453]()}
+        </Label>
+        <Controller
+          name="step15.shareSASBSatisfaction"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
+              value={field.value}
+              onChange={field.onChange}
+              placeholder={LL.choices.placeholder()}
+              error={!!errors?.step15?.shareSASBSatisfaction}
+            />
+          )}
+        />
+        <FieldErrorMessage name="step15.shareSASBSatisfaction" errors={errors} />
+      </div>
 
-      {content === 'Treatment' && (
-        <Typography>
-          <Caption css={tw`mr-3`}>4.39 Treatment</Caption>
-          {LL.questions[439]()}
-        </Typography>
-      )}
-      {content === 'Control' && (
-        <Typography>
-          <Caption css={tw`mr-3`}>4.40 Control</Caption>
-          {LL.questions[440]()}
-        </Typography>
-      )}
+      <div>
+        <Label number="4.54" required>
+          {LL.questions[454]()}
+        </Label>
+        <Controller
+          name="step15.knowHowContactSASB"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              options={[LL.choices.yesNo[0](), LL.choices.yesNo[1]()]}
+              value={field.value}
+              onChange={field.onChange}
+              placeholder={LL.choices.placeholder()}
+              error={!!errors?.step15?.knowHowContactSASB}
+            />
+          )}
+        />
+        <FieldErrorMessage name="step15.knowHowContactSASB" errors={errors} />
+      </div>
     </div>
   )
 }

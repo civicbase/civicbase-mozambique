@@ -126,16 +126,16 @@ export const getLikely = (field: any, LL: TranslationFunctions) => {
 }
 
 export const get413 = (values: Values, LL: TranslationFunctions) => {
-  if (values.step7.content === 'Treatment - QVSR') {
-    return values.step7.QVSR
+  if (values.step6.content === 'Treatment - QVSR') {
+    return values.step6.QVSR
   } else {
     return null
   }
 }
 
 export const get414 = (values: Values, LL: TranslationFunctions) => {
-  if (values.step7.content === 'Control - Price Slider') {
-    return values.step7.amountPreference
+  if (values.step6.content === 'Control - Price Slider') {
+    return values.step6.amountPreference
   } else {
     return null
   }
@@ -161,16 +161,16 @@ export const getRevise = (field: any, LL: TranslationFunctions) => {
 }
 
 export const get417 = (values: Values, LL: TranslationFunctions) => {
-  if (values.step9.content === 'Treatment - QVSR') {
-    return values.step9.QVSR
+  if (values.step8.content === 'Treatment - QVSR') {
+    return values.step8.QVSR
   } else {
     return null
   }
 }
 
 export const get418 = (values: Values, LL: TranslationFunctions) => {
-  if (values.step9.content === 'Control - Price Slider') {
-    return values.step9.pricePreference
+  if (values.step8.content === 'Control - Price Slider') {
+    return values.step8.pricePreference
   } else {
     return null
   }
@@ -233,35 +233,16 @@ export const getServiceProvider = (field: any, LL: TranslationFunctions) => {
 }
 
 export const get430 = (values: Values, LL: TranslationFunctions) => {
-  if (!values.step13?.SASBNotContactedReasons) {
+  if (!values.step10?.SASBNotContactedReasons) {
     return null
   }
-  // TODO:
-  // switch (step13.SASBNotContactedReasons) {
-  //     case LL.choices[430][0]():
-  //         return
-  //           case LL.choices[430][1]():
-  //             return
-  //           case LL.choices[430][2]():
-  //             return
-  //           case LL.choices[430][3]():
-  //             return
-  //           case LL.choices[430][4]():
-  //             return
-  //           case LL.choices[430][5]():
-  //             return
-  //           case LL.choices[430][6](:
-  //             return
-  //     default:
-  //         return null;
-  // }
 }
 export const get431 = (values: Values, LL: TranslationFunctions) => {
-  if (!values.step13?.serviceProvider.service) {
+  if (!values.step10?.serviceProvider.service) {
     return null
   }
 
-  switch (values.step13?.serviceProvider.service) {
+  switch (values.step10?.serviceProvider.service) {
     case LL.choices[431][0]():
       return 1
     case LL.choices[431][1]():
@@ -335,11 +316,11 @@ export const getSatisfy = (field: any, LL: TranslationFunctions) => {
 }
 
 export const get447 = (values: Values, LL: TranslationFunctions) => {
-  if (!values.step16?.satisfaction.SASBCustomerService) {
+  if (!values.step13?.satisfaction.SASBCustomerService) {
     return null
   }
 
-  switch (values.step16.satisfaction.SASBCustomerService) {
+  switch (values.step13.satisfaction.SASBCustomerService) {
     case LL.choices.satisfy[0]():
       return 1
     case LL.choices.satisfy[1]():
@@ -357,11 +338,11 @@ export const get447 = (values: Values, LL: TranslationFunctions) => {
 }
 
 export const get446 = (values: Values, LL: TranslationFunctions) => {
-  if (!values.step16?.satisfaction.qualityFecalSludgeLast6Months) {
+  if (!values.step13?.satisfaction.qualityFecalSludgeLast6Months) {
     return null
   }
 
-  switch (values.step16?.satisfaction.qualityFecalSludgeLast6Months) {
+  switch (values.step13?.satisfaction.qualityFecalSludgeLast6Months) {
     case LL.choices.satisfaction[0]():
       return 1
     case LL.choices.satisfaction[1]():
@@ -397,10 +378,10 @@ const getRelationship = (relationship: string | null, LL: TranslationFunctions) 
 }
 
 export const get452 = (values: Values, LL: TranslationFunctions) => {
-  if (!values.step17.share) {
+  if (!values.step14.share) {
     return null
   }
-  return values.step17.share.map((s) => ({
+  return values.step14.share.map((s) => ({
     ...s,
     relationship: getRelationship(s.relationship, LL),
   }))
@@ -427,11 +408,11 @@ export const getProblems = (field: any, LL: TranslationFunctions) => {
   }
 }
 export const get510 = (values: Values, LL: TranslationFunctions) => {
-  if (!values.step20?.problem) {
+  if (!values.step17?.problem) {
     return null
   }
 
-  switch (values.step20?.problem) {
+  switch (values.step17?.problem) {
     case LL.choices[510][0]():
       return 1
     case LL.choices[510][1]():
@@ -479,11 +460,11 @@ export const getHowLong = (field: any, LL: TranslationFunctions) => {
 }
 
 export const get614 = (values: Values, LL: TranslationFunctions) => {
-  if (!values.step26?.contacted?.problem) {
+  if (!values.step21?.contacted?.problem) {
     return null
   }
 
-  switch (values.step26?.contacted?.problem) {
+  switch (values.step21?.contacted?.problem) {
     case LL.choices[614][0]():
       return 1
     case LL.choices[614][1]():
@@ -506,11 +487,11 @@ export const get617 = (values: Values, LL: TranslationFunctions) => {
 }
 
 export const get517 = (values: Values, LL: TranslationFunctions) => {
-  if (!values.step20?.anotherEntity) {
+  if (!values.step17?.anotherEntity) {
     return null
   }
 
-  switch (values.step20.anotherEntity) {
+  switch (values.step17.anotherEntity) {
     case LL.choices.entity[0]():
       return 0
     case LL.choices.entity[1]():
@@ -522,11 +503,11 @@ export const get517 = (values: Values, LL: TranslationFunctions) => {
 }
 
 export const get527 = (values: Values, LL: TranslationFunctions) => {
-  if (!values.step23?.dealthWith) {
+  if (!values.step19?.dealthWith) {
     return null
   }
 
-  switch (values.step23?.dealthWith) {
+  switch (values.step19?.dealthWith) {
     case LL.choices.entity[0]():
       return 0
     case LL.choices.entity[1]():
@@ -538,11 +519,11 @@ export const get527 = (values: Values, LL: TranslationFunctions) => {
 }
 
 export const get621 = (values: Values, LL: TranslationFunctions) => {
-  if (!values.step26?.anotherEntity) {
+  if (!values.step21?.anotherEntity) {
     return null
   }
 
-  switch (values.step26.anotherEntity) {
+  switch (values.step21.anotherEntity) {
     case LL.choices.entity[0]():
       return 0
     case LL.choices.entity[1]():
