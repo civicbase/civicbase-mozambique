@@ -1,32 +1,23 @@
 import Button from 'components/Button'
-import Label from 'components/Form/Label'
 import Heading from 'components/Heading'
 import PanelExpand from 'components/PanelExpand'
 import Typography, { Caption } from 'components/Typography'
 import VoteSummary from 'components/VoteSummary'
+import { Question } from 'hooks/use-quadratic'
 import { useI18nContext } from 'i18n/i18n-react'
 import Quadratic from 'methods/Quadratic'
-import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
-import { Quadratic as QuadraticType } from 'types.d'
-import { hasVoted } from 'utils/quadratic'
 
 const Step4 = () => {
-  const { watch } = useFormContext()
+  const { watch, setValue } = useFormContext()
   const { LL } = useI18nContext()
-  const [isReset, setReset] = useState(false)
+  const questions = watch('step4')
 
-  const results: QuadraticType = watch('step4')
-  const isVoted = hasVoted(results)
-
-  const questions = [
-    LL.choices[48][0](),
-    LL.choices[48][1](),
-    LL.choices[48][2](),
-    LL.choices[48][3](),
-    LL.choices[48][4](),
-  ]
+  const handleReset = () => {
+    const resetQuestions = questions.map((q: Question) => ({ ...q, vote: 0, credits: 0 }))
+    setValue('step4', resetQuestions)
+  }
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -41,27 +32,17 @@ const Step4 = () => {
 
       <Typography css={tw`text-justify`}>{LL.questions.QVSRInstruction()}</Typography>
 
-      {/* <Typography css={tw`text-justify`}>{LL.questions.QVSRInfo()}</Typography> */}
-
-      <Quadratic qs={questions} isReset={isReset} step="step4" sort={true} />
+      <Quadratic name="step4" />
 
       <PanelExpand title="The allocation of your votes:">
-        <VoteSummary results={results} />
+        <VoteSummary results={questions} />
       </PanelExpand>
 
       <div css={[tw`flex space-x-2`]}>
         <Typography>{LL.choices.QVSRReset()}</Typography>
 
         <div css={tw`flex justify-center`}>
-          <Button
-            css={tw`height[fit-content]`}
-            type="button"
-            variant="tertiary"
-            onClick={() => {
-              setReset(true)
-              setTimeout(() => setReset(false), 1000)
-            }}
-          >
+          <Button css={tw`height[fit-content]`} type="button" variant="tertiary" onClick={handleReset}>
             {LL.placeholder.reset()}
           </Button>
         </div>

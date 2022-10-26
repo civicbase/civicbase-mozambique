@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import PagesLayout from 'layout/Pages'
@@ -12,7 +12,6 @@ import useAsync from 'hooks/use-async'
 import { createAnswer } from 'services/answer'
 import { transform } from 'transform'
 import { FormValues } from 'types.d'
-import { getRandomQVSRSlider, getRandomTreatmentControl } from 'utils/random'
 import validator from 'validations'
 import { useI18nContext } from 'i18n/i18n-react'
 import ODKConfirmation from 'components/ODKConfirmation'
@@ -26,18 +25,8 @@ const App = () => {
   const { latitude, longitude, error } = useGeolocation(userGesture)
   const { run } = useAsync()
 
-  const content = useMemo(() => getRandomTreatmentControl(), [])
-  const QVSRSliderContent = useMemo(() => getRandomQVSRSlider(), [])
-
-  useEffect(() => {
-    console.table([
-      { page: [7, 9, 11], content: QVSRSliderContent },
-      { page: [5, 15], content: content },
-    ])
-  }, [])
-
   const methods = useForm<FormValues>({
-    defaultValues: useMemo(() => getFormValues(LL, content, QVSRSliderContent), []),
+    defaultValues: useMemo(() => getFormValues(LL), []),
     resolver: zodResolver(validationSchema(LL)),
   })
 

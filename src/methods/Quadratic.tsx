@@ -2,53 +2,19 @@ import DynamicBar from 'components/DynamicBar'
 import FieldErrorMessage from 'components/Form/FieldErrorMessage'
 import { Headline } from 'components/Typography'
 import Vote from 'components/Vote'
-import useQuadratic from 'hooks/use-quadratic'
+import useQuadratic, { Question } from 'hooks/use-quadratic'
 import { useI18nContext } from 'i18n/i18n-react'
-import { memo, useEffect } from 'react'
+import { memo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 
-const Quadratic = ({
-  qs,
-  step,
-  credits = 100,
-  isReset = false,
-  sort = false,
-}: {
-  qs: any[]
-  step: string
-  credits?: number
-  isReset?: boolean
-  sort?: boolean
-}) => {
+const Quadratic = ({ name, credits = 100 }: { name: string; credits?: number }) => {
   const { LL } = useI18nContext()
   const {
-    setValue,
     formState: { errors },
   } = useFormContext()
 
-  const survey = {
-    setup: {
-      credits,
-    },
-    quadratic: qs.map((q: string) => ({
-      statement: q,
-    })),
-  }
-
-  const { questions, availableCredits, vote, canVote, reset } = useQuadratic(survey, sort)
-
-  useEffect(() => {
-    if (isReset) {
-      reset()
-    }
-  }, [isReset])
-
-  useEffect(() => {
-    if (questions) {
-      setValue(step, questions)
-    }
-  }, [questions])
+  const { questions, availableCredits, vote, canVote } = useQuadratic(name, credits)
 
   return (
     <div>
@@ -56,7 +22,7 @@ const Quadratic = ({
         <DynamicBar total={credits} availableCredits={availableCredits} language={LL.placeholder.credits()} />
       </div>
 
-      {questions.map((question, index) => {
+      {questions?.map((question: Question, index: number) => {
         const canVoteUp = canVote(index, 1)
         const canVoteDown = canVote(index, -1)
 
@@ -84,7 +50,7 @@ const Quadratic = ({
         )
       })}
 
-      <FieldErrorMessage name={step} errors={errors} />
+      <FieldErrorMessage name={name} errors={errors} />
     </div>
   )
 }

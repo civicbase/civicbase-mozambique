@@ -4,22 +4,22 @@ import Heading from 'components/Heading'
 import Typography, { Caption } from 'components/Typography'
 import { useI18nContext } from 'i18n/i18n-react'
 import Quadratic from 'methods/Quadratic'
-import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { Quadratic as QuadraticType } from 'types.d'
 import tw from 'twin.macro'
 import PanelExpand from 'components/PanelExpand'
 import VoteSummary from 'components/VoteSummary'
 import Button from 'components/Button'
-import { hasVoted } from 'utils/quadratic'
+import { Question } from 'hooks/use-quadratic'
 
 const QVSR = () => {
-  const { watch } = useFormContext()
+  const { watch, setValue } = useFormContext()
   const { LL } = useI18nContext()
-  const [isReset, setReset] = useState(false)
+  const questions = watch('step6.QVSR')
 
-  const results: QuadraticType = watch('step6.QVSR')
-  const isVoted = hasVoted(results)
+  const handleReset = () => {
+    const resetQuestions = questions.map((q: Question) => ({ ...q, vote: 0, credits: 0 }))
+    setValue('step6.QVSR', resetQuestions)
+  }
 
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
@@ -32,25 +32,17 @@ const QVSR = () => {
 
       <Typography css={tw`text-justify`}>{LL.questions.QVSRInstruction()}</Typography>
 
-      <Quadratic qs={['6500 MT', '7500 MT', '8500 MT', '9500 MT', '10500 MT']} isReset={isReset} step="step6.QVSR" />
+      <Quadratic name="step6.QVSR" />
 
       <PanelExpand title="The allocation of your votes:">
-        <VoteSummary results={results} />
+        <VoteSummary results={questions} />
       </PanelExpand>
 
       <div css={tw`flex space-x-2`}>
         <Typography>{LL.choices.QVSRReset()}</Typography>
 
         <div css={tw`flex justify-center`}>
-          <Button
-            css={tw`height[fit-content]`}
-            type="button"
-            variant="tertiary"
-            onClick={() => {
-              setReset(true)
-              setTimeout(() => setReset(false), 1000)
-            }}
-          >
+          <Button css={tw`height[fit-content]`} type="button" variant="tertiary" onClick={handleReset}>
             {LL.placeholder.reset()}
           </Button>
         </div>

@@ -1,39 +1,24 @@
 import { useEffect, useState } from 'react'
-import { createQuestions } from 'utils/survey'
+import { useFormContext } from 'react-hook-form'
 
-type Question = {
+export type Question = {
   id: string
   statement: string
   vote: number
   credits: number
-  order: number
+  order?: number
 }
 
-const useQuadratic = (survey: any, sort: boolean) => {
-  const {
-    setup: { credits },
-    quadratic,
-  } = survey
-
-  const [questions, setQuestions] = useState<Question[]>(
-    createQuestions(quadratic, sort),
-  )
+const useQuadratic = (name: string, credits: number) => {
+  const { watch, setValue, getValues } = useFormContext()
   const [availableCredits, setAvailableCredits] = useState(credits || 0)
 
-  const reset = () => {
-    const newQuestions = questions.map(question => ({
-      ...question,
-      vote: 0,
-      credits: 0,
-    }))
-
-    setQuestions(newQuestions)
-  }
+  const questions = watch(name)
 
   const canVote = (index: number, vote: number) => {
     let simulatedCost = 0
 
-    questions.forEach((q, i) => {
+    questions?.forEach((q: Question, i: number) => {
       if (i === index) {
         simulatedCost += Math.pow(q.vote + vote, 2)
       } else {
@@ -50,26 +35,23 @@ const useQuadratic = (survey: any, sort: boolean) => {
 
   const vote = (index: number, vote: number) => {
     if (canVote(index, vote)) {
-      setQuestions(
-        questions.map((question, i) => {
-          return index === i
-            ? {
-                ...question,
-                vote: question.vote + vote,
-                credits: Math.pow(question.vote + vote, 2),
-              }
-            : question
-        }),
-      )
+      const newQuestion = questions?.map((question: Question, i: number) => {
+        return index === i
+          ? {
+              ...question,
+              vote: question.vote + vote,
+              credits: Math.pow(question.vote + vote, 2),
+            }
+          : question
+      })
+
+      setValue(name, newQuestion)
     }
   }
 
   //   Update available credits
   useEffect(() => {
-    const totalCost = questions.reduce(
-      (cost, question) => cost + Math.pow(question.vote, 2),
-      0,
-    )
+    const totalCost = questions?.reduce((cost: number, question: Question) => cost + Math.pow(question.vote, 2), 0)
 
     if (credits) {
       setAvailableCredits(credits - totalCost)
@@ -81,7 +63,6 @@ const useQuadratic = (survey: any, sort: boolean) => {
     vote,
     questions,
     availableCredits,
-    reset,
   }
 }
 

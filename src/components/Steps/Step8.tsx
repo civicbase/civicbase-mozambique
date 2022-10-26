@@ -35,7 +35,7 @@ const QVSR = () => {
 
       <Typography css={tw`text-justify`}>{LL.questions.QVSRInstruction()}</Typography>
 
-      <Quadratic qs={['64 MT', '72 MT', '80 MT', '88 MT', '96 MT']} isReset={isReset} step="step8.QVSR" />
+      <Quadratic name="step8.QVSR" />
 
       <PanelExpand title="The allocation of your votes:">
         <VoteSummary results={results} />
