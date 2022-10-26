@@ -57,15 +57,9 @@ const App = () => {
         amountPreference: '8500',
         content: QVSRSliderContent,
       },
-      step8: {
-        willingPay: 0,
-      },
       step9: {
         pricePreference: '80',
         content: QVSRSliderContent,
-      },
-      step10: {
-        willingPay: 0,
       },
       step13: {
         serviceProvider: {
