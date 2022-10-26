@@ -231,7 +231,7 @@ const pt: BaseTranslation = {
     431: `Que tipo de seviços pediu?`,
     432: `Pagou pelo serviço?`,
     433: `Quanto pagou pelo serviço?`,
-    434: `Actualmente, o SASB oferece o serviço de remoção de lodo fecal e limpeza da fosse séptica por um preço total de 8700MT.`,
+    434: `Currently, SASB offers the service to remove the fecal sludge removal for 2,350 Mt. What should the price for fecal slugde desludging be for everyone in your neighborhood including yourself?`,
     439: `Como comentei anteriormente, na minha opinião pessoal, o SASB tem feito um bom trabalho! Eles implementaram também um programa de treinamento especial para melhorar o desempenho de seus funcionários. Esse programa de treinamento inovador já melhorou a confiabilidade dos serviços e a resposta à reclamações num outro país.`,
     440: `Como comentei anteriormente, na minha opinião pessoal, o SASB está a fazer um bom trabalho!`,
     441: `De modo geral, está satisfeito com a qualidade dos serviços de esgoto actualmente prestados?`,

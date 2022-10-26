@@ -78,12 +78,7 @@ export interface FormValues {
     SASBNotContactedReasons: any
   }
   step14?: {
-    fsm: {
-      tooExpensive: string
-      tooCheap: string
-      expensive: string
-      greatValue: string
-    }
+    pricePreference: string
   }
   step15: {
     content: 'Treatment' | 'Control'

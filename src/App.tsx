@@ -73,12 +73,7 @@ const App = () => {
         },
       },
       step14: {
-        fsm: {
-          tooExpensive: '8700',
-          tooCheap: '8700',
-          expensive: '8700',
-          greatValue: '8700',
-        },
+        pricePreference: '2350',
       },
       step15: {
         content: content,

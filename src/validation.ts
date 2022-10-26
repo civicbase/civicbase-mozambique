@@ -229,6 +229,11 @@ const validationSchema = (LL: TranslationFunctions) => {
         },
       )
       .optional(),
+    step14: z
+      .object({
+        pricePreference: z.string(),
+      })
+      .optional(),
     step15: z.object({
       content: z.string(),
     }),

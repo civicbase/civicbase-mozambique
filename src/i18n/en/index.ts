@@ -280,9 +280,7 @@ const en: BaseTranslation = {
     431: `What services did you request`,
     432: `Did you pay for the service?`,
     433: `How much did you pay for the service?`,
-    434: `Currently, SASB offers the
-    service to remove the fecal sludge and clean your septic tank for a
-    total of 8700MT.`,
+    434: `Currently, SASB offers the service to remove the fecal sludge removal for 2,350 Mt. What should the price for fecal slugde desludging be for everyone in your neighborhood including yourself?`,
     439: `As I mentioned
     earlier, in my personal opinion, SASB have been doing a good job! They
     have also implemented a spacial training program to improve
