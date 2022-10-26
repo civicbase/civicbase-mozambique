@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import tw from 'twin.macro'
 import { getLocalDate } from 'utils/getLocalDate'
+import manholesImage from '../../images/manhole_covers.jpg'
 
 const Step20 = () => {
   const { LL } = useI18nContext()
@@ -61,6 +62,8 @@ const Step20 = () => {
         <Label number="6.4" required>
           {LL.questions[64]()}
         </Label>
+
+        <img src={manholesImage} alt="manholes" />
 
         {[LL.choices.problems[0](), LL.choices.problems[1](), LL.choices.problems[2](), LL.choices.problems[3]()].map(
           (option) => (

@@ -75,6 +75,11 @@ const Step14 = () => {
           <img src={diagram} alt="service" />
         </div>
 
+        <label css={tw`inline-flex space-x-4 items-center select-none mt-2 mb-10`}>
+          <Checkbox {...register(`step14.notSharing`)} />
+          <span>{LL.choices.notSharing()}</span>
+        </label>
+
         {!notSharing && (
           <>
             <div css={tw`flex space-x-2 items-end`}>
@@ -156,11 +161,6 @@ const Step14 = () => {
 
         <div css={tw`mt-4`}>
           <FieldErrorMessage name="step14.share" errors={errors} />
-
-          <label css={tw`inline-flex space-x-4 items-center select-none mt-2`}>
-            <Checkbox {...register(`step14.notSharing`)} />
-            <span>{LL.choices.notSharing()}</span>
-          </label>
         </div>
       </div>
     </div>
