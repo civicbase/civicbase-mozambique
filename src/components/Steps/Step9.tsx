@@ -37,11 +37,7 @@ const QVSR = () => {
 
       {/* <Typography css={tw`text-justify`}>{LL.questions.QVSRInfo()}</Typography> */}
 
-      <Quadratic
-        qs={['64 MT', '68 MT', '72 MT', '76 MT', '80 MT', '84 MT', '88 MT', '92 MT', '96 MT']}
-        isReset={isReset}
-        step="step9.QVSR"
-      />
+      <Quadratic qs={['64 MT', '72 MT', '80 MT', '88 MT', '96 MT']} isReset={isReset} step="step9.QVSR" />
 
       <PanelExpand title="The allocation of your votes:">
         <VoteSummary results={results} />
@@ -100,7 +96,7 @@ const Slider = () => {
           css={tw`appearance-none w-full h-1.5 p-0 bg-brand bg-opacity-25 border-radius[8px] focus:outline-none focus:ring-0 focus:shadow-none`}
           min="64"
           max="96"
-          step="4"
+          step="8"
           {...register(`step9.pricePreference`)}
         />
         <FieldErrorMessage name="step9.pricePreference" errors={errors} />
