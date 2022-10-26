@@ -28,16 +28,6 @@ const Step9 = () => {
   })
 
   useEffect(() => {
-    const initial = getY(getValues, {
-      content: 'step8.content',
-      treatment: 'step8.QVSR',
-      control: 'step8.pricePreference',
-    })
-
-    setValue('step9.willingPay', initial)
-  }, [])
-
-  useEffect(() => {
     if (revisedPrice === LL.choices.revise[1]()) {
       setValue('step9.willingPay', y)
     }

@@ -42,6 +42,10 @@ const validator = async (step: number, methods: UseFormReturn<FormValues, object
       const sanitationType = methods.getValues('step2.sanitationType')
       const emptiedSepticTank = methods.getValues('step10.emptiedSepticTank')
 
+      if (sanitationType != LL.choices.sanitationType[1]()) {
+        return true
+      }
+
       if (!emptiedSepticTank) {
         methods.setError('step10.emptiedSepticTank', {
           type: 'custom',

@@ -1,6 +1,7 @@
 import { useI18nContext } from 'i18n/i18n-react'
 import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
+import autoSave from 'utils/autoSave'
 import * as Section from '.'
 
 type StepsProps = {
@@ -22,6 +23,15 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
         top: 0,
         behavior: 'smooth',
       })
+    }
+  }, [id])
+
+  // Auto save
+  useEffect(() => {
+    if (id > 1 && id < 22) {
+      const values = getValues()
+
+      autoSave(values)
     }
   }, [id])
 

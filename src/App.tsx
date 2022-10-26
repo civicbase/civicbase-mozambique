@@ -11,13 +11,12 @@ import Header from 'components/Header'
 import useAsync from 'hooks/use-async'
 import { createAnswer } from 'services/answer'
 import { transform } from 'transform'
-import params from 'utils/params'
 import { FormValues } from 'types.d'
 import { getRandomQVSRSlider, getRandomTreatmentControl } from 'utils/random'
 import validator from 'validations'
 import { useI18nContext } from 'i18n/i18n-react'
 import ODKConfirmation from 'components/ODKConfirmation'
-import { getLocalDate } from 'utils/getLocalDate'
+import getFormValues from 'utils/getFormValues'
 
 const App = () => {
   const { LL } = useI18nContext()
@@ -26,7 +25,6 @@ const App = () => {
   const [userGesture, setUserGesture] = useState(false)
   const { latitude, longitude, error } = useGeolocation(userGesture)
   const { run } = useAsync()
-  const language = navigator.language.split(/[-_]/)[0]
 
   const content = useMemo(() => getRandomTreatmentControl(), [])
   const QVSRSliderContent = useMemo(() => getRandomQVSRSlider(), [])
@@ -39,43 +37,7 @@ const App = () => {
   }, [])
 
   const methods = useForm<FormValues>({
-    defaultValues: {
-      startAt: getLocalDate(),
-      step1: {
-        language: language === 'pt' ? LL.choices.languages[1]() : LL.choices.languages[0](),
-        uniqueId: params.uniqueId,
-      },
-      step3: {
-        waterBill: {
-          shareNumber: 0,
-        },
-      },
-      step5: {
-        content: content,
-      },
-      step6: {
-        amountPreference: '8500',
-        content: QVSRSliderContent,
-      },
-      step8: {
-        pricePreference: '80',
-        content: QVSRSliderContent,
-      },
-      step10: {
-        serviceProvider: {
-          howMuch: 0,
-        },
-      },
-      step11: {
-        pricePreference: '2350',
-      },
-      step12: {
-        content: content,
-      },
-      step14: {
-        share: [{ name: '', relationship: null, closeness: null }],
-      },
-    },
+    defaultValues: useMemo(() => getFormValues(LL, content, QVSRSliderContent), []),
     resolver: zodResolver(validationSchema(LL)),
   })
 
@@ -144,8 +106,7 @@ const App = () => {
             LL,
           )
 
-          // console.log('answer', answer)git
-
+          localStorage.removeItem('civicbase_form')
           run(createAnswer(answer))
 
           setStep(step + 1)

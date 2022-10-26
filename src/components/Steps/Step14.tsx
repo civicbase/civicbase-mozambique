@@ -143,14 +143,16 @@ const Step14 = () => {
           </>
         )}
 
-        <div css={tw`mt-4`}>
-          <AddButton onClick={handleAddPerson} disabled={fields.length >= 3 || notSharing}>
-            <div css={tw`flex items-center space-x-4`}>
-              <GrAdd />
-              <Typography>{LL.placeholder.addPerson()}</Typography>
-            </div>
-          </AddButton>
-        </div>
+        {!notSharing && (
+          <div css={tw`mt-4`}>
+            <AddButton onClick={handleAddPerson} disabled={fields.length >= 3 || notSharing}>
+              <div css={tw`flex items-center space-x-4`}>
+                <GrAdd />
+                <Typography>{LL.placeholder.addPerson()}</Typography>
+              </div>
+            </AddButton>
+          </div>
+        )}
 
         <div css={tw`mt-4`}>
           <FieldErrorMessage name="step14.share" errors={errors} />

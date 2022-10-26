@@ -24,12 +24,6 @@ const Step18 = () => {
   const y = getValues('step7.willingPay') //4.16
 
   useEffect(() => {
-    const initial = getValues('step7.willingPay')
-
-    setValue('step18.willingPay', initial)
-  }, [])
-
-  useEffect(() => {
     if (revisedPrice === LL.choices.revise[1]()) {
       setValue('step18.willingPay', y)
     }
