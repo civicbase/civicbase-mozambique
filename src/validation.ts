@@ -57,6 +57,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         invalid_type_error: LL.choices.placeholder(),
       }),
       willingPay: z.any().optional(),
+      y: z.any().optional(),
+      x: z.number(),
     }),
     step8: z.object({
       content: z.string(),
@@ -68,6 +70,8 @@ const validationSchema = (LL: TranslationFunctions) => {
         invalid_type_error: LL.choices.placeholder(),
       }),
       willingPay: z.any().optional(),
+      y: z.any().optional(),
+      x: z.number(),
     }),
     step10: z
       .object({
@@ -516,7 +520,11 @@ const validationSchema = (LL: TranslationFunctions) => {
       )
       .refine(
         (step) => {
-          if (step.contacted === LL.choices.yesNo[0]() && step.contactedWho['SASB']) {
+          if (
+            step.contacted === LL.choices.yesNo[0]() &&
+            step.contactedWho['SASB'] &&
+            step.problemResolved === LL.choices.yesNo[0]()
+          ) {
             return step.howLong
           }
 
@@ -533,6 +541,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         invalid_type_error: LL.choices.placeholder(),
       }),
       willingPay: z.any().optional(),
+      y: z.any().optional(),
     }),
     step19: z
       .object({
@@ -541,10 +550,26 @@ const validationSchema = (LL: TranslationFunctions) => {
         bribe: z.string(),
         dealthWith: z.string(),
         problemResolved: z.string(),
-        howLong: z.string({
-          invalid_type_error: LL.choices.placeholder(),
-        }),
+        howLong: z
+          .string({
+            invalid_type_error: LL.choices.placeholder(),
+          })
+          .nullish()
+          .optional(),
       })
+      .refine(
+        (step) => {
+          if (step?.problemResolved === LL.choices.yesNo[0]()) {
+            return step?.howLong
+          }
+
+          return true
+        },
+        {
+          message: LL.choices.placeholder(),
+          path: ['howLong'],
+        },
+      )
       .optional(),
     step20: z.object({
       drainageBoxBlocked: z.string({
@@ -707,7 +732,11 @@ const validationSchema = (LL: TranslationFunctions) => {
       )
       .refine(
         (step) => {
-          if (step.contactedDrainageIssue === LL.choices.yesNo[0]() && step.contacted?.who['SASB']) {
+          if (
+            step.contactedDrainageIssue === LL.choices.yesNo[0]() &&
+            step.contacted?.who['SASB'] &&
+            step.problemResolved === LL.choices.yesNo[0]()
+          ) {
             return step.howLong
           }
           return true
@@ -719,6 +748,7 @@ const validationSchema = (LL: TranslationFunctions) => {
         invalid_type_error: LL.choices.placeholder(),
       }),
       willingPay: z.any().optional(),
+      y: z.any().optional(),
     }),
   })
 

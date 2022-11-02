@@ -21,11 +21,18 @@ const Step7 = () => {
 
   const price = watch('step7.willingPay')
   const revisedPrice = watch('step7.revisePrice')
+  const x = getValues('step7.x')
   const y = getY(getValues, {
     content: 'step6.content',
     treatment: 'step6.QVSR',
     control: 'step6.amountPreference',
   })
+
+  useEffect(() => {
+    if (y) {
+      setValue('step7.y', y)
+    }
+  }, [y])
 
   useEffect(() => {
     if (revisedPrice === LL.choices.revise[1]()) {
@@ -48,7 +55,7 @@ const Step7 = () => {
         {LL.questions[415].paragraph1()}
       </Typography>
 
-      <Typography css={tw`text-justify`}>{LL.questions[415].paragraph2({ y })}</Typography>
+      <Typography css={tw`text-justify`}>{LL.questions[415].paragraph2({ y, x })}</Typography>
 
       <div>
         <Label required>{LL.questions[415].paragraph3({ y })}</Label>
@@ -56,7 +63,7 @@ const Step7 = () => {
         <div css={tw`flex justify-between`}>
           {[LL.choices.revise[0](), LL.choices.revise[1](), LL.choices.revise[2]()].map((option) => (
             <label css={tw`flex flex-col space-y-2 items-center select-none mt-5`} key={option}>
-              <span css={tw`text-center`}>{option}</span>
+              <span>{option}</span>
               <Radio {...register(`step7.revisePrice`)} value={option} />
             </label>
           ))}

@@ -8,6 +8,7 @@ type PagesLayoutProps = {
   content: React.ReactNode
   geolocation?: React.ReactNode
   ODKConfirmation?: React.ReactNode
+  step: number
 }
 
 const styles = {
@@ -17,10 +18,16 @@ const styles = {
   ],
 }
 
-const PagesLayout = ({ footer, content, geolocation, ODKConfirmation, header }: PagesLayoutProps) => {
+const PagesLayout = ({ footer, content, geolocation, ODKConfirmation, header, step }: PagesLayoutProps) => {
   return (
     <div css={styles.container({ hasBackground: true })}>
       <Card css={tw`relative`}>
+        {step > 1 && (
+          <>
+            <div css={tw`h-1 bg-brand2 absolute top-0 left-0`} style={{ width: `${(step * 100) / 22}%` }} />
+            <div css={tw`w-full h-1 bg-brand2 bg-opacity-40 absolute top-0 left-0`} />
+          </>
+        )}
         {header}
         {geolocation}
         {ODKConfirmation}

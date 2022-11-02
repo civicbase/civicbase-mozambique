@@ -22,18 +22,28 @@ const getCsv = (request: any, response: any) => {
     { value: '46' },
     { value: '47' },
     { value: '48' },
+    { value: '48HVValue', label: '48 highest value' },
+    { value: '48HVVote', label: '48 highest vote' },
     { value: 'page5' },
     { value: '411' },
     { value: '412' },
-    { value: 'page7' },
+    { value: 'page6' },
     { value: '413' },
+    { value: '413HVValue', label: '413 highest value' },
+    { value: '413HVVote', label: '413 highest vote' },
     { value: '414' },
     { value: '415' },
+    { value: '415Y' },
+    { value: '415X' },
     { value: '416' },
-    { value: 'page9' },
+    { value: 'page8' },
     { value: '417' },
+    { value: '417HVValue', label: '417 highest value' },
+    { value: '417HVVote', label: '417 highest vote' },
     { value: '418' },
     { value: '419' },
+    { value: '419Y' },
+    { value: '419X' },
     { value: '420' },
     { value: '425' },
     { value: '426' },
@@ -44,7 +54,8 @@ const getCsv = (request: any, response: any) => {
     { value: '431' },
     { value: '432' },
     { value: '433' },
-    { value: 'page15' },
+    { value: '434' },
+    { value: 'page12' },
     { value: '441' },
     { value: '442' },
     { value: '443' },
@@ -76,9 +87,8 @@ const getCsv = (request: any, response: any) => {
     { value: '518' },
     { value: '519' },
     { value: '520' },
+    { value: '520Y' },
     { value: '521' },
-    { value: '522' },
-    { value: '523' },
     { value: '524' },
     { value: '525' },
     { value: '526' },
@@ -102,8 +112,9 @@ const getCsv = (request: any, response: any) => {
     { value: '621' },
     { value: '622' },
     { value: '623' },
-    { value: '624' },
-    { value: '625' },
+    { value: '522' },
+    { value: '522Y' },
+    { value: '523' },
   ]
 
   db.collection('mozambique')
@@ -122,16 +133,6 @@ const getCsv = (request: any, response: any) => {
 
       response.attachment('mozambique.csv')
       response.status(200).send(answerCSV)
-
-      // fs.writeFile('data.csv', csv.parse(answers), (err) => {
-      //   if (err) {
-      //     throw err
-      //   }
-      // })
-
-      // response.send(Buffer.from(fs))
-
-      // response.status(200).json(answers)
     })
 }
 

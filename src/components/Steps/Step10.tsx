@@ -25,7 +25,7 @@ const Step10 = () => {
   const emptiedSepticTank = watch('step10.emptiedSepticTank') === LL.choices.yesNo[0]()
 
   return (
-    <div css={tw`grid grid-cols-1 gap-6`}>
+    <div css={tw`grid grid-cols-1 gap-6 pb-40`}>
       <Heading subtitle={LL.headings[13]()} />
 
       <div>

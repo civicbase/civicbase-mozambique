@@ -417,11 +417,11 @@ type RootTranslation = {
 			 */
 			'1': string
 			/**
-			 * L​e​s​s​ ​s​a​t​i​s​f​i​e​d
+			 * D​i​s​s​a​t​i​s​f​i​e​d
 			 */
 			'2': string
 			/**
-			 * D​i​s​s​a​t​i​s​f​i​e​d
+			 * V​e​r​y​ ​D​i​s​a​t​i​s​f​i​e​d
 			 */
 			'3': string
 		}
@@ -445,19 +445,19 @@ type RootTranslation = {
 		}
 		satisfactionLevel: {
 			/**
-			 * S​a​t​i​s​f​i​e​d
+			 * V​e​r​y​ ​S​a​t​i​s​f​i​e​d
 			 */
 			'0': string
 			/**
-			 * S​o​m​e​w​h​a​t​ ​S​a​t​i​s​f​i​e​d
+			 * S​a​t​i​s​f​i​e​d
 			 */
 			'1': string
 			/**
-			 * S​o​m​e​w​h​a​t​ ​D​i​s​s​a​t​i​s​f​i​e​d
+			 * D​i​s​s​a​t​i​s​f​i​e​d
 			 */
 			'2': string
 			/**
-			 * D​i​s​s​a​s​t​i​s​f​i​e​d
+			 * V​e​r​y​ ​D​i​s​s​a​s​t​i​s​f​i​e​d
 			 */
 			'3': string
 		}
@@ -908,11 +908,12 @@ type RootTranslation = {
 			 */
 			paragraph1: string
 			/**
-			 * F​o​r​ ​t​h​e​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​.​ ​T​h​e​y​ ​p​r​o​p​o​s​e​ ​a​n​ ​a​v​e​r​a​g​e​ ​p​r​i​c​e​ ​o​f​ ​(​X​)​,​
+			 * F​o​r​ ​t​h​e​ ​s​e​w​e​r​ ​c​o​n​n​e​c​t​i​o​n​ ​f​e​e​.​ ​T​h​e​y​ ​p​r​o​p​o​s​e​ ​a​n​ ​a​v​e​r​a​g​e​ ​p​r​i​c​e​ ​o​f​ ​(​{​x​}​ ​M​T​)​,​
 		​ ​ ​ ​ ​ ​ ​w​h​e​r​e​a​s​ ​y​o​u​ ​p​r​o​p​o​s​e​d​ ​t​h​e​ ​p​r​i​c​e​ ​(​{​y​}​ ​M​T​)​.
-			 * @param {unknown} y
+			 * @param {number} x
+			 * @param {number} y
 			 */
-			paragraph2: RequiredParams<'y'>
+			paragraph2: RequiredParams<'x' | 'y'>
 			/**
 			 * H​a​v​i​n​g​ ​h​e​a​r​d​ ​t​h​e​ ​c​o​m​m​u​n​i​t​y​'​s​ ​p​r​o​p​o​s​a​l​ ​,​ ​w​o​u​l​d​ ​y​o​u​ ​l​i​k​e​ ​t​o​ ​r​e​v​i​s​e​ ​y​o​u​r​
 		​ ​ ​ ​ ​ ​ ​p​r​e​v​i​o​u​s​l​y​ ​s​t​a​t​e​d​ ​p​r​i​c​e​?​ ​R​e​m​e​m​b​e​r​,​ ​y​o​u​r​ ​p​r​o​p​o​s​e​d​ ​p​r​i​c​e​ ​i​s​ ​(​{​y​}​ ​M​T​)
@@ -980,11 +981,12 @@ type RootTranslation = {
 			 */
 			paragraph1: string
 			/**
-			 * F​o​r​ ​t​h​e​ ​m​o​n​t​h​l​y​ ​s​a​n​i​t​a​t​i​o​n​ ​t​a​x​,​ ​T​h​e​y​ ​p​r​o​p​o​s​e​ ​a​n​ ​a​v​e​r​a​g​e​ ​p​r​i​c​e​ ​o​f​ ​(​X​)​.​
+			 * F​o​r​ ​t​h​e​ ​m​o​n​t​h​l​y​ ​s​a​n​i​t​a​t​i​o​n​ ​t​a​x​,​ ​T​h​e​y​ ​p​r​o​p​o​s​e​ ​a​n​ ​a​v​e​r​a​g​e​ ​p​r​i​c​e​ ​o​f​ ​(​{​x​}​ ​M​T​)​.​
 		​ ​ ​ ​ ​ ​ ​Y​o​u​ ​p​r​o​p​o​s​e​d​ ​t​h​e​ ​p​r​i​c​e​ ​(​{​y​}​ ​M​T​)​.
-			 * @param {unknown} y
+			 * @param {number} x
+			 * @param {number} y
 			 */
-			paragraph2: RequiredParams<'y'>
+			paragraph2: RequiredParams<'x' | 'y'>
 			/**
 			 * H​a​v​i​n​g​ ​h​e​a​r​d​ ​t​h​e​ ​c​o​m​m​u​n​i​t​y​'​s​ ​p​r​o​p​o​s​a​l​ ​,​ ​w​o​u​l​d​ ​y​o​u​ ​l​i​k​e​ ​t​o​ ​r​e​v​i​s​e​ ​y​o​u​r​
 		​ ​ ​ ​ ​ ​ ​p​r​e​v​i​o​u​s​l​y​ ​s​t​a​t​e​d​ ​p​r​i​c​e​?​ ​R​e​m​e​m​b​e​r​,​ ​y​o​u​r​ ​p​r​o​p​o​s​e​d​ ​p​r​i​c​e​ ​i​s​ ​(​{​y​}​ ​M​T​)
@@ -1030,9 +1032,7 @@ type RootTranslation = {
 		 */
 		'433': string
 		/**
-		 * C​u​r​r​e​n​t​l​y​,​ ​S​A​S​B​ ​o​f​f​e​r​s​ ​t​h​e​
-	​ ​ ​ ​ ​s​e​r​v​i​c​e​ ​t​o​ ​r​e​m​o​v​e​ ​t​h​e​ ​f​e​c​a​l​ ​s​l​u​d​g​e​ ​a​n​d​ ​c​l​e​a​n​ ​y​o​u​r​ ​s​e​p​t​i​c​ ​t​a​n​k​ ​f​o​r​ ​a​
-	​ ​ ​ ​ ​t​o​t​a​l​ ​o​f​ ​8​7​0​0​M​T​.
+		 * C​u​r​r​e​n​t​l​y​,​ ​S​A​S​B​ ​o​f​f​e​r​s​ ​t​h​e​ ​s​e​r​v​i​c​e​ ​t​o​ ​r​e​m​o​v​e​ ​t​h​e​ ​f​e​c​a​l​ ​s​l​u​d​g​e​ ​r​e​m​o​v​a​l​ ​f​o​r​ ​2​,​3​5​0​ ​M​t​.​ ​W​h​a​t​ ​s​h​o​u​l​d​ ​t​h​e​ ​p​r​i​c​e​ ​f​o​r​ ​f​e​c​a​l​ ​s​l​u​g​d​e​ ​d​e​s​l​u​d​g​i​n​g​ ​b​e​ ​f​o​r​ ​e​v​e​r​y​o​n​e​ ​i​n​ ​y​o​u​r​ ​n​e​i​g​h​b​o​r​h​o​o​d​ ​i​n​c​l​u​d​i​n​g​ ​y​o​u​r​s​e​l​f​?
 		 */
 		'434': string
 		/**
@@ -1227,27 +1227,27 @@ type RootTranslation = {
 		 */
 		'617': string
 		/**
-		 * (​C​a​s​o​ ​t​e​n​h​a​ ​c​o​n​t​a​c​t​a​d​o​ ​o​ ​S​A​S​B​)​,​ ​a​ ​p​e​s​s​o​a​ ​q​u​e​ ​l​h​e​ ​a​t​e​n​d​e​u​ ​t​r​a​t​o​u​-​l​h​e​ ​d​u​m​a​ ​f​o​r​m​a​ ​c​o​r​r​e​c​t​a​ ​e​ ​e​d​u​c​a​d​a​?
+		 * (​I​f​ ​c​o​n​t​a​c​t​e​d​ ​S​A​S​B​)​ ​D​i​d​ ​t​h​e​ ​p​e​r​s​o​n​ ​w​h​o​ ​d​e​a​l​t​ ​w​i​t​h​ ​y​o​u​r​ ​c​o​m​p​l​a​i​n​t​ ​t​r​e​a​t​ ​y​o​u​ ​i​n​ ​a​ ​f​a​i​r​ ​a​n​d​ ​p​o​l​i​t​e​ ​m​a​n​n​e​r​?
 		 */
 		'618': string
 		/**
-		 * (​C​a​s​o​ ​t​e​n​h​a​ ​s​i​d​o​ ​o​ ​S​A​S​B​)​,​ ​t​e​v​e​ ​q​u​e​ ​f​a​z​e​r​ ​m​a​i​s​ ​q​u​e​ ​u​m​a​ ​c​h​a​m​a​d​a​ ​a​t​é​ ​q​u​e​ ​c​o​m​e​ç​a​r​a​m​ ​a​ ​i​n​t​e​r​v​i​r​?
+		 * (​I​f​ ​c​o​n​t​a​c​t​e​d​ ​S​A​S​B​)​ ​D​i​d​ ​y​o​u​ ​n​e​e​d​ ​t​o​ ​m​a​k​e​ ​m​o​r​e​ ​t​h​a​n​ ​o​n​e​ ​c​a​l​l​ ​b​e​f​o​r​e​ ​t​h​e​y​ ​e​n​t​e​r​e​d​ ​i​n​t​o​ ​a​c​t​i​o​n​?
 		 */
 		'619': string
 		/**
-		 * (​C​a​s​o​ ​t​e​n​h​a​ ​c​o​n​t​a​c​t​a​d​o​ ​o​ ​S​A​S​B​)​,​ ​s​e​n​t​i​u​ ​a​ ​n​e​c​e​s​s​i​d​a​d​e​ ​d​e​ ​s​u​b​o​r​n​a​r​ ​o​u​ ​o​f​e​r​e​c​e​r​ ​a​l​g​o​ ​a​o​ ​f​u​n​c​i​o​n​á​r​i​o​ ​p​a​r​a​ ​q​u​e​ ​o​ ​a​t​e​n​d​i​m​e​n​t​o​ ​f​o​s​s​e​ ​r​á​p​i​d​o​?
+		 * (​I​f​ ​c​o​n​t​a​c​t​e​d​ ​S​A​S​B​)​ ​D​i​d​ ​y​o​u​ ​f​e​e​l​ ​t​h​a​t​ ​y​o​u​ ​n​e​e​d​e​d​ ​t​o​ ​p​a​y​ ​s​o​m​e​ ​s​o​r​t​ ​o​f​ ​b​r​i​b​e​ ​o​r​ ​g​i​f​t​ ​t​o​ ​t​h​e​ ​e​m​p​l​o​y​e​e​ ​t​o​ ​m​a​k​e​ ​t​h​e​ ​r​e​q​u​e​s​t​ ​t​o​ ​b​e​ ​p​r​o​c​e​s​s​e​d​ ​f​a​s​t​e​r​?
 		 */
 		'620': string
 		/**
-		 * (​C​a​s​o​ ​t​e​n​h​a​ ​c​o​n​t​a​c​t​a​d​o​ ​o​ ​S​A​S​B​)​,​ ​o​ ​s​e​u​ ​p​r​o​b​l​e​m​a​ ​f​o​i​ ​t​r​a​t​a​d​o​ ​p​e​l​o​ ​p​r​ó​p​r​i​o​ ​S​A​S​B​ ​o​u​ ​f​o​i​ ​e​n​c​a​m​i​n​h​a​d​o​ ​p​a​r​a​ ​o​u​t​r​a​ ​e​n​t​i​d​a​d​e​?
+		 * (​I​f​ ​c​o​n​t​a​c​t​e​d​ ​S​A​S​B​)​ ​H​a​s​ ​y​o​u​r​ ​m​a​t​t​e​r​ ​b​e​e​n​ ​d​e​a​l​t​ ​w​i​t​h​ ​b​y​ ​t​h​e​ ​S​A​S​B​ ​i​t​s​e​l​f​ ​o​r​ ​h​a​v​e​ ​y​o​u​ ​b​e​e​n​ ​r​e​f​e​r​r​e​d​ ​t​o​ ​a​n​o​t​h​e​r​ ​e​n​t​i​t​y​?
 		 */
 		'621': string
 		/**
-		 * (​C​a​s​o​ ​t​e​n​h​a​ ​c​o​n​t​a​c​t​a​d​o​ ​o​ ​S​A​S​B​)​ ​O​ ​s​e​u​ ​p​o​b​l​e​m​a​ ​f​i​c​o​u​ ​r​e​s​o​l​v​i​d​o​?
+		 * (​I​f​ ​c​o​n​t​a​c​t​e​d​ ​S​A​S​B​)​ ​ ​H​a​s​ ​t​h​e​ ​p​r​o​b​l​e​m​ ​b​e​e​n​ ​r​e​s​o​l​v​e​d​?
 		 */
 		'622': string
 		/**
-		 * (​C​a​s​o​ ​t​e​n​h​a​ ​c​o​n​t​a​c​t​a​d​o​ ​o​ ​S​A​S​B​)​ ​Q​u​a​n​t​o​ ​t​e​m​p​o​ ​l​e​v​o​u​ ​a​ ​s​o​l​u​ç​ã​o​ ​d​o​ ​p​r​o​b​l​e​m​a​ ​c​o​n​t​a​n​d​o​ ​a​ ​p​a​r​t​i​r​ ​d​o​ ​m​o​m​e​n​t​o​ ​q​u​e​ ​f​e​z​ ​o​ ​p​r​i​m​e​i​r​o​ ​c​o​n​t​a​c​t​o​?
+		 * (​I​f​ ​c​o​n​t​a​c​t​e​d​ ​S​A​S​B​)​ ​ ​H​o​w​ ​l​o​n​g​ ​d​i​d​ ​t​h​e​ ​r​e​s​o​l​u​t​i​o​n​ ​t​a​k​e​ ​s​i​n​c​e​ ​y​o​u​ ​h​a​v​e​ ​p​u​t​ ​i​n​ ​t​h​e​ ​r​e​q​u​e​s​t​?
 		 */
 		'623': string
 		/**
@@ -1683,11 +1683,11 @@ export type TranslationFunctions = {
 			 */
 			'1': () => LocalizedString
 			/**
-			 * Less satisfied
+			 * Dissatisfied
 			 */
 			'2': () => LocalizedString
 			/**
-			 * Dissatisfied
+			 * Very Disatisfied
 			 */
 			'3': () => LocalizedString
 		}
@@ -1711,19 +1711,19 @@ export type TranslationFunctions = {
 		}
 		satisfactionLevel: {
 			/**
-			 * Satisfied
+			 * Very Satisfied
 			 */
 			'0': () => LocalizedString
 			/**
-			 * Somewhat Satisfied
+			 * Satisfied
 			 */
 			'1': () => LocalizedString
 			/**
-			 * Somewhat Dissatisfied
+			 * Dissatisfied
 			 */
 			'2': () => LocalizedString
 			/**
-			 * Dissastisfied
+			 * Very Dissastisfied
 			 */
 			'3': () => LocalizedString
 		}
@@ -2174,10 +2174,10 @@ export type TranslationFunctions = {
 			 */
 			paragraph1: () => LocalizedString
 			/**
-			 * For the sewer connection fee. They propose an average price of (X),
+			 * For the sewer connection fee. They propose an average price of ({x} MT),
 		      whereas you proposed the price ({y} MT).
 			 */
-			paragraph2: (arg: { y: unknown }) => LocalizedString
+			paragraph2: (arg: { x: number, y: number }) => LocalizedString
 			/**
 			 * Having heard the community's proposal , would you like to revise your
 		      previously stated price? Remember, your proposed price is ({y} MT)
@@ -2244,10 +2244,10 @@ export type TranslationFunctions = {
 			 */
 			paragraph1: () => LocalizedString
 			/**
-			 * For the monthly sanitation tax, They propose an average price of (X).
+			 * For the monthly sanitation tax, They propose an average price of ({x} MT).
 		      You proposed the price ({y} MT).
 			 */
-			paragraph2: (arg: { y: unknown }) => LocalizedString
+			paragraph2: (arg: { x: number, y: number }) => LocalizedString
 			/**
 			 * Having heard the community's proposal , would you like to revise your
 		      previously stated price? Remember, your proposed price is ({y} MT)
@@ -2292,9 +2292,7 @@ export type TranslationFunctions = {
 		 */
 		'433': () => LocalizedString
 		/**
-		 * Currently, SASB offers the
-	    service to remove the fecal sludge and clean your septic tank for a
-	    total of 8700MT.
+		 * Currently, SASB offers the service to remove the fecal sludge removal for 2,350 Mt. What should the price for fecal slugde desludging be for everyone in your neighborhood including yourself?
 		 */
 		'434': () => LocalizedString
 		/**
@@ -2487,27 +2485,27 @@ export type TranslationFunctions = {
 		 */
 		'617': () => LocalizedString
 		/**
-		 * (Caso tenha contactado o SASB), a pessoa que lhe atendeu tratou-lhe duma forma correcta e educada?
+		 * (If contacted SASB) Did the person who dealt with your complaint treat you in a fair and polite manner?
 		 */
 		'618': () => LocalizedString
 		/**
-		 * (Caso tenha sido o SASB), teve que fazer mais que uma chamada até que começaram a intervir?
+		 * (If contacted SASB) Did you need to make more than one call before they entered into action?
 		 */
 		'619': () => LocalizedString
 		/**
-		 * (Caso tenha contactado o SASB), sentiu a necessidade de subornar ou oferecer algo ao funcionário para que o atendimento fosse rápido?
+		 * (If contacted SASB) Did you feel that you needed to pay some sort of bribe or gift to the employee to make the request to be processed faster?
 		 */
 		'620': () => LocalizedString
 		/**
-		 * (Caso tenha contactado o SASB), o seu problema foi tratado pelo próprio SASB ou foi encaminhado para outra entidade?
+		 * (If contacted SASB) Has your matter been dealt with by the SASB itself or have you been referred to another entity?
 		 */
 		'621': () => LocalizedString
 		/**
-		 * (Caso tenha contactado o SASB) O seu poblema ficou resolvido?
+		 * (If contacted SASB)  Has the problem been resolved?
 		 */
 		'622': () => LocalizedString
 		/**
-		 * (Caso tenha contactado o SASB) Quanto tempo levou a solução do problema contando a partir do momento que fez o primeiro contacto?
+		 * (If contacted SASB)  How long did the resolution take since you have put in the request?
 		 */
 		'623': () => LocalizedString
 		/**

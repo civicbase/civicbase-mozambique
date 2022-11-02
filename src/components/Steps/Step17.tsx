@@ -21,9 +21,10 @@ const Step17 = () => {
   const contactecSASB = getValues(`step17.contactedWho.SASB`)
   const contactedOther = watch('step17.contactedWho')
   const contactedBefore = watch('step17.contacted') === LL.choices.yesNo[0]()
+  const problemResolved = watch('step17.problemResolved') === LL.choices.yesNo[0]()
 
   return (
-    <div css={tw`grid grid-cols-1 gap-6`}>
+    <div css={tw`grid grid-cols-1 gap-6 pb-40`}>
       <Heading subtitle={LL.headings[20]()} />
 
       <div>
@@ -306,7 +307,7 @@ const Step17 = () => {
         </div>
       )}
 
-      {contactedBefore && contactecSASB && (
+      {contactedBefore && contactecSASB && problemResolved && (
         <div>
           <Label number="5.19" required>
             {LL.questions[519]()}

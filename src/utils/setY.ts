@@ -6,8 +6,6 @@ type Fields = {
   control: string
 }
 /**
- * 1. the Y on 4.15 referes ot 4.13(treatment) or 4.14(control)
- * 2. 4.16 = y if 415 === stay the same
  * @param getValues
  * @param fields
  * @returns

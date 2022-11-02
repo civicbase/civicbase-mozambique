@@ -31,8 +31,6 @@ const Step16 = () => {
     }
   }, [])
 
-  const connection = getValues('step2.sanitationType')
-
   return (
     <div css={tw`grid grid-cols-1 gap-6`}>
       <Heading subtitle={LL.headings[19]()} />
@@ -51,7 +49,7 @@ const Step16 = () => {
           (option) => (
             <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
               <Radio {...register(`step16.oftenSewerProblem`)} value={option} />
-              <span css={tw`text-center`}>{option}</span>
+              <span>{option}</span>
             </label>
           ),
         )}
@@ -72,53 +70,49 @@ const Step16 = () => {
         ].map((option) => (
           <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
             <Radio {...register(`step16.sewerReductions`)} value={option} />
-            <span css={tw`text-center`}>{option}</span>
+            <span>{option}</span>
           </label>
         ))}
 
         <FieldErrorMessage name="step16.sewerReductions" errors={errors} />
       </div>
 
-      {connection === LL.choices.sanitationType[0]() && (
-        <div>
-          <Label number="5.6" required>
-            {LL.questions[56]()}
-          </Label>
+      <div>
+        <Label number="5.6" required>
+          {LL.questions[56]()}
+        </Label>
 
-          {[LL.choices.problems[0](), LL.choices.problems[1](), LL.choices.problems[2](), LL.choices.problems[3]()].map(
-            (option) => (
-              <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
-                <Radio {...register(`step16.oftenBadSmellDwellingCompound`)} value={option} />
-                <span css={tw`text-center`}>{option}</span>
-              </label>
-            ),
-          )}
-
-          <FieldErrorMessage name="step16.oftenBadSmellDwellingCompound" errors={errors} />
-        </div>
-      )}
-
-      {connection === LL.choices.sanitationType[0]() && (
-        <div>
-          <Label number="5.7" required>
-            {LL.questions[57]()}
-          </Label>
-
-          {[
-            LL.choices.satisfaction[0](),
-            LL.choices.satisfaction[1](),
-            LL.choices.satisfaction[2](),
-            LL.choices.satisfaction[3](),
-          ].map((option) => (
+        {[LL.choices.problems[0](), LL.choices.problems[1](), LL.choices.problems[2](), LL.choices.problems[3]()].map(
+          (option) => (
             <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
-              <Radio {...register(`step16.sewerBadSmellDwellingCompoundReductions`)} value={option} />
-              <span css={tw`text-center`}>{option}</span>
+              <Radio {...register(`step16.oftenBadSmellDwellingCompound`)} value={option} />
+              <span>{option}</span>
             </label>
-          ))}
+          ),
+        )}
 
-          <FieldErrorMessage name="step16.sewerBadSmellDwellingCompoundReductions" errors={errors} />
-        </div>
-      )}
+        <FieldErrorMessage name="step16.oftenBadSmellDwellingCompound" errors={errors} />
+      </div>
+
+      <div>
+        <Label number="5.7" required>
+          {LL.questions[57]()}
+        </Label>
+
+        {[
+          LL.choices.satisfaction[0](),
+          LL.choices.satisfaction[1](),
+          LL.choices.satisfaction[2](),
+          LL.choices.satisfaction[3](),
+        ].map((option) => (
+          <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
+            <Radio {...register(`step16.sewerBadSmellDwellingCompoundReductions`)} value={option} />
+            <span>{option}</span>
+          </label>
+        ))}
+
+        <FieldErrorMessage name="step16.sewerBadSmellDwellingCompoundReductions" errors={errors} />
+      </div>
     </div>
   )
 }

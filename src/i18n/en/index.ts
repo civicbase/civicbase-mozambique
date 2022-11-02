@@ -43,9 +43,9 @@ const en: BaseTranslation = {
     relationship: ['Neighbor', 'Work Colleague', 'Friend Acquaintance', 'Family Member', 'Other'],
     notAplicable: 'Not Applicable (Only emptied once since April 2021)',
     notAplicable2: 'Not Aplicable',
-    satisfy: ['Very Satisfied', 'Satisfied', 'Less satisfied', 'Dissatisfied'],
+    satisfy: ['Very Satisfied', 'Satisfied', 'Dissatisfied', 'Very Disatisfied'],
     satisfaction: ['It has gotten worse', 'No change', 'It has improved', `Don't know`],
-    satisfactionLevel: ['Satisfied', 'Somewhat Satisfied', 'Somewhat Dissatisfied', 'Dissastisfied'],
+    satisfactionLevel: ['Very Satisfied', 'Satisfied', 'Dissatisfied', 'Very Dissastisfied'],
     serviceProvider: [
       'Landlord',
       'Intermediary',
@@ -222,8 +222,8 @@ const en: BaseTranslation = {
       paragraph1: `Now we would like to share with
       you what your community thinks about the price to be paid for the sewer
       connection fee.`,
-      paragraph2: `For the sewer connection fee. They propose an average price of (X),
-      whereas you proposed the price ({y} MT).`,
+      paragraph2: `For the sewer connection fee. They propose an average price of ({x:number} MT),
+      whereas you proposed the price ({y: number} MT).`,
       paragraph3: `Having heard the community's proposal , would you like to revise your
       previously stated price? Remember, your proposed price is ({y} MT)`,
     },
@@ -265,8 +265,8 @@ const en: BaseTranslation = {
       paragraph1: `Now we would like to share with
       you what your community thinks about the price to be paid for the
       monthly sanitation tax`,
-      paragraph2: `For the monthly sanitation tax, They propose an average price of (X).
-      You proposed the price ({y} MT).`,
+      paragraph2: `For the monthly sanitation tax, They propose an average price of ({x:number} MT).
+      You proposed the price ({y:number} MT).`,
       paragraph3: `Having heard the community's proposal , would you like to revise your
       previously stated price? Remember, your proposed price is ({y} MT)`,
     },
@@ -365,12 +365,12 @@ const en: BaseTranslation = {
     615: `Specify other`,
     616: `Who did you contact?`,
     617: `Why didn't you contact SASB for the problem?`,
-    618: `(Caso tenha contactado o SASB), a pessoa que lhe atendeu tratou-lhe duma forma correcta e educada?`,
-    619: `(Caso tenha sido o SASB), teve que fazer mais que uma chamada até que começaram a intervir?`,
-    620: `(Caso tenha contactado o SASB), sentiu a necessidade de subornar ou oferecer algo ao funcionário para que o atendimento fosse rápido?`,
-    621: `(Caso tenha contactado o SASB), o seu problema foi tratado pelo próprio SASB ou foi encaminhado para outra entidade?`,
-    622: `(Caso tenha contactado o SASB) O seu poblema ficou resolvido?`,
-    623: `(Caso tenha contactado o SASB) Quanto tempo levou a solução do problema contando a partir do momento que fez o primeiro contacto?`,
+    618: `(If contacted SASB) Did the person who dealt with your complaint treat you in a fair and polite manner?`,
+    619: `(If contacted SASB) Did you need to make more than one call before they entered into action?`,
+    620: `(If contacted SASB) Did you feel that you needed to pay some sort of bribe or gift to the employee to make the request to be processed faster?`,
+    621: `(If contacted SASB) Has your matter been dealt with by the SASB itself or have you been referred to another entity?`,
+    622: `(If contacted SASB)  Has the problem been resolved?`,
+    623: `(If contacted SASB)  How long did the resolution take since you have put in the request?`,
   },
 }
 

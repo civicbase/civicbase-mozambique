@@ -52,6 +52,8 @@ export interface FormValues {
   step7: {
     revisePrice: string
     willingPay?: number
+    y: number
+    x: number
   }
   step8: {
     content: 'Treatment - QVSR' | 'Control - Price Slider'
@@ -61,6 +63,8 @@ export interface FormValues {
   step9: {
     revisePrice: string
     willingPay?: number
+    y: number
+    x: number
   }
   step10?: {
     emptiedSepticTank: string
@@ -134,6 +138,7 @@ export interface FormValues {
   step18: {
     revisePrice: string
     willingPay?: number
+    y: number
   }
   step19?: {
     treatFairPolite: string
@@ -141,7 +146,7 @@ export interface FormValues {
     bribe: string
     dealthWith: string
     problemResolved: string
-    howLong: string
+    howLong?: string
   }
   step20: {
     drainageBoxBlocked: string
@@ -170,5 +175,6 @@ export interface FormValues {
   step22: {
     revisePrice: string
     willingPay?: number
+    y: number
   }
 }

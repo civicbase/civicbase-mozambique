@@ -13,7 +13,6 @@ const Step21 = () => {
   const {
     register,
     control,
-    getValues,
     watch,
     formState: { errors },
   } = useFormContext()
@@ -21,9 +20,10 @@ const Step21 = () => {
   const problem = watch('step21.contacted.problem')
   const contactedSASB = watch('step21.contacted.who.SASB')
   const contactedDrainageIssue = watch('step21.contactedDrainageIssue') === LL.choices.yesNo[0]()
+  const problemResolved = watch('step21.problemResolved') === LL.choices.yesNo[0]()
 
   return (
-    <div css={tw`grid grid-cols-1 gap-6`}>
+    <div css={tw`grid grid-cols-1 gap-6 pb-40`}>
       <Heading subtitle={LL.headings[26]()} />
 
       <div>
@@ -311,7 +311,7 @@ const Step21 = () => {
         </div>
       )}
 
-      {contactedDrainageIssue && contactedSASB && (
+      {contactedDrainageIssue && contactedSASB && problemResolved && (
         <div>
           <Label number="6.23" required>
             {LL.questions[623]()}

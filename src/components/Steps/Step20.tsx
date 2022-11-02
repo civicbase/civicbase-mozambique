@@ -50,7 +50,7 @@ const Step20 = () => {
           (option) => (
             <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
               <Radio {...register(`step20.drainageBoxBlocked`)} value={option} />
-              <span css={tw`text-center`}>{option}</span>
+              <span>{option}</span>
             </label>
           ),
         )}
@@ -69,7 +69,7 @@ const Step20 = () => {
           (option) => (
             <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
               <Radio {...register(`step20.drainageDitchBlock`)} value={option} />
-              <span css={tw`text-center`}>{option}</span>
+              <span>{option}</span>
             </label>
           ),
         )}
@@ -86,7 +86,7 @@ const Step20 = () => {
           (option) => (
             <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
               <Radio {...register(`step20.walkedWater`)} value={option} />
-              <span css={tw`text-center`}>{option}</span>
+              <span>{option}</span>
             </label>
           ),
         )}
@@ -103,7 +103,7 @@ const Step20 = () => {
           (option) => (
             <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
               <Radio {...register(`step20.StagnantWaterDisease`)} value={option} />
-              <span css={tw`text-center`}>{option}</span>
+              <span>{option}</span>
             </label>
           ),
         )}
@@ -124,7 +124,7 @@ const Step20 = () => {
         ].map((option) => (
           <label css={tw`flex space-x-2 space-y-4 items-baseline select-none`} key={option}>
             <Radio {...register(`step20.StagnantWaterReductions`)} value={option} />
-            <span css={tw`text-center`}>{option}</span>
+            <span>{option}</span>
           </label>
         ))}
 

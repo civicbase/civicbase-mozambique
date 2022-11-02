@@ -24,6 +24,12 @@ const Step18 = () => {
   const y = getValues('step7.willingPay') //4.16
 
   useEffect(() => {
+    if (y) {
+      setValue('step18.y', y)
+    }
+  }, [y])
+
+  useEffect(() => {
     if (revisedPrice === LL.choices.revise[1]()) {
       setValue('step18.willingPay', y)
     }
@@ -47,7 +53,7 @@ const Step18 = () => {
         <div css={tw`flex justify-between`}>
           {[LL.choices.revise[0](), LL.choices.revise[1](), LL.choices.revise[2]()].map((option) => (
             <label css={tw`flex flex-col space-y-2 items-center select-none mt-5`} key={option}>
-              <span css={tw`text-center`}>{option}</span>
+              <span>{option}</span>
               <Radio {...register(`step18.revisePrice`)} value={option} />
             </label>
           ))}

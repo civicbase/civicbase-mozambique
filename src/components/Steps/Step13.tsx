@@ -19,7 +19,6 @@ const Step13 = () => {
   const emptiedSepticTank = getValues('step10.emptiedSepticTank') === LL.choices.yesNo[0]()
   const contactedServiceProvider = getValues('step10.serviceProvider.contacted') === LL.choices.yesNo[0]()
 
-  // TODO: ohhhh validation bug here?????
   if (
     !(
       sanitationType === LL.choices.sanitationType[1]() &&
@@ -28,13 +27,12 @@ const Step13 = () => {
       contactedSASB
     )
   ) {
-    // BUG :(
     setValue(`step13.satisfaction.SASBFecalSludgeDeslidgingService`, '')
     setValue(`step13.satisfaction.qualityFecalSludgeLast6Months`, '')
   }
 
   return (
-    <div css={tw`grid grid-cols-1 gap-10`}>
+    <div css={tw`grid grid-cols-1 gap-10 pb-40`}>
       <Heading subtitle={LL.headings[16]()} />
 
       {sanitationType === LL.choices.sanitationType[0]() && (

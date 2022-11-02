@@ -38,6 +38,9 @@ const getDefaultValues = (LL: TranslationFunctions) => {
         { id: '5', statement: '10500 MT', vote: 0, credits: 0, order: 4 },
       ],
     },
+    step7: {
+      x: 0,
+    },
     step8: {
       pricePreference: '80',
       content: getRandomQVSRSlider(),
@@ -48,6 +51,9 @@ const getDefaultValues = (LL: TranslationFunctions) => {
         { id: '4', statement: '88 MT', vote: 0, credits: 0, order: 3 },
         { id: '5', statement: '96 MT', vote: 0, credits: 0, order: 4 },
       ],
+    },
+    step9: {
+      x: 0,
     },
     step10: {
       serviceProvider: {

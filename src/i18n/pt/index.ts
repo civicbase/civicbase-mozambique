@@ -45,7 +45,7 @@ const pt: BaseTranslation = {
     notAplicable2: 'Não se Aplica',
     satisfy: ['Muito Satisfeito', 'Satisfeito', 'Insatisfeito', 'Muito Insatisfeito'],
     satisfaction: ['Piorou (Aumentou)', 'Não mudou', 'Melhorou (Reduziu)', 'Não sei dizer'],
-    satisfactionLevel: ['Muito Satisfeito', 'Satisfeito', 'Pouco satisfeito', 'Insatisfeito'],
+    satisfactionLevel: ['Muito Satisfeito', 'Satisfeito', 'Insatisfeito', 'Muito Insatisfeito'],
     serviceProvider: [
       'Dono da casa',
       'Intermediário',
@@ -204,7 +204,7 @@ const pt: BaseTranslation = {
     414: `For households who want a NEW sewer connection, they will be required to pay a ONE TIME fee which covers the material and labor cost of constructing the sewer lines.  From the information that we have gathered, the average price that households pay for sewer connections is roughly 8500 MT. What should the sewer connection fee be for everyone in your neighborhood including yourself?`,
     415: {
       paragraph1: `Agora gostaria de compartilhar consigo o que a sua comunidade acha do valor que deve ser pago para a taxa de ligação ao sistema de esgoto.`,
-      paragraph2: `Para a ligação ao sistema de esgoto de acordo com o nosso inquérito se propõe um preço médio de (X). Propûs o preço ({y} MT)`,
+      paragraph2: `Para a ligação ao sistema de esgoto de acordo com o nosso inquérito se propõe um preço médio de ({x:number} MT). Propûs o preço ({y:number} MT)`,
       paragraph3: `Ouvido a proposta da comunidade prefere mudar o preço que mencionou? O preço que mencionou é ({y} MT)`,
     },
     417: {
@@ -219,7 +219,7 @@ const pt: BaseTranslation = {
     },
     419: {
       paragraph1: `Agora gostaria de compartilhar consigo o que a sua comunidade acha do valor que deve ser pago para a taxa de ligação ao sistema de esgoto..`,
-      paragraph2: `Para a taxa mensal de saneamento a comunidade propõe um preço médio de (X). Você propôs o preço ({y} MT)`,
+      paragraph2: `Para a taxa mensal de saneamento a comunidade propõe um preço médio de ({x:number} MT). Você propôs o preço ({y:number} MT)`,
       paragraph3: `Ouvido a proposta da comunidade prefere mudar o preço que propôs? O preço que mencionou é ({y} MT)`,
     },
     425: `Desde Abril 2021 já mandou esvaziar a sua fossa séptica?`,
@@ -285,12 +285,12 @@ const pt: BaseTranslation = {
     615: `Especifique outro`,
     616: `Quem contactou`,
     617: `Porquê não contactou o SASB  esse problema?`,
-    618: `Caso seja o SASB, a pessoa que lhe atendeu tratou-lhe duma forma correcta e educada?`,
-    619: `Caso tenha sido com SASB, teve que fazer mais que uma chamada até que começaram a actuar?`,
-    620: `Caso tenha sido com o SASB, ficou com a impressão que tivesse que pagar alguma suborno ou "doação" ao funcionário para assegurar o rápido processamento do seu pedido?`,
-    621: `Caso tenha contactado o SASB, o seu problema foi tratado pelo próprio SASB ou foi encaminhado para outra entidade?`,
-    622: `O seu poblema ficou resolvido?`,
-    623: `Quanto tempo levou a solução do problema contando do momento que fez o promeiro contacto?`,
+    618: `(Caso tenha contactado o SASB), a pessoa que lhe atendeu tratou-lhe duma forma correcta e educada?`,
+    619: `(Caso tenha sido o SASB), teve que fazer mais que uma chamada para começarem a intervir?`,
+    620: `(Caso tenha contactado o SASB), sentiu a necessidade de subornar ou oferecer algo ao funcionário para que o atendimento fosse rápido?`,
+    621: `(Caso tenha contactado o SASB), o seu problema foi tratado pelo próprio SASB ou foi encaminhado para outra entidade?`,
+    622: `(Caso tenha contactado o SASB) O seu poblema ficou resolvido?`,
+    623: `(Caso tenha contactado o SASB) Quanto tempo levou a solução do problema contando a partir do momento que fez o primeiro contacto?`,
   },
 }
 

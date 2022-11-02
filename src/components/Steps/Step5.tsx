@@ -19,7 +19,7 @@ const Step5 = () => {
   const content = getValues('step5.content')
 
   return (
-    <div css={tw`grid grid-cols-1 gap-6`}>
+    <div css={tw`grid grid-cols-1 gap-6 pb-40`}>
       <Heading subtitle={LL.headings[5]()} />
 
       {content === 'Treatment' && (

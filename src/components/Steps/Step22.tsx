@@ -24,6 +24,12 @@ const Step22 = () => {
   const y = getValues('step9.willingPay') //4.20
 
   useEffect(() => {
+    if (y) {
+      setValue('step22.y', y)
+    }
+  }, [y])
+
+  useEffect(() => {
     const f = getValues('section6.finishAt')
 
     if (!f) {
@@ -56,7 +62,7 @@ const Step22 = () => {
         <div css={tw`flex justify-between`}>
           {[LL.choices.revise[0](), LL.choices.revise[1](), LL.choices.revise[2]()].map((option) => (
             <label css={tw`flex flex-col space-y-2 items-center select-none mt-5`} key={option}>
-              <span css={tw`text-center`}>{option}</span>
+              <span>{option}</span>
               <Radio {...register(`step22.revisePrice`)} value={option} />
             </label>
           ))}

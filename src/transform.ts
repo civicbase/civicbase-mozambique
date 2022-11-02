@@ -20,6 +20,8 @@ import {
   get617,
   get621,
   getDwelling,
+  getHighestValue,
+  getHighestVote,
   getHowLong,
   getLikely,
   getMonthYear,
@@ -33,6 +35,7 @@ import {
   getServiceProvider,
   getYesNo,
 } from 'utils/answer'
+import { getMostVoted } from 'utils/quadratic'
 
 export interface Values extends FormValues {
   geolocation: {
@@ -42,6 +45,10 @@ export interface Values extends FormValues {
 }
 
 export const transform = (values: any, LL: TranslationFunctions) => {
+  const mostVoted48 = getMostVoted(values.step4)
+  const mostVoted413 = getMostVoted(values.step6.QVSR)
+  const mostVoted417 = getMostVoted(values.step8.QVSR)
+
   const result = {
     startAt: values.startAt,
     finishAt: values.finishAt,
@@ -61,6 +68,8 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     47: get47(values, LL),
     // page4
     48: values.step4,
+    '48HVValue': getHighestValue('Treatment - QVSR', values.step4),
+    '48HVVote': getHighestVote('Treatment - QVSR', values.step4),
     // page5
     page5: values.step5?.content,
     411: get411(values, LL),
@@ -69,15 +78,23 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     page6: values.step6?.content,
     413: get413(values, LL),
     414: get414(values, LL),
+    '413HVValue': getHighestValue(values.step6?.content, values.step6.QVSR),
+    '413HVVote': getHighestVote(values.step6?.content, values.step6.QVSR),
     // page7
     415: getRevise(values.step7?.revisePrice, LL),
+    '415Y': values.step7.y,
+    '415X': values.step7.x,
     416: values.step7?.willingPay,
     // page8
     page8: values.step8?.content,
     417: get417(values, LL),
+    '417HVValue': getHighestValue(values.step8?.content, values.step8.QVSR),
+    '417HVVote': getHighestVote(values.step8?.content, values.step8.QVSR),
     418: get418(values, LL),
     // page9
     419: getRevise(values.step9?.revisePrice, LL),
+    '419Y': values.step9.y,
+    '419X': values.step9.x,
     420: values.step9?.willingPay,
     // page10
     425: getYesNo(values.step10?.emptiedSepticTank, LL),
@@ -130,6 +147,7 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     519: getHowLong(values.step17?.howLong, LL),
     // page18
     520: getRevise(values.step18?.revisePrice, LL),
+    '520Y': values.step18.y,
     521: values.step18?.willingPay,
     // page19
     524: getYesNo(values.step19?.treatFairPolite, LL),
@@ -159,6 +177,7 @@ export const transform = (values: any, LL: TranslationFunctions) => {
     623: getHowLong(values.step21?.howLong, LL),
     // page22
     522: getRevise(values.step22?.revisePrice, LL),
+    '522Y': values.step22?.y,
     523: values.step22?.willingPay,
   }
 

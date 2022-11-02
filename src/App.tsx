@@ -30,12 +30,7 @@ const App = () => {
     resolver: zodResolver(validationSchema(LL)),
   })
 
-  // const values = methods.getValues()
-  // const trans = transform(values, LL)
-
-  // console.log('values', trans)
-
-  console.log('errors', methods.formState.errors)
+  // console.log('errors', methods.formState.errors)
 
   const handlePrevious = () => {
     if (step > 1) {
@@ -120,6 +115,7 @@ const App = () => {
             (!latitude || !longitude) &&
             odkConfirm && <Geolocation handleShareGeolocation={() => setUserGesture(true)} error={error} />
           }
+          step={step}
         />
       </form>
     </FormProvider>

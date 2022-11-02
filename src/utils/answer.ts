@@ -1,5 +1,6 @@
 import { TranslationFunctions } from 'i18n/i18n-types'
 import { Values } from 'transform'
+import { getMostVoted } from './quadratic'
 
 const ERROR = 37767
 
@@ -15,6 +16,25 @@ export const getSanitation = (values: Values, LL: TranslationFunctions) => {
       return 2
     default:
       return ERROR
+  }
+}
+
+export const getHighestVote = (content: string, step: any) => {
+  if (content === 'Treatment - QVSR') {
+    const mostVoted = getMostVoted(step)
+
+    return mostVoted?.vote
+  } else {
+    return null
+  }
+}
+export const getHighestValue = (content: string, step: any) => {
+  if (content === 'Treatment - QVSR') {
+    const mostVoted = getMostVoted(step)
+
+    return mostVoted?.statement
+  } else {
+    return null
   }
 }
 
@@ -378,14 +398,13 @@ const getRelationship = (relationship: string | null, LL: TranslationFunctions) 
 }
 
 export const get452 = (values: Values, LL: TranslationFunctions) => {
-  if (!values.step14.share) {
-    return null
+  if (values.step14.notSharing) {
+    return 'not sharing'
   }
-  return values.step14.share.map((s) => ({
+  return values.step14.share?.map((s) => ({
     ...s,
     relationship: getRelationship(s.relationship, LL),
   }))
-  // todo
 }
 
 export const getProblems = (field: any, LL: TranslationFunctions) => {
