@@ -6,8 +6,7 @@ import { getRandomQVSRSlider, getRandomTreatmentControl } from './random'
 const getDefaultValues = (LL: TranslationFunctions) => {
   const language = navigator.language.split(/[-_]/)[0]
   const randomContent = getRandomQVSRSlider()
-
-  console.log('content', randomContent)
+  const treatmentControl = getRandomTreatmentControl()
 
   return {
     startAt: getLocalDate(),
@@ -28,7 +27,7 @@ const getDefaultValues = (LL: TranslationFunctions) => {
       { id: '5', statement: LL.choices[48][4](), vote: 0, credits: 0, order: 4 },
     ],
     step5: {
-      content: getRandomTreatmentControl(),
+      content: treatmentControl,
     },
     step6: {
       amountPreference: '8500',
@@ -67,7 +66,7 @@ const getDefaultValues = (LL: TranslationFunctions) => {
       pricePreference: '2350',
     },
     step12: {
-      content: getRandomTreatmentControl(),
+      content: treatmentControl,
     },
     step14: {
       share: [{ name: '', relationship: null, closeness: null }],

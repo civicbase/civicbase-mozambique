@@ -30,22 +30,9 @@ const App = () => {
     resolver: zodResolver(validationSchema(LL)),
   })
 
-  // console.log('errors', methods.formState.errors)
-
   const handlePrevious = () => {
     if (step > 1) {
       switch (step) {
-        case 11:
-        case 13:
-          const sanitationType = methods.getValues('step2.sanitationType')
-
-          if (sanitationType !== LL.choices.sanitationType[1]()) {
-            setStep(step - 2)
-          } else {
-            setStep(step - 1)
-          }
-          break
-
         case 18:
           const sewerConnection = methods.getValues('step2.sanitationType') === LL.choices.sanitationType[0]()
           if (!sewerConnection) {

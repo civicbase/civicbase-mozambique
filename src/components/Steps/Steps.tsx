@@ -64,12 +64,7 @@ const Steps = ({ id, onNext, onPrevious }: StepsProps) => {
     case 11:
       return <Section.Step11 />
     case 12:
-      if (sanitationType === LL.choices.sanitationType[1]()) {
-        return <Section.Step12 />
-      } else {
-        onNext()
-        return null
-      }
+      return <Section.Step12 />
     case 13:
       return <Section.Step13 />
     case 14:
